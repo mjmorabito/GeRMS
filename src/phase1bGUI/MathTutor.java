@@ -37,13 +37,8 @@ public class MathTutor extends JFrame {
 
         buildMenuBar();
         buildTopPanel();
-
-        desktopPane = new JDesktopPane();
-        desktopPane.setSize(820, 640);
-
+        buildDesktopPane();
         buildLoginFrame();
-
-        add(desktopPane, BorderLayout.CENTER);
 
     }
     
@@ -80,6 +75,12 @@ public class MathTutor extends JFrame {
         //userInfoPanel.add(starsLabel);
         userInfoPanel.add(printerLabel, BorderLayout.EAST);     
         add(userInfoPanel, BorderLayout.NORTH);        
+    }
+    
+    public void buildDesktopPane() {
+        desktopPane = new JDesktopPane();
+        desktopPane.setSize(820, 640);
+        add(desktopPane, BorderLayout.CENTER);        
     }
 
     public void buildLoginFrame() {
@@ -150,6 +151,7 @@ public class MathTutor extends JFrame {
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
         JButton registerButton = new JButton("Register");
+        registerButton.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
         buttonsPanel.add(loginButton);
         buttonsPanel.add(registerButton);
 
