@@ -1,5 +1,5 @@
 
-package phase1aGUI;
+package phase1a;
 
 // Imports
 import javax.swing.*;

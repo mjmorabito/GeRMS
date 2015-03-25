@@ -1,5 +1,5 @@
 
-package phase1aGUI;
+package phase1a;
 /*
 * The preK-k level screen
 * Gustavo Moraes, Ryan Ahearn, Mark Morabito, Samir Leal

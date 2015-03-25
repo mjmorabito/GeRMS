@@ -1,7 +1,7 @@
-package phase1aGUI;
+package phase1a;
 
 /*
-* The login screen
+* The register screen
 * Gustavo Moraes, Ryan Ahearn, Mark Morabito, Samir Leal
 * 1/30/15
 */
@@ -11,15 +11,15 @@ import javax.swing.*;
 import java.awt.event.*;
 
 // Login class
-public class login extends JFrame {
+public class register extends JFrame {
 
 	// Panels
 	private JPanel panel;
-	private final int WINDOW_WIDTH = 400;
+	private final int WINDOW_WIDTH = 270;
 	private final int WINDOW_HEIGHT = 150;
 
 	// Labels
-	private JLabel loginLabel;
+	private JLabel registerLabel;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
 
@@ -28,16 +28,15 @@ public class login extends JFrame {
 	private JTextField passwordField;
 
 	// Buttons
-	private JButton loginButton;
 	private JButton registerButton;
-	private JButton resetPassword;
+	private JButton loginScreenButton;
 
 
 	// Login constructor
-	public login() {
+	public register() {
 
 		// Sets the title of the JFrame
-		super("Login");
+		super("Register");
 
 		// Sets the size of the window
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -65,7 +64,7 @@ public class login extends JFrame {
 public void buildPanel() {
 
 		// Login label
-		loginLabel = new JLabel("Please enter your username and password or register.");
+		registerLabel = new JLabel("Please enter a username and password.");
 
 		// Username label and text field
 		usernameLabel = new JLabel("Username: ");
@@ -75,58 +74,41 @@ public void buildPanel() {
 		passwordLabel = new JLabel("Password: ");
 		passwordField = new JTextField(10);
 
-		// Login button
-		loginButton = new JButton("Login");
-		loginButton.addActionListener(new loginActionListener());
-
 		// Register button
 		registerButton = new JButton("Register");
-		registerButton.addActionListener(new loginActionListener());
 
-		// Reset password button
-		resetPassword = new JButton("Forgot password");
-		resetPassword.addActionListener(new loginActionListener());
-
+		// Main Menu Button
+		loginScreenButton = new JButton("Back");
+		loginScreenButton.addActionListener(new buttonActionListener());
 
 		// Adds components to the panel
 		panel = new JPanel();
-		panel.add(loginLabel);
+		panel.add(registerLabel);
 		panel.add(usernameLabel);
 		panel.add(usernameField);
 		panel.add(passwordLabel);
 		panel.add(passwordField);
-		panel.add(loginButton);
 		panel.add(registerButton);
-		panel.add(resetPassword);
+		panel.add(loginScreenButton);
 
 
 }
 
-
-// Login button action listener class
-public class loginActionListener implements ActionListener {
-
+// buttonActionListener Class definition
+	public class buttonActionListener implements ActionListener {
 
 		// Button clicked event
 		public void actionPerformed(ActionEvent e) {
 
-			// Determines which button was clicked
-			if (e.getSource() == loginButton) {
-				// Open main screen
-				mainScreen m = new mainScreen();
-			} else if (e.getSource() == registerButton) {
-				// Register screen
-				register r = new register();
-			} //else if (e.getSource() == resetPassword) {
-				// Password screen
-			//	forgotPassword f = new forgotPassword();
-			//}
+			// Login screen
+			login l = new login();
 
-			// Close login frame
+			// Close
 			dispose();
 
 		}
 
+	}
 
-}
+
 }

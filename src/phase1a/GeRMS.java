@@ -1,4 +1,4 @@
-package phase1aGUI;
+package phase1a;
 
 /*
 * The Math Tutor Software
