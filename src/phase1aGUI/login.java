@@ -1,4 +1,4 @@
-package germs;
+package phase1aGUI;
 
 /*
 * The login screen

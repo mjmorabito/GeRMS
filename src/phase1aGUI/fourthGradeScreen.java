@@ -1,17 +1,12 @@
 
-package germs;
-/*
-* The preK-k level screen
-* Gustavo Moraes, Ryan Ahearn, Mark Morabito, Samir Leal
-* 1/30/15
-*/
+package phase1aGUI;
 
 // Imports
 import javax.swing.*;
 import java.awt.event.*;
 
-// PreK-K screen class
-public class preKScreen extends JFrame {
+// 3-4 grade screen class
+public class fourthGradeScreen extends JFrame {
 
 	// Panel
 	private JPanel panel;
@@ -24,10 +19,10 @@ public class preKScreen extends JFrame {
 	private JButton mainMenuButton;
 
 	// PreK screen constructor
-	public preKScreen() {
+	public fourthGradeScreen() {
 
 		// Sets the title of the JFrame
-		super("PreK-K level");
+		super("3-4 level");
 
 		// Sets the size of the window
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);

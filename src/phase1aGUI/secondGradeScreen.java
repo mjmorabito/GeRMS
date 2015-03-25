@@ -1,4 +1,4 @@
-package germs;
+package phase1aGUI;
 /*
 * The 2-3 level screen
 * Gustavo Moraes, Ryan Ahearn, Mark Morabito, Samir Leal
