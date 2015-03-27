@@ -22,19 +22,25 @@ public class MathTutor extends JFrame {
     
     // Exit Menu Item
     private JMenuItem exitMenuItem;
-    private JMenuItem manageaccountsMenuItem;
     
-    // Panel for the buttons at the top right
-    private JPanel userInfoPanel;
-    
+    // Panel for the banner at the top
+    private JPanel bannerPanel;
+ 
     // A label that displays the string "Username: "
     private JLabel usernameLabel;
     
     // A label that displays the string "Stars: "
     private JLabel starsLabel;
     
-    // A label that is used to display the printer image
-    private JLabel printerLabel;
+     // Panel for the buttons at the top right
+    private JPanel bannerButtonsPanel;   
+    
+    // Buttons at the right of the banner
+    private JButton loginButton;
+    private JButton logoutButton;
+    private JButton homeButton;
+    private JButton printerButton;
+    private JButton helpButton;
 
     // Desktop Pane
     private JDesktopPane desktopPane;
@@ -52,7 +58,7 @@ public class MathTutor extends JFrame {
         * Constructor
         */
         super("GeRMS Math Tutor");
-        //setSize(1366, 728);
+        setSize(1366, 728);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -73,41 +79,77 @@ public class MathTutor extends JFrame {
         menuBar = new JMenuBar();
         fileMenu = new JMenu("File");
         exitMenuItem = new JMenuItem("Exit");
-        manageaccountsMenuItem = new JMenuItem("Manage Accounts");
-        menuBar.add(fileMenu);
-        fileMenu.add(manageaccountsMenuItem);
         fileMenu.add(exitMenuItem);
+        menuBar.add(fileMenu);
         setJMenuBar(menuBar);        
     }
     
+
     public void buildTopPanel() {
         /* 
         * The top panel for the username, stars, and buttons
         */
-        userInfoPanel = new JPanel(new BorderLayout());
+        bannerPanel = new JPanel(new BorderLayout());
+        bannerPanel.setPreferredSize(new Dimension(1366, 85));
+        //userInfoPanel.setSize(1366, 65);
+        
+        bannerButtonsPanel = new JPanel();
+        
+        
         usernameLabel = new JLabel("Username: ");
         starsLabel = new JLabel("Stars: ");
-        printerLabel = new JLabel();
         
-        URL imageURL = this.getClass().getClassLoader().getResource("phase1b/Images/printer.png");
+        // Gets the URL for each button at the top right of the screen
+        URL loginButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/loginButton.png");
+        URL logoutButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/logoutButton.png");
+        URL homeButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/homeButton.png");
+        URL printerButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/printer.png");
+        URL helpButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/helpButton.png");
+       
         try {
-            Image printerImage = ImageIO.read(imageURL);
-            ImageIcon printerIcon = new ImageIcon(printerImage);
-            printerLabel.setIcon(printerIcon);
+            
+            // Reads the URL of each button as an Image
+            Image loginButtonImage = ImageIO.read(loginButtonURL);
+            Image logoutButtonImage = ImageIO.read(logoutButtonURL);
+            Image homeButtonImage = ImageIO.read(homeButtonURL);
+            Image printerButtonImage = ImageIO.read(printerButtonURL);
+            Image helpButtonImage = ImageIO.read(helpButtonURL);
+            
+            // Creates an ImageIcon for each button
+            ImageIcon loginButtonIcon = new ImageIcon(loginButtonImage);
+            ImageIcon logoutButtonIcon = new ImageIcon(logoutButtonImage);
+            ImageIcon homeButtonIcon = new ImageIcon(homeButtonImage);
+            ImageIcon printerButtonIcon = new ImageIcon(printerButtonImage);
+            ImageIcon helpButtonIcon = new ImageIcon(helpButtonImage);
+            
+            // Sets the label's icon for each button
+            loginButton = new JButton(loginButtonIcon);
+            logoutButton = new JButton(logoutButtonIcon);
+            homeButton = new JButton(homeButtonIcon);
+            printerButton = new JButton(printerButtonIcon);
+            helpButton = new JButton(helpButtonIcon);
+            
+            // Adds the buttons to the bannerButtonsPanel
+            bannerButtonsPanel.add(loginButton);
+            bannerButtonsPanel.add(logoutButton);
+            bannerButtonsPanel.add(homeButton);
+            bannerButtonsPanel.add(printerButton);
+            bannerButtonsPanel.add(helpButton);
+            
         } catch (Exception e) {
+            // Catches ImageIO.read() exceptions then prints it to the output
             System.out.println(e);
-        }                
-        userInfoPanel.setPreferredSize(new Dimension(1366, 65));
-        //userInfoPanel.setSize(1366, 65);
-        userInfoPanel.add(usernameLabel, BorderLayout.WEST);
+        }
+        
+        bannerPanel.add(usernameLabel, BorderLayout.WEST);
         //userInfoPanel.add(starsLabel);
-        userInfoPanel.add(printerLabel, BorderLayout.EAST);     
-        add(userInfoPanel, BorderLayout.NORTH);        
+        bannerPanel.add(bannerButtonsPanel, BorderLayout.EAST);     
+        add(bannerPanel, BorderLayout.NORTH);        
     }
     
     public void buildDesktopPane() {
         desktopPane = new JDesktopPane();
-        desktopPane.setSize(1366, 663);
+        desktopPane.setSize(1366, 643);
         add(desktopPane, BorderLayout.CENTER);        
     }
 
@@ -122,7 +164,7 @@ public class MathTutor extends JFrame {
         loginFrame.setResizable(true);
         loginFrame.setClosable(true);
         loginFrame.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-        loginFrame.setSize(974, 580);
+        loginFrame.setSize(974, 560);
         loginFrame.setVisible(true);
         loginFrame.setLayout(new BorderLayout());
 
