@@ -22,6 +22,7 @@ public class MathTutor extends JFrame {
     
     // Exit Menu Item
     private JMenuItem exitMenuItem;
+    private JMenuItem manageaccountsMenuItem;
     
     // Panel for the buttons at the top right
     private JPanel userInfoPanel;
@@ -51,11 +52,11 @@ public class MathTutor extends JFrame {
         * Constructor
         */
         super("GeRMS Math Tutor");
-        setSize(1366, 728);
+        //setSize(1366, 728);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        //  setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
 
         buildMenuBar();
@@ -72,7 +73,9 @@ public class MathTutor extends JFrame {
         menuBar = new JMenuBar();
         fileMenu = new JMenu("File");
         exitMenuItem = new JMenuItem("Exit");
+        manageaccountsMenuItem = new JMenuItem("Manage Accounts");
         menuBar.add(fileMenu);
+        fileMenu.add(manageaccountsMenuItem);
         fileMenu.add(exitMenuItem);
         setJMenuBar(menuBar);        
     }
