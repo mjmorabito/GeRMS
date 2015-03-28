@@ -1,10 +1,9 @@
-package phase1b;
-
 /*
 * The Math Tutor Software
 * Gustavo Moraes, Ryan Ahearn, Mark Morabito, Samir Leal
-* 2/27/15
+* 3/27/15
 */
+package phase3;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,12 +24,30 @@ public class MathTutor extends JFrame {
     
     // Panel for the banner at the top
     private JPanel bannerPanel;
+    
+    // Panel for the username and stars
+    private JPanel bannerLeftPanel;
  
+    // A panel to put the username label
+    private JPanel usernamePanel;
+    
     // A label that displays the string "Username: "
     private JLabel usernameLabel;
     
+    // A panel to put the username TextField
+    private JPanel usernameTextFieldPanel;
+    
+    // A TextField to display the username
+    private JTextField usernameTextField;
+    
+    // A panel to put the stars label
+    private JPanel starsPanel;
+    
     // A label that displays the string "Stars: "
     private JLabel starsLabel;
+    
+    // Panel to place the star icons in the banner
+    private JPanel starIconsPanel;    
     
      // Panel for the buttons at the top right
     private JPanel bannerButtonsPanel;   
@@ -66,9 +83,17 @@ public class MathTutor extends JFrame {
         setLayout(new BorderLayout());
 
         buildMenuBar();
-        buildTopPanel();
+        setJMenuBar(menuBar);        
+        
+        buildBanner();
+        add(bannerPanel, BorderLayout.NORTH);        
+        
         buildDesktopPane();
+        add(desktopPane, BorderLayout.CENTER);        
+        
         buildLoginFrame();
+        buildManageAccounts();
+        
 
     }
     
@@ -81,31 +106,68 @@ public class MathTutor extends JFrame {
         exitMenuItem = new JMenuItem("Exit");
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);
-        setJMenuBar(menuBar);        
     }
     
 
-    public void buildTopPanel() {
-        /* 
-        * The top panel for the username, stars, and buttons
-        */
+    public void buildBanner() {
+       
+        // The top panel for the username, stars, and buttons
         bannerPanel = new JPanel(new BorderLayout());
         bannerPanel.setPreferredSize(new Dimension(1366, 85));
-        //userInfoPanel.setSize(1366, 65);
         
+        // The left panel in the banner used to store username and stars
+        bannerLeftPanel = new JPanel();
+        bannerLeftPanel.setLayout(new GridLayout(2, 1));
+        
+        // Username panel
+        usernamePanel = new JPanel();
+        
+        // Username label
+        usernameLabel = new JLabel("Username: ", SwingConstants.LEFT);
+               
+        // Username TextField
+        usernameTextField = new JTextField(10);
+        usernameTextField.setEditable(false);
+           
+        // Adds the username label to the username label panel
+        usernamePanel.add(usernameLabel);
+        
+        // Adds the username TextField to the username TextField panel
+        usernamePanel.add(usernameTextField);
+        
+        // A panel for the stars label and icons
+        starsPanel = new JPanel();
+                
+        // Stars label
+        starsLabel = new JLabel("Stars: ", SwingConstants.LEFT);
+
+        // This panel is used to place the images of the stars
+        starIconsPanel = new JPanel(); 
+        starIconsPanel.setPreferredSize(new Dimension(144, 20));
+        
+        // Code to find out how many stars the user has then display them goes here
+
+        // Adds the stars label to the stars label panel
+        starsPanel.add(starsLabel);
+        
+        // Adds the star icons panel to the stars panel
+        starsPanel.add(starIconsPanel);        
+        
+        // Adds the components to the left panel of the banner
+        bannerLeftPanel.add(usernamePanel);
+        bannerLeftPanel.add(starsPanel);
+        
+        // This is the panel for the five buttons on the right of the banner
         bannerButtonsPanel = new JPanel();
         
-        
-        usernameLabel = new JLabel("Username: ");
-        starsLabel = new JLabel("Stars: ");
-        
         // Gets the URL for each button at the top right of the screen
-        URL loginButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/loginButton.png");
-        URL logoutButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/logoutButton.png");
-        URL homeButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/homeButton.png");
-        URL printerButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/printer.png");
-        URL helpButtonURL = this.getClass().getClassLoader().getResource("phase1b/Images/helpButton.png");
+        URL loginButtonURL = this.getClass().getClassLoader().getResource("phase3/Images/loginButton.png");
+        URL logoutButtonURL = this.getClass().getClassLoader().getResource("phase3/Images/logoutButton.png");
+        URL homeButtonURL = this.getClass().getClassLoader().getResource("phase3/Images/homeButton.png");
+        URL printerButtonURL = this.getClass().getClassLoader().getResource("phase3/Images/printer.png");
+        URL helpButtonURL = this.getClass().getClassLoader().getResource("phase3/Images/helpButton.png");
        
+        // Used to call ImageIO.read()
         try {
             
             // Reads the URL of each button as an Image
@@ -141,16 +203,16 @@ public class MathTutor extends JFrame {
             System.out.println(e);
         }
         
-        bannerPanel.add(usernameLabel, BorderLayout.WEST);
-        //userInfoPanel.add(starsLabel);
-        bannerPanel.add(bannerButtonsPanel, BorderLayout.EAST);     
-        add(bannerPanel, BorderLayout.NORTH);        
+        // Adds the left panel, and the buttons panel to the banner
+        bannerPanel.add(bannerLeftPanel, BorderLayout.WEST);
+        bannerPanel.add(bannerButtonsPanel, BorderLayout.EAST);
+        
     }
     
     public void buildDesktopPane() {
         desktopPane = new JDesktopPane();
         desktopPane.setSize(1366, 643);
-        add(desktopPane, BorderLayout.CENTER);        
+        desktopPane.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);        
     }
 
     public void buildLoginFrame() {
@@ -183,7 +245,7 @@ public class MathTutor extends JFrame {
         JPanel logoPanel = new JPanel();
         logoPanel.setPreferredSize(new Dimension(546, 215));
         JLabel logoLabel = new JLabel();
-        URL imageURL = this.getClass().getClassLoader().getResource("phase1b/Images/logo.jpg");
+        URL imageURL = this.getClass().getClassLoader().getResource("phase3/Images/logo.jpg");
         try {
             Image logoImage = ImageIO.read(imageURL);
             ImageIcon logoIcon = new ImageIcon(logoImage);
@@ -244,5 +306,11 @@ public class MathTutor extends JFrame {
         }
         */
 
+    }
+    
+    public void buildManageAccounts() {
+        // Creates a new instance of the Manage Accounts JInternalFrame
+        ManageAccounts manageAccounts = new ManageAccounts();
+        desktopPane.add(manageAccounts);
     }
 }
