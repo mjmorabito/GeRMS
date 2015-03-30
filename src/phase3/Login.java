@@ -269,8 +269,6 @@ public class Login extends javax.swing.JInternalFrame {
             
         } catch (SQLException e) {
             
-        } catch (Exception e) {
-            
         }
         
     }//GEN-LAST:event_loginButtonActionPerformed

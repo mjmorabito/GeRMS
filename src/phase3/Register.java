@@ -39,6 +39,39 @@ public class Register extends javax.swing.JInternalFrame {
      */
     public Register() {
         initComponents();
+        populateComboBox();
+    }
+    
+    public void populateComboBox() {
+        
+        
+        try {
+        Class.forName(dbClassName);
+        
+        // user/pwd to connect to DB
+        Properties p = new Properties();
+        p.put("user","GermsAdmin");
+        p.put("password","g3rm5p0w3ru53r");
+        
+        // DB connection
+        Connection conn = DriverManager.getConnection(CONNECTION,p);  
+        
+        // Get username and password
+        Statement stmt = conn.createStatement();
+        String sql = "select * from securityquestion;";
+        ResultSet rs = stmt.executeQuery(sql);
+        //if user exists, all fields associate to that user from table
+        while (rs.next() == true){
+            securityQuestionsComboBox.addItem(rs.getString("secQuestion"));
+        }    
+        
+        } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        }
+
+                
     }
 
     /**
@@ -138,46 +171,48 @@ public class Register extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
+                .addGap(197, 197, 197)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
-                        .addComponent(helpAudioButton))
-                    .addComponent(jButton1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(firstNameLabel)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(passwordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                        .addComponent(usernameTextField))
-                                    .addComponent(firstNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(passwordLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(passwordField2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(securityQuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(securityAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(securityQuestionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(securityAnswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                        .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(firstNameLabel)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(11, 11, 11)
+                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(passwordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                                .addComponent(usernameTextField))
+                                            .addComponent(firstNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(passwordLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(passwordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(securityQuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(securityAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(securityQuestionsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(securityAnswerTextField))))
+                        .addGap(249, 249, 249))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(helpAudioButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +298,7 @@ catch (Exception e) {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       try {
+try {
 
         Class.forName(dbClassName);
         
@@ -271,58 +306,61 @@ catch (Exception e) {
         Properties p = new Properties();
         p.put("user","GermsAdmin");
         p.put("password","g3rm5p0w3ru53r");
-               
+        
         // DB connection
         Connection conn = DriverManager.getConnection(CONNECTION,p);
         
         // Get username and password
-        String user = usernameTextField.getText();        
-        char[] pass = passwordField1.getPassword();
-        String password = "";
-        for (int i = 0; i < pass.length; i++) {
-            password += pass[i];           
-        }
-        
-        // get firstname and query the users table to get result
+        String user = usernameTextField.getText();      
         Statement stmt = conn.createStatement();
         String sql;
         sql = "select * from accounts where accUser = '" + user + "'";
         ResultSet rs = stmt.executeQuery(sql);
-
-      //if user exists, all fields associate to that user from table
-      if (rs.next() == true){
-          
-         String id = rs.getString("accUser");
-         String fname = rs.getString("accfirstname");
-         String lname = rs.getString("acclastname");
-         String pwd = rs.getString("accpassword");
-
-         //check if password matches with whatever the user entered.
-         // if yes, show all info on screen
-         if(pwd.equals(password))
-         {
-             GradeSelect gradeSelect = new GradeSelect();
-             mainDesktopPane.add(gradeSelect);
-             gradeSelect.toFront();
-             this.dispose();
-         }else{ // if password did not match, show message
-            JOptionPane.showMessageDialog(null, "Wrong password", "Password", JOptionPane.INFORMATION_MESSAGE);
-         }
-      }else{ // if user does not exist, show message
-           JOptionPane.showMessageDialog(null, "Wrong username", "Username", JOptionPane.INFORMATION_MESSAGE);
-      }
-      // close all connection to DB
-      rs.close();
-      stmt.close();
-      conn.close();        
+        //if user exists, all fields associate to that user from table
+        if (rs.next() == true){
+            JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            char[] pass = passwordField1.getPassword();
+            String password1 = "";
+            for (int i = 0; i < pass.length; i++) {
+                password1 += pass[i];           
+            }
+            char[] pass2 = passwordField2.getPassword();
+            String password2 = "";
+            for (int i = 0; i < pass2.length; i++) {
+                password2 += pass2[i];           
+            }
+            if(password1.equals(password2)){
+                String username = usernameTextField.getText();
+                String firstname = firstNameTextField.getText();
+                String lastname = lastNameTextField.getText();
+                String securityanswer = securityAnswerTextField.getText();
+                int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
+               
+                sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
+                        + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
+                stmt.executeUpdate(sql);
+                
+                JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        // close all connection to DB
+        rs.close();
+        stmt.close();
+        conn.close();     
         
         } catch (ClassNotFoundException e) {
             
         } catch (SQLException e) {
             
-        } catch (Exception e) {
-            
-        }        
+        } 
+
+           
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
