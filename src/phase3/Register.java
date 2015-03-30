@@ -19,6 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.*;
 
+import java.sql.*;
+import java.util.Properties;
+import javax.swing.*;
+
 
 /**
  *
@@ -26,6 +30,10 @@ import javax.sound.sampled.*;
  */
 public class Register extends javax.swing.JInternalFrame {
 
+   // variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs";     
+    
     /**
      * Creates new form Register
      */
@@ -99,6 +107,11 @@ public class Register extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/goButton.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         securityQuestionsComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         securityQuestionsComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +260,70 @@ catch (Exception e) {
       
     
     }//GEN-LAST:event_helpAudioButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       try {
+
+        Class.forName(dbClassName);
+        
+        // user/pwd to connect to DB
+        Properties p = new Properties();
+        p.put("user","GermsAdmin");
+        p.put("password","g3rm5p0w3ru53r");
+               
+        // DB connection
+        Connection conn = DriverManager.getConnection(CONNECTION,p);
+        
+        // Get username and password
+        String user = usernameTextField.getText();        
+        char[] pass = passwordField1.getPassword();
+        String password = "";
+        for (int i = 0; i < pass.length; i++) {
+            password += pass[i];           
+        }
+        
+        // get firstname and query the users table to get result
+        Statement stmt = conn.createStatement();
+        String sql;
+        sql = "select * from accounts where accUser = '" + user + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+      //if user exists, all fields associate to that user from table
+      if (rs.next() == true){
+          
+         String id = rs.getString("accUser");
+         String fname = rs.getString("accfirstname");
+         String lname = rs.getString("acclastname");
+         String pwd = rs.getString("accpassword");
+
+         //check if password matches with whatever the user entered.
+         // if yes, show all info on screen
+         if(pwd.equals(password))
+         {
+             GradeSelect gradeSelect = new GradeSelect();
+             mainDesktopPane.add(gradeSelect);
+             gradeSelect.toFront();
+             this.dispose();
+         }else{ // if password did not match, show message
+            JOptionPane.showMessageDialog(null, "Wrong password", "Password", JOptionPane.INFORMATION_MESSAGE);
+         }
+      }else{ // if user does not exist, show message
+           JOptionPane.showMessageDialog(null, "Wrong username", "Username", JOptionPane.INFORMATION_MESSAGE);
+      }
+      // close all connection to DB
+      rs.close();
+      stmt.close();
+      conn.close();        
+        
+        } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        } catch (Exception e) {
+            
+        }        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
