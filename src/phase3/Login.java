@@ -215,16 +215,14 @@ public class Login extends javax.swing.JInternalFrame {
         try {
 
         Class.forName(dbClassName);
+        
         // user/pwd to connect to DB
         Properties p = new Properties();
         p.put("user","GermsAdmin");
         p.put("password","g3rm5p0w3ru53r");
-        
-            JOptionPane.showMessageDialog(null, "1", "Password", JOptionPane.INFORMATION_MESSAGE);
-        
+               
         // DB connection
         Connection conn = DriverManager.getConnection(CONNECTION,p);
-            JOptionPane.showMessageDialog(null, "2", "Password", JOptionPane.INFORMATION_MESSAGE);
         
         // Get username and password
         String user = usernameTextField.getText();        
@@ -242,7 +240,8 @@ public class Login extends javax.swing.JInternalFrame {
 
       //if user exists, all fields associate to that user from table
       if (rs.next() == true){
-         int id = rs.getInt("accUser");
+          
+         String id = rs.getString("accUser");
          String fname = rs.getString("accfirstname");
          String lname = rs.getString("acclastname");
          String pwd = rs.getString("accpassword");
@@ -252,6 +251,8 @@ public class Login extends javax.swing.JInternalFrame {
          if(pwd.equals(password))
          {
              GradeSelect gradeSelect = new GradeSelect();
+             mainDesktopPane.add(gradeSelect);
+             gradeSelect.toFront();
              this.dispose();
          }else{ // if password did not match, show message
             JOptionPane.showMessageDialog(null, "Wrong password", "Password", JOptionPane.INFORMATION_MESSAGE);
@@ -267,6 +268,8 @@ public class Login extends javax.swing.JInternalFrame {
         } catch (ClassNotFoundException e) {
             
         } catch (SQLException e) {
+            
+        } catch (Exception e) {
             
         }
         
