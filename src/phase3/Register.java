@@ -5,6 +5,21 @@
  */
 package phase3;
 
+
+import java.io.File;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+
+import java.io.*;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.*;
+
+
 /**
  *
  * @author Samir
@@ -43,6 +58,7 @@ public class Register extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         passwordField1 = new javax.swing.JPasswordField();
         passwordField2 = new javax.swing.JPasswordField();
+        helpAudioButton = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,6 +113,13 @@ public class Register extends javax.swing.JInternalFrame {
 
         passwordField2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
+        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
+        helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpAudioButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +127,10 @@ public class Register extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
+                        .addComponent(helpAudioButton))
                     .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,13 +164,15 @@ public class Register extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(securityQuestionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(securityAnswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(helpAudioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameLabel)
@@ -185,10 +213,46 @@ public class Register extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_securityQuestionsComboBoxActionPerformed
 
+    private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
+                                                
+        // TODO add your handling code here:
+
+    //This works when I point it to the file on my computer but not to the package
+    File yourFile = new File("/Users/markmorabito/Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/GeRMSRegister.wav");
+    
+
+    //File yourFile = new File("src/phase3.sounds/GeRMSRegister.wav");
+    AudioInputStream stream;
+    AudioFormat format;
+    DataLine.Info info;
+    Clip clip;
+
+        try {
+            stream = AudioSystem.getAudioInputStream(yourFile);
+            format = stream.getFormat();
+        info = new DataLine.Info(Clip.class, format);
+        clip = (Clip) AudioSystem.getLine(info);
+        clip.open(stream);
+        clip.start();
+        } catch (UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+
+   
+catch (Exception e) {
+    //whatevers
+    System.out.println(e.getClass());
+}
+      
+    
+    }//GEN-LAST:event_helpAudioButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
+    private javax.swing.JButton helpAudioButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lastNameLabel;
@@ -205,3 +269,4 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
+
