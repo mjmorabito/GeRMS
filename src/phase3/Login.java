@@ -6,6 +6,9 @@
 package phase3;
 
 import javax.swing.JDesktopPane;
+import java.sql.*;
+import java.util.Properties;
+import javax.swing.*;
 
 /**
  *
@@ -15,6 +18,10 @@ public class Login extends javax.swing.JInternalFrame {
 
     private JDesktopPane mainDesktopPane;
     private Main main;
+
+   // variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs";    
     
     /**
      * Creates new form Login
@@ -52,20 +59,20 @@ public class Login extends javax.swing.JInternalFrame {
         setToolTipText("Login");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosed(evt);
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -83,6 +90,11 @@ public class Login extends javax.swing.JInternalFrame {
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/loginRocket.jpg"))); // NOI18N
         loginButton.setIconTextGap(0);
         loginButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/registerButton.jpg"))); // NOI18N
         loginButton1.setIconTextGap(0);
@@ -196,6 +208,69 @@ public class Login extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_helpAudioButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+  
+        try {
+
+        Class.forName(dbClassName);
+        // user/pwd to connect to DB
+        Properties p = new Properties();
+        p.put("user","GermsAdmin");
+        p.put("password","g3rm5p0w3ru53r");
+        
+            JOptionPane.showMessageDialog(null, "1", "Password", JOptionPane.INFORMATION_MESSAGE);
+        
+        // DB connection
+        Connection conn = DriverManager.getConnection(CONNECTION,p);
+            JOptionPane.showMessageDialog(null, "2", "Password", JOptionPane.INFORMATION_MESSAGE);
+        
+        // Get username and password
+        String user = usernameTextField.getText();        
+        char[] pass = passwordField.getPassword();
+        String password = "";
+        for (int i = 0; i < pass.length; i++) {
+            password += pass[i];           
+        }
+        
+        // get firstname and query the users table to get result
+        Statement stmt = conn.createStatement();
+        String sql;
+        sql = "select * from accounts where accUser = '" + user + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+
+      //if user exists, all fields associate to that user from table
+      if (rs.next() == true){
+         int id = rs.getInt("accUser");
+         String fname = rs.getString("accfirstname");
+         String lname = rs.getString("acclastname");
+         String pwd = rs.getString("accpassword");
+
+         //check if password matches with whatever the user entered.
+         // if yes, show all info on screen
+         if(pwd.equals(password))
+         {
+             GradeSelect gradeSelect = new GradeSelect();
+             this.dispose();
+         }else{ // if password did not match, show message
+            JOptionPane.showMessageDialog(null, "Wrong password", "Password", JOptionPane.INFORMATION_MESSAGE);
+         }
+      }else{ // if user does not exist, show message
+           JOptionPane.showMessageDialog(null, "Wrong username", "Username", JOptionPane.INFORMATION_MESSAGE);
+      }
+      // close all connection to DB
+      rs.close();
+      stmt.close();
+      conn.close();        
+        
+        } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        }
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
