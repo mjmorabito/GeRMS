@@ -17,17 +17,30 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import java.sql.*;
+import java.util.Properties;
+import javax.swing.*;
+
 /**
  *
  * @author Samir
  */
 public class ForgotPassword extends javax.swing.JInternalFrame {
+    
+    // variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
+   String securityanswer;
+   String id;
+   String securityquestion;
+   String password;
 
     /**
      * Creates new form ForgotPassword
      */
     public ForgotPassword() {
         initComponents();
+        
     }
 
     /**
@@ -40,13 +53,13 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         usernameLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        getquestionButton = new javax.swing.JButton();
+        usernameTextField = new javax.swing.JTextField();
         usernameLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        securityquestionTextField = new javax.swing.JTextField();
         usernameLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        securityanswerTextField = new javax.swing.JTextField();
+        getpasswordButton = new javax.swing.JButton();
         helpAudioButton = new javax.swing.JButton();
 
         setClosable(true);
@@ -61,24 +74,34 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
         usernameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         usernameLabel.setText("Security Question:");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Get Security Question");
+        getquestionButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getquestionButton.setText("Get Security Question");
+        getquestionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getquestionButtonActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        usernameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         usernameLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         usernameLabel1.setText("Username:");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.setEnabled(false);
+        securityquestionTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        securityquestionTextField.setEnabled(false);
 
         usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         usernameLabel2.setText("Security Answer:");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        securityanswerTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Get Password");
+        getpasswordButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getpasswordButton.setText("Get Password");
+        getpasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getpasswordButtonActionPerformed(evt);
+            }
+        });
 
         helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
         helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,20 +117,20 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(200, 200, 200)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(getpasswordButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(usernameLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1)
+                        .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(getquestionButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usernameLabel)
                             .addComponent(usernameLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(securityanswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(securityquestionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(232, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -122,19 +145,19 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
                 .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(getquestionButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(securityquestionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(securityanswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(getpasswordButton)
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
@@ -162,24 +185,66 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            
-        
-   
-    
-    
-        
     }//GEN-LAST:event_helpAudioButtonActionPerformed
+
+    private void getquestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getquestionButtonActionPerformed
+        try {
+        Class.forName(dbClassName);
+        
+        // user/pwd to connect to DB
+        Properties p = new Properties();
+        p.put("user","GermsAdmin");
+        p.put("password","g3rm5p0w3ru53r");
+        
+        // DB connection
+        Connection conn = DriverManager.getConnection(CONNECTION,p);  
+        
+        // Get username and password
+        String user = usernameTextField.getText();  
+        // Get username and password
+        Statement stmt = conn.createStatement();
+        String sql = "SELECT * FROM accounts a JOIN securityquestion s"
+                + " ON a.secID = s.secID WHERE a.accUser = '" + user + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        //if user exists, all fields associate to that user from table
+        if (rs.next() == true){
+            id = rs.getString("accUser");
+            securityquestion = rs.getString("s.secQuestion");
+            securityanswer = rs.getString("a.secAnswer");
+            password = rs.getString("a.accpassword");
+            
+            securityquestionTextField.setText(securityquestion);
+        }else{
+            JOptionPane.showMessageDialog(null, "No user found", "User", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        }
+    }//GEN-LAST:event_getquestionButtonActionPerformed
+
+    private void getpasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getpasswordButtonActionPerformed
+
+        if(securityanswer.equals(securityanswerTextField.getText())){
+            JOptionPane.showMessageDialog(null, "Your password is: " + password, "Password", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Wrong Answer", "Answer", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_getpasswordButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton getpasswordButton;
+    private javax.swing.JButton getquestionButton;
     private javax.swing.JButton helpAudioButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField securityanswerTextField;
+    private javax.swing.JTextField securityquestionTextField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel1;
     private javax.swing.JLabel usernameLabel2;
+    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
