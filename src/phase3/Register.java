@@ -264,36 +264,26 @@ public class Register extends javax.swing.JInternalFrame {
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
                                                 
         // TODO add your handling code here:
+            File yourFile = new File("src/sounds/GeRMSRegister.wav");
+            AudioInputStream stream;
+            AudioFormat format;
+            DataLine.Info info;
+            Clip clip;
 
-    //This works when I point it to the file on my computer but not to the package
-    File yourFile = new File("/Users/markmorabito/Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/GeRMSRegister.wav");
-    
+            try {
+                stream = AudioSystem.getAudioInputStream(yourFile);
+                format = stream.getFormat();
+                info = new DataLine.Info(Clip.class, format);
+                clip = (Clip) AudioSystem.getLine(info);
+                clip.open(stream);
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException ex) {
+                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-    //File yourFile = new File("src/phase3.sounds/GeRMSRegister.wav");
-    AudioInputStream stream;
-    AudioFormat format;
-    DataLine.Info info;
-    Clip clip;
-
-        try {
-            stream = AudioSystem.getAudioInputStream(yourFile);
-            format = stream.getFormat();
-        info = new DataLine.Info(Clip.class, format);
-        clip = (Clip) AudioSystem.getLine(info);
-        clip.open(stream);
-        clip.start();
-        } catch (UnsupportedAudioFileException | IOException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-
-   
-catch (Exception e) {
-    //whatevers
-    System.out.println(e.getClass());
-}
-      
-    
+  
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
