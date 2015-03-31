@@ -5,11 +5,21 @@
  */
 package phase3;
 
+import java.sql.*;
+import java.util.Properties;
+import java.util.Vector;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Samir
  */
 public class ManageAccounts extends javax.swing.JInternalFrame {
+    
+    // variables needed to make connection with DB
+    private static final String dbClassName = "com.mysql.jdbc.Driver";
+    private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
 
     /**
      * Creates new form NewJInternalFrame
@@ -32,7 +42,7 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
         lastNameLabel = new javax.swing.JLabel();
         lastNameTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        searchResultsTable = new javax.swing.JTable();
+        usersTable = new javax.swing.JTable();
         searchButton = new javax.swing.JButton();
         okButton = new javax.swing.JButton();
 
@@ -61,7 +71,7 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
             }
         });
 
-        searchResultsTable.setModel(new javax.swing.table.DefaultTableModel(
+        usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,7 +90,7 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(searchResultsTable);
+        jScrollPane1.setViewportView(usersTable);
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,25 +111,25 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okButton)
-                    .addComponent(searchButton)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lastNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lastNameTextField))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(firstNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(425, Short.MAX_VALUE))
+                        .addComponent(firstNameTextField))
+                    .addComponent(searchButton)
+                    .addComponent(okButton))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameLabel)
                     .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,10 +143,10 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        setBounds(170, 15, 974, 560);
+        setBounds(170, 15, 479, 326);
     }// </editor-fold>//GEN-END:initComponents
 
     private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
@@ -148,7 +158,56 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lastNameTextFieldActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+        Class.forName(dbClassName);
+        
+        // user/pwd to connect to DB
+        Properties p = new Properties();
+        p.put("user","GermsAdmin");
+        p.put("password","g3rm5p0w3ru53r");
+        
+        // DB connection
+        Connection conn = DriverManager.getConnection(CONNECTION,p);  
+        
+        // Get username and password
+        String fname = firstNameTextField.getText();  
+        String lname = lastNameTextField.getText();  
+        // Get username and password
+        Statement stmt = conn.createStatement();
+        String sql = "SELECT * FROM accounts WHERE accfirstname LIKE "
+                + "'" + fname + "%' AND acclastname LIKE '" + lname + "%'";
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        DefaultTableModel model = (DefaultTableModel) usersTable.getModel();
+        
+        
+        for(int i = 0; i < model.getRowCount(); i++){
+            usersTable.setValueAt(null, i, 0);
+            usersTable.setValueAt(null, i, 1);
+            usersTable.setValueAt(null, i, 2);
+            usersTable.setValueAt(null, i, 3);
+        }
+
+        
+        //if user exists, all fields associate to that user from table
+        int count = 0;
+        while (rs.next() == true){
+            usersTable.setValueAt(rs.getString("accfirstname"), count, 0);
+            usersTable.setValueAt(rs.getString("acclastname"), count, 1);
+            usersTable.setValueAt(rs.getString("accUser"), count, 2);
+            usersTable.setValueAt(rs.getString("accpassword"), count, 3);
+       
+            
+            count++;
+        }
+        
+        
+        
+        } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
@@ -165,6 +224,6 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JButton okButton;
     private javax.swing.JButton searchButton;
-    private javax.swing.JTable searchResultsTable;
+    private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }
