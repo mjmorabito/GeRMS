@@ -143,7 +143,7 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
 
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
         // TODO add your handling code here:
-        File yourFile = new File("src/sounds/GeRMSHelp.wav");
+        File yourFile = new File("src/sounds/GeRMSForgotPassword.wav");
             AudioInputStream stream;
             AudioFormat format;
             DataLine.Info info;
