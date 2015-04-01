@@ -12,7 +12,7 @@ package phase3;
 public class Main extends javax.swing.JFrame {
 
     private boolean isLoginScreenOpen;
-    private boolean isLoggedIn = false;
+    public static boolean isLoggedIn = false;
     private boolean isHelpScreenOpen = false;
             
     /**
@@ -226,9 +226,13 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        ManageAccounts manageAccounts = new ManageAccounts();
-        desktopPane.add(manageAccounts);
-        manageAccounts.toFront();
+        if(isLoggedIn){
+            ManageAccounts manageAccounts = new ManageAccounts();
+            desktopPane.add(manageAccounts);
+            manageAccounts.toFront();
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Logout", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
