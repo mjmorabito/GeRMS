@@ -301,55 +301,65 @@ try {
         Connection conn = DriverManager.getConnection(CONNECTION,p);
         
         // Get username and password
-        String user = usernameTextField.getText();      
-        Statement stmt = conn.createStatement();
-        String sql;
-        sql = "select * from accounts where accUser = '" + user + "'";
-        ResultSet rs = stmt.executeQuery(sql);
-        //if user exists, all fields associate to that user from table
-        if (rs.next() == true){
-            JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
+        String user = usernameTextField.getText(); 
+        
+        if(user.trim().isEmpty() || firstNameTextField.getText().trim().isEmpty()
+                || lastNameTextField.getText().trim().isEmpty()
+                || securityAnswerTextField.getText().trim().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Please fill in all the fields", "Register", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            char[] pass = passwordField1.getPassword();
-            String password1 = "";
-            for (int i = 0; i < pass.length; i++) {
-                password1 += pass[i];           
-            }
-            char[] pass2 = passwordField2.getPassword();
-            String password2 = "";
-            for (int i = 0; i < pass2.length; i++) {
-                password2 += pass2[i];           
-            }
-            if(password1.equals(password2)){
-                String username = usernameTextField.getText();
-                String firstname = firstNameTextField.getText();
-                String lastname = lastNameTextField.getText();
-                String securityanswer = securityAnswerTextField.getText();
-                int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
-               
-                sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
-                        + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
-                stmt.executeUpdate(sql);
-                
-                JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-                
+
+            Statement stmt = conn.createStatement();
+            String sql;
+            sql = "select * from accounts where accUser = '" + user + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+        
+            //if user exists, all fields associate to that user from table
+            if (rs.next() == true){
+                JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
             }else{
-                JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+                char[] pass = passwordField1.getPassword();
+                String password1 = "";
+                for (int i = 0; i < pass.length; i++) {
+                    password1 += pass[i];           
+                }
+                char[] pass2 = passwordField2.getPassword();
+                String password2 = "";
+                for (int i = 0; i < pass2.length; i++) {
+                    password2 += pass2[i];           
+                }
+                if(password1.equals(password2)){
+                    String username = usernameTextField.getText();
+                    String firstname = firstNameTextField.getText();
+                    String lastname = lastNameTextField.getText();
+                    String securityanswer = securityAnswerTextField.getText();
+                    int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
+
+                    sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
+                            + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
+                    stmt.executeUpdate(sql);
+
+                    JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
+            // close all connection to DB
+            rs.close();
+            stmt.close();
+            
         }
-        // close all connection to DB
-        rs.close();
-        stmt.close();
-        conn.close();     
+        conn.close(); 
+            
         
         } catch (ClassNotFoundException e) {
             
         } catch (SQLException e) {
             
         } 
-
-           
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
