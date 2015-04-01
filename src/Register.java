@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.File;
 
 import javax.sound.sampled.AudioFormat;
@@ -21,55 +20,17 @@ import java.sql.*;
 import java.util.Properties;
 import javax.swing.*;
 
-
-/**
- *
- * @author Samir
- */
 public class Register extends javax.swing.JInternalFrame {
-
-   // variables needed to make connection with DB
+   
+    // variables needed to make connection with DB
    private static final String dbClassName = "com.mysql.jdbc.Driver";
    private static final String CONNECTION = "jdbc:mysql://localhost/germs";     
     
     /**
-     * Creates new form Register
+     * Creates new form RegisterFixed
      */
     public Register() {
         initComponents();
-        populateComboBox();
-    }
-    
-    public void populateComboBox() {
-        
-        
-        try {
-        Class.forName(dbClassName);
-        
-        // user/pwd to connect to DB
-        Properties p = new Properties();
-        p.put("user","GermsAdmin");
-        p.put("password","g3rm5p0w3ru53r");
-        
-        // DB connection
-        Connection conn = DriverManager.getConnection(CONNECTION,p);  
-        
-        // Get username and password
-        Statement stmt = conn.createStatement();
-        String sql = "select * from securityquestion;";
-        ResultSet rs = stmt.executeQuery(sql);
-        //if user exists, all fields associate to that user from table
-        while (rs.next() == true){
-            securityQuestionsComboBox.addItem(rs.getString("secQuestion"));
-        }    
-        
-        } catch (ClassNotFoundException e) {
-            
-        } catch (SQLException e) {
-            
-        }
-
-                
     }
 
     /**
@@ -81,23 +42,23 @@ public class Register extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        firstNameLabel = new javax.swing.JLabel();
-        lastNameLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        passwordLabel = new javax.swing.JLabel();
-        passwordLabel2 = new javax.swing.JLabel();
-        securityQuestionLabel = new javax.swing.JLabel();
-        securityAnswerLabel = new javax.swing.JLabel();
-        firstNameTextField = new javax.swing.JTextField();
-        lastNameTextField = new javax.swing.JTextField();
-        usernameTextField = new javax.swing.JTextField();
-        securityAnswerTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        securityQuestionsComboBox = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        passwordField1 = new javax.swing.JPasswordField();
-        passwordField2 = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
         helpAudioButton = new javax.swing.JButton();
+        firstNameLabel = new javax.swing.JLabel();
+        firstNameTextField = new javax.swing.JTextField();
+        lastNameLabel = new javax.swing.JLabel();
+        lastNameTextField = new javax.swing.JTextField();
+        usernameLabel = new javax.swing.JLabel();
+        usernameTextField = new javax.swing.JTextField();
+        passwordLabel = new javax.swing.JLabel();
+        passwordField1 = new javax.swing.JPasswordField();
+        passwordLabel2 = new javax.swing.JLabel();
+        passwordField2 = new javax.swing.JPasswordField();
+        securityQuestionLabel = new javax.swing.JLabel();
+        securityQuestionsComboBox = new javax.swing.JComboBox();
+        securityAnswerLabel = new javax.swing.JLabel();
+        securityAnswerTextField = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -107,42 +68,42 @@ public class Register extends javax.swing.JInternalFrame {
         setToolTipText("Register");
         setVisible(true);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/logoRegisterScreen.jpg"))); // NOI18N
+
+        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
+        helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpAudioButtonActionPerformed(evt);
+            }
+        });
+
         firstNameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         firstNameLabel.setText("First Name:");
+
+        firstNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         lastNameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         lastNameLabel.setText("Last Name:");
 
+        lastNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
         usernameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         usernameLabel.setText("Username:");
+
+        usernameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         passwordLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         passwordLabel.setText("Password:");
 
+        passwordField1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
         passwordLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         passwordLabel2.setText("Re-enter Password:");
 
+        passwordField2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+
         securityQuestionLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         securityQuestionLabel.setText("Security Question:");
-
-        securityAnswerLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        securityAnswerLabel.setText("Security Answer:");
-
-        firstNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        lastNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        usernameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        securityAnswerTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/goButton.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         securityQuestionsComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         securityQuestionsComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -151,16 +112,15 @@ public class Register extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/logoRegisterScreen.jpg"))); // NOI18N
+        securityAnswerLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        securityAnswerLabel.setText("Security Answer:");
 
-        passwordField1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        securityAnswerTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        passwordField2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-
-        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
-        helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/goButton.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpAudioButtonActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -169,38 +129,32 @@ public class Register extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(passwordLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(passwordField2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(firstNameLabel)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(84, 84, 84)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                        .addComponent(passwordField1)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(85, 85, 85)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                        .addComponent(firstNameTextField))))))
+                    .addComponent(jButton2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                        .addComponent(helpAudioButton)
-                        .addContainerGap())
+                        .addComponent(passwordLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(passwordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lastNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(firstNameLabel)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(usernameTextField)
+                                    .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lastNameTextField)
+                                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(securityQuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,16 +162,21 @@ public class Register extends javax.swing.JInternalFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(securityAnswerTextField)
-                            .addComponent(securityQuestionsComboBox, 0, 293, Short.MAX_VALUE)))))
+                            .addComponent(securityQuestionsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(helpAudioButton)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(helpAudioButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(helpAudioButton)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(firstNameLabel)
                     .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,127 +204,124 @@ public class Register extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(securityAnswerLabel)
                     .addComponent(securityAnswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(25, 25, 25))
+                .addGap(13, 13, 13)
+                .addComponent(jButton2)
+                .addGap(57, 57, 57))
         );
 
-        setBounds(170, 15, 602, 560);
+        setBounds(250, 0, 602, 631);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
+
+        // TODO add your handling code here:
+        File yourFile = new File("src/sounds/GeRMSRegister.wav");
+        AudioInputStream stream;
+        AudioFormat format;
+        DataLine.Info info;
+        Clip clip;
+
+        try {
+            stream = AudioSystem.getAudioInputStream(yourFile);
+            format = stream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(stream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_helpAudioButtonActionPerformed
 
     private void securityQuestionsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_securityQuestionsComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_securityQuestionsComboBoxActionPerformed
 
-    private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
-                                                
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            File yourFile = new File("src/sounds/GeRMSRegister.wav");
-            AudioInputStream stream;
-            AudioFormat format;
-            DataLine.Info info;
-            Clip clip;
+        try {
 
-            try {
-                stream = AudioSystem.getAudioInputStream(yourFile);
-                format = stream.getFormat();
-                info = new DataLine.Info(Clip.class, format);
-                clip = (Clip) AudioSystem.getLine(info);
-                clip.open(stream);
-                clip.start();
-            } catch (UnsupportedAudioFileException | IOException ex) {
-                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (LineUnavailableException ex) {
-                Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Class.forName(dbClassName);
 
-  
-    }//GEN-LAST:event_helpAudioButtonActionPerformed
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-try {
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
 
-        Class.forName(dbClassName);
-        
-        // user/pwd to connect to DB
-        Properties p = new Properties();
-        p.put("user","GermsAdmin");
-        p.put("password","g3rm5p0w3ru53r");
-        
-        // DB connection
-        Connection conn = DriverManager.getConnection(CONNECTION,p);
-        
-        // Get username and password
-        String user = usernameTextField.getText(); 
-        
-        if(user.trim().isEmpty() || firstNameTextField.getText().trim().isEmpty()
+            // Get username and password
+            String user = usernameTextField.getText();
+
+            if(user.trim().isEmpty() || firstNameTextField.getText().trim().isEmpty()
                 || lastNameTextField.getText().trim().isEmpty()
                 || securityAnswerTextField.getText().trim().isEmpty()){
-            
-            JOptionPane.showMessageDialog(null, "Please fill in all the fields", "Register", JOptionPane.INFORMATION_MESSAGE);
-        }else{
 
-            Statement stmt = conn.createStatement();
-            String sql;
-            sql = "select * from accounts where accUser = '" + user + "'";
-            ResultSet rs = stmt.executeQuery(sql);
-        
-            //if user exists, all fields associate to that user from table
-            if (rs.next() == true){
-                JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please fill in all the fields", "Register", JOptionPane.INFORMATION_MESSAGE);
             }else{
-                char[] pass = passwordField1.getPassword();
-                String password1 = "";
-                for (int i = 0; i < pass.length; i++) {
-                    password1 += pass[i];           
-                }
-                char[] pass2 = passwordField2.getPassword();
-                String password2 = "";
-                for (int i = 0; i < pass2.length; i++) {
-                    password2 += pass2[i];           
-                }
-                if(password1.equals(password2)){
-                    String username = usernameTextField.getText();
-                    String firstname = firstNameTextField.getText();
-                    String lastname = lastNameTextField.getText();
-                    String securityanswer = securityAnswerTextField.getText();
-                    int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
 
-                    sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
-                            + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
-                    stmt.executeUpdate(sql);
+                Statement stmt = conn.createStatement();
+                String sql;
+                sql = "select * from accounts where accUser = '" + user + "'";
+                ResultSet rs = stmt.executeQuery(sql);
 
-                    JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
-                    this.dispose();
-
+                //if user exists, all fields associate to that user from table
+                if (rs.next() == true){
+                    JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
                 }else{
-                    JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-            // close all connection to DB
-            rs.close();
-            stmt.close();
-            
-        }
-        conn.close(); 
-            
-        
-        } catch (ClassNotFoundException e) {
-            
-        } catch (SQLException e) {
-            
-        } 
+                    char[] pass = passwordField1.getPassword();
+                    String password1 = "";
+                    for (int i = 0; i < pass.length; i++) {
+                        password1 += pass[i];
+                    }
+                    char[] pass2 = passwordField2.getPassword();
+                    String password2 = "";
+                    for (int i = 0; i < pass2.length; i++) {
+                        password2 += pass2[i];
+                    }
+                    if(password1.equals(password2)){
+                        String username = usernameTextField.getText();
+                        String firstname = firstNameTextField.getText();
+                        String lastname = lastNameTextField.getText();
+                        String securityanswer = securityAnswerTextField.getText();
+                        int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+                        sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
+                        + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
+                        stmt.executeUpdate(sql);
+
+                        JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
+                        this.dispose();
+
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+                // close all connection to DB
+                rs.close();
+                stmt.close();
+
+            }
+            conn.close();
+
+        } catch (ClassNotFoundException e) {
+
+        } catch (SQLException e) {
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton helpAudioButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JPasswordField passwordField1;
@@ -380,4 +336,3 @@ try {
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
-

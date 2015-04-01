@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
-
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -21,16 +19,14 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
-/**
- *
- * @author Samir
- */
 public class Login extends javax.swing.JInternalFrame {
 
-    private JDesktopPane mainDesktopPane;
+    // The main class
     private Main main;
-    private GradeSelect gradeSelect;
-
+    
+    // The desktop pane from the main class
+    private JDesktopPane mainDesktopPane;
+    
     // variables needed to make connection with DB
     private static final String dbClassName = "com.mysql.jdbc.Driver";
     private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
@@ -38,7 +34,7 @@ public class Login extends javax.swing.JInternalFrame {
     /**
      * Creates new form LoginScreen
      */
-    public Login(JDesktopPane desktopPane, Main g, GradeSelect gs) {
+    public Login(Main g, JDesktopPane desktopPane) {
         
         // Initializes the components on the Login Screen
         initComponents();
@@ -48,10 +44,7 @@ public class Login extends javax.swing.JInternalFrame {
         
         // Sets the reference to the Main class
         main = g;
-        
-        // Sets the reference to the GradeSelect class
-        gradeSelect = gs;
-       
+               
     }
 
     /**
@@ -156,7 +149,7 @@ public class Login extends javax.swing.JInternalFrame {
                     .addComponent(forgotPasswordLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(loginButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(loginButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +164,7 @@ public class Login extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(helpAudioButton))
@@ -214,7 +207,7 @@ public class Login extends javax.swing.JInternalFrame {
 
         /*
         * This method is triggered when the rocket ship (login button) is clicked
-        * We confirm that the username exists.
+        * First we confirm that the username exists.
         * If the usernane exists then we check if the password matches the password in the database
         * If the password matches then we close the login screen and then open the GradeSelect screen.
         */
@@ -257,16 +250,27 @@ public class Login extends javax.swing.JInternalFrame {
 
                 //check if password matches with whatever the user entered.
                 // if yes, show all info on screen
-                if(pwd.equals(password))
-                {
-                    gradeSelect = new GradeSelect(main);
-                    mainDesktopPane.add(gradeSelect);
-                    gradeSelect.toFront();
+                if(pwd.equals(password)) {
+                    
+                    // Opens the GradeSelect Screen
+                    main.openGradeSelectScreen();  
+                    
+                    // Closes the login screen
                     this.dispose();
-                    main.isLoggedIn = true;
+                    main.setIsLoginScreenOpen(false);
+                    
+                    // Sets LoggedIn to true
+                    main.setIsLoggedIn(true);
+                    
+                    // Displays the username of the person that logged in
+                    main.setUsernameLabel(user);
 
+                    // If the person that logged in was an administrator
                     if (user.equals("admin")) {
-                        main.isLoggedInAsAdmin = true;
+                        
+                        // Set the LoggedInAsAdmin variable to true
+                        main.setIsLoggedInAsAdmin(true);
+                        
                     }
 
                 } else { // if password did not match, show message
@@ -288,19 +292,22 @@ public class Login extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    // This method is triggered when the register button is clicked (the yellow door)    
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-
-        // This method is triggered when the login button is clicked (the rocket ship)
-
-        // Creates a new instance of the register screen
-        Register register = new Register();
-
-        // Adds the register screen to the main desktop pane from the main screen
-        mainDesktopPane.add(register);
-
-        // Brings the register screen to the front
-        register.toFront();
-
+   
+        // If the register screen is already open then display a message
+        if (main.getIsRegisterScreenOpen()) {
+            
+            // Show message
+            JOptionPane.showMessageDialog(null, "Register screen is already open.", "Register", JOptionPane.INFORMATION_MESSAGE);
+            
+        } else {
+            
+            // Opens the register screen
+            main.openRegisterScreen();            
+        
+        }
+        
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed

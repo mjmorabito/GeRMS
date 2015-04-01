@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
-
 import java.sql.*;
 import java.util.Properties;
 import java.util.Vector;

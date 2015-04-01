@@ -1,36 +1,65 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
 
-public class Main extends javax.swing.JFrame {
+import javax.swing.*;
 
-    private boolean isHelpScreenOpen = false;
+/*
+* This is the Main class. It is the class that display's the outer JFrame.
+* 
+* This JFrame includes a banner at the top that display's the username, and number of stars.
+* On the right hand side there are five buttons: Login (orange), Logout (gray), Home (blue), 
+* Print (printer), and Help (question mark).
+* 
+* This class is used to place the DesktopPane, which holds many JInternalFrames.
+* JInternalFrames include screens such as Login, Register, ForgotPassword, ManageAccounts, 
+* and Help, which placed in the desktop pane that is instantiated in this class.
+*
+*/
+public class Main extends JFrame {
     
     // Login class
-    public Login login;
+    private Login login;
     
     // Determines if the Login Screen is open
     private boolean isLoginScreenOpen;
     
     // Determines if the user is logged in
-    public boolean isLoggedIn = false;
+    private boolean isLoggedIn = false;
     
     // Determines if the user is logged in as an adminsitrator
-    public boolean isLoggedInAsAdmin = false;
+    private boolean isLoggedInAsAdmin = false;
     
-    // GradeSelect class
-    public GradeSelect gradeSelect;
+    // Register screen class
+    private Register register;
     
-    // Determines if the Grade Select screen is open
-    public boolean isGradeSelectScreenOpen = false;
+    // Determines if the register screen is open / closed
+    private boolean isRegisterScreenOpen = false;
     
+    // Forgot Password screen class
+    private ForgotPassword forgotPassword;
+    
+    // Determines if the forgot password screen is open / closed
+    private boolean isForgotPasswordScreenOpen = false;
+
     // ManageAccounts class
-    public ManageAccounts manageAccounts;
+    private ManageAccounts manageAccounts;
     
     // Determines if the Manage Screen is open
-    public boolean isManageScreenOpen = false;
+    private boolean isManageAccountsScreenOpen = false;    
+    
+    // GradeSelect class
+    private GradeSelect gradeSelect;
+    
+    // Determines if the Grade Select screen is open
+    private boolean isGradeSelectScreenOpen = false;
+    
+    // HelpScreen class
+    private HelpScreen help;
+    
+    // Determines if the Help Screen is open / closed
+    private boolean isHelpScreenOpen = false;    
             
     /*
     * Creates a new instance of the Main class
@@ -40,16 +69,11 @@ public class Main extends javax.swing.JFrame {
         // Initialize the components on the main screen
         initComponents();
         
+        // Starts the window in maximized mode
         this.setExtendedState(MAXIMIZED_BOTH);
         
-        // Creates a new instance of the login screen
-        login = new Login(desktopPane, this, gradeSelect);
-        
-        // Adds the login screen to the desktop pane
-        desktopPane.add(login);
-        
-        // Sets isLoginScreenOpen variable to true
-        isLoginScreenOpen = true;
+        // Opens the login screen
+        openLoginScreen();
         
     }
 
@@ -80,7 +104,7 @@ public class Main extends javax.swing.JFrame {
                 g.drawImage(image, 0, 0, null);           
             }
         };
-        jLabel1 = new javax.swing.JLabel();
+        usernameLabel2 = new javax.swing.JLabel();
         helpButton = new javax.swing.JButton();
         printerButton = new javax.swing.JButton();
         homeButton = new javax.swing.JButton();
@@ -113,7 +137,7 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 562, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
         helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/helpButton.png"))); // NOI18N
         helpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +209,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(starsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                         .addComponent(loginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,7 +230,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(usernameLabel)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(starsLabel))
                     .addComponent(helpButton)
@@ -223,71 +247,226 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // This method sets the isLoginScreenOpen variable to true/false
     public void setIsLoginScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
         isLoginScreenOpen = isOpen;
-    }
-    
-    public void setIsRegisterScreenOpen(boolean isOpen) {
         
     }
-    
-    public void setIsForgotPasswordScreenOpen(boolean isOpen) {
+
+    // This method sets the isLoggedIn variable to true/false
+    public void setIsLoggedIn(boolean loggedIn) {
+        
+        // Sets the variable
+        isLoggedIn = loggedIn;
         
     }
-    
-    public void setIsManageAccountsScreenOpen(boolean isOpen) {
+   
+    // This method sets the isLoggedInAsAdmin variable to true/false   
+    public void setIsLoggedInAsAdmin(boolean loggedInAsAdmin) {
         
-    }
-    
-    public void setIsGradeSelectScreenOpen(boolean isOpen) {
-        
-    }
-    
-    public void setIsHelpScreenOpen(boolean isOpen) {
-        
-    }
-    
-    public void closeAllScreens() {
-        
+        // Sets the variable
+        isLoggedInAsAdmin = loggedInAsAdmin;
         
     }    
     
+    /*
+    * This method is called when the user logs in    
+    * It sets the text that display's the username of the logged-in user
+    */
+    public void setUsernameLabel(String user) {
+        
+        // Sets the text of the label after "Username: " to the username of the user that logged in
+        usernameLabel2.setText(user);
+        
+    }    
+    
+    // This method sets the isRegisterScreenOpen variable to true/false
+    public void setIsRegisterScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isRegisterScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isForgotPasswordScreenOpen variable to true/false
+    public void setIsForgotPasswordScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isForgotPasswordScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isManageAccountsScreenOpen variable to true/false
+    public void setIsManageAccountsScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isManageAccountsScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isGradeSelectScreenOpen variable to true/false
+    public void setIsGradeSelectScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isGradeSelectScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isHelpScreenOpen variable to true/false
+    public void setIsHelpScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isHelpScreenOpen = isOpen;
+        
+    }  
+    
+    // This method returns the boolean value of isRegisterScreenOpen
+    public boolean getIsRegisterScreenOpen() {
+        
+        // Returns the boolean value
+        return isRegisterScreenOpen;
+        
+    }
+    
+    // This method creates an instance of the Login screen
+    public void openLoginScreen() {
+        
+        // Creates a new instance of the login screen
+        login = new Login(this, desktopPane);
+
+        // Adds the login screen to the desktop pane
+        desktopPane.add(login);
+
+        // Brings the login screen to the front
+        login.toFront();
+
+        // Sets the is login screen open variable to true
+        isLoginScreenOpen = true;        
+        
+    }
+    
+    // This method creates an instance of the Register screen
+    public void openRegisterScreen() {
+        
+        // Creates a new instance of the register screen
+        register = new Register();
+
+        // Sets the variable to true
+        isRegisterScreenOpen = true;
+        
+        // Adds the register screen to the main desktop pane from the main screen
+        desktopPane.add(register);
+
+        // Brings the register screen to the front
+        register.toFront();  
+        
+    }
+    
+    // This method creates an instance of the GradeSelect screen
+    public void openGradeSelectScreen() {
+        
+        // Creates a new GradeSelect class
+        gradeSelect = new GradeSelect(this);
+        
+        // Sets the variable to true
+        isGradeSelectScreenOpen = true;
+        
+        // Adds the screen to the desktop pane
+        desktopPane.add(gradeSelect);
+        
+        // Brings the screen to the front
+        gradeSelect.toFront();
+        
+    }    
+    
+    // Opens the print report screen
+    public void openPrintReportScreen() {
+        
+        // Creates a new Print Report screen class
+        JOptionPane.showMessageDialog(null, "This button will open the print reports screen.", "Print Reports", JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+    
+    // Opens the help screen
+    public void openHelpScreen() {
+        
+        // Creates a new help screen class
+        help = new HelpScreen();
+        
+        // Sets the variable
+        isHelpScreenOpen = true;
+        
+        // Adds the help screen to the desktop pane
+        desktopPane.add(help);
+        
+        // Brings the help screen to the front
+        help.toFront();
+        
+    }
+    
+    // This method closes all of the screens that are open upon log out
+    public void closeAllScreens() {
+        
+        // if the grade select screen is open, then close it
+        if (isGradeSelectScreenOpen) {
+            
+            // Closes the grade select screen
+            closeGradeSelectScreen();
+            
+        }
+        
+    }  
+    
+    // This method disposes of the GradeSelect screen
+    public void closeGradeSelectScreen() {
+        
+        // Disposes of the grade select screen
+        gradeSelect.dispose();
+   
+        // Set the variable to false
+        isGradeSelectScreenOpen = false;
+        
+    }    
+           
+    // The action listener for the exit menu item
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
     
-        // The action listener for the exit menu item
-        
         // Exits the program
         System.exit(0);
         
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    // This method is called when the orange login button is pressed (at the top)
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
        
-        // If the login screen is not open
-        if (!isLoginScreenOpen) {
+        // If the login screen is not open and the user is not logged in
+        if (!isLoginScreenOpen && !isLoggedIn) {
             
-            // Creates a new instance of the login screen
-            login = new Login(desktopPane, this, gradeSelect);
-            
-            // Adds the login screen to the desktop pane
-            desktopPane.add(login);
-            
-            // Brings the login screen to the front
-            login.toFront();
-            
-            // Sets the is login screen open variable to true
-            isLoginScreenOpen = true;
+            // Opens the login screen
+            openLoginScreen();
             
         // If the login screen is already open
         } else {
             
-            // Display a message
-            javax.swing.JOptionPane.showMessageDialog(null, "Login is already open", "Login", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        
+            // If the login screen is already open, then display a message
+            if (isLoginScreenOpen) {
+                // Display a message
+                JOptionPane.showMessageDialog(null, "Login is already open", "Login", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            // If the user is already logged in, then display a message
+            if (isLoggedIn) {
+               // Display a message
+                JOptionPane.showMessageDialog(null, "You are already logged in.", "Login", javax.swing.JOptionPane.INFORMATION_MESSAGE);                
+            }
+            
         }
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    // This method is called when the gray logout button is clicked (at the top)
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         
         // The logout button action listener (the button is located on the top banner next to the login button) 
@@ -306,6 +485,9 @@ public class Main extends javax.swing.JFrame {
             // Closes any screens that the user may have had open except the help screen
             closeAllScreens();
             
+            // Clears the username
+            setUsernameLabel("");
+            
         // Otherwise print a message
         } else {
             
@@ -316,6 +498,7 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    // This method is called when the manage accounts file menu item is clicked
     private void manageAccountsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsMenuItemActionPerformed
         
         // This method is triggered when the Manage Accounts menu item is clicked under File
@@ -333,7 +516,7 @@ public class Main extends javax.swing.JFrame {
             manageAccounts.toFront();
             
             // Sets the variable isManageScreenOpen to true
-            isManageScreenOpen = true;
+            isManageAccountsScreenOpen = true;
             
         // If the person is not logged in as an administrator            
         } else {
@@ -344,34 +527,74 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_manageAccountsMenuItemActionPerformed
 
+    // This method is called when the home button is clicked (blue button next to the gray logout button at the top)
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+
+        // If the user is logged in
         if (isLoggedIn) {
-            // Code to open main menu
+            
+            // If the home main menu screen is not open, then open it
+            if (!isGradeSelectScreenOpen) {
+                
+                // Creates a new GradeSelect screen
+                gradeSelect = new GradeSelect(this);
+                
+                // Sets the isGradeSelectScreenOpen variable to true
+                isGradeSelectScreenOpen = true;
+                
+                // Adds the screen to the desktop pane
+                desktopPane.add(gradeSelect);
+                
+                // Brings the screen to the front
+                gradeSelect.toFront();
+            
+            // Else if the screen is already open
+            } else {
+                
+                javax.swing.JOptionPane.showMessageDialog(null, "Home is already open.", "Home", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                                
+            }
+            
         } else {
             javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Home", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    // This method is triggered when the printer button is clicked (at the top right of the screen)
     private void printerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printerButtonActionPerformed
-        // TODO add your handling code here:
+        
+        // If the user is logged in then open the print report screen
         if (isLoggedIn) {
-            // Code to open the print report screen
+
+            // Open Print Report screen
+            openPrintReportScreen();
+            
+        // If the user is not logged in then display a message
         } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Print Reports", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            // Display a message
+            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in to print a report.", "Print Reports", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
         }
     }//GEN-LAST:event_printerButtonActionPerformed
 
+    // This method is triggerd when the help button (at the top banner on the right) is clicked
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        // TODO add your handling code here:
+        
+        // If the help screen is not open
         if (!isHelpScreenOpen) {
-            HelpScreen help = new HelpScreen();
-            desktopPane.add(help);
-            help.toFront();
-            isHelpScreenOpen = true;
+            
+            // Opens the help screen
+            openHelpScreen();
+            
+        // If the help screen is already open
         } else {
+            
+            // Display a message
             javax.swing.JOptionPane.showMessageDialog(null, "Help is already open", "Help", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
         }
+        
     }//GEN-LAST:event_helpButtonActionPerformed
 
     /**
@@ -414,7 +637,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton homeButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton loginButton;
@@ -423,5 +645,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton printerButton;
     private javax.swing.JLabel starsLabel;
     private javax.swing.JLabel usernameLabel;
+    private javax.swing.JLabel usernameLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -59,28 +57,28 @@ public class HelpScreen extends javax.swing.JInternalFrame {
         setToolTipText("Help");
         setVisible(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconLogin.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconLogin.jpg"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconRegister.jpg"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconRegister.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconForgotPassword.jpg"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconForgotPassword.jpg"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconManageAccounts.jpg"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconManageAccounts.jpg"))); // NOI18N
         jButton4.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,49 +86,49 @@ public class HelpScreen extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconGradeSelect.jpg"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconGradeSelect.jpg"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconQuizDifficulty.jpg"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconQuizDifficulty.jpg"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconPreK.jpg"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconPreK.jpg"))); // NOI18N
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconPrintReport.jpg"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconPrintReport.jpg"))); // NOI18N
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconQuizReport.jpg"))); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconQuizReport.jpg"))); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/HelpScreen/IconFinalReport.jpg"))); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/HelpScreen/IconFinalReport.jpg"))); // NOI18N
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
 
-        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
+        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
         helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpAudioButtonActionPerformed(evt);
@@ -160,7 +158,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                                 .addComponent(helpAudioButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton6)
@@ -194,10 +192,10 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8)
                     .addComponent(jButton10))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
-        setBounds(170, 15, 974, 560);
+        setBounds(170, 15, 990, 560);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

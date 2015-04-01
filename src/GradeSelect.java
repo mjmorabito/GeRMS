@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
-
 import static java.awt.SystemColor.info;
 import java.io.File;
 import java.io.IOException;
@@ -23,8 +21,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author markmorabito
  */
 public class GradeSelect extends javax.swing.JInternalFrame {
-
-    private Main main;
+    
+    Main main;
     
     /**
      * Creates new form GradeSelect
@@ -52,9 +50,26 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("GradeSelect");
-        setToolTipText("GradeSelect");
+        setTitle("Main Menu");
+        setToolTipText("Main Menu");
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         goGradePreKKButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/PreK-KButton.jpg"))); // NOI18N
         goGradePreKKButton.setText("preK-K");
@@ -166,6 +181,14 @@ public class GradeSelect extends javax.swing.JInternalFrame {
     private void goGradeThreeAndFourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goGradeThreeAndFourButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_goGradeThreeAndFourButtonActionPerformed
+
+    // This method is triggered when the form is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+
+        // Sets the isGradeSelectScreenOpen variable to false
+        main.setIsGradeSelectScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

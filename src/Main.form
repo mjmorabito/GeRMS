@@ -66,7 +66,7 @@
                           <Component id="starsLabel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="usernameLabel2" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace pref="313" max="32767" attributes="0"/>
                       <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="usernameLabel2" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="starsLabel" min="-2" max="-2" attributes="0"/>
@@ -144,7 +144,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="usernameLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Comic Sans MS" size="18" style="0"/>
