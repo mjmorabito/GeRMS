@@ -100,7 +100,6 @@ public class Login extends javax.swing.JInternalFrame {
 
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/loginRocket.jpg"))); // NOI18N
         loginButton.setIconTextGap(0);
-        loginButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -109,7 +108,6 @@ public class Login extends javax.swing.JInternalFrame {
 
         loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/registerButton.jpg"))); // NOI18N
         loginButton1.setIconTextGap(0);
-        loginButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         loginButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButton1ActionPerformed(evt);
@@ -139,41 +137,36 @@ public class Login extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(forgotPasswordLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(forgotPasswordLabel)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(loginButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(loginButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(loginButton)
+                                .addComponent(passwordLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(loginButton1))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(passwordLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(passwordField))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(usernameLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(195, 195, 195))
+                                .addComponent(passwordField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(usernameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(helpAudioButton)
-                        .addContainerGap())))
+                        .addGap(18, 18, 18)
+                        .addComponent(helpAudioButton)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(helpAudioButton)))
+                    .addComponent(jLabel1)
+                    .addComponent(helpAudioButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(usernameLabel)
@@ -188,12 +181,12 @@ public class Login extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginButton)
                     .addComponent(loginButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("logoLabel");
 
-        setBounds(170, 15, 974, 560);
+        setBounds(170, 15, 750, 573);
     }// </editor-fold>//GEN-END:initComponents
 
     private void forgotPasswordLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseClicked
@@ -217,6 +210,7 @@ public class Login extends javax.swing.JInternalFrame {
 
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
         // TODO add your handling code here:
+        
             File yourFile = new File("src/sounds/GeRMSLogin.wav");
             AudioInputStream stream;
             AudioFormat format;
