@@ -24,6 +24,9 @@ import javax.swing.*;
  */
 public class ForgotPassword extends javax.swing.JInternalFrame {
     
+    // Reference to the Main class
+    Main main;
+    
     // variables needed to make connection with DB
    private static final String dbClassName = "com.mysql.jdbc.Driver";
    private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
@@ -35,8 +38,11 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
     /**
      * Creates new form ForgotPassword
      */
-    public ForgotPassword() {
+    public ForgotPassword(Main m) {
         initComponents();
+        
+        // Stores the reference to the main class
+        main = m;
         
     }
 
@@ -67,6 +73,23 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
         setToolTipText("Forgot Password");
         setAlignmentX(250.0F);
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         usernameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         usernameLabel.setText("Security Question:");
@@ -100,7 +123,7 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
             }
         });
 
-        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
+        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
         helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpAudioButtonActionPerformed(evt);
@@ -162,7 +185,7 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
 
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
         // TODO add your handling code here:
-        File yourFile = new File("src/sounds/GeRMSForgotPassword.wav");
+        File yourFile = new File("src/Sounds/GeRMSForgotPassword.wav");
             AudioInputStream stream;
             AudioFormat format;
             DataLine.Info info;
@@ -230,6 +253,14 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Wrong Answer", "Answer", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_getpasswordButtonActionPerformed
+
+    // This method is called when the forgot password screen is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        
+        // Set the isForgotPasswordScreenOpen variable to false
+        main.setIsForgotPasswordScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

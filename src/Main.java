@@ -330,6 +330,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method returns the boolean value of isForgotPasswordScreenOpen
+    public boolean getIsForgotPasswordScreenOpen() {
+        
+        // Returns the boolean value
+        return isForgotPasswordScreenOpen;
+        
+    }
+    
     // This method creates an instance of the Login screen
     public void openLoginScreen() {
         
@@ -361,6 +369,22 @@ public class Main extends JFrame {
 
         // Brings the register screen to the front
         register.toFront();  
+        
+    }
+    
+    public void openForgotPasswordScreen() {
+        
+        // Creates a new instance of the ForgotPassword screen
+        forgotPassword = new ForgotPassword(this);
+        
+        // Sets the variable
+        isForgotPasswordScreenOpen = true;
+
+        // Adds the screen to the desktop pane
+        desktopPane.add(forgotPassword);
+
+        // Brings the forgot password screen to the front
+        forgotPassword.toFront();        
         
     }
     
@@ -447,7 +471,7 @@ public class Main extends JFrame {
             // Opens the login screen
             openLoginScreen();
             
-        // If the login screen is already open
+        // If the login screen is already open or the user is not logged in
         } else {
             
             // If the login screen is already open, then display a message
@@ -488,7 +512,7 @@ public class Main extends JFrame {
             // Clears the username
             setUsernameLabel("");
             
-        // Otherwise print a message
+        // If the user is not logged in then print a message
         } else {
             
             // Prints a message that lets them know that they are not logged in
@@ -525,6 +549,7 @@ public class Main extends JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in as an administrator!", "Manage Accounts", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
         }
+        
     }//GEN-LAST:event_manageAccountsMenuItemActionPerformed
 
     // This method is called when the home button is clicked (blue button next to the gray logout button at the top)
@@ -551,13 +576,19 @@ public class Main extends JFrame {
             // Else if the screen is already open
             } else {
                 
-                javax.swing.JOptionPane.showMessageDialog(null, "Home is already open.", "Home", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                // Display a message
+                javax.swing.JOptionPane.showMessageDialog(null, "The main menu is already open.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                                 
             }
             
+        // Else if the person is not logged in
         } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Home", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            // Display a message
+            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in to access the main menu.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
         }
+        
     }//GEN-LAST:event_homeButtonActionPerformed
 
     // This method is triggered when the printer button is clicked (at the top right of the screen)
@@ -576,6 +607,7 @@ public class Main extends JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in to print a report.", "Print Reports", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
         }
+        
     }//GEN-LAST:event_printerButtonActionPerformed
 
     // This method is triggerd when the help button (at the top banner on the right) is clicked
@@ -591,7 +623,7 @@ public class Main extends JFrame {
         } else {
             
             // Display a message
-            javax.swing.JOptionPane.showMessageDialog(null, "Help is already open", "Help", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null, "The help screen is already open.", "Help", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
         }
         
@@ -599,6 +631,7 @@ public class Main extends JFrame {
 
     /**
      * @param args the command line arguments
+     * This is the main method that sets this JFrame form visible upon starting.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

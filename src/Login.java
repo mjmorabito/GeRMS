@@ -2,6 +2,7 @@
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
+
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
-public class Login extends javax.swing.JInternalFrame {
+/*
+* This is the class for the login screen JInternalFrame
+*/
+public class Login extends JInternalFrame {
 
     // The main class
     private Main main;
@@ -185,21 +189,25 @@ public class Login extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39))
         );
 
-        pack();
+        setBounds(250, 0, 750, 581);
     }// </editor-fold>//GEN-END:initComponents
 
+    // This method is triggered when the "Forgot Password?" text is clicked    
     private void forgotPasswordLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseClicked
 
-        // This method is triggered when the "Forgot Password?" text is clicked
-
-        // Creates a new instance of the ForgotPassword screen
-        ForgotPassword forgotPassword = new ForgotPassword();
-
-        // Adds the screen to the main desktop pane from the main class
-        mainDesktopPane.add(forgotPassword);
-
-        // Brings the forgot password screen to the front
-        forgotPassword.toFront();
+        // If the forgot password scren is already open then display a message
+        if (main.getIsForgotPasswordScreenOpen()) {
+            
+            // Display a message
+            JOptionPane.showMessageDialog(null, "The forgot password screen is already open.", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
+            
+        // Else if the forgot password screen is not open then open the screen
+        } else {
+         
+            // Opens the forgot password screen
+            main.openForgotPasswordScreen();            
+            
+        }
 
     }//GEN-LAST:event_forgotPasswordLabelMouseClicked
 
