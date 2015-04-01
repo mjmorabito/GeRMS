@@ -2,6 +2,7 @@
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,32 +14,46 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import java.sql.*;
 import java.util.Properties;
 import javax.swing.*;
 
-/**
- *
- * @author Samir
- */
-public class ForgotPassword extends javax.swing.JInternalFrame {
+/*
+* This is the ForgotPassword JInternalFrame class.
+* This class is used to allow the user to quickly retrieve their password upon
+* answering the security question linked to their account.
+* There is a button to retrieve the security question of the username entered into
+* the textfield.
+* There also is a button to submit the answer to the security question.
+* If the answer is correct then the password will be displayed.
+*/
+public class ForgotPassword extends JInternalFrame {
     
-    // Reference to the Main class
-    Main main;
+   // Reference to the Main class
+   Main main;
     
-    // variables needed to make connection with DB
+   // Variables needed to make connection with DB
    private static final String dbClassName = "com.mysql.jdbc.Driver";
    private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
-   String securityanswer;
-   String id;
-   String securityquestion;
-   String password;
+   
+   // Variables used to store data from the database
+   private String securityanswer;
+   private String id;
+   private String securityquestion;
+   private String password;
+   
+   // Variable to store the username from the text field
+   private String user = "";
+   
+   // Variable that determines if the username exists
+   private boolean usernameExists = false;
 
     /**
      * Creates new form ForgotPassword
      */
     public ForgotPassword(Main m) {
+        
+        // Initializes the components on the JInternalFrame
         initComponents();
         
         // Stores the reference to the main class
@@ -183,14 +198,17 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
         setBounds(170, 15, 610, 320);
     }// </editor-fold>//GEN-END:initComponents
 
+    // This method is triggered when the help audio button is clicked
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
-        // TODO add your handling code here:
+        
+        // Code to play the .wav file
         File yourFile = new File("src/Sounds/GeRMSForgotPassword.wav");
-            AudioInputStream stream;
-            AudioFormat format;
-            DataLine.Info info;
-            Clip clip;
+        AudioInputStream stream;
+        AudioFormat format;
+        DataLine.Info info;
+        Clip clip;
 
+        // A Try/catch block to play the audio file
             try {
                 stream = AudioSystem.getAudioInputStream(yourFile);
                 format = stream.getFormat();
@@ -206,58 +224,100 @@ public class ForgotPassword extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 
+    // This is the action listener for when the "Get Security Question" button is pressed
     private void getquestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getquestionButtonActionPerformed
+        
+        // A try/catch block to retrieve data from the database
         try {
-        Class.forName(dbClassName);
-        
-        // user/pwd to connect to DB
-        Properties p = new Properties();
-        p.put("user","GermsAdmin");
-        p.put("password","g3rm5p0w3ru53r");
-        
-        // DB connection
-        Connection conn = DriverManager.getConnection(CONNECTION,p);  
-        
-        // Get username and password
-        String user = usernameTextField.getText();  
-        // Get username and password
-        Statement stmt = conn.createStatement();
-        String sql = "SELECT * FROM accounts a JOIN securityquestion s"
-                + " ON a.secID = s.secID WHERE a.accUser = '" + user + "'";
-        ResultSet rs = stmt.executeQuery(sql);
-        
-        //if user exists, all fields associate to that user from table
-        if (rs.next() == true){
-            id = rs.getString("accUser");
-            securityquestion = rs.getString("s.secQuestion");
-            securityanswer = rs.getString("a.secAnswer");
-            password = rs.getString("a.accpassword");
             
-            securityquestionTextField.setText(securityquestion);
-        }else{
-            JOptionPane.showMessageDialog(null, "No user found", "User", JOptionPane.INFORMATION_MESSAGE);
-        }
+            // Database Driver
+            Class.forName(dbClassName);
         
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+        
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);  
+        
+            // Get username from the textfield
+            user = usernameTextField.getText();  
+            
+            // Get username and password from database
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM accounts a JOIN securityquestion s"
+                    + " ON a.secID = s.secID WHERE a.accUser = '" + user + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+        
+            //if user exists, get all fields associate to that user from table
+            if (rs.next() == true) {
+                
+                // Stores the information of the user from the database
+                id = rs.getString("accUser");
+                securityquestion = rs.getString("s.secQuestion");
+                securityanswer = rs.getString("a.secAnswer");
+                password = rs.getString("a.accpassword");
+            
+                // Sets the text of the security question textfield
+                securityquestionTextField.setText(securityquestion);
+                
+                // Sets the variable to true
+                usernameExists = true;
+                
+            // Else if the user does not exist then display a message
+            } else {
+                
+                // Display's a message
+                JOptionPane.showMessageDialog(null, user + " user not found.", "User", JOptionPane.INFORMATION_MESSAGE);
+                
+                // Sets the variable to false
+                usernameExists = false;
+                
+            }
+
         } catch (ClassNotFoundException e) {
-            
+
         } catch (SQLException e) {
-            
+
         }
+        
     }//GEN-LAST:event_getquestionButtonActionPerformed
 
+    // This is the action listener for the "Get Password" button
     private void getpasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getpasswordButtonActionPerformed
 
-        if(securityanswer.equals(securityanswerTextField.getText())){
-            JOptionPane.showMessageDialog(null, "Your password is: " + password, "Password", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(null, "Wrong Answer", "Answer", JOptionPane.INFORMATION_MESSAGE);
+        // If the user is a blank string "" then display a message
+        if (user.equals("") || !usernameExists) {
+            
+            // Then display a message
+            JOptionPane.showMessageDialog(null, "You must enter a valid username first, then click the Get Security Question button.", "Get Password", JOptionPane.INFORMATION_MESSAGE);
+
+        // Else if the user is not blank
+        } else {
+            
+            // If the security answer is the same as what is stored in the database
+            if(securityanswer.equals(securityanswerTextField.getText())){
+
+                // Then display a message with the password of the user
+                JOptionPane.showMessageDialog(null, "Your password is: " + password, "Password", JOptionPane.INFORMATION_MESSAGE);
+
+            // Else if the security answer is incorrect
+            } else {
+
+                // Then display a message
+                JOptionPane.showMessageDialog(null, "Wrong Answer", "Answer", JOptionPane.INFORMATION_MESSAGE);
+
+            }            
+            
         }
+        
     }//GEN-LAST:event_getpasswordButtonActionPerformed
 
     // This method is called when the forgot password screen is closed
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         
-        // Set the isForgotPasswordScreenOpen variable to false
+        // Sets the isForgotPasswordScreenOpen variable to false
         main.setIsForgotPasswordScreenOpen(false);
         
     }//GEN-LAST:event_formInternalFrameClosed

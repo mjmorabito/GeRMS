@@ -15,12 +15,16 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
 
-/**
- *
- * @author markmorabito
- */
-public class GradeSelect extends javax.swing.JInternalFrame {
+/*
+* This is the GradeSelect class which extends JInternalFrame.
+* This is a screen that appears when the user logs in.
+* This screen is also accessible by clicking the blue home button at the top of the screen.
+* This screen has three buttons: 1) PreK-K Module, 2) 1-2 Module, 3) 3-4 Module.
+* There is also an audio button that helps the user with the screen.
+*/
+public class GradeSelect extends JInternalFrame {
     
     Main main;
     
@@ -28,8 +32,13 @@ public class GradeSelect extends javax.swing.JInternalFrame {
      * Creates new form GradeSelect
      */
     public GradeSelect(Main m) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Stores the reference to the main class
         main = m;
+        
     }
 
     /**
@@ -41,10 +50,10 @@ public class GradeSelect extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        goGradePreKKButton = new javax.swing.JButton();
-        goGradesOneAndTwoButton = new javax.swing.JButton();
-        goGradeThreeAndFourButton = new javax.swing.JButton();
         helpAudioButton = new javax.swing.JButton();
+        gradePreKandKButton = new javax.swing.JButton();
+        grade1and2Button = new javax.swing.JButton();
+        grade3and4Button = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -71,34 +80,6 @@ public class GradeSelect extends javax.swing.JInternalFrame {
             }
         });
 
-        goGradePreKKButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/PreK-KButton.jpg"))); // NOI18N
-        goGradePreKKButton.setText("preK-K");
-        goGradePreKKButton.setToolTipText("");
-        goGradePreKKButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        goGradePreKKButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goGradePreKKButtonActionPerformed(evt);
-            }
-        });
-
-        goGradesOneAndTwoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/1-2Button.jpg"))); // NOI18N
-        goGradesOneAndTwoButton.setText("1-2");
-        goGradesOneAndTwoButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        goGradesOneAndTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goGradesOneAndTwoButtonActionPerformed(evt);
-            }
-        });
-
-        goGradeThreeAndFourButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/3-4Button.jpg"))); // NOI18N
-        goGradeThreeAndFourButton.setText("3-4");
-        goGradeThreeAndFourButton.setPreferredSize(new java.awt.Dimension(100, 30));
-        goGradeThreeAndFourButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goGradeThreeAndFourButtonActionPerformed(evt);
-            }
-        });
-
         helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
         helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,55 +87,70 @@ public class GradeSelect extends javax.swing.JInternalFrame {
             }
         });
 
+        gradePreKandKButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/PreK-KButton.jpg"))); // NOI18N
+        gradePreKandKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradePreKandKButtonActionPerformed(evt);
+            }
+        });
+
+        grade1and2Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/1-2Button.jpg"))); // NOI18N
+        grade1and2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grade1and2ButtonActionPerformed(evt);
+            }
+        });
+
+        grade3and4Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/3-4Button.jpg"))); // NOI18N
+        grade3and4Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grade3and4ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(helpAudioButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goGradePreKKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(goGradesOneAndTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(goGradeThreeAndFourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69))
+                        .addComponent(gradePreKandKButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(grade1and2Button)
+                        .addGap(14, 14, 14)
+                        .addComponent(grade3and4Button)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {goGradePreKKButton, goGradeThreeAndFourButton, goGradesOneAndTwoButton});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(helpAudioButton)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goGradePreKKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goGradesOneAndTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goGradeThreeAndFourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gradePreKandKButton)
+                    .addComponent(grade1and2Button)
+                    .addComponent(grade3and4Button))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {goGradePreKKButton, goGradeThreeAndFourButton, goGradesOneAndTwoButton});
 
         setBounds(170, 15, 974, 560);
     }// </editor-fold>//GEN-END:initComponents
    
+    // This method is triggerd when the help audio button is clicked
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
 
-        // This method is trigged when the help audio button is clicked
-        
-        // Creates a File object that is linked the GeRMSLogin.wav filepath
+        // Code to play the audio GeRMSHelp.wav
         File yourFile = new File("src/Sounds/GeRMSHelp.wav");
-
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;
         Clip clip;
 
+        // A try/catch block to play the audio file
         try {
             stream = AudioSystem.getAudioInputStream(yourFile);
             format = stream.getFormat();
@@ -170,18 +166,6 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 
-    private void goGradePreKKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goGradePreKKButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_goGradePreKKButtonActionPerformed
-
-    private void goGradesOneAndTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goGradesOneAndTwoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_goGradesOneAndTwoButtonActionPerformed
-
-    private void goGradeThreeAndFourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goGradeThreeAndFourButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_goGradeThreeAndFourButtonActionPerformed
-
     // This method is triggered when the form is closed
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 
@@ -190,11 +174,34 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameClosed
 
+    // This method is triggered when the PreK-K grades button is clicked
+    private void gradePreKandKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePreKandKButtonActionPerformed
+    
+        // Display a message
+        JOptionPane.showMessageDialog(null, "This button will open the grades PreK-K module.");
+        
+    }//GEN-LAST:event_gradePreKandKButtonActionPerformed
+
+    // This method is triggered when the 1-2 grades button is clicked
+    private void grade1and2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grade1and2ButtonActionPerformed
+
+        // Display a message
+        JOptionPane.showMessageDialog(null, "This button will open the grades 1-2 module.");
+        
+    }//GEN-LAST:event_grade1and2ButtonActionPerformed
+
+    // This method is triggered when the 3-4 grades button is clicked
+    private void grade3and4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grade3and4ButtonActionPerformed
+
+        // Display a message
+        JOptionPane.showMessageDialog(null, "This button will open the grades 3-4 module.");
+        
+    }//GEN-LAST:event_grade3and4ButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton goGradePreKKButton;
-    private javax.swing.JButton goGradeThreeAndFourButton;
-    private javax.swing.JButton goGradesOneAndTwoButton;
+    private javax.swing.JButton grade1and2Button;
+    private javax.swing.JButton grade3and4Button;
+    private javax.swing.JButton gradePreKandKButton;
     private javax.swing.JButton helpAudioButton;
     // End of variables declaration//GEN-END:variables
 }

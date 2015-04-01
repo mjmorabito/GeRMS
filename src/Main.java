@@ -509,6 +509,9 @@ public class Main extends JFrame {
             // Closes any screens that the user may have had open except the help screen
             closeAllScreens();
             
+            // Opens the login screen
+            openLoginScreen();
+            
             // Clears the username
             setUsernameLabel("");
             
@@ -516,7 +519,7 @@ public class Main extends JFrame {
         } else {
             
             // Prints a message that lets them know that they are not logged in
-            javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Logout", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are not logged in!", "Logout", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
         }
         
@@ -546,7 +549,7 @@ public class Main extends JFrame {
         } else {
             
             // A message pops up
-            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in as an administrator!", "Manage Accounts", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You must be logged in as an administrator!", "Manage Accounts", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
         }
         
@@ -577,7 +580,7 @@ public class Main extends JFrame {
             } else {
                 
                 // Display a message
-                javax.swing.JOptionPane.showMessageDialog(null, "The main menu is already open.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "The main menu is already open.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                                 
             }
             
@@ -585,7 +588,7 @@ public class Main extends JFrame {
         } else {
             
             // Display a message
-            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in to access the main menu.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You must be logged in to access the main menu.", "Main Menu", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
         }
         
@@ -604,7 +607,7 @@ public class Main extends JFrame {
         } else {
             
             // Display a message
-            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in to print a report.", "Print Reports", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You must be logged in to print a report.", "Print Reports", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
         }
         
@@ -623,7 +626,7 @@ public class Main extends JFrame {
         } else {
             
             // Display a message
-            javax.swing.JOptionPane.showMessageDialog(null, "The help screen is already open.", "Help", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "The help screen is already open.", "Help", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
         }
         
