@@ -9,20 +9,20 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exit"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="manageAccountsMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage Accounts"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageAccountsMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Exit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -39,7 +39,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -67,7 +67,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace pref="623" max="32767" attributes="0"/>
+                      <EmptySpace pref="313" max="32767" attributes="0"/>
                       <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
@@ -128,7 +128,7 @@
     </Component>
     <Container class="javax.swing.JDesktopPane" name="desktopPane">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane() {&#xd;&#xa;    private java.awt.Image image;&#xd;&#xa;    {&#xd;&#xa;        try {&#xd;&#xa;            java.net.URL url = this.getClass().getClassLoader().getResource(&quot;phase3/Images/background.jpg&quot;);&#xd;&#xa;            image = javax.imageio.ImageIO.read(url);&#xd;&#xa;        } catch (java.io.IOException e) {&#xd;&#xa;            e.printStackTrace();&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        g.drawImage(image, 0, 0, null);           &#xd;&#xa;    }&#xd;&#xa;};"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane() {&#xd;&#xa;    private java.awt.Image image;&#xd;&#xa;    {&#xd;&#xa;        try {&#xd;&#xa;            java.net.URL url = this.getClass().getClassLoader().getResource(&quot;Images/MainScreen/background.jpg&quot;);&#xd;&#xa;            image = javax.imageio.ImageIO.read(url);&#xd;&#xa;        } catch (java.io.IOException e) {&#xd;&#xa;            e.printStackTrace();&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        g.drawImage(image, 0, 0, null);           &#xd;&#xa;    }&#xd;&#xa;};"/>
       </AuxValues>
 
       <Layout>
@@ -139,7 +139,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="575" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="562" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -154,7 +154,7 @@
     <Component class="javax.swing.JButton" name="helpButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/phase3/Images/helpButton.png"/>
+          <Image iconType="3" name="/Images/MainScreen/helpButton.png"/>
         </Property>
       </Properties>
       <Events>
@@ -164,7 +164,7 @@
     <Component class="javax.swing.JButton" name="printerButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/phase3/Images/printer.png"/>
+          <Image iconType="3" name="/Images/MainScreen/printer.png"/>
         </Property>
       </Properties>
       <Events>
@@ -174,7 +174,7 @@
     <Component class="javax.swing.JButton" name="homeButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/phase3/Images/homeButton.png"/>
+          <Image iconType="3" name="/Images/MainScreen/homeButton.png"/>
         </Property>
       </Properties>
       <Events>
@@ -184,7 +184,7 @@
     <Component class="javax.swing.JButton" name="logoutButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/phase3/Images/logoutButton.png"/>
+          <Image iconType="3" name="/Images/MainScreen/logoutButton.png"/>
         </Property>
       </Properties>
       <Events>
@@ -194,7 +194,7 @@
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/phase3/Images/loginButton.png"/>
+          <Image iconType="3" name="/Images/MainScreen/loginButton.png"/>
         </Property>
       </Properties>
       <Events>

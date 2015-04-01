@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package phase3;
 
 import static java.awt.SystemColor.info;
 import java.io.File;
@@ -13,6 +12,9 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -22,12 +24,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class GradeSelect extends javax.swing.JInternalFrame {
 
+    private Main main;
+    
     /**
      * Creates new form GradeSelect
      */
-    public GradeSelect() {
+    public GradeSelect(Main m) {
         initComponents();
-        //myInitComponents();
+        main = m;
     }
 
     /**
@@ -52,7 +56,7 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         setToolTipText("GradeSelect");
         setVisible(true);
 
-        goGradePreKKButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/PreK-KButton.jpg"))); // NOI18N
+        goGradePreKKButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/PreK-KButton.jpg"))); // NOI18N
         goGradePreKKButton.setText("preK-K");
         goGradePreKKButton.setToolTipText("");
         goGradePreKKButton.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -62,7 +66,7 @@ public class GradeSelect extends javax.swing.JInternalFrame {
             }
         });
 
-        goGradesOneAndTwoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/1-2Button.jpg"))); // NOI18N
+        goGradesOneAndTwoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/1-2Button.jpg"))); // NOI18N
         goGradesOneAndTwoButton.setText("1-2");
         goGradesOneAndTwoButton.setPreferredSize(new java.awt.Dimension(100, 30));
         goGradesOneAndTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +75,7 @@ public class GradeSelect extends javax.swing.JInternalFrame {
             }
         });
 
-        goGradeThreeAndFourButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/3-4Button.jpg"))); // NOI18N
+        goGradeThreeAndFourButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GradeSelectScreen/3-4Button.jpg"))); // NOI18N
         goGradeThreeAndFourButton.setText("3-4");
         goGradeThreeAndFourButton.setPreferredSize(new java.awt.Dimension(100, 30));
         goGradeThreeAndFourButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +84,7 @@ public class GradeSelect extends javax.swing.JInternalFrame {
             }
         });
 
-        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Image/GradeSelect/AudioButton.png"))); // NOI18N
+        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
         helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpAudioButtonActionPerformed(evt);
@@ -91,19 +95,17 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(helpAudioButton)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(goGradePreKKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(goGradesOneAndTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(goGradeThreeAndFourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(helpAudioButton)
-                        .addContainerGap())))
+                        .addComponent(goGradeThreeAndFourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(69, 69, 69))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {goGradePreKKButton, goGradeThreeAndFourButton, goGradesOneAndTwoButton});
@@ -111,14 +113,14 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(helpAudioButton)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goGradePreKKButton, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goGradesOneAndTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goGradeThreeAndFourButton, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {goGradePreKKButton, goGradeThreeAndFourButton, goGradesOneAndTwoButton});
@@ -126,32 +128,30 @@ public class GradeSelect extends javax.swing.JInternalFrame {
         setBounds(170, 15, 974, 560);
     }// </editor-fold>//GEN-END:initComponents
    
-    /**
-    private void myInitComponents()
-    {
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-        setTitle("GradeSelect");
-        setToolTipText("GradeSelect");
-        setVisible(true);
-    }*/
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
-        // TODO add your handling code here:
-        //This does NOT work
-        File soundFile = new File("Sample.wav");
+
+        // This method is trigged when the help audio button is clicked
+        
+        // Creates a File object that is linked the GeRMSLogin.wav filepath
+        File yourFile = new File("src/Sounds/GeRMSHelp.wav");
+
+        AudioInputStream stream;
+        AudioFormat format;
+        DataLine.Info info;
+        Clip clip;
+
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(GradeSelect.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GradeSelect.class.getName()).log(Level.SEVERE, null, ex);
+            stream = AudioSystem.getAudioInputStream(yourFile);
+            format = stream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(stream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //AudioFormat format = audioInputStream.getFormat();
-        SourceDataLine auline = null;
-        //SourceDataLine = (SourceDataLine)AudioSystem.getLine(info);
-        auline.start();
         
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 

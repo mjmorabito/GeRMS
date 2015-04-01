@@ -3,30 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package phase3;
 
-/**
- *
- * @author Samir
- */
 public class Main extends javax.swing.JFrame {
 
-    private boolean isLoginScreenOpen;
-    public static boolean isLoggedIn = false;
     private boolean isHelpScreenOpen = false;
-            
-    /**
-     * Creates new form GeRMSMathTutor
-     */
-    public Main() {
-        initComponents();
-        Login login = new Login(desktopPane, this);
-        desktopPane.add(login);
-        isLoginScreenOpen = true;
-    }
     
-    public void setIsLoginScreenOpen(boolean isOpen) {
-        isLoginScreenOpen = isOpen;
+    // Login class
+    public Login login;
+    
+    // Determines if the Login Screen is open
+    private boolean isLoginScreenOpen;
+    
+    // Determines if the user is logged in
+    public boolean isLoggedIn = false;
+    
+    // Determines if the user is logged in as an adminsitrator
+    public boolean isLoggedInAsAdmin = false;
+    
+    // GradeSelect class
+    public GradeSelect gradeSelect;
+    
+    // Determines if the Grade Select screen is open
+    public boolean isGradeSelectScreenOpen = false;
+    
+    // ManageAccounts class
+    public ManageAccounts manageAccounts;
+    
+    // Determines if the Manage Screen is open
+    public boolean isManageScreenOpen = false;
+            
+    /*
+    * Creates a new instance of the Main class
+    */
+    public Main() {
+        
+        // Initialize the components on the main screen
+        initComponents();
+        
+        this.setExtendedState(MAXIMIZED_BOTH);
+        
+        // Creates a new instance of the login screen
+        login = new Login(desktopPane, this, gradeSelect);
+        
+        // Adds the login screen to the desktop pane
+        desktopPane.add(login);
+        
+        // Sets isLoginScreenOpen variable to true
+        isLoginScreenOpen = true;
+        
     }
 
     /**
@@ -44,7 +68,7 @@ public class Main extends javax.swing.JFrame {
             private java.awt.Image image;
             {
                 try {
-                    java.net.URL url = this.getClass().getClassLoader().getResource("phase3/Images/background.jpg");
+                    java.net.URL url = this.getClass().getClassLoader().getResource("Images/MainScreen/background.jpg");
                     image = javax.imageio.ImageIO.read(url);
                 } catch (java.io.IOException e) {
                     e.printStackTrace();
@@ -64,8 +88,8 @@ public class Main extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        manageAccountsMenuItem = new javax.swing.JMenuItem();
+        exitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GeRMS Math Tutor");
@@ -86,40 +110,40 @@ public class Main extends javax.swing.JFrame {
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
-        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/helpButton.png"))); // NOI18N
+        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/helpButton.png"))); // NOI18N
         helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpButtonActionPerformed(evt);
             }
         });
 
-        printerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/printer.png"))); // NOI18N
+        printerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/printer.png"))); // NOI18N
         printerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printerButtonActionPerformed(evt);
             }
         });
 
-        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/homeButton.png"))); // NOI18N
+        homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/homeButton.png"))); // NOI18N
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
             }
         });
 
-        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/logoutButton.png"))); // NOI18N
+        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/logoutButton.png"))); // NOI18N
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutButtonActionPerformed(evt);
             }
         });
 
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phase3/Images/loginButton.png"))); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/loginButton.png"))); // NOI18N
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -128,21 +152,21 @@ public class Main extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Exit");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        manageAccountsMenuItem.setText("Manage Accounts");
+        manageAccountsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                manageAccountsMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(manageAccountsMenuItem);
 
-        jMenuItem2.setText("Manage Accounts");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(exitMenuItem);
 
         jMenuBar1.add(jMenu1);
 
@@ -162,7 +186,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(starsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                         .addComponent(loginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutButton)
@@ -196,44 +220,129 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    public void setIsLoginScreenOpen(boolean isOpen) {
+        isLoginScreenOpen = isOpen;
+    }
+    
+    public void setIsRegisterScreenOpen(boolean isOpen) {
+        
+    }
+    
+    public void setIsForgotPasswordScreenOpen(boolean isOpen) {
+        
+    }
+    
+    public void setIsManageAccountsScreenOpen(boolean isOpen) {
+        
+    }
+    
+    public void setIsGradeSelectScreenOpen(boolean isOpen) {
+        
+    }
+    
+    public void setIsHelpScreenOpen(boolean isOpen) {
+        
+    }
+    
+    public void closeAllScreens() {
+        
+        
+    }    
+    
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    
+        // The action listener for the exit menu item
+        
+        // Exits the program
+        System.exit(0);
+        
+    }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+       
+        // If the login screen is not open
         if (!isLoginScreenOpen) {
-            Login login = new Login(desktopPane, this);
+            
+            // Creates a new instance of the login screen
+            login = new Login(desktopPane, this, gradeSelect);
+            
+            // Adds the login screen to the desktop pane
             desktopPane.add(login);
+            
+            // Brings the login screen to the front
             login.toFront();
+            
+            // Sets the is login screen open variable to true
             isLoginScreenOpen = true;
+            
+        // If the login screen is already open
         } else {
+            
+            // Display a message
             javax.swing.JOptionPane.showMessageDialog(null, "Login is already open", "Login", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
         }
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        
+        // The logout button action listener (the button is located on the top banner next to the login button) 
+        
+        // If the person is logged in
         if (isLoggedIn) {
-            // Code to logout
+            
+            // Sets the isLoggedIn variable to false
             isLoggedIn = false;
+            
+            // If they were logged in as an admin, they they set it to false now
+            if (isLoggedInAsAdmin) {
+                isLoggedInAsAdmin = false;
+            }
+            
+            // Closes any screens that the user may have had open except the help screen
+            closeAllScreens();
+            
+        // Otherwise print a message
         } else {
+            
+            // Prints a message that lets them know that they are not logged in
             javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Logout", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
         }
+        
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        if(isLoggedIn){
-            ManageAccounts manageAccounts = new ManageAccounts();
+    private void manageAccountsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsMenuItemActionPerformed
+        
+        // This method is triggered when the Manage Accounts menu item is clicked under File
+        
+        // If the person is logged in as an administrator
+        if (isLoggedIn && isLoggedInAsAdmin) {
+            
+            // Creates a new instance of the manage accounts screen
+            manageAccounts = new ManageAccounts();
+            
+            // Adds the screen to the desktop pane
             desktopPane.add(manageAccounts);
+            
+            // Brings the screen to the front
             manageAccounts.toFront();
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(null, "You are not logged in!", "Logout", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            // Sets the variable isManageScreenOpen to true
+            isManageScreenOpen = true;
+            
+        // If the person is not logged in as an administrator            
+        } else {
+            
+            // A message pops up
+            javax.swing.JOptionPane.showMessageDialog(null, "You must be logged in as an administrator!", "Manage Accounts", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_manageAccountsMenuItemActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
@@ -291,7 +400,6 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -303,15 +411,15 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JMenuItem manageAccountsMenuItem;
     private javax.swing.JButton printerButton;
     private javax.swing.JLabel starsLabel;
     private javax.swing.JLabel usernameLabel;
