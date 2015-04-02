@@ -1,8 +1,11 @@
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ * For this phase of the project the client assigned us to script a prototype portion of the user interface.
+ * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
-
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +25,9 @@ import javax.swing.*;
 
 /*
 * This is the class for the login screen JInternalFrame
+* This screen allows the user to enter a username and password then click login.
+* This screen allows the user to click the register button to register as a new user.
+* There is an audio button on this screen that plays an audio tutorial to help the user.
 */
 public class Login extends JInternalFrame {
 
@@ -66,7 +72,7 @@ public class Login extends JInternalFrame {
         usernameLabel = new javax.swing.JLabel();
         forgotPasswordLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        loginButton1 = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         helpAudioButton = new javax.swing.JButton();
 
@@ -122,11 +128,11 @@ public class Login extends JInternalFrame {
             }
         });
 
-        loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LoginScreen/registerButton.jpg"))); // NOI18N
-        loginButton1.setIconTextGap(0);
-        loginButton1.addActionListener(new java.awt.event.ActionListener() {
+        registerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LoginScreen/registerButton.jpg"))); // NOI18N
+        registerButton.setIconTextGap(0);
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButton1ActionPerformed(evt);
+                registerButtonActionPerformed(evt);
             }
         });
 
@@ -154,7 +160,7 @@ public class Login extends JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(loginButton)
                         .addGap(18, 18, 18)
-                        .addComponent(loginButton1))
+                        .addComponent(registerButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordLabel)
@@ -185,7 +191,7 @@ public class Login extends JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginButton)
-                    .addComponent(loginButton1))
+                    .addComponent(registerButton))
                 .addGap(39, 39, 39))
         );
 
@@ -301,7 +307,7 @@ public class Login extends JInternalFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     // This method is triggered when the register button is clicked (the yellow door)    
-    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
    
         // If the register screen is already open then display a message
         if (main.getIsRegisterScreenOpen()) {
@@ -316,11 +322,14 @@ public class Login extends JInternalFrame {
         
         }
         
-    }//GEN-LAST:event_loginButton1ActionPerformed
+    }//GEN-LAST:event_registerButtonActionPerformed
 
+    // This method is triggered when the help audio button is clicked
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
 
-        // This method is triggered when the help audio button is clicked
+        /*
+        * This is the code to play the audio tutorial .wav file.
+        */
         
         // Creates a File object that is linked the GeRMSLogin.wav filepath
         File yourFile = new File("src/Sounds/GeRMSLogin.wav");
@@ -330,6 +339,7 @@ public class Login extends JInternalFrame {
         DataLine.Info info;
         Clip clip;
 
+        // A try/catch block to play the .wav file
         try {
             stream = AudioSystem.getAudioInputStream(yourFile);
             format = stream.getFormat();
@@ -345,25 +355,24 @@ public class Login extends JInternalFrame {
 
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 
+    // When this JInternalFrame is closed then this method is called
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        
-        // This method is triggered when the Login Screen is closed
         
         // Sets the variable that determines if the login screen is open to false on the main class
         main.setIsLoginScreenOpen(false);        
         
     }//GEN-LAST:event_formInternalFrameClosed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel forgotPasswordLabel;
     private javax.swing.JButton helpAudioButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginButton;
-    private javax.swing.JButton loginButton1;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
+    private javax.swing.JButton registerButton;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
+
 }

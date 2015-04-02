@@ -1,6 +1,10 @@
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ * For this phase of the project the client assigned us to script a prototype portion of the user interface.
+ * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
 import static java.awt.SystemColor.info;
 import java.io.File;

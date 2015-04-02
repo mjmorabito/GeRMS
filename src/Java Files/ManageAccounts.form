@@ -87,9 +87,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="firstNameTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNameTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lastNameLabel">
       <Properties>
@@ -97,9 +94,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="lastNameTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lastNameTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

@@ -1,6 +1,10 @@
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ * For this phase of the project the client assigned us to script a prototype portion of the user interface.
+ * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
 import java.sql.*;
 import java.util.Properties;
@@ -8,21 +12,33 @@ import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Samir
- */
-public class ManageAccounts extends javax.swing.JInternalFrame {
+/*
+* This is the ManageAccounts JInteralFrame screen.
+* This is the screen that allows the administrator to search for a user
+* using their first and or last name.
+* The usernames for people that match the first and or last name are displayed,
+* along with the password for that username.
+*/
+public class ManageAccounts extends JInternalFrame {
     
-    // variables needed to make connection with DB
+    // Variable used to store a reference to the main class
+    Main main;
+    
+    // Variables needed to make connection with DB
     private static final String dbClassName = "com.mysql.jdbc.Driver";
     private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public ManageAccounts() {
+    public ManageAccounts(Main m) {
+        
+        // Initializes the components on this JInternalFrame
         initComponents();
+        
+        // Stores the reference to the Main class
+        main = m;
+        
     }
 
     /**
@@ -54,19 +70,7 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
 
         firstNameLabel.setText("First Name:");
 
-        firstNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameTextFieldActionPerformed(evt);
-            }
-        });
-
         lastNameLabel.setText("Last Name:");
-
-        lastNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameTextFieldActionPerformed(evt);
-            }
-        });
 
         usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,16 +150,13 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
         setBounds(170, 15, 479, 326);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameTextFieldActionPerformed
-
-    private void lastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameTextFieldActionPerformed
-
+    // This is the action performed method for the search button
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        
+        // A try/catch block to pull information from the MySQL database
         try {
+            
+        // Database Driver
         Class.forName(dbClassName);
         
         // user/pwd to connect to DB
@@ -166,52 +167,64 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
         // DB connection
         Connection conn = DriverManager.getConnection(CONNECTION,p);  
         
-        // Get username and password
+        // Get first and last name
         String fname = firstNameTextField.getText();  
         String lname = lastNameTextField.getText();  
+        
         // Get username and password
         Statement stmt = conn.createStatement();
         String sql = "SELECT * FROM accounts WHERE accfirstname LIKE "
                 + "'" + fname + "%' AND acclastname LIKE '" + lname + "%'";
         ResultSet rs = stmt.executeQuery(sql);
         
+        // Results from the SQL statement will be stored in this table
         DefaultTableModel model = (DefaultTableModel) usersTable.getModel();
         
-        
+        // Initializes the table
         for(int i = 0; i < model.getRowCount(); i++){
             usersTable.setValueAt(null, i, 0);
             usersTable.setValueAt(null, i, 1);
             usersTable.setValueAt(null, i, 2);
             usersTable.setValueAt(null, i, 3);
         }
-
         
-        //if user exists, all fields associate to that user from table
+        // If user exists, all fields associate to that user from table
+       
+        // Row count
         int count = 0;
+        
+        // Loops through all the results in the ResultSet
         while (rs.next() == true){
+            
+            // Sets the data in the table for the current row count
             usersTable.setValueAt(rs.getString("accfirstname"), count, 0);
             usersTable.setValueAt(rs.getString("acclastname"), count, 1);
             usersTable.setValueAt(rs.getString("accUser"), count, 2);
             usersTable.setValueAt(rs.getString("accpassword"), count, 3);
-       
             
+            // Increases the row count
             count++;
+            
         }
-        
-        
-        
+
         } catch (ClassNotFoundException e) {
             
         } catch (SQLException e) {
             
         }
+        
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    // This is the method called when the ok button is pressed
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
+        
+        // Closes the manage accounts screen
         this.dispose();
+        
+        // Sets the isManageAccountsScreen variable to not open
+        main.setIsManageAccountsScreenOpen(false);
+        
     }//GEN-LAST:event_okButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;
@@ -223,4 +236,5 @@ public class ManageAccounts extends javax.swing.JInternalFrame {
     private javax.swing.JButton searchButton;
     private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,15 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ * For this phase of the project the client assigned us to script a prototype portion of the user interface.
+ * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
-import java.io.File;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-
 import java.io.*;
 import java.net.URL;
 import java.util.logging.Level;
@@ -20,18 +16,72 @@ import java.sql.*;
 import java.util.Properties;
 import javax.swing.*;
 
-public class Register extends javax.swing.JInternalFrame {
+/*
+* This is the class for the register JInternalFrame screen.
+* This screen allows the user to input their information then click the register button
+* The user is submitted to the database if the username does not already exist.
+*/
+public class Register extends JInternalFrame {
    
-    // variables needed to make connection with DB
+   // Stores a reference to the Main class
+   Main main;
+    
+   // Variables needed to make connection with DB
    private static final String dbClassName = "com.mysql.jdbc.Driver";
    private static final String CONNECTION = "jdbc:mysql://localhost/germs";     
     
     /**
      * Creates new form RegisterFixed
      */
-    public Register() {
+    public Register(Main m) {
+        
+        // Initializes the components on the JInternalFrame
         initComponents();
+        
+        // Stores the reference to the main class
+        main = m;
+        
+        // Populates the security questions comboxbox
+        populateComboBox();
+        
     }
+    
+    public void populateComboBox() {
+        
+        // A try/catch block to access the MySQL database
+        try {
+            
+            // Database Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);  
+        
+            // Get username and password
+            Statement stmt = conn.createStatement();
+            String sql = "select * from securityquestion;";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            // Loops through all the elements in the ResultSet
+            while (rs.next() == true){
+                
+                // Adds the security question tot the JComboBox
+                securityQuestionsComboBox.addItem(rs.getString("secQuestion"));
+                
+            }    
+
+            } catch (ClassNotFoundException e) {
+
+            } catch (SQLException e) {
+
+            }
+        
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +108,7 @@ public class Register extends javax.swing.JInternalFrame {
         securityQuestionsComboBox = new javax.swing.JComboBox();
         securityAnswerLabel = new javax.swing.JLabel();
         securityAnswerTextField = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        goButton = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -117,10 +167,10 @@ public class Register extends javax.swing.JInternalFrame {
 
         securityAnswerTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/goButton.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        goButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/goButton.png"))); // NOI18N
+        goButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                goButtonActionPerformed(evt);
             }
         });
 
@@ -131,7 +181,7 @@ public class Register extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(goButton)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(securityQuestionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,22 +249,30 @@ public class Register extends javax.swing.JInternalFrame {
                     .addComponent(securityAnswerLabel)
                     .addComponent(securityAnswerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
-                .addComponent(jButton2)
+                .addComponent(goButton)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         setBounds(250, 0, 602, 580);
     }// </editor-fold>//GEN-END:initComponents
 
+    // This method is triggered when the help audio button is pressed
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
 
-        // TODO add your handling code here:
+        /*
+        * This is the code needed to play a .wav file.
+        * The .wav file played is to help the user understand what to do
+        * on this register screen.
+        */
+        
+        // Gets the file path to the .wav file
         File yourFile = new File("src/sounds/GeRMSRegister.wav");
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;
         Clip clip;
-
+        
+        // A try/catch block to play the .wav file
         try {
             stream = AudioSystem.getAudioInputStream(yourFile);
             format = stream.getFormat();
@@ -230,14 +288,18 @@ public class Register extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_helpAudioButtonActionPerformed
 
+    // This is the security questions combox action performed method
     private void securityQuestionsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_securityQuestionsComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_securityQuestionsComboBoxActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    // THis is the action performed method for the go button
+    private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
+        
+        // A try/catch block to get information from the database using SQL
         try {
 
+            // Database Driver
             Class.forName(dbClassName);
 
             // user/pwd to connect to DB
@@ -251,13 +313,18 @@ public class Register extends javax.swing.JInternalFrame {
             // Get username and password
             String user = usernameTextField.getText();
 
-            if(user.trim().isEmpty() || firstNameTextField.getText().trim().isEmpty()
+            // If any of the fields are empty then display a message
+            if (user.trim().isEmpty() || firstNameTextField.getText().trim().isEmpty()
                 || lastNameTextField.getText().trim().isEmpty()
-                || securityAnswerTextField.getText().trim().isEmpty()){
+                || securityAnswerTextField.getText().trim().isEmpty()) {
+                
+                // Display a message
+                JOptionPane.showMessageDialog(null, "Please fill in all the fields.", "Register", JOptionPane.INFORMATION_MESSAGE);
+                
+            // Else if all of the fields have input then try to submit the user to the database
+            } else {
 
-                JOptionPane.showMessageDialog(null, "Please fill in all the fields", "Register", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-
+                // A sql statement to get the username
                 Statement stmt = conn.createStatement();
                 String sql;
                 sql = "select * from accounts where accUser = '" + user + "'";
@@ -265,41 +332,78 @@ public class Register extends javax.swing.JInternalFrame {
 
                 //if user exists, all fields associate to that user from table
                 if (rs.next() == true){
+                    
+                    // Display a message if the user already exists
                     JOptionPane.showMessageDialog(null, "Username already exists!", "Username", JOptionPane.INFORMATION_MESSAGE);
-                }else{
+                    
+                // If the username does not exist then submit the user to the database
+                } else {
+                    
+                    // Gets the password from the password field
                     char[] pass = passwordField1.getPassword();
+                    
+                    // String for the password
                     String password1 = "";
+                    
+                    // Gets the password from the char[] array
                     for (int i = 0; i < pass.length; i++) {
                         password1 += pass[i];
                     }
+                    
+                    // Gets the second password from the password field
                     char[] pass2 = passwordField2.getPassword();
+                    
+                    // Used to store the second password
                     String password2 = "";
+                    
+                    // Gets the password from the second char[] array
                     for (int i = 0; i < pass2.length; i++) {
                         password2 += pass2[i];
                     }
+                    
+                    // If the passwords match
                     if(password1.equals(password2)){
+                        
+                        // Get the other input from the text fields
                         String username = usernameTextField.getText();
                         String firstname = firstNameTextField.getText();
                         String lastname = lastNameTextField.getText();
                         String securityanswer = securityAnswerTextField.getText();
+                        
+                        // Gets the ID of the selected combo box item
                         int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
 
+                        // Inserts the data into the database
                         sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
                         + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
                         stmt.executeUpdate(sql);
 
+                        // Displays a message 
                         JOptionPane.showMessageDialog(null, "Registration complete!", "Register", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        // Closes the register screen
                         this.dispose();
+                        
+                        // Sets the isRegisterScreenOpen to false
+                        main.setIsRegisterScreenOpen(false);
 
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Passwords do not match", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+                    // Else if the passwords do not match
+                    } else {
+                        
+                        // Display a message
+                        JOptionPane.showMessageDialog(null, "Passwords do not match.", "Password Error", JOptionPane.INFORMATION_MESSAGE);
+                        
                     }
+                    
                 }
-                // close all connection to DB
+                
+                // Close all connection to DB
                 rs.close();
                 stmt.close();
 
             }
+            
+            // Closes the connection to the DB
             conn.close();
 
         } catch (ClassNotFoundException e) {
@@ -307,14 +411,14 @@ public class Register extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
 
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+        
+    }//GEN-LAST:event_goButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
+    private javax.swing.JButton goButton;
     private javax.swing.JButton helpAudioButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTextField;
@@ -329,4 +433,5 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -1,8 +1,11 @@
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ * For this phase of the project the client assigned us to script a prototype portion of the user interface.
+ * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
-
 import javax.swing.*;
 
 /*
@@ -359,7 +362,7 @@ public class Main extends JFrame {
     public void openRegisterScreen() {
         
         // Creates a new instance of the register screen
-        register = new Register();
+        register = new Register(this);
 
         // Sets the variable to true
         isRegisterScreenOpen = true;
@@ -534,7 +537,7 @@ public class Main extends JFrame {
         if (isLoggedIn && isLoggedInAsAdmin) {
             
             // Creates a new instance of the manage accounts screen
-            manageAccounts = new ManageAccounts();
+            manageAccounts = new ManageAccounts(this);
             
             // Adds the screen to the desktop pane
             desktopPane.add(manageAccounts);
