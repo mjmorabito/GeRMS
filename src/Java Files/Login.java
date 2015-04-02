@@ -266,9 +266,6 @@ public class Login extends JInternalFrame {
                 // if yes, show all info on screen
                 if(pwd.equals(password)) {
                     
-                    // Opens the GradeSelect Screen
-                    main.openGradeSelectScreen();  
-                    
                     // Closes the login screen
                     this.dispose();
                     main.setIsLoginScreenOpen(false);
@@ -284,6 +281,14 @@ public class Login extends JInternalFrame {
                         
                         // Set the LoggedInAsAdmin variable to true
                         main.setIsLoggedInAsAdmin(true);
+                        
+                        // Opens the ManageAccounts Screen
+                        main.openManageAccountsScreen();                        
+                        
+                    } else {
+                        
+                        // Opens the GradeSelect Screen
+                        main.openGradeSelectScreen();                          
                         
                     }
 

@@ -67,6 +67,23 @@ public class ManageAccounts extends JInternalFrame {
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(974, 560));
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         firstNameLabel.setText("First Name:");
 
@@ -225,6 +242,14 @@ public class ManageAccounts extends JInternalFrame {
         main.setIsManageAccountsScreenOpen(false);
         
     }//GEN-LAST:event_okButtonActionPerformed
+
+    // This method is triggered when the manage accounts screen is closed
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+    
+        // We set this variable to false to allow the screen to be opened again
+        main.setIsManageAccountsScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;

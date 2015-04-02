@@ -391,6 +391,23 @@ public class Main extends JFrame {
         
     }
     
+    // This method creates an instance of the ManageAccounts screen
+    public void openManageAccountsScreen() {
+        
+        // Creates a new ManageAccounts class
+        manageAccounts = new ManageAccounts(this);
+        
+        // Sets the variable to true;
+        isManageAccountsScreenOpen = true;
+        
+        // Adds the screen to the desktop pane
+        desktopPane.add(manageAccounts);
+        
+        // Brings the screen to the front
+        manageAccounts.toFront();
+        
+    }
+    
     // This method creates an instance of the GradeSelect screen
     public void openGradeSelectScreen() {
         
@@ -536,18 +553,21 @@ public class Main extends JFrame {
         // If the person is logged in as an administrator
         if (isLoggedIn && isLoggedInAsAdmin) {
             
-            // Creates a new instance of the manage accounts screen
-            manageAccounts = new ManageAccounts(this);
-            
-            // Adds the screen to the desktop pane
-            desktopPane.add(manageAccounts);
-            
-            // Brings the screen to the front
-            manageAccounts.toFront();
-            
-            // Sets the variable isManageScreenOpen to true
-            isManageAccountsScreenOpen = true;
-            
+            // If the manage accounts screen is alrady open then displa a message
+            if (isManageAccountsScreenOpen) {
+                
+                // Display a message
+                JOptionPane.showMessageDialog(null, "Manage Accounts is already open.", "Manage Accounts", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            // Else if the screen is not open then open the screen
+            } else {
+                
+                // Opens the ManageAccounts screen
+                 openManageAccountsScreen();  
+             
+            }
+ 
+                        
         // If the person is not logged in as an administrator            
         } else {
             
