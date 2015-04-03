@@ -6,6 +6,7 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+import java.awt.Dimension;
 import java.io.*;
 import java.net.URL;
 import java.util.logging.Level;
@@ -43,6 +44,16 @@ public class Register extends JInternalFrame {
         
         // Populates the security questions comboxbox
         populateComboBox();
+        
+        // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);        
         
     }
     
@@ -117,6 +128,23 @@ public class Register extends JInternalFrame {
         setTitle("Register");
         setToolTipText("Register");
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/logoRegisterScreen.jpg"))); // NOI18N
 
@@ -413,6 +441,14 @@ public class Register extends JInternalFrame {
         }
         
     }//GEN-LAST:event_goButtonActionPerformed
+
+    // Triggered when the Register screen is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        
+        // Sets the boolean variable to false (not open)
+        main.setIsRegisterScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;

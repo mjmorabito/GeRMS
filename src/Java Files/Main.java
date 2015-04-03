@@ -6,6 +6,8 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.*;
 
 /*
@@ -74,9 +76,29 @@ public class Main extends JFrame {
         
         // Starts the window in maximized mode
         this.setExtendedState(MAXIMIZED_BOTH);
+                
+        // Gets the size of the computer screen
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        // Sets the size of this JFrame to the size of the computer screen
+        this.setSize(screenSize.width, screenSize.height);
+        
+        // If the computer screen's height equals 768px 
+        if (screenSize.height == 768) {
+            
+            // Set the size to this
+            desktopPane.setSize(screenSize.width, screenSize.height-148);
+            
+        // Else if the size is not 768
+        } else {
+        
+            // Sets the size of the desktop pane to the size of the computer screen
+            desktopPane.setSize(screenSize.width, screenSize.height);
+            
+        }
         
         // Opens the login screen
-        openLoginScreen();
+        openLoginScreen();        
         
     }
 
@@ -137,7 +159,7 @@ public class Main extends JFrame {
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 603, Short.MAX_VALUE)
+            .addGap(0, 1525, Short.MAX_VALUE)
         );
 
         usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
@@ -213,7 +235,7 @@ public class Main extends JFrame {
                             .addComponent(starsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1237, Short.MAX_VALUE)
                         .addComponent(loginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutButton)
@@ -330,6 +352,13 @@ public class Main extends JFrame {
         
         // Returns the boolean value
         return isRegisterScreenOpen;
+        
+    }
+    
+    public Dimension getDesktopPaneDimension() {
+        
+        // Returns the Dimension of the DesktopPane
+        return desktopPane.getSize();
         
     }
     

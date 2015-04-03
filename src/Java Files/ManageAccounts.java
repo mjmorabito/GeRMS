@@ -6,6 +6,7 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+import java.awt.Dimension;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Vector;
@@ -38,6 +39,16 @@ public class ManageAccounts extends JInternalFrame {
         
         // Stores the reference to the Main class
         main = m;
+        
+        // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);           
         
     }
 

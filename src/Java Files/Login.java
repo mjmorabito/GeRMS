@@ -57,12 +57,11 @@ public class Login extends JInternalFrame {
         
         // Gets the dimension of the main desktop pane
         Dimension desktopSize = mainDesktopPane.getSize();
-        
-        
-        JOptionPane.showMessageDialog(null, desktopSize.width + ", " + desktopSize.height, "Size", JOptionPane.INFORMATION_MESSAGE);
+                
+        // Gets the size of this JInternalFrame
         Dimension jInternalFrameSize = this.getSize();
         
-        // Center screen
+        // Centers this JInternalFrame in the DesktopPane
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
             (desktopSize.height- jInternalFrameSize.height)/2);        
                
@@ -185,7 +184,7 @@ public class Login extends JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(helpAudioButton))
@@ -203,10 +202,10 @@ public class Login extends JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginButton)
                     .addComponent(registerButton))
-                .addGap(39, 39, 39))
+                .addContainerGap())
         );
 
-        setBounds(250, 0, 750, 581);
+        setBounds(0, 0, 750, 536);
     }// </editor-fold>//GEN-END:initComponents
 
     // This method is triggered when the "Forgot Password?" text is clicked    
