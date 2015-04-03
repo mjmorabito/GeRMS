@@ -54,6 +54,17 @@ public class Login extends JInternalFrame {
         
         // Sets the reference to the Main class
         main = g;
+        
+        // Gets the dimension of the main desktop pane
+        Dimension desktopSize = mainDesktopPane.getSize();
+        
+        
+        // JOptionPane.showMessageDialog(null, desktopSize.width + ", " + desktopSize.height, "Size", JOptionPane.INFORMATION_MESSAGE);
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Center screen
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);        
                
     }
 
