@@ -87,13 +87,13 @@ public class Main extends JFrame {
         if (screenSize.height == 768) {
             
             // Set the size to this
-            desktopPane.setSize(screenSize.width, screenSize.height-148);
+            desktopPane.setSize(screenSize.width, screenSize.height-175);
             
         // Else if the size is not 768
-        } else {
+        } else if (screenSize.height == 720) {
         
             // Sets the size of the desktop pane to the size of the computer screen
-            desktopPane.setSize(screenSize.width, screenSize.height);
+            desktopPane.setSize(screenSize.width, screenSize.height-182);
             
         }
         
