@@ -59,7 +59,7 @@ public class Login extends JInternalFrame {
         Dimension desktopSize = mainDesktopPane.getSize();
         
         
-        // JOptionPane.showMessageDialog(null, desktopSize.width + ", " + desktopSize.height, "Size", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, desktopSize.width + ", " + desktopSize.height, "Size", JOptionPane.INFORMATION_MESSAGE);
         Dimension jInternalFrameSize = this.getSize();
         
         // Center screen
