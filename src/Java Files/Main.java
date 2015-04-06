@@ -65,6 +65,18 @@ public class Main extends JFrame {
     
     // Determines if the Help Screen is open / closed
     private boolean isHelpScreenOpen = false;    
+    
+    //PreKKCountingQuiz class
+    private PreKK preKK;
+    
+    //Determines if the PreKKCountingQuiz is open / close
+    private boolean isPreKKOpen = false;
+    
+    //PreKKCountingQuiz class
+    private PreKKCountingQuiz preKKCountingQuiz;
+    
+    //Determines if the PreKKCountingQuiz is open / close
+    private boolean isPreKKCountingQuizOpen = false; 
             
     /*
     * Creates a new instance of the Main class
@@ -347,6 +359,24 @@ public class Main extends JFrame {
         
     }  
     
+     // This method sets the isHelpScreenOpen variable to true/false
+    public void setIsPreKKCountingQuizOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isPreKKCountingQuizOpen = isOpen;
+        
+    } 
+    
+         // This method sets the isHelpScreenOpen variable to true/false
+    public void setIsPreKKOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isPreKKOpen = isOpen;
+        
+    } 
+    
+    
+    
     // This method returns the boolean value of isRegisterScreenOpen
     public boolean getIsRegisterScreenOpen() {
         
@@ -478,6 +508,39 @@ public class Main extends JFrame {
         help.toFront();
         
     }
+      // Opens the preKK page
+    public void openPreKK() {
+        
+        // Creates a new preKK page
+        preKK = new PreKK(this);
+        
+        // Sets the variable
+        isPreKKOpen = true;
+        
+        // Adds the preKKCounting quiz screen to the desktop pane
+        desktopPane.add(preKK);
+        
+        // Brings the preKKCounting quiz screen to the front
+        preKK.toFront();
+        
+    }
+    // Opens the preKKCountingQuiz
+    public void openPreKKCountingQuiz() {
+        
+        // Creates a new preKKCountingQuiz
+        preKKCountingQuiz = new PreKKCountingQuiz(this);
+        
+        // Sets the variable
+        isPreKKCountingQuizOpen = true;
+        
+        // Adds the preKKCounting quiz screen to the desktop pane
+        desktopPane.add(preKKCountingQuiz);
+        
+        // Brings the preKKCounting quiz screen to the front
+        preKKCountingQuiz.toFront();
+        
+    }
+    
     
     // This method closes all of the screens that are open upon log out
     public void closeAllScreens() {
