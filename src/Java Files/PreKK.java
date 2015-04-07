@@ -9,12 +9,18 @@
  * @author Samir
  */
 public class PreKK extends javax.swing.JInternalFrame {
-
+    // The main class
+    private Main main;
+ 
     /**
      * Creates new form PreKK
      */
-    public PreKK() {
+    public PreKK(Main m) {
+        // Initializes the components
         initComponents();
+        
+        // Stores the reference to the main class
+        main = m;
     }
 
     /**
@@ -74,6 +80,15 @@ public class PreKK extends javax.swing.JInternalFrame {
     // This method is triggered when the OK button is clicked
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
+        //For testing purposes, this method will launch the PreKKCountingQuiz   
+        // Closes the PreKK screen
+        this.dispose();
+        main.setIsPreKKOpen(false);
+
+        // Sets PreKKCounting quiz to true
+        main.setIsPreKKCountingQuizOpen(true);
+        main.openPreKKCountingQuiz();
+         
     }//GEN-LAST:event_okButtonActionPerformed
 
 

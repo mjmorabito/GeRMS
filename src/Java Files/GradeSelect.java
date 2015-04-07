@@ -182,7 +182,17 @@ public class GradeSelect extends JInternalFrame {
     private void gradePreKandKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePreKandKButtonActionPerformed
     
         // Display a message
-        JOptionPane.showMessageDialog(null, "This button will open the grades PreK-K module.");
+        //JOptionPane.showMessageDialog(null, "This button will open the grades PreK-K module.");
+          // TODO add your handling code here:
+        //For testing purposes, this method will launch the PreKKCountingQuiz   
+        // Closes the grade select screen
+        this.dispose();
+        main.setIsGradeSelectScreenOpen(false);
+
+        // Sets PreKK to true
+        main.setIsPreKKOpen(true);
+        main.openPreKK();
+        
         
     }//GEN-LAST:event_gradePreKandKButtonActionPerformed
 
