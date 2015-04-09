@@ -4,13 +4,23 @@
  * and open the template in the editor.
  */
 
+import javax.swing.*;
+
 /**
  *
  * @author Samir
  */
-public class PreKK extends javax.swing.JInternalFrame {
+public class PreKK extends JInternalFrame {
+    
     // The main class
     private Main main;
+    
+    // Page count
+    private int page = 1;
+    
+    // ImageIcons for the images of the standards
+    private ImageIcon standardIcon1 = new ImageIcon();
+    private ImageIcon standardIcon2 = new ImageIcon();
  
     /**
      * Creates new form PreKK
@@ -32,18 +42,16 @@ public class PreKK extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        okButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        quizButton = new javax.swing.JButton();
+        watchButton1 = new javax.swing.JButton();
+        practiceButton1 = new javax.swing.JButton();
+        watchButton2 = new javax.swing.JButton();
+        practiceButton2 = new javax.swing.JButton();
         standardLabelImage1 = new javax.swing.JLabel();
-        standardLabel1 = new javax.swing.JLabel();
         standardLabelImage2 = new javax.swing.JLabel();
-        standardLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        okButton1 = new javax.swing.JButton();
+        rightarrowButton = new javax.swing.JButton();
+        leftarrowButton = new javax.swing.JButton();
+        finalButton = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,48 +61,52 @@ public class PreKK extends javax.swing.JInternalFrame {
         setToolTipText("PreK-K");
         setVisible(true);
 
-        okButton.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        okButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Quiz.png"))); // NOI18N
-        okButton.addActionListener(new java.awt.event.ActionListener() {
+        quizButton.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        quizButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Quiz.png"))); // NOI18N
+        quizButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
+                quizButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
+        watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
+        practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
-        jButton5.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
+        watchButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        practiceButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
+        practiceButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                practiceButton2ActionPerformed(evt);
             }
         });
 
         standardLabelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Counting.jpg"))); // NOI18N
 
-        standardLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        standardLabel1.setText("Counting");
+        standardLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Matching.png"))); // NOI18N
 
-        standardLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Coins.png"))); // NOI18N
-
-        standardLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        standardLabel2.setText("Coins");
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/RightArrow.png"))); // NOI18N
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/LeftArrow.png"))); // NOI18N
-
-        okButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        okButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Final.png"))); // NOI18N
-        okButton1.addActionListener(new java.awt.event.ActionListener() {
+        rightarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/RightArrow.png"))); // NOI18N
+        rightarrowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButton1ActionPerformed(evt);
+                rightarrowButtonActionPerformed(evt);
+            }
+        });
+
+        leftarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/LeftArrow.png"))); // NOI18N
+        leftarrowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftarrowButtonActionPerformed(evt);
+            }
+        });
+
+        finalButton.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        finalButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Final.png"))); // NOI18N
+        finalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalButtonActionPerformed(evt);
             }
         });
 
@@ -103,34 +115,29 @@ public class PreKK extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(quizButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(39, 39, 39)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(standardLabelImage1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(standardLabel1)))
-                            .addGap(46, 46, 46)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(standardLabelImage2)
-                            .addComponent(standardLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(standardLabelImage2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(standardLabelImage1)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton6)))
+                        .addComponent(leftarrowButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(okButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rightarrowButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(practiceButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(practiceButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(finalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
@@ -138,28 +145,22 @@ public class PreKK extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(standardLabelImage1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(standardLabel1)))
-                .addGap(21, 21, 21)
+                    .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(standardLabelImage1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(standardLabelImage2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(standardLabel2)))
+                    .addComponent(practiceButton2)
+                    .addComponent(standardLabelImage2)
+                    .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6))
+                    .addComponent(rightarrowButton)
+                    .addComponent(leftarrowButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okButton)
-                    .addComponent(okButton1))
+                    .addComponent(quizButton)
+                    .addComponent(finalButton))
                 .addGap(30, 30, 30))
         );
 
@@ -167,7 +168,7 @@ public class PreKK extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // This method is triggered when the OK button is clicked
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
         // TODO add your handling code here:
         //For testing purposes, this method will launch the PreKKCountingQuiz   
         // Closes the PreKK screen
@@ -178,29 +179,107 @@ public class PreKK extends javax.swing.JInternalFrame {
         main.setIsPreKKCountingQuizOpen(true);
         main.openPreKKCountingQuiz();
          
-    }//GEN-LAST:event_okButtonActionPerformed
+    }//GEN-LAST:event_quizButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void practiceButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_practiceButton2ActionPerformed
 
-    private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+    private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_okButton1ActionPerformed
+    }//GEN-LAST:event_finalButtonActionPerformed
 
+    private void rightarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightarrowButtonActionPerformed
+        // TODO add your handling code here:
+        
+        // If the current page is less than 4
+        if (page < 4) {
+            
+            // Increments the current page number
+            page++;
+            
+            // Changes the images on the page
+            changePage();
+            
+        // Else if the current page is 4    
+        } else {
+            
+            // Display a message
+            JOptionPane.showMessageDialog(null, "You're on the last page.", "Last Page", JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+        
+    }//GEN-LAST:event_rightarrowButtonActionPerformed
 
+    private void leftarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftarrowButtonActionPerformed
+        // TODO add your handling code here:
+        
+        // If the current page is less than 4
+        if (page > 1) {
+            
+            // Increments the current page number
+            page--;
+            
+            // Changes the images displayed on the page
+            changePage();
+            
+        // Else if the current page is 1    
+        } else {
+            
+            // Display a message
+            JOptionPane.showMessageDialog(null, "You're on the first page.", "First Page", JOptionPane.INFORMATION_MESSAGE);
+        
+        }   
+    }//GEN-LAST:event_leftarrowButtonActionPerformed
+
+    private void changePage() {
+        
+            // If the current page is now 1
+            if (page == 1) {
+
+               // Sets the path for the ImageIcons
+               standardIcon1 = new ImageIcon(getClass().getResource("/Images/PreKK/Counting.jpg"));
+               standardIcon2 = new ImageIcon(getClass().getResource("/Images/PreKK/Matching.png"));
+            
+            // Else If the current page is now 2
+            } else if (page == 2) {
+            
+               // Sets the path for the ImageIcons
+               standardIcon1 = new ImageIcon(getClass().getResource("/Images/PreKK/IdentifyPosition.png"));
+               standardIcon2 = new ImageIcon(getClass().getResource("/Images/PreKK/Comparing.png"));
+                
+            // Else if the current page is now 3
+            } else if (page == 3) {
+
+               // Sets the path for the ImageIcons
+               standardIcon1 = new ImageIcon(getClass().getResource("/Images/PreKK/HalfandWhole.jpg"));
+               standardIcon2 = new ImageIcon(getClass().getResource("/Images/PreKK/Coins.jpg"));                
+                
+            // Else if the current page is now 4
+            } else if (page == 4) {
+                
+               // Sets the path for the ImageIcons
+               standardIcon1 = new ImageIcon(getClass().getResource("/Images/PreKK/ObjectsMath.jpg"));
+               standardIcon2 = new ImageIcon(getClass().getResource("/Images/PreKK/Estimate.jpg"));
+                
+            }
+            
+            // Changes the images displayed
+            standardLabelImage1.setIcon(standardIcon1);
+            standardLabelImage2.setIcon(standardIcon2);
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton okButton;
-    private javax.swing.JButton okButton1;
-    private javax.swing.JLabel standardLabel1;
-    private javax.swing.JLabel standardLabel2;
+    private javax.swing.JButton finalButton;
+    private javax.swing.JButton leftarrowButton;
+    private javax.swing.JButton practiceButton1;
+    private javax.swing.JButton practiceButton2;
+    private javax.swing.JButton quizButton;
+    private javax.swing.JButton rightarrowButton;
     private javax.swing.JLabel standardLabelImage1;
     private javax.swing.JLabel standardLabelImage2;
+    private javax.swing.JButton watchButton1;
+    private javax.swing.JButton watchButton2;
     // End of variables declaration//GEN-END:variables
 }
