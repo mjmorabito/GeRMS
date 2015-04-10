@@ -73,6 +73,11 @@ public class PreKK extends JInternalFrame {
         watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
+        practiceButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                practiceButton1ActionPerformed(evt);
+            }
+        });
 
         watchButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
         watchButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -231,6 +236,16 @@ public class PreKK extends JInternalFrame {
         
         }   
     }//GEN-LAST:event_leftarrowButtonActionPerformed
+
+    private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        main.setIsPreKKOpen(false);
+
+        // Sets PreKK to true
+        main.setIsKN1ScreenOpen(true);
+        main.openKN1Screen();
+    }//GEN-LAST:event_practiceButton1ActionPerformed
 
     private void changePage() {
         

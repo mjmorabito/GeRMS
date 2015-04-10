@@ -76,36 +76,36 @@ public class QuizSample {
         //make sure that they are unique
         int goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 5;
         //System.out.println("The correct answer is " + goodWrongAnswer);
-        while (goodWrongAnswer == Integer.parseInt(ans1)) {
+        while (goodWrongAnswer == Integer.parseInt(ans1) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 5;
         }
 
         ans2 = goodWrongAnswer + "";
         goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 5;
-        while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)) {
+        while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 5;
         }
         ans3 = goodWrongAnswer + "";
         while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-                || goodWrongAnswer == Integer.parseInt(ans3)) {
+                || goodWrongAnswer == Integer.parseInt(ans3) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 5;
         }
 
         ans4 = goodWrongAnswer + "";
         
-        //put into an arraylist and shuffle elements randomy
+        //Put into an arraylist and shuffle elements randomy
         ArrayList <String> answerChoices = new ArrayList<>();
         answerChoices.add(ans1);
         answerChoices.add(ans2);
         answerChoices.add(ans3);
         answerChoices.add(ans4);
-                
+        
+        //Randomize the buttons
         shuffleList(answerChoices);
         ans1 = answerChoices.get(0);
         ans2 = answerChoices.get(1);
         ans3 = answerChoices.get(2);
         ans4 = answerChoices.get(3);
-        //we still remember which answer is the correctAnswer
         
     }
     public static void shuffleList(ArrayList<String> a) {
@@ -123,17 +123,19 @@ public class QuizSample {
     a.set(i, a.get(change));
     a.set(change, helper);
   }
-  /**
-   * private String ans1;
-    private String ans2;
-    private String ans3;
-    private String ans4;
-    private String question;
-    private String numberList;
-    private int start;
-    private int correctAnswer;
-   */
   
+  //Used to determine if the number is already in the sequence 
+  private boolean isNumberAlreadyInTheSequence(int number)
+  {
+      boolean indicator = false;
+      for(int i = 0; i < sequence.size()-1; i++)
+      {
+         if(number == sequence.get(i))
+             indicator = true;
+      }
+      return indicator;
+  }
+
   
   public String getAns1()
   {

@@ -72,11 +72,19 @@ public class Main extends JFrame {
     //Determines if the PreKKCountingQuiz is open / close
     private boolean isPreKKOpen = false;
     
+    
+    //TODO DELETE THIS SOON
     //PreKKCountingQuiz class
     private PreKKCountingQuiz preKKCountingQuiz;
     
     //Determines if the PreKKCountingQuiz is open / close
     private boolean isPreKKCountingQuizOpen = false; 
+    
+    //KN1 class
+    private KN1 kN1;
+    
+    //Determins if the KN1Screen is Open
+    private boolean isKN1ScreenOpen = false;
             
     /*
     * Creates a new instance of the Main class
@@ -374,6 +382,17 @@ public class Main extends JFrame {
         isPreKKOpen = isOpen;
         
     } 
+    public void setIsKN1ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN1ScreenOpen = isOpen;
+    }
+    
+      public boolean getIsKN1ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN1ScreenOpen;
+    }
     
     
     
@@ -538,6 +557,23 @@ public class Main extends JFrame {
         
         // Brings the preKKCounting quiz screen to the front
         preKKCountingQuiz.toFront();
+        
+    }
+    
+    // This method creates an instance of the KN1 screen
+    public void openKN1Screen() {
+        
+        // Creates a new KN1
+        kN1 = new KN1(this);
+        
+        // Sets the variable
+        isKN1ScreenOpen = true;
+        
+        // Adds the KN1 screen to the desktop pane
+        desktopPane.add(kN1);
+        
+        // Brings the KN1 screen to the front
+        kN1.toFront();       
         
     }
     

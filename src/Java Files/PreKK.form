@@ -124,6 +124,9 @@
           <Image iconType="3" name="/Images/PreKK/Practice.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="practiceButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="watchButton2">
       <Properties>
