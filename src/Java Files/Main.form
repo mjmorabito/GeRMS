@@ -128,7 +128,8 @@
     </Component>
     <Container class="javax.swing.JDesktopPane" name="desktopPane">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane() {&#xd;&#xa;    private java.awt.Image image;&#xd;&#xa;    {&#xd;&#xa;        try {&#xd;&#xa;            java.net.URL url = this.getClass().getClassLoader().getResource(&quot;Images/MainScreen/background.jpg&quot;);&#xd;&#xa;            image = javax.imageio.ImageIO.read(url);&#xd;&#xa;        } catch (java.io.IOException e) {&#xd;&#xa;            e.printStackTrace();&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        g.drawImage(image, 0, 0, null);           &#xd;&#xa;    }&#xd;&#xa;};"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane() {&#xd;&#xa;    private java.awt.Image image;&#xd;&#xa;    {&#xd;&#xa;        try {&#xd;&#xa;            java.net.URL url = this.getClass().getClassLoader().getResource(&quot;Images/MainScreen/background.jpg&quot;);&#xd;&#xa;            image = javax.imageio.ImageIO.read(url);&#xd;&#xa;        } catch (java.io.IOException e) {&#xd;&#xa;            e.printStackTrace();&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        g.drawImage(image, 0, 0,getSize().width, getSize().height, null);           &#xd;&#xa;    }&#xd;&#xa;};"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Main_desktopPane"/>
       </AuxValues>
 
       <Layout>

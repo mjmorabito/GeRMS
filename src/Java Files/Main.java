@@ -146,7 +146,7 @@ public class Main extends JFrame {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);           
+                g.drawImage(image, 0, 0,getSize().width, getSize().height, null);           
             }
         };
         usernameLabel2 = new javax.swing.JLabel();
