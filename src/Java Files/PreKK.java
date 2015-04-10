@@ -269,21 +269,23 @@ public class PreKK extends JInternalFrame {
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
         // TODO add your handling code here:
+
+        // Closes the PreK-K module
+        this.dispose();
+
+        // Sets the variable to closed
+        main.setIsPreKKOpen(false);
         
         // If the current page is 1
         if (page == 1) {
             
-            // Closes the PreK-K module
-            this.dispose();
-            
-            // Sets the variable to closed
-            main.setIsPreKKOpen(false);
-
-            // Sets KN1 open to true
-            main.setIsKN1ScreenOpen(true);
-            
             // Opens the KN1 module
             main.openKN1Screen();
+            
+        } else if (page == 4) {
+            
+            // Opens the KN7 module
+            main.openKN7Screen();
             
         }
         
