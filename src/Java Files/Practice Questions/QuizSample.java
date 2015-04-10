@@ -35,6 +35,17 @@ public class QuizSample {
     }
     * */
     public void initializeElements() {
+        //First make every element zero
+        ans1="";
+        ans2="";
+        ans3="";
+        ans4="";
+        question="";
+        numberList="";
+        start=0;
+        correctAnswer=0;
+        
+        
        
         Random randomGenerator = new Random();
         //create a random integer betwen 1 and 26
@@ -122,6 +133,11 @@ public class QuizSample {
     String helper = a.get(i);
     a.set(i, a.get(change));
     a.set(change, helper);
+  }
+  public void setElementsBackToZero()
+  {
+      numberList = "";
+      //MAYBE ADD ALL MEMBER VARIABLES BACK TO ZERO
   }
   
   //Used to determine if the number is already in the sequence 
