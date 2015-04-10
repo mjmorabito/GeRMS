@@ -10,11 +10,20 @@
  */
 public class KN4 extends javax.swing.JInternalFrame {
 
+    // Stores a reference to the main class
+    Main main;
+    
     /**
      * Creates new form KN4
      */
-    public KN4() {
+    public KN4(Main m) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Sets the reference to the main class
+        main = m;
+        
     }
 
     /**

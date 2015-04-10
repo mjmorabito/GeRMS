@@ -10,11 +10,20 @@
  */
 public class KN6 extends javax.swing.JInternalFrame {
 
+    // Stores a reference to the main class
+    Main main;
+    
     /**
      * Creates new form KN6
      */
-    public KN6() {
+    public KN6(Main m) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Sets the reference to the main class
+        main = m;
+        
     }
 
     /**

@@ -10,11 +10,20 @@
  */
 public class KN8 extends javax.swing.JInternalFrame {
 
+    // Stores a reference to the main class
+    Main main;
+    
     /**
      * Creates new form KN8
      */
-    public KN8() {
+    public KN8(Main m) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Sets the reference to the main class
+        main = m;
+        
     }
 
     /**

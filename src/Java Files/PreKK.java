@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.awt.Dimension;
 import javax.swing.*;
 
 /**
@@ -31,6 +32,17 @@ public class PreKK extends JInternalFrame {
         
         // Stores the reference to the main class
         main = m;
+        
+        // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+        
     }
 
     /**
@@ -188,6 +200,24 @@ public class PreKK extends JInternalFrame {
 
     private void practiceButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton2ActionPerformed
         // TODO add your handling code here:
+        
+        // If the current page is 1
+        if (page == 1) {
+            
+            // Closes the PreK-K Module
+            this.dispose();
+            
+            // Sets the variable to false
+            main.setIsPreKKOpen(false);
+            
+            // Opens KN2
+            main.openKN2Screen();
+            
+            // Sets kN2 open to true
+            main.setIsKN2ScreenOpen(true);
+            
+        }
+        
     }//GEN-LAST:event_practiceButton2ActionPerformed
 
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
@@ -239,12 +269,24 @@ public class PreKK extends JInternalFrame {
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        main.setIsPreKKOpen(false);
+        
+        // If the current page is 1
+        if (page == 1) {
+            
+            // Closes the PreK-K module
+            this.dispose();
+            
+            // Sets the variable to closed
+            main.setIsPreKKOpen(false);
 
-        // Sets PreKK to true
-        main.setIsKN1ScreenOpen(true);
-        main.openKN1Screen();
+            // Sets KN1 open to true
+            main.setIsKN1ScreenOpen(true);
+            
+            // Opens the KN1 module
+            main.openKN1Screen();
+            
+        }
+        
     }//GEN-LAST:event_practiceButton1ActionPerformed
 
     private void changePage() {

@@ -72,7 +72,6 @@ public class Main extends JFrame {
     //Determines if the PreKKCountingQuiz is open / close
     private boolean isPreKKOpen = false;
     
-    
     //TODO DELETE THIS SOON
     //PreKKCountingQuiz class
     private PreKKCountingQuiz preKKCountingQuiz;
@@ -81,11 +80,53 @@ public class Main extends JFrame {
     private boolean isPreKKCountingQuizOpen = false; 
     
     //KN1 class
-    private KN1 kN1;
+    private KN1 kn1;
     
     //Determins if the KN1Screen is Open
     private boolean isKN1ScreenOpen = false;
+    
+    // KN2 class
+    private KN2 kn2;
+    
+    // Determines if the KN2 Practice Module is open / closed
+    private boolean isKN2ScreenOpen = false;
+    
+    // KN2 class
+    private KN3 kn3;
+    
+    // Determines if the KN3 Practice Module is open / closed
+    private boolean isKN3ScreenOpen = false;    
             
+    // KN4 class
+    private KN4 kn4;
+    
+    // Determines if the KN4 Practice Module is open / closed
+    private boolean isKN4ScreenOpen = false;
+ 
+    // KN5 class
+    private KN5 kn5;
+    
+    // Determines if the KN5 Practice Module is open / closed
+    private boolean isKN5ScreenOpen = false;
+    
+    // KN6 class
+    private KN6 kn6;
+    
+    // Determines if the KN6 Practice Module is open / closed
+    private boolean isKN6ScreenOpen = false;
+    
+    // KN7 class
+    private KN7 kn7;
+    
+    // Determines if the KN7 Practice Module is open / closed
+    private boolean isKN7ScreenOpen = false;
+ 
+    // KN8 class
+    private KN8 kn8;
+    
+    // Determines if the KN8 Practice Module is open / closed
+    private boolean isKN8ScreenOpen = false;
+ 
     /*
     * Creates a new instance of the Main class
     */
@@ -375,26 +416,141 @@ public class Main extends JFrame {
         
     } 
     
-         // This method sets the isHelpScreenOpen variable to true/false
+    // This method sets the isHelpScreenOpen variable to true/false
     public void setIsPreKKOpen(boolean isOpen) {
         
         // Sets the variable
         isPreKKOpen = isOpen;
         
     } 
+    
+    // This method sets the isKN1ScreenOpen variable to true/false
     public void setIsKN1ScreenOpen(boolean isOpen){
         
         //Set the variable
         isKN1ScreenOpen = isOpen;
+        
     }
     
-      public boolean getIsKN1ScreenOpen(boolean isOpen){
+    // This method sets the isKN2ScreenOpen variable to true/false
+    public void setIsKN2ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN2ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN3ScreenOpen variable to true/false
+    public void setIsKN3ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN3ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN4ScreenOpen variable to true/false
+    public void setIsKN4ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN4ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN5ScreenOpen variable to true/false
+    public void setIsKN5ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN5ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN6ScreenOpen variable to true/false
+    public void setIsKN6ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN6ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN7ScreenOpen variable to true/false
+    public void setIsKN7ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN7ScreenOpen = isOpen;
+        
+    }
+    
+    // This method sets the isKN8ScreenOpen variable to true/false
+    public void setIsKN8ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isKN8ScreenOpen = isOpen;
+        
+    }
+    
+    // This method returns the value of the isKN1ScreenOpen variable
+    public boolean getIsKN1ScreenOpen(boolean isOpen){
         
         //Returns the boolean value
         return isKN1ScreenOpen;
+        
     }
     
+    // This method returns the value of the isKN2ScreenOpen variable
+    public boolean getIsKN2ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN2ScreenOpen;
+        
+    }
     
+    // This method returns the value of the isKN3ScreenOpen variable
+    public boolean getIsKN3ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN3ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isKN4ScreenOpen variable
+    public boolean getIsKN4ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN4ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isKN5ScreenOpen variable
+    public boolean getIsKN5ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN5ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isKN6ScreenOpen variable
+    public boolean getIsKN6ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN6ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isKN7ScreenOpen variable
+    public boolean getIsKN7ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN7ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isKN8ScreenOpen variable
+    public boolean getIsKN8ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isKN8ScreenOpen;
+        
+    }
     
     // This method returns the boolean value of isRegisterScreenOpen
     public boolean getIsRegisterScreenOpen() {
@@ -564,19 +720,137 @@ public class Main extends JFrame {
     public void openKN1Screen() {
         
         // Creates a new KN1
-        kN1 = new KN1(this);
+        kn1 = new KN1(this);
         
         // Sets the variable
         isKN1ScreenOpen = true;
         
         // Adds the KN1 screen to the desktop pane
-        desktopPane.add(kN1);
+        desktopPane.add(kn1);
         
         // Brings the KN1 screen to the front
-        kN1.toFront();       
+        kn1.toFront();       
         
     }
     
+    // This method creates an instance of the KN2 screen
+    public void openKN2Screen() {
+        
+        // Creates a new KN1
+        kn2 = new KN2(this);
+        
+        // Sets the variable
+        isKN2ScreenOpen = true;
+        
+        // Adds the KN2 screen to the desktop pane
+        desktopPane.add(kn2);
+        
+        // Brings the KN2 screen to the front
+        kn2.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN3 screen
+    public void openKN3Screen() {
+        
+        // Creates a new KN3
+        kn3 = new KN3(this);
+        
+        // Sets the variable
+        isKN3ScreenOpen = true;
+        
+        // Adds the KN3 screen to the desktop pane
+        desktopPane.add(kn3);
+        
+        // Brings the KN3 screen to the front
+        kn3.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN4 screen
+    public void openKN4Screen() {
+        
+        // Creates a new KN4
+        kn4 = new KN4(this);
+        
+        // Sets the variable
+        isKN4ScreenOpen = true;
+        
+        // Adds the KN4 screen to the desktop pane
+        desktopPane.add(kn4);
+        
+        // Brings the KN4 screen to the front
+        kn4.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN5 screen
+    public void openKN5Screen() {
+        
+        // Creates a new KN5
+        kn5 = new KN5(this);
+        
+        // Sets the variable
+        isKN5ScreenOpen = true;
+        
+        // Adds the KN5 screen to the desktop pane
+        desktopPane.add(kn5);
+        
+        // Brings the KN5 screen to the front
+        kn5.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN6 screen
+    public void openKN6Screen() {
+        
+        // Creates a new KN1
+        kn6 = new KN6(this);
+        
+        // Sets the variable
+        isKN6ScreenOpen = true;
+        
+        // Adds the KN6 screen to the desktop pane
+        desktopPane.add(kn6);
+        
+        // Brings the KN6 screen to the front
+        kn6.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN7 screen
+    public void openKN7Screen() {
+        
+        // Creates a new KN7
+        kn7 = new KN7(this);
+        
+        // Sets the variable
+        isKN7ScreenOpen = true;
+        
+        // Adds the KN7 screen to the desktop pane
+        desktopPane.add(kn7);
+        
+        // Brings the KN7 screen to the front
+        kn7.toFront();       
+        
+    }
+    
+    // This method creates an instance of the KN8 screen
+    public void openKN8Screen() {
+        
+        // Creates a new KN1
+        kn8 = new KN8(this);
+        
+        // Sets the variable
+        isKN8ScreenOpen = true;
+        
+        // Adds the KN8 screen to the desktop pane
+        desktopPane.add(kn8);
+        
+        // Brings the KN8 screen to the front
+        kn8.toFront();       
+        
+    }
     
     // This method closes all of the screens that are open upon log out
     public void closeAllScreens() {
