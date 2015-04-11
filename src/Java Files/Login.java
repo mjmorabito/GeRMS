@@ -44,16 +44,13 @@ public class Login extends JInternalFrame {
     /**
      * Creates new form LoginScreen
      */
-    public Login(Main g, JDesktopPane desktopPane) {
+    public Login(Main m) {
         
         // Initializes the components on the Login Screen
-        initComponents();
-        
-        // Sets the reference to the DesktopPane from the main screen
-        mainDesktopPane = desktopPane;
+        initComponents();      
         
         // Sets the reference to the Main class
-        main = g;
+        main = m;
         
         // Gets the dimension of the main desktop pane
         Dimension desktopSize = main.getDesktopPaneDimension();

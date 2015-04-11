@@ -144,6 +144,9 @@ public class Main extends JFrame {
         // Sets the size of this JFrame to the size of the computer screen
         this.setSize(screenSize.width, screenSize.height);
         
+        // Sets the size of the desktopPane
+        desktopPane.setSize(screenSize.width, screenSize.height-250);
+        
         // If the computer screen's height equals 768px 
         if (screenSize.height == 768) {
             
@@ -579,7 +582,7 @@ public class Main extends JFrame {
     public void openLoginScreen() {
         
         // Creates a new instance of the login screen
-        login = new Login(this, desktopPane);
+        login = new Login(this);
 
         // Adds the login screen to the desktop pane
         desktopPane.add(login);

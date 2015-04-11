@@ -126,6 +126,7 @@ public class KN7 extends JInternalFrame {
         
     }
     
+    // This method generates a medium difficulty question
     public void generateMediumQuestion() {
   
         // Picks a number between (1-4)
@@ -167,6 +168,7 @@ public class KN7 extends JInternalFrame {
         
     }
     
+    // This method generates a hard difficulty question
     public void generateHardQuestion() {
  
         // Generates a value between (1-3)
@@ -462,6 +464,7 @@ public class KN7 extends JInternalFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // This method is called when the lower right answer button is clicked
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         // If the user has not submitted an answer
@@ -521,6 +524,7 @@ public class KN7 extends JInternalFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // This method is called when the lower left answer button is clicked
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         // If the user has not submitted an answer

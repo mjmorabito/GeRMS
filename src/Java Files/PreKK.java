@@ -64,6 +64,7 @@ public class PreKK extends JInternalFrame {
         rightarrowButton = new javax.swing.JButton();
         leftarrowButton = new javax.swing.JButton();
         finalButton = new javax.swing.JButton();
+        pageLabel = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -127,12 +128,15 @@ public class PreKK extends JInternalFrame {
             }
         });
 
+        pageLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        pageLabel.setText("1/4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(quizButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -146,8 +150,10 @@ public class PreKK extends JInternalFrame {
                                     .addComponent(standardLabelImage1)
                                     .addGap(46, 46, 46)
                                     .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(pageLabel)
+                        .addGap(60, 60, 60)
                         .addComponent(leftarrowButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,21 +166,27 @@ public class PreKK extends JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(standardLabelImage1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(practiceButton2)
-                    .addComponent(standardLabelImage2)
-                    .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rightarrowButton)
-                    .addComponent(leftarrowButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(standardLabelImage1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(practiceButton2)
+                            .addComponent(standardLabelImage2)
+                            .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rightarrowButton)
+                            .addComponent(leftarrowButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pageLabel)
+                        .addGap(27, 27, 27)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(quizButton)
                     .addComponent(finalButton))
@@ -244,6 +256,9 @@ public class PreKK extends JInternalFrame {
         
         }
         
+        // Sets the pageLabel text
+        pageLabel.setText(page+"/4");
+        
     }//GEN-LAST:event_rightarrowButtonActionPerformed
 
     private void leftarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftarrowButtonActionPerformed
@@ -264,7 +279,11 @@ public class PreKK extends JInternalFrame {
             // Display a message
             JOptionPane.showMessageDialog(null, "You're on the first page.", "First Page", JOptionPane.INFORMATION_MESSAGE);
         
-        }   
+        }
+        
+        // Sets the pageLabel text
+        pageLabel.setText(page+"/4");
+        
     }//GEN-LAST:event_leftarrowButtonActionPerformed
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
@@ -281,6 +300,11 @@ public class PreKK extends JInternalFrame {
             
             // Opens the KN1 module
             main.openKN1Screen();
+            
+        } else if (page == 3) {
+          
+            // Opens the KN5 module
+            main.openKN5Screen();
             
         } else if (page == 4) {
             
@@ -332,6 +356,7 @@ public class PreKK extends JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton finalButton;
     private javax.swing.JButton leftarrowButton;
+    private javax.swing.JLabel pageLabel;
     private javax.swing.JButton practiceButton1;
     private javax.swing.JButton practiceButton2;
     private javax.swing.JButton quizButton;

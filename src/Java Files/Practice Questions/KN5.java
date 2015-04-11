@@ -4,14 +4,44 @@
  * and open the template in the editor.
  */
 
+import java.awt.Dimension;
+import javax.swing.*;
+
 /**
  *
  * @author Samir
  */
-public class KN5 extends javax.swing.JInternalFrame {
+public class KN5 extends JInternalFrame {
 
-    // Stores a reference to the instance of the main class
-    Main main;
+    // Stores a reference to the main class
+    private Main main;
+    
+    // ImageIcon for the question
+    private ImageIcon questionIcon = new ImageIcon();
+    
+    // Random number to decide which question to use
+    private int questionNum;
+    
+    // Stores the correct answer to the question
+    private int answer;
+    
+    // Stores the user's choices for answers
+    private int[] choices = new int[4];
+    
+    // Stores the count of number of questions asked
+    private int questionCount = 1;
+    
+    // ImageIcon for the neutral answer button
+    private ImageIcon neutralImageIcon;
+    
+    // ImageIcon for the correct answer
+    private ImageIcon correctImageIcon;
+    
+    // ImageIcon for the incorrect answer
+    private ImageIcon incorrectImageIcon;
+    
+    // Boolean to restrict the user one submission per question
+    private boolean answerSubmitted = false;
     
     /**
      * Creates new form KN5
@@ -23,6 +53,21 @@ public class KN5 extends javax.swing.JInternalFrame {
         
         // Sets the reference to the main class
         main = m;
+        
+        // Centers the JInternalFrame on the screen
+        centerOnScreen();
+        
+        // ImageIcons for the neutral, correct, and incorrect buttons
+        neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
+        correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
+        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
+        
+        // Generates an easy question on the screen
+        generateEasyQuestion();
+        
+        // Disables the first two buttons
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
         
     }
 
@@ -37,14 +82,41 @@ public class KN5 extends javax.swing.JInternalFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Half and Whole: Easy Practice Question");
+        setToolTipText("Half and Whole Practice Questions");
+        setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         jButton1.setBackground(new java.awt.Color(230, 126, 34));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("A");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -54,17 +126,27 @@ public class KN5 extends javax.swing.JInternalFrame {
         jButton3.setBackground(new java.awt.Color(230, 126, 34));
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("C");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/RightArrow.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel2.setText("1/3");
+
         jButton2.setBackground(new java.awt.Color(230, 126, 34));
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("B");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -74,7 +156,7 @@ public class KN5 extends javax.swing.JInternalFrame {
         jButton4.setBackground(new java.awt.Color(230, 126, 34));
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("D");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -82,67 +164,338 @@ public class KN5 extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 28)); // NOI18N
-        jLabel1.setText("Question");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton5)
+                            .addGap(30, 30, 30))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(14, 14, 14)))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // This method centers this form in the middle of the screen
+    public void centerOnScreen() {
+        
+         // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+        
+    }
+    
+    // This method is called when the top left answer button is clicked
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // This method is called when the lower left answer button is clicked
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (answer == 0) {
+
+                // Display the correct answer image
+                jButton3.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton3.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    // This method is called when the blue right arrow is clicked
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        // Allows the user to submit an answer
+        answerSubmitted = false;
+
+        // Increments the questionCount
+        questionCount++;
+
+        // String for the title of this form
+        String title = "";
+
+        // If the current question number is the second question
+        if (questionCount == 2) {
+
+            // Resets the ImageIcons of the JButtons on the screen to neutral
+            jButton1.setIcon(neutralImageIcon);
+            jButton2.setIcon(neutralImageIcon);
+            jButton3.setIcon(neutralImageIcon);
+            jButton4.setIcon(neutralImageIcon);
+
+            // Generate a medium question
+            generateMediumQuestion();
+
+            // Title of the form
+            title = "Half and Whole: Medium Practice Question";
+
+        } else if (questionCount == 3) {
+
+            // Resets the ImageIcons of the JButtons on the screen to neutral
+            jButton1.setIcon(neutralImageIcon);
+            jButton2.setIcon(neutralImageIcon);
+            jButton3.setIcon(neutralImageIcon);
+            jButton4.setIcon(neutralImageIcon);
+
+            // Generate a hard question
+            generateHardQuestion();
+
+            // Title of the form
+            title = "Half and Whole: Hard Practice Question";
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Half and Whole.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+
+            // Closes this screen
+            this.dispose();
+
+            main.setIsKN7ScreenOpen(false);
+
+            // Opens the PreKK module
+            main.openPreKK();
+
+        }
+
+        // Sets the question questionCount on the screen
+        jLabel2.setText(questionCount+"/3");
+
+        // Sets the title of the form
+        this.setTitle(title);
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    // This method is called hwen the top right answer button is clicked
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // This method is called when the lower right answer button is clicked
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (answer == 1) {
+                // Display the correct answer image
+                jButton4.setIcon(correctImageIcon);
+
+            } else {
+                // Display the incorrect answer image
+                jButton4.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    // This method is called when the form is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+    
+        // Sets the variable to false (which means that this form is closed)
+        main.setIsKN5ScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
+
+    // This method is called when the form is created, it generates an easy question
+    public void generateEasyQuestion() {
+
+        // Randomly picks a number form (1-2)
+        questionNum = (int)(Math.random()*( (6-1) + 1)) + 1;
+        
+        // Images to be used for the questions
+        String[] imagePaths = { 
+                                "/Images/PracticeScreens/KN5/HalfCupOfWater.png",
+                                "/Images/PracticeScreens/KN5/WholeCupOfWater.png",
+                                "/Images/PracticeScreens/KN5/HalfCupOfMilk.png",
+                                "/Images/PracticeScreens/KN5/WholeCupOfMilk.png",
+                                "/Images/PracticeScreens/KN5/HalfCupOfOrangeJuice.png",
+                                "/Images/PracticeScreens/KN5/WholeCupOfOrangeJuice.png",
+                              };
+        
+        // Answers to the above question: 0 means half, 1 means whole
+        int[] answers = {0, 1, 0, 1, 0, 1};
+        
+        // Sets the icon to the randomly chosen question
+        questionIcon = new ImageIcon(getClass().getResource(imagePaths[questionNum-1]));
+        
+        // Sets the answer to the randomly chosen question
+        answer = answers[questionNum-1];
+        
+        // Sets the icon for the question
+        jLabel1.setIcon(questionIcon);
+        
+        // Fills the choices with 1 correct answer and 3 incorrect answers
+        fillChoices();
+        
+    }
+    
+    // This method generates a medium difficulty question
+    public void generateMediumQuestion() {
+  
+        // Randomly picks a number form (1-4)
+        questionNum = (int)(Math.random()*( (4-1) + 1)) + 1;
+        
+        // Images to be used for the questions
+        String[] imagePaths = { 
+                                "/Images/PracticeScreens/KN5/HalfBagel.png",
+                                "/Images/PracticeScreens/KN5/WholeBagel.png",
+                                "/Images/PracticeScreens/KN5/HalfApple.png",
+                                "/Images/PracticeScreens/KN5/WholeApple.png",
+                              };
+        
+        // Answers to the above question: 0 means half, 1 means whole
+        int[] answers = {0, 1, 0, 1};
+        
+        // Sets the icon to the randomly chosen question
+        questionIcon = new ImageIcon(getClass().getResource(imagePaths[questionNum-1]));
+        
+        // Sets the answer to the randomly chosen question
+        answer = answers[questionNum-1];
+   
+        // Sets the icon of the question label to the chosen question
+        jLabel1.setIcon(questionIcon);
+        
+    }
+    
+    // This method generates a hard difficulty question
+    public void generateHardQuestion() {
+ 
+        // Generates a value between (1-3)
+        questionNum = (int)(Math.random()*( (3-1) + 1)) + 1;
+        
+        // Images to be used for the questions
+        String[] imagePaths = { 
+                                "/Images/PracticeScreens/KN5/HalfBlueSquare.png",
+                                "/Images/PracticeScreens/KN5/WholeSquare.png",
+                                "/Images/PracticeScreens/KN5/HalfCircle.png",
+                                "/Images/PracticeScreens/KN5/WholeCircle.png",
+                                "/Images/PracticeScreens/KN5/HalfTriangle.png",
+                                "/Images/PracticeScreens/KN5/WholeTriangle.png",
+                              };
+        
+        // Answers to the above question: 0 means half, 1 means whole
+        int[] answers = {0, 1, 0, 1, 0, 1};
+        
+        // Sets the icon to the randomly chosen question
+        questionIcon = new ImageIcon(getClass().getResource(imagePaths[questionNum-1]));
+        
+        // Sets the answer to the randomly chosen question
+        answer = answers[questionNum-1];
+        
+        // Sets the icon JLabel to display the question
+        jLabel1.setIcon(questionIcon);
+        
+    }
+    
+    /*
+    * This method is called after a question is generated.
+    * Two values are assigned to the text of the two JButtons on the screen
+    * which are designated for the answers to the question.
+    * One button says "Half" and the other says "Whole"
+    */
+    public void fillChoices() {
+        
+        /*
+        * An int array with four elements is used to store the possible answers
+        */
+        
+           
+        // Half choice
+        choices[2] = 0;
+        
+        // Whole choice
+        choices[3] = 1;
+        
+        // Sets the text of the four JButtons with the choices for answers
+        jButton3.setText("Half");
+        jButton4.setText("Whole");
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
