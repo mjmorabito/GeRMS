@@ -225,8 +225,23 @@ public class PreKK extends JInternalFrame {
             // Opens KN2
             main.openKN2Screen();
             
-            // Sets kN2 open to true
-            main.setIsKN2ScreenOpen(true);
+           
+            
+        }
+        // If the current page is 2
+        if (page == 2) {
+            
+            // Closes the PreK-K Module
+            this.dispose();
+            
+            // Sets the variable to false
+            main.setIsPreKKOpen(false);
+            
+            // Opens KN4
+            main.openKN4Screen();
+            
+            // Sets kN4 open to true
+            main.setIsKN4ScreenOpen(true);
             
         }
         

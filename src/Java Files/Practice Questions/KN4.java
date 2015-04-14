@@ -81,6 +81,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
         
+        generateEasyQuestion();
     }
 
     // This method centers this form in the middle of the screen
@@ -101,6 +102,7 @@ public class KN4 extends javax.swing.JInternalFrame {
     // This method is called when the form is created, it generates an easy question
     public void generateEasyQuestion() {
 
+        System.out.println("generate easy question");
         // Randomly picks a number form (1-4)
         questionNum = (int)(Math.random()*( (4-1) + 1)) + 1;
         int difficulyLevel = 1;
@@ -109,7 +111,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         if (questionNum == 1) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images.KN4/FewerThan12.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
             
             // Sets the answer
             answer = 1;
@@ -118,7 +120,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 2) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images.KN4/FewerThan12.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
             
             // Sets the answer
             answer = 2;
@@ -127,7 +129,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 3) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images.KN4/FewerThan12.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
             
             // Sets the answer
             answer = 3;
@@ -137,7 +139,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         else if (questionNum == 4) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images.KN4/FewerThan12.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
             
             // Sets the answer
             answer = 4;
@@ -383,6 +385,12 @@ public class KN4 extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setVisible(true);
+
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel2.setText("1/3");
 
@@ -397,7 +405,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(230, 126, 34));
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -440,9 +448,9 @@ public class KN4 extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(69, 69, 69)
+                .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1))
@@ -452,7 +460,7 @@ public class KN4 extends javax.swing.JInternalFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addGap(45, 45, 45))
+                .addGap(120, 120, 120))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,24 +471,26 @@ public class KN4 extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton5)
-                            .addGap(71, 71, 71))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(41, 41, 41)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
                         .addComponent(jLabel2)
-                        .addGap(55, 55, 55))))
+                        .addGap(55, 55, 55))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(228, 228, 228)
+                                .addComponent(jButton5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(41, 41, 41))))
         );
 
         pack();

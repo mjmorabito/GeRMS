@@ -454,6 +454,7 @@ public class Main extends JFrame {
     // This method sets the isKN4ScreenOpen variable to true/false
     public void setIsKN4ScreenOpen(boolean isOpen){
         
+        System.out.println("Screen should be open");
         //Set the variable
         isKN4ScreenOpen = isOpen;
         
@@ -773,6 +774,8 @@ public class Main extends JFrame {
     // This method creates an instance of the KN4 screen
     public void openKN4Screen() {
         
+        
+        System.out.println("Open KN4");
         // Creates a new KN4
         kn4 = new KN4(this);
         
