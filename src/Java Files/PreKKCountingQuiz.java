@@ -112,7 +112,7 @@ public class PreKKCountingQuiz extends javax.swing.JInternalFrame {
     private void setButtons()
     {
         //Creates the elements of the Quiz Sample class: 4 answer choices and a sequence of numbers
-        q.initializeElements();
+        q.initializeElements(counterDifficulty);
         //Set the text of the buttons to the answer choices, one of which is correct
         jButton1.setText(q.getAns1());
         jButton2.setText(q.getAns2());
