@@ -85,6 +85,11 @@ public class Register extends JInternalFrame {
                 securityQuestionsComboBox.addItem(rs.getString("secQuestion"));
                 
             }    
+            
+            // Closes the connection
+            rs.close();
+            stmt.close();
+            conn.close();
 
             } catch (ClassNotFoundException e) {
 

@@ -67,20 +67,20 @@ public class GradeSelect extends JInternalFrame {
         setToolTipText("Main Menu");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosed(evt);
             }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -126,7 +126,7 @@ public class GradeSelect extends JInternalFrame {
                         .addComponent(grade1and2Button)
                         .addGap(14, 14, 14)
                         .addComponent(grade3and4Button)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,7 @@ public class GradeSelect extends JInternalFrame {
                     .addComponent(gradePreKandKButton)
                     .addComponent(grade1and2Button)
                     .addComponent(grade3and4Button))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         setBounds(170, 15, 974, 560);
@@ -199,8 +199,11 @@ public class GradeSelect extends JInternalFrame {
     // This method is triggered when the 1-2 grades button is clicked
     private void grade1and2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grade1and2ButtonActionPerformed
 
-        // Display a message
-        JOptionPane.showMessageDialog(null, "This button will open the grades 1-2 module.");
+        // Closes this screen
+        this.dispose();
+        
+        // Opens the Grades 1-2 module
+        main.openGrades1and2Module();
         
     }//GEN-LAST:event_grade1and2ButtonActionPerformed
 
