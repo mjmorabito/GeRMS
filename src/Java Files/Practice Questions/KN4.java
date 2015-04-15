@@ -1,20 +1,4 @@
-//TODO
-//1 = fewer, 2 = same as, 3 = 1 more than, 4 = more than
-//Make question Icon find an image that relates to either 1,2,3,4 based on the above
-//So pick a random number then get a random image that displays such a thing
-//Use difficulty level (1,2,3) to choose the fewer, same as, one more than, or more than image with a quantity
-//difficulty level one is smaller numbers, two: medium, three: way bigger
-/**
- * TODO
- * 1)Make a function that takes into two numbers, the answer and the difficulty level
- * Chooses an image with the correct answer and the appropriate answer number
- * Returns a String concatenated with something like: "Images/PracticeScreens/AnswerIncorrect.jpg"
- * 2) Make it so that PreKK can get to KN4
- * 
- * 
- * 
- * 
- */
+
 
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
@@ -77,7 +61,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         centerOnScreen();
         
         // ImageIcons for the neutral, correct, and incorrect buttons
-        neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
+        //neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
         
@@ -106,13 +90,14 @@ public class KN4 extends javax.swing.JInternalFrame {
         // Randomly picks a number form (1-4)
         questionNum = (int)(Math.random()*( (4-1) + 1)) + 1;
         int difficulyLevel = 1;
+        System.out.println("the number is : " + questionNum);
         
         // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
-            
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan1.png"));
+            System.out.println("Fewer");
             // Sets the answer
             answer = 1;
             
@@ -120,8 +105,8 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 2) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
-            
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/SameAs1.png"));
+            System.out.println("Same");
             // Sets the answer
             answer = 2;
             
@@ -129,8 +114,8 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 3) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
-            
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/OneMoreThan1.png"));
+            System.out.println("MoreThan1");
             // Sets the answer
             answer = 3;
             
@@ -139,8 +124,8 @@ public class KN4 extends javax.swing.JInternalFrame {
         else if (questionNum == 4) {
             
             // Sets the image icon
-            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan12.png"));
-            
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/MoreThan1.png"));
+            System.out.println("OneMoreThan1");
             // Sets the answer
             answer = 4;
             
@@ -171,22 +156,22 @@ public class KN4 extends javax.swing.JInternalFrame {
          // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
             
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/3+2.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan2.png"));
             answer = 1;
          // If the value picked is 2, a same as question will be asked
         } else if (questionNum == 2) {
             
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/3+4.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/SameAs2.png"));
             answer = 2;
         // If the value picked is 3, a one more than question will be asked    
         } else if (questionNum == 3) {
             
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/4+3.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/OneMoreThan2.png"));
             answer = 3;
         // If the value picked is 4, a more than question will be asked    
         } else if (questionNum == 4) {
             
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/3+3.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/MoreThan2.png"));
             answer = 4;
             
         }
@@ -212,7 +197,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         if (questionNum == 1) {
             
             // Sets the image that will be used for the question
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/5+4.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan3.png"));
             
             // Sets the answer to the question
             answer = 1;
@@ -221,7 +206,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 2) {
             
             // Sets the image that will be used for the question
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/1+6.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/SameAs3.png"));
             
             // Sets the answer to the question
             answer = 2;
@@ -230,7 +215,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         } else if (questionNum == 3) {
             
             // Sets the image that will be used for the question
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/2+6.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/OneMoreThan3.png"));
             
             // Sets the answer to the question
             answer = 3;
@@ -238,7 +223,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         // If the value picked is 4, a more than question will be asked    
         } else if (questionNum == 4) {
             
-            questionIcon = new ImageIcon(getClass().getResource("/Images/PracticeScreens/KN7/3+3.png"));
+            questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/MoreThan3.png"));
             answer = 4;
             
         }
@@ -319,8 +304,13 @@ public class KN4 extends javax.swing.JInternalFrame {
 
             }
 
-        }
-        */
+        }*/
+        choices[0] = 1;
+        choices[1] = 2;
+        choices[2] = 3;
+        choices[3] = 4;
+        
+        
         // Sets the text of the four JButtons with the choices for answers
         jButton1.setText("fewer");
         jButton2.setText("the same");
@@ -329,44 +319,6 @@ public class KN4 extends javax.swing.JInternalFrame {
 
     }
 
-    /**
-     * Determines the Image to display based on the correct answer and the difficulty given
-     * @param answer
-     * @param difficultyLevel
-     * @return a String which is the images name in the correct packages folder
-     */
-    private String determineImage(int answer, int difficultyLevel)
-    {
-        String imageName = "/Images/PracticeScreens/KN4/";
-        if(answer == 1)
-        {
-            System.out.println("FewerThan");
-            imageName = imageName + "FewerThan";
-        }
-        if(answer == 2)
-        {
-            System.out.println("TheSameAs");
-            imageName = imageName + "TheSameAs";
-        }
-        if(answer == 3)
-        {
-            System.out.println("OneMoreThan");
-            imageName = imageName + "OneMoreThan";
-        }
-        if(answer == 4)
-        {
-            System.out.println("MoreThan");
-            imageName = imageName + "MoreThan";
-        }
-        // Randomly picks a number form (1-4)
-        int randomImage = (int)(Math.random()*( (4-1) + 1)) + 1;
-        imageName = imageName + randomImage + ".png";
-        
-        
-        return imageName;
-    }
-    
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -497,7 +449,7 @@ public class KN4 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        System.out.println("Choices 2");
         // If the user has not submitted an answer
         if (!answerSubmitted) {
 
