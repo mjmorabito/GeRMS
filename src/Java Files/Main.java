@@ -126,6 +126,18 @@ public class Main extends JFrame {
     
     // Determines if the KN8 Practice Module is open / closed
     private boolean isKN8ScreenOpen = false;
+    
+    // Grades1and2 class
+    private Grades1and2 grades1and2;
+    
+    // Determines if the Grades1and2 module is open
+    private boolean isGrades1and2ModuleOpen = false;
+    
+    // Class for the grade 2 standard 4 practice questions module
+    private G2N4 g2n4;
+    
+    // Determines if the G2N4 practice module is open / closed
+    private boolean isG2N4ScreenOpen = false;
  
     /*
     * Creates a new instance of the Main class
@@ -492,6 +504,22 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isGrades1and2Module variable to true/false
+    public void setIsGrades1and2ModuleOpen(boolean isOpen){
+        
+        //Set the variable
+        isGrades1and2ModuleOpen = isOpen;
+        
+    }
+    
+    // This method sets the isG2N4ScreenOpen variable to true/false
+    public void setIsG2N4ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isG2N4ScreenOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
     public boolean getIsKN1ScreenOpen(boolean isOpen){
         
@@ -553,6 +581,22 @@ public class Main extends JFrame {
         
         //Returns the boolean value
         return isKN8ScreenOpen;
+        
+    }
+    
+    // This method gets the boolean value of isGrades1and2Module variable
+    public boolean getIsGrades1and2ModuleOpen(boolean isOpen){
+        
+        // Returns the variable
+        return isGrades1and2ModuleOpen;
+        
+    }
+    
+    // This method returns the value of the isG2N4ScreenOpen variable
+    public boolean getIsG2N4ScreenOpen(boolean isOpen){
+        
+        //Returns the boolean value
+        return isG2N4ScreenOpen;
         
     }
     
@@ -703,6 +747,29 @@ public class Main extends JFrame {
         preKK.toFront();
         
     }
+    
+      // Opens the preKK page
+    public void openGrades1and2Module() {
+        
+        // Checks if the screen is closed
+        if (isGrades1and2ModuleOpen == false) {
+        
+            // Creates a new preKK page
+            grades1and2 = new Grades1and2(this);
+
+            // Sets the variable
+            isGrades1and2ModuleOpen = true;
+
+            // Adds the preKKCounting quiz screen to the desktop pane
+            desktopPane.add(grades1and2);
+
+            // Brings the preKKCounting quiz screen to the front
+            grades1and2.toFront();
+            
+        }
+        
+    }
+    
     // Opens the preKKCountingQuiz
     public void openPreKKCountingQuiz() {
         
@@ -855,6 +922,23 @@ public class Main extends JFrame {
         
         // Brings the KN8 screen to the front
         kn8.toFront();       
+        
+    }
+    
+    // This method creates an instance of the G2N4 screen
+    public void openG2N4Screen() {
+        
+        // Creates a new KN1
+        g2n4 = new G2N4(this);
+        
+        // Sets the variable
+        isG2N4ScreenOpen = true;
+        
+        // Adds the KN8 screen to the desktop pane
+        desktopPane.add(g2n4);
+        
+        // Brings the KN8 screen to the front
+        g2n4.toFront();       
         
     }
     
