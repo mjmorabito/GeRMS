@@ -232,7 +232,9 @@ public class PreKK extends JInternalFrame {
             // Opens KN2
             main.openKN2Screen();
             
-           
+            // Sets kN4 open to true
+            main.setIsKN2ScreenOpen(true);
+            
             
         }
         // If the current page is 2
