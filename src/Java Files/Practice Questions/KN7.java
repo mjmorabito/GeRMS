@@ -631,7 +631,16 @@ public class KN7 extends JInternalFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
 
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

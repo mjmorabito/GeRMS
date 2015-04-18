@@ -372,6 +372,16 @@ public class KN1 extends javax.swing.JInternalFrame {
                         
     }//GEN-LAST:event_rightArrowActionPerformed
 
+     public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
+
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel counterLabel;
