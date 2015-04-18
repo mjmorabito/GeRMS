@@ -575,6 +575,25 @@ public class KN4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     
+    /*
+    * The following three methods are used in the Assessment class
+    * for tests and quizzes to link to the KN4
+    */
+    public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
+
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    
+    public int getAnswer()
+    {
+        return answer;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

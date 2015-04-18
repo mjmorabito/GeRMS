@@ -127,7 +127,7 @@ public class Assessment extends javax.swing.JInternalFrame {
         Random r = new Random();
         for( int i = 0; i < numQuestions; i++)
         {
-            questions[i] =   7; //r.nextInt(8) + 1;
+            questions[i] =   4; //r.nextInt(8) + 1;
         }
         
         //GET RID OF
@@ -139,6 +139,9 @@ public class Assessment extends javax.swing.JInternalFrame {
     
     public void generateQuestion()
     {
+        
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
         
         System.out.println("Question count: " + questionCount);
         
@@ -221,11 +224,26 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 4)
         {
-            q = new QuizSample();
+        
+            kn4 = new KN4(main);
             //do lots of stuff
+            // Sets the text of the four JButtons with the choices for answers
+            jButton1.setText("fewer");
+            jButton2.setText("the same");
+            jButton3.setText("one more than");
+            jButton4.setText("more than");
+            
             if (difficulty == 1)
             {
                 
+                kn4.generateEasyQuestion();
+                
+                questionIcon = kn4.getImage();
+                choices = kn4.getChoices();
+                jLabel1.setIcon(questionIcon); 
+                
+                
+                answer = kn4.getAnswer();
                 
                 
             }
@@ -233,23 +251,50 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (difficulty == 2)
             {
                 
+                kn4.generateMediumQuestion();
+                
+                questionIcon = kn4.getImage();
+                choices = kn4.getChoices();
+                jLabel1.setIcon(questionIcon);
+                
+                answer = kn4.getAnswer();
                 
                 
             }
             if (difficulty == 3)
             {
                 
+                kn4.generateHardQuestion();
                 
+                questionIcon = kn4.getImage();
+                choices = kn4.getChoices();
+                jLabel1.setIcon(questionIcon);
+                
+                answer = kn4.getAnswer();
                 
             }
         }
          else if(questions[questionCount] == 5)
         {
-            q = new QuizSample();
+            
+            jButton1.setVisible(false);
+            jButton2.setVisible(false);
+            
+            // Sets the text of the four JButtons with the choices for answers
+            jButton3.setText("Half");
+            jButton4.setText("Whole");
+        
+            kn5 = new KN5(main);
             //do lots of stuff
             if (difficulty == 1)
             {
                 
+                kn5.generateEasyQuestion();
+                
+                questionIcon = kn5.getImage();
+                choices = kn5.getChoices();
+                jLabel1.setIcon(questionIcon);              
+                answer = kn5.getAnswer();
                 
                 
             }
@@ -257,13 +302,24 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (difficulty == 2)
             {
                 
+                kn5.generateMediumQuestion();
+                
+                questionIcon = kn5.getImage();
+                choices = kn5.getChoices();
+                jLabel1.setIcon(questionIcon);
+                answer = kn5.getAnswer();
                 
                 
             }
             if (difficulty == 3)
             {
                 
+                kn5.generateHardQuestion();
                 
+                questionIcon = kn5.getImage();
+                choices = kn5.getChoices();
+                jLabel1.setIcon(questionIcon);
+                answer = kn5.getAnswer();
                 
             }
         }
