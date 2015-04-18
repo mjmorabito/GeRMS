@@ -297,6 +297,7 @@ public class KN2 extends javax.swing.JInternalFrame {
         jButton4.setText(q.getAns4());
         
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagejLabel;

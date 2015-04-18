@@ -1,6 +1,7 @@
 
 
 import java.awt.Dimension;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -19,14 +20,20 @@ public class Assessment extends javax.swing.JInternalFrame {
     // Random number to decide which question to use
     private int questionNum;
     
+    //Determines the question difficulty from 1 - 3
+    private int difficulty;
+    
     // Stores the correct answer to the question
     private int answer;
     
     // Stores the user's choices for answers
     private int[] choices = new int[4];
     
+    // Stores the user's choices for answers
+    private int[] questions ;
+    
     // Stores the count of number of questions asked
-    private int questionCount = 1;
+    private int questionCount = 0;
     
     // ImageIcon for the neutral answer button
     private ImageIcon neutralImageIcon;
@@ -39,6 +46,8 @@ public class Assessment extends javax.swing.JInternalFrame {
     
     // Boolean to restrict the user one submission per question
     private boolean answerSubmitted = false;
+    
+    private int numQuestions;
     
     // Makes an object of each KN standard
     private QuizSample q;// For KN1
@@ -59,10 +68,22 @@ public class Assessment extends javax.swing.JInternalFrame {
     /**
      * Creates new form Assessment
      */
-    public Assessment(Main m) {
+  
+    //COMMENTS
+    
+    public Assessment(Main m, int numQ,int diff) {
         
+        difficulty = diff;
+        
+        numQuestions = numQ;
+        
+        questions = new int[numQuestions];
         // Initializes the components
         initComponents();
+        
+        determineQuestionsAndOrder();
+        
+        generateQuestion();
         
         // Sets the reference to the main class
         main = m;
@@ -98,6 +119,221 @@ public class Assessment extends javax.swing.JInternalFrame {
         
     }
   
+    public void determineQuestionsAndOrder()
+    {
+        Random r = new Random();
+        for( int i = 0; i < numQuestions; i++)
+        {
+            questions[i] = r.nextInt(8) + 1;
+        }
+        
+        //GET RID OF
+        for( int i = 0; i < numQuestions; i++)
+        {
+            System.out.println(questions[i]); 
+        }
+    }
+    
+    public void generateQuestion()
+    {
+        if(questions[questionCount] == 1)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+        else if(questions[questionCount] == 2)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 3)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 4)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 5)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 6)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 7)
+        {
+           kn7 = new KN7(main);
+           
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                kn7.generateEasyQuestion();
+                
+                questionIcon = kn7.getImage();
+                choices = kn7.getChoices();
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+         else if(questions[questionCount] == 8)
+        {
+            q = new QuizSample();
+            //do lots of stuff
+            if (difficulty == 1)
+            {
+                
+                
+                
+            }
+            
+            if (difficulty == 2)
+            {
+                
+                
+                
+            }
+            if (difficulty == 3)
+            {
+                
+                
+                
+            }
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

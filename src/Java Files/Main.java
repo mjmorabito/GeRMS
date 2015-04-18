@@ -1013,11 +1013,12 @@ public class Main extends JFrame {
     }
     
        // This method creates an instance of the Assessment1 screen
-    public void openAssessmentScreen() {
+    public void openAssessmentScreen(int a, int b) {
+        
         if(isAssessmentScreenOpen == false)
         {
         // Creates a new Assessment
-        assessment = new Assessment(this);
+        assessment = new Assessment(this,a,b);
         
         // Sets the variable
         isAssessmentScreenOpen = true;
