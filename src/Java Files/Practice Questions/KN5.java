@@ -25,7 +25,7 @@ public class KN5 extends JInternalFrame {
     // Stores the correct answer to the question
     private int answer;
     
-    // Stores the user's choices for answers
+        // Stores the user's choices for answers
     private int[] choices = new int[4];
     
     // Stores the count of number of questions asked
