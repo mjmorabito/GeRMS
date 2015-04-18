@@ -1,6 +1,8 @@
 
+
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -317,7 +319,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             jButton4.setIcon(neutralImageIcon);
 
             // Generate a medium question
-            generateMediumQuestion();
+            //generateMediumQuestion();
 
             // Title of the form
             title = "Half and Whole: Medium Practice Question";
@@ -331,7 +333,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             jButton4.setIcon(neutralImageIcon);
 
             // Generate a hard question
-            generateHardQuestion();
+            //generateHardQuestion();
 
             // Title of the form
             title = "Half and Whole: Hard Practice Question";
