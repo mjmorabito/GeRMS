@@ -114,6 +114,9 @@
           <Image iconType="3" name="/Images/QuizDifficultySelect/Medium.jpg"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mediumButtonClickedActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="hardButtonClicked">
       <Properties>
@@ -121,6 +124,9 @@
           <Image iconType="3" name="/Images/QuizDifficultySelect/Hard.jpg"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hardButtonClickedActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -641,6 +641,11 @@ public class KN7 extends JInternalFrame {
         return choices;
     }
     
+    public int getAnswer()
+    {
+        return answer;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

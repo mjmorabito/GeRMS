@@ -58,8 +58,18 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         });
 
         mediumButtonClicked.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/Medium.jpg"))); // NOI18N
+        mediumButtonClicked.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumButtonClickedActionPerformed(evt);
+            }
+        });
 
         hardButtonClicked.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/Hard.jpg"))); // NOI18N
+        hardButtonClicked.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardButtonClickedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,10 +117,25 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
 
     private void easyButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonClickedActionPerformed
     
+        // Easy difficulty quiz
         main.openAssessmentScreen(6, 1);
         
         
     }//GEN-LAST:event_easyButtonClickedActionPerformed
+
+    private void mediumButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonClickedActionPerformed
+        
+        // Medium difficulty quiz
+        main.openAssessmentScreen(6, 2);
+        
+    }//GEN-LAST:event_mediumButtonClickedActionPerformed
+
+    private void hardButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonClickedActionPerformed
+        
+        // Hard difficulty quiz
+        main.openAssessmentScreen(6, 3);
+        
+    }//GEN-LAST:event_hardButtonClickedActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
