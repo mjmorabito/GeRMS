@@ -258,6 +258,9 @@ public class KN8 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         // TODO add your handling code here:
         if (page == 3){
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN8");
             JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
             main.setIsKN8ScreenOpen(false);
             this.dispose();
