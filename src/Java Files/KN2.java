@@ -274,7 +274,7 @@ public class KN2 extends javax.swing.JInternalFrame {
                 Connection conn = DriverManager.getConnection(CONNECTION,p);
                 Statement stmt = conn.createStatement();
                 
-                String user = main.usernameLabel2.getText();
+                String user = main.getUsername();
                 
                 String sql = "select * from practices where PaccUser = '" + user + "'";
                 ResultSet rs = stmt.executeQuery(sql);

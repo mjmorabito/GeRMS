@@ -259,8 +259,8 @@ public class KN8 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (page == 3){
             JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+            main.setIsKN8ScreenOpen(false);
             this.dispose();
-            main.setIsKN2ScreenOpen(false);
 
             // Opens the PreKK module
             main.openPreKK();

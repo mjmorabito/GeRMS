@@ -1193,6 +1193,11 @@ public class Main extends JFrame {
         
     }//GEN-LAST:event_helpButtonActionPerformed
 
+    public String getUsername(){
+        
+        return usernameLabel2.getText();
+    }
+    
     /**
      * @param args the command line arguments
      * This is the main method that sets this JFrame form visible upon starting.
