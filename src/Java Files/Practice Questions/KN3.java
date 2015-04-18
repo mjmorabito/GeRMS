@@ -493,37 +493,7 @@ public class KN3 extends JInternalFrame{
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
         
-       // ans1 = correctAnswer + "";
-        //AnsArray.add("" + correctAnswer);
-       /* 
-       int goodWrongAnswer = rand.nextInt(3);
-       
-       //while loop to check for duplicate wrong answers
-       while(goodWrongAnswer == Integer.parseInt(ans1) || 
-               AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(3);
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans2 = goodWrongAnswer + "";
-    AnsArray.add(ans2);
-    
-    goodWrongAnswer = rand.nextInt(3);
-     while(goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-              || AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(3);
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans3 = goodWrongAnswer + "";
-    AnsArray.add(ans3);
-    
-        //Randomizes the buttons
-      //  shuffleList(AnsArray, 0, 2);
-        ans1 = AnsArray.get(0);
-        ans2 = AnsArray.get(1);
-        ans3 = AnsArray.get(2);
-        */
+     
         
         return correctAnswer;
         
@@ -571,47 +541,6 @@ public class KN3 extends JInternalFrame{
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
         
-        
-        
-        
-        
-        /*
-        int goodWrongAnswer = rand.nextInt(4)+3;
-       
-       //while loop to check for duplicate wrong answers
-       while(goodWrongAnswer == Integer.parseInt(ans1) || 
-               AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(4)+3;
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans2 = goodWrongAnswer + "";
-    AnsArray.add(ans2);
-    
-    goodWrongAnswer = rand.nextInt(4)+3;
-     while(goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-              || AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(4)+3;
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans3 = goodWrongAnswer + "";
-    AnsArray.add(ans3);
-    
-    while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-                || goodWrongAnswer == Integer.parseInt(ans3) || AlreadyInSequence(goodWrongAnswer)) {
-            goodWrongAnswer = rand.nextInt(4)+3;
-        }
-        ans4 = goodWrongAnswer + "";
-        AnsArray.add(ans4);
-        
-        //Randomizes the buttons
-        shuffleList(AnsArray, 3 , 6);
-        ans1 = AnsArray.get(0);
-        ans2 = AnsArray.get(1);
-        ans3 = AnsArray.get(2);
-        ans4 = AnsArray.get(3);
-        */
         return correctAnswer;
     }
     
@@ -648,53 +577,7 @@ public class KN3 extends JInternalFrame{
         
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoicesH();
-        /*
-       int goodWrongAnswer = rand.nextInt(5)+7;
-       
-       //while loop to check for duplicate wrong answers
-       while(goodWrongAnswer == Integer.parseInt(ans1) || 
-               AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(5)+7;
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans2 = goodWrongAnswer + "";
-    AnsArray.add(ans2);
-    
-    goodWrongAnswer = rand.nextInt(5)+7;
-     while(goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-              || AlreadyInSequence(goodWrongAnswer))
-       {
-           goodWrongAnswer = rand.nextInt(5)+7;
-       }
-    //wrong answer hasn't been used, so store in the Array
-    ans3 = goodWrongAnswer + "";
-    AnsArray.add(ans3);
-    
-    while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-                || goodWrongAnswer == Integer.parseInt(ans3) || AlreadyInSequence(goodWrongAnswer)) {
-            goodWrongAnswer = rand.nextInt(13);
-        }
-        ans4 = goodWrongAnswer + "";
-        AnsArray.add(ans4);
         
-        
-        while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
-                || goodWrongAnswer == Integer.parseInt(ans3) || goodWrongAnswer == Integer.parseInt(ans4)
-                || AlreadyInSequence(goodWrongAnswer)) {
-            goodWrongAnswer = rand.nextInt(5)+7;
-        }
-        ans5 = goodWrongAnswer + "";
-        AnsArray.add(ans5);
-        //Randomizes the buttons
-        shuffleList(AnsArray, 7, 11);
-        ans1 = AnsArray.get(0);
-        ans2 = AnsArray.get(1);
-        ans3 = AnsArray.get(2);
-        ans4 = AnsArray.get(3);
-        ans5 = AnsArray.get(4);
-        
-        */
         return correctAnswer;
     }
     
