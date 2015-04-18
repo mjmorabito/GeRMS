@@ -51,7 +51,7 @@ public class QuizSample {
         //create a random integer betwen 1 and 26
         //scales the random number by the difficulty level
         System.out.println("WE are in the Quiz Sample Q: " + difficulty);
-        start = difficulty*randomGenerator.nextInt(10) + 1; //System.out.println("Starting number is " + start);
+        start = difficulty*(randomGenerator.nextInt(10) + 1) + (difficulty - 1) * 10; //System.out.println("Starting number is " + start);
         System.out.println("Start is " + start);
         System.out.println("Quiz Sample part 1");
         //generates a list of 6 numbers that will be visible to choose from
