@@ -61,7 +61,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         centerOnScreen();
         
         // ImageIcons for the neutral, correct, and incorrect buttons
-        //neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
+        neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
         
@@ -245,66 +245,7 @@ public class KN4 extends javax.swing.JInternalFrame {
     */
     public void fillChoices() {
         
-        /**
-        /*
-        * An int array with four elements is used to store the possible answers
-        */
-        /**
-        // Resets the array to -1
-        for (int i = 0; i < choices.length; i++) {
-            choices[i] = -1;   
-        }  
-        
-        // Randomly picks an index from 0-3 to put the correct answer in the array
-        int indexOfAnswer = (int)(Math.random()*( (3-0) + 1)) + 0;
-        
-        // Puts the correct answer in the selected index
-        choices[indexOfAnswer] = answer;
-        
-        // This integer is used to store the value of the randomly chosen incorrect answer
-        int choice = 0;
-            
-        // Loops through the 4 possible choices
-        for (int i = 0; i < choices.length; i++) {
-
-            // If one of the 4 possible choices have not been assigned a value yet
-            if (choices[i] == -1) {
-                
-                // Code to assign a random value between 0-10 to this choice
-                
-                // Determines if the value has already been assigned
-                boolean choiceExists = true;
-                
-                // Loops until a value that has not already been assigned is chosen
-                while (choiceExists) {
-                
-                    // Randomly picks a number between 0-10
-                    choice = (int)(Math.random()*( (10-0) + 1)) + 0;
-                    
-                    // Sets the variable to does not exist
-                    choiceExists = false;
-                    
-                    // Loops through the selected values
-                    for (int c = 0; c < choices.length; c++) {
-                        
-                        // If a match is found in the array
-                        if (choices[c] == choice) {
-                      
-                            // Then that means the chosen value is a duplicate
-                            choiceExists = true;
-                            
-                        }
-                        
-                    }
-                    
-                }
-                
-                // Stores the value of the choice in this array
-                choices[i] = choice;
-
-            }
-
-        }*/
+  
         choices[0] = 1;
         choices[1] = 2;
         choices[2] = 3;
@@ -350,6 +291,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -360,6 +302,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -370,6 +313,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -380,6 +324,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

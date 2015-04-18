@@ -72,7 +72,7 @@ public class KN1 extends javax.swing.JInternalFrame {
         //Creates the elements of the Quiz Sample class: 4 answer choices and a sequence of numbers
         
         q.initializeElements(counterDifficulty);
-        System.out.println("Stopped at part 1");
+      
         //Set the text of the buttons to the answer choices, one of which is correct
         String answerOne = q.getAns1();
         jButton1.setText(answerOne);
@@ -82,22 +82,19 @@ public class KN1 extends javax.swing.JInternalFrame {
         jButton3.setText(answerThree); 
         String answerFour = q.getAns4();
         jButton4.setText(answerFour);
-        
-        
-        System.out.println("Stopped at part 2");
-        //clears the icon of the buttons
+     
+        //Clears the icon of the buttons
         jButton1.setIcon(null);
         jButton2.setIcon(null);
         jButton3.setIcon(null);
         jButton4.setIcon(null);
         
-        System.out.println("Stopped at part 3");
         
         //Sets the jLabel's text to the number sequence from the QuizSample class
         jLabel1.setText(q.getNumberList());
         //Disables the advance button until the user puts in an answer
         //rightArrow.setEnabled(false);
-        System.out.println("Stopped at part 4");
+       
         //increments the counter difficulty
         counterDifficulty++;
         System.out.println("Set Buttons Ended");
@@ -264,13 +261,12 @@ public class KN1 extends javax.swing.JInternalFrame {
                         if (answer.equals(correct)) {
                             
                             //Adds correct to the answer choice that was chosen
-                            //((JButton) e.getSource()).setText("CORRECT: " + answer);
+                            
                             ((JButton)evt.getSource()).setIcon(correctImageIcon);
 
                         } else {
                             
-                            //TODO CHANGE COLORS
-                            //((JButton) e.getSource()).setText("FALSE: " + answer);
+                           //Adds the incrrect sign to the answer choice chosen
                             ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
                           
 
