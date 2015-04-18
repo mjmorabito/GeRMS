@@ -1,3 +1,6 @@
+
+import java.awt.Dimension;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,8 +19,22 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
      * Creates new form QuizDifficultySelect
      */
     public QuizDifficultySelect(Main m) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Reference to the main class
         main = m;
+        
+         // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
     }
 
     /**

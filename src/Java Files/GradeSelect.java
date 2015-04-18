@@ -211,7 +211,10 @@ public class GradeSelect extends JInternalFrame {
     private void grade3and4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grade3and4ButtonActionPerformed
 
         // Display a message
-        JOptionPane.showMessageDialog(null, "This button will open the grades 3-4 module.");
+        main.openGrades3and4Module();
+        
+        // Disposes the grade select screen
+        this.dispose();
         
     }//GEN-LAST:event_grade3and4ButtonActionPerformed
 

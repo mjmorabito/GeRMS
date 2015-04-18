@@ -151,7 +151,17 @@ public class Main extends JFrame {
     // Determines  if the Assessment screen is open
     private boolean isAssessmentScreenOpen = false;
     
+    // Grades3and4 class
+    private Grades3and4 grades3and4;
     
+    // Determines if the Grades3and4 module is open
+    private boolean isGrades3and4ModuleOpen = false;
+    
+    // G4N12 class
+    private G4N12 g4n12;
+    
+    // Determines if the g4n12 screen is open / closed
+    private boolean isG4N12ScreenOpen = false;
  
     /*
     * Creates a new instance of the Main class
@@ -550,6 +560,22 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isGrades3and4Module variable to true/false
+    public void setIsGrades3and4ModuleOpen(boolean isOpen){
+        
+        //Set the variable
+        isGrades3and4ModuleOpen = isOpen;
+        
+    }
+    
+    // This method sets the isG4N12ScreenOpen variable to true/false
+    public void setIsG4N12ScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isG4N12ScreenOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
     public boolean getIsKN1ScreenOpen(){
         
@@ -630,6 +656,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method returns the value of the isG4N12ScreenOpen variable
+    public boolean getIsG4N12ScreenOpen(){
+        
+        //Returns the boolean value
+        return isG4N12ScreenOpen;
+        
+    }
+    
     // This method returns the value of the isQuizDifficultySelectOpen variable
     public boolean getIsQuizDifficultySelectOpen() {
         
@@ -669,6 +703,15 @@ public class Main extends JFrame {
         return isAssessmentScreenOpen;
         
     }
+    
+    // This method gets the boolean value of isGrades3and4Module variable
+    public boolean getIsGrades3and4ModuleOpen(){
+        
+        // Returns the variable
+        return isGrades3and4ModuleOpen;
+        
+    }
+    
     // This method creates an instance of the Login screen
     public void openLoginScreen() {
         
@@ -794,13 +837,13 @@ public class Main extends JFrame {
         
     }
     
-      // Opens the preKK page
+    // Opens the Grades1and2 screen
     public void openGrades1and2Module() {
         
         // Checks if the screen is closed
         if (isGrades1and2ModuleOpen == false) {
         
-            // Creates a new preKK page
+            // Creates a new Grades1and2 page
             grades1and2 = new Grades1and2(this);
 
             // Sets the variable
@@ -811,6 +854,28 @@ public class Main extends JFrame {
 
             // Brings the preKKCounting quiz screen to the front
             grades1and2.toFront();
+            
+        }
+        
+    }
+    
+      // Opens the Grades3and4 page
+    public void openGrades3and4Module() {
+        
+        // Checks if the screen is closed
+        if (isGrades3and4ModuleOpen == false) {
+        
+            // Creates a new grades1and2 page
+            grades3and4 = new Grades3and4(this);
+
+            // Sets the variable
+            isGrades3and4ModuleOpen = true;
+
+            // Adds the preKKCounting quiz screen to the desktop pane
+            desktopPane.add(grades3and4);
+
+            // Brings the preKKCounting quiz screen to the front
+            grades3and4.toFront();
             
         }
         
@@ -1028,6 +1093,28 @@ public class Main extends JFrame {
         
         // Brings the Assessment screen to the front
         assessment.toFront(); 
+        }
+        
+    }
+    
+    // This method creates an instance of the G4N12 screen
+    public void openG4N12Screen() {
+        
+        // If the screen is not already open, then open it
+        if (isG4N12ScreenOpen == false) {
+        
+            // Creates a new KN1
+            g4n12 = new G4N12(this);
+
+            // Sets the variable
+            isG4N12ScreenOpen = true;
+
+            // Adds the KN8 screen to the desktop pane
+            desktopPane.add(g4n12);
+
+            // Brings the KN8 screen to the front
+            g4n12.toFront();  
+            
         }
         
     }
