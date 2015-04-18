@@ -84,6 +84,11 @@ public class PreKK extends JInternalFrame {
 
         watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
         watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton1ActionPerformed(evt);
+            }
+        });
 
         practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
         practiceButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +99,11 @@ public class PreKK extends JInternalFrame {
 
         watchButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
         watchButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton2ActionPerformed(evt);
+            }
+        });
 
         practiceButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
         practiceButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -166,31 +176,29 @@ public class PreKK extends JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(standardLabelImage1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(practiceButton2)
+                        .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(standardLabelImage2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pageLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(standardLabelImage1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(practiceButton2)
-                            .addComponent(standardLabelImage2)
-                            .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rightarrowButton)
                             .addComponent(leftarrowButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pageLabel)
-                        .addGap(27, 27, 27)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(quizButton)
-                    .addComponent(finalButton))
-                .addGap(30, 30, 30))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(quizButton)
+                            .addComponent(finalButton))))
+                .addGap(25, 25, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,9 +212,8 @@ public class PreKK extends JInternalFrame {
         this.dispose();
         main.setIsPreKKOpen(false);
 
-        // Sets PreKKCounting quiz to true
-        main.setIsPreKKCountingQuizOpen(true);
-        main.openPreKKCountingQuiz();
+        // Opens Difficulty Select
+        main.openQuizDifficultySelect();
          
     }//GEN-LAST:event_quizButtonActionPerformed
 
@@ -329,6 +336,14 @@ public class PreKK extends JInternalFrame {
         }
         
     }//GEN-LAST:event_practiceButton1ActionPerformed
+
+    private void watchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_watchButton1ActionPerformed
+
+    private void watchButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_watchButton2ActionPerformed
 
     private void changePage() {
         

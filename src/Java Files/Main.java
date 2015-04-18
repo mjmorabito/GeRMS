@@ -138,6 +138,12 @@ public class Main extends JFrame {
     
     // Determines if the G2N4 practice module is open / closed
     private boolean isG2N4ScreenOpen = false;
+    
+    // Class for the QuizDifficultySelect
+    private QuizDifficultySelect quizDifficultySelect;
+    
+    // Determines  if the quizDifficultySelect screen is open
+    private boolean isQuizDifficultySelectOpen = false;
  
     /*
     * Creates a new instance of the Main class
@@ -520,8 +526,16 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isQuizDifficultySelectOpen variable to true/false
+    public void setisQuizDifficultySelectOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isQuizDifficultySelectOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
-    public boolean getIsKN1ScreenOpen(boolean isOpen){
+    public boolean getIsKN1ScreenOpen(){
         
         //Returns the boolean value
         return isKN1ScreenOpen;
@@ -529,7 +543,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN2ScreenOpen variable
-    public boolean getIsKN2ScreenOpen(boolean isOpen){
+    public boolean getIsKN2ScreenOpen(){
         
         //Returns the boolean value
         return isKN2ScreenOpen;
@@ -537,7 +551,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN3ScreenOpen variable
-    public boolean getIsKN3ScreenOpen(boolean isOpen){
+    public boolean getIsKN3ScreenOpen(){
         
         //Returns the boolean value
         return isKN3ScreenOpen;
@@ -545,7 +559,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN4ScreenOpen variable
-    public boolean getIsKN4ScreenOpen(boolean isOpen){
+    public boolean getIsKN4ScreenOpen(){
         
         //Returns the boolean value
         return isKN4ScreenOpen;
@@ -553,7 +567,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN5ScreenOpen variable
-    public boolean getIsKN5ScreenOpen(boolean isOpen){
+    public boolean getIsKN5ScreenOpen(){
         
         //Returns the boolean value
         return isKN5ScreenOpen;
@@ -561,7 +575,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN6ScreenOpen variable
-    public boolean getIsKN6ScreenOpen(boolean isOpen){
+    public boolean getIsKN6ScreenOpen(){
         
         //Returns the boolean value
         return isKN6ScreenOpen;
@@ -569,7 +583,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN7ScreenOpen variable
-    public boolean getIsKN7ScreenOpen(boolean isOpen){
+    public boolean getIsKN7ScreenOpen(){
         
         //Returns the boolean value
         return isKN7ScreenOpen;
@@ -577,7 +591,7 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isKN8ScreenOpen variable
-    public boolean getIsKN8ScreenOpen(boolean isOpen){
+    public boolean getIsKN8ScreenOpen(){
         
         //Returns the boolean value
         return isKN8ScreenOpen;
@@ -585,7 +599,7 @@ public class Main extends JFrame {
     }
     
     // This method gets the boolean value of isGrades1and2Module variable
-    public boolean getIsGrades1and2ModuleOpen(boolean isOpen){
+    public boolean getIsGrades1and2ModuleOpen(){
         
         // Returns the variable
         return isGrades1and2ModuleOpen;
@@ -593,10 +607,18 @@ public class Main extends JFrame {
     }
     
     // This method returns the value of the isG2N4ScreenOpen variable
-    public boolean getIsG2N4ScreenOpen(boolean isOpen){
+    public boolean getIsG2N4ScreenOpen(){
         
         //Returns the boolean value
         return isG2N4ScreenOpen;
+        
+    }
+    
+    // This method returns the value of the isQuizDifficultySelectOpen variable
+    public boolean getIsQuizDifficultySelectOpen() {
+        
+        // Returns the value of the isQuizDifficultySelectOpen variable
+        return isQuizDifficultySelectOpen;
         
     }
     
@@ -922,6 +944,30 @@ public class Main extends JFrame {
         
         // Brings the KN8 screen to the front
         kn8.toFront();       
+        
+    }
+    
+    // This method creates an instance of the Quiz Difficulty select screen
+    public void openQuizDifficultySelect() {
+        
+        if (isQuizDifficultySelectOpen == false) {
+        
+            // Creates a new KN1
+            quizDifficultySelect = new QuizDifficultySelect(this);
+
+            // Sets the variable
+            isQuizDifficultySelectOpen = true;
+
+            // Adds the KN8 screen to the desktop pane
+            desktopPane.add(quizDifficultySelect);
+
+            // Brings the KN8 screen to the front
+            quizDifficultySelect.toFront(); 
+            
+        } else {
+            
+            
+        }
         
     }
     
