@@ -223,25 +223,22 @@ public class PreKK extends JInternalFrame {
         // If the current page is 1
         if (page == 1) {
             
-            // Closes the PreK-K Module
-            this.dispose();
-            
             // Sets the variable to false
             main.setIsPreKKOpen(false);
             
             // Opens KN2
             main.openKN2Screen();
-            
+
             // Sets kN4 open to true
             main.setIsKN2ScreenOpen(true);
             
+            // Closes the PreK-K Module
+            this.dispose();
+ 
             
         }
         // If the current page is 2
         if (page == 2) {
-            
-            // Closes the PreK-K Module
-            this.dispose();
             
             // Sets the variable to false
             main.setIsPreKKOpen(false);
@@ -252,21 +249,24 @@ public class PreKK extends JInternalFrame {
             // Sets kN4 open to true
             main.setIsKN4ScreenOpen(true);
             
+            // Closes the PreK-K Module
+            this.dispose();
+
         }
         // If the current page is 4
         if (page == 4) {
-            
-            // Closes the PreK-K Module
-            this.dispose();
             
             // Sets the variable to false
             main.setIsPreKKOpen(false);
             
             // Opens KN4
             main.openKN8Screen();
-            
+
             // Sets kN4 open to true
             main.setIsKN8ScreenOpen(true);
+            
+            // Closes the PreK-K Module
+            this.dispose();
             
         }
         
