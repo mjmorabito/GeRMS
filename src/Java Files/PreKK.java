@@ -341,6 +341,11 @@ public class PreKK extends JInternalFrame {
             // Opens the KN1 module
             main.openKN1Screen();
             
+        } else if (page == 2) {
+          
+            // Opens the KN5 module
+            main.openKN3Screen();
+            
         } else if (page == 3) {
           
             // Opens the KN5 module

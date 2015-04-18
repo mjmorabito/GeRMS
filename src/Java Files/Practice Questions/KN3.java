@@ -262,7 +262,31 @@ public class KN3 extends JInternalFrame{
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+// If the user has not submitted an answer
+        if (!answerSubmitted) {
 
+            // If the value assigned to this button is the correct answer
+            if (correctAnswer.equals(jButton2.getText())) {
+
+                // Display the correct answer image
+                jButton2.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton2.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -271,11 +295,13 @@ public class KN3 extends JInternalFrame{
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
-            if (answer == 1) {
+            if (correctAnswer.equals(jButton4.getText())) {
+
                 // Display the correct answer image
                 jButton4.setIcon(correctImageIcon);
 
             } else {
+
                 // Display the incorrect answer image
                 jButton4.setIcon(incorrectImageIcon);
 
@@ -294,6 +320,35 @@ public class KN3 extends JInternalFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (correctAnswer.equals(jButton1.getText())) {
+                
+                
+                System.out.println(" Action performed: " + jButton1.getText());
+
+                // Display the correct answer image
+                jButton1.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton1.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -302,8 +357,9 @@ public class KN3 extends JInternalFrame{
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
-            if (answer == 0) {
-
+            if (correctAnswer.equals(jButton3.getText())) {
+                
+                
                 // Display the correct answer image
                 jButton3.setIcon(correctImageIcon);
 
@@ -397,9 +453,11 @@ public class KN3 extends JInternalFrame{
     // This method is called when the blue right arrow is clicked
     
      //get Easy Question
+    
+    
     public String getEQuestion(){
         
-        ArrayList<String> images = null;
+        ArrayList<String> images = new ArrayList<>();
         
         images.add("/Images/PracticeScreens/KN3/kn3first.png");
         images.add("/Images/PracticeScreens/KN3/kn3second.png");
@@ -409,20 +467,24 @@ public class KN3 extends JInternalFrame{
     questionNum = rand.nextInt(3);
         
         //Answers to the questions
-        String[] correctAnswers = {"first", "second", "third"};
+       //String[] correctAnswers = {"first", "second", "third"};
         
         // Sets the icon to the randomly chosen question
-        questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
+       
        AnsArray.removeAll(AnsArray);
         
-        AnsArray.add("first");
-        AnsArray.add("second");
-        AnsArray.add("third");
-        AnsArray.add("fourth");
+        AnsArray.add("First");
+        AnsArray.add("Second");
+        AnsArray.add("Third");
+        AnsArray.add("Fourth");
         
         
        // shuffleList(images, 0, 2);
         correctAnswer = AnsArray.get(questionNum);
+        
+        System.out.println("Easy correct answer is now: "+ correctAnswer);
+        
+        questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
         //removefromsequence();
         
         // Sets the icon for the question
@@ -470,13 +532,19 @@ public class KN3 extends JInternalFrame{
     
     //Get Medium Question
     public String getMQuestion(){
-        AnsArray.removeAll(AnsArray);
-        AnsArray.add("first");
-        AnsArray.add("second");
-        AnsArray.add("third");
-        AnsArray.add("fourth");
         
-        ArrayList<String> images = null;
+        //gets 4th option for med and hard
+        jButton4.setVisible(true);
+        
+        ArrayList<String> images = new ArrayList<>();
+        
+        AnsArray.removeAll(AnsArray);
+        AnsArray.add("First");
+        AnsArray.add("Second");
+        AnsArray.add("Third");
+        AnsArray.add("Fourth");
+        
+        
         
         images.add("/Images/PracticeScreens/KN3/kn3Mfirst.png");
         images.add("/Images/PracticeScreens/KN3/kn3Msecond.png");
@@ -492,6 +560,9 @@ public class KN3 extends JInternalFrame{
        
         
         correctAnswer = AnsArray.get(questionNum);
+        
+        System.out.println("Medium correct answer is now: "+ correctAnswer);
+        
         //removefromsequence();
         
         // Sets the icon for the question
@@ -546,16 +617,18 @@ public class KN3 extends JInternalFrame{
     
     //Get Hard Question
      public String getHQuestion(){
-        AnsArray.removeAll(AnsArray);
+       
+         ArrayList<String> images = new ArrayList<>();
+         AnsArray.removeAll(AnsArray);
         
-        AnsArray.add("first");
-        AnsArray.add("second");
-        AnsArray.add("third");
-        AnsArray.add("fourth");
-        AnsArray.add("fifth");
+        
+        AnsArray.add("Second");
+        AnsArray.add("Third");
+        AnsArray.add("Fourth");
+        AnsArray.add("Fifth");
         //shuffleList(Sequence, 7, 11);
         
-        ArrayList<String> images = null;
+        
         
         
         images.add("/Images/PracticeScreens/KN3/kn3Hsecond.png");
@@ -563,10 +636,13 @@ public class KN3 extends JInternalFrame{
         images.add("/Images/PracticeScreens/KN3/kn3Hfourth.png");
         images.add("/Images/PracticeScreens/KN3/kn3Hfifth.png");
         
-        questionNum = rand.nextInt(4)+1;
+        questionNum = rand.nextInt(4);
         correctAnswer = AnsArray.get(questionNum);
        
+        System.out.println("Hard correct answer is now: "+ correctAnswer);
         
+        System.out.println("correct answer right now is: "+ correctAnswer);
+        questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
         // Sets the icon for the question
         jLabel1.setIcon(questionIcon);
         
