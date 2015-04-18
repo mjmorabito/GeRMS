@@ -257,54 +257,14 @@ public class KN2 extends javax.swing.JInternalFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (page == 3){
-            
-            
-            // A try/catch block to get information from the database using SQL
-            try {
-
-                // Database Driver
-                Class.forName(dbClassName);
-
-                // user/pwd to connect to DB
-                Properties p = new Properties();
-                p.put("user","GermsAdmin");
-                p.put("password","g3rm5p0w3ru53r");
-
-                // DB connection
-                Connection conn = DriverManager.getConnection(CONNECTION,p);
-                Statement stmt = conn.createStatement();
-                
-                String user = main.getUsername();
-                
-                String sql = "select * from practices where PaccUser = '" + user + "'";
-                ResultSet rs = stmt.executeQuery(sql);
-
-                // Loops through all the elements in the ResultSet
-                if (rs.next() == false){
-
-
-                }    
-
-                // Closes the connection
-                rs.close();
-                stmt.close();
-                conn.close();
-                
-                JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
-                
-                main.setIsKN2ScreenOpen(false);
-
-                // Opens the PreKK module
-                main.openPreKK();
-
-                this.dispose();
-                
-            } catch (ClassNotFoundException e) {
-
-            } catch (SQLException e) {
-
-            }
-            
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN2");
+            JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+            main.setIsKN2ScreenOpen(false);
+            // Opens the PreKK module
+            main.openPreKK();
+            this.dispose();
         }else{
             page++;
             pageLabel.setText(page + "/3");
