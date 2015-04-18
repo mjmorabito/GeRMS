@@ -630,7 +630,11 @@ public class KN7 extends JInternalFrame {
         this.setTitle(title);
         
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+    /*
+    * The following three methods are used in the Assessment class
+    * for tests and quizzes.
+    */
     public ImageIcon getImage()
     {
        return questionIcon; 

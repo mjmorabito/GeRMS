@@ -65,7 +65,7 @@ public class KN5 extends JInternalFrame {
         // Generates an easy question on the screen
         generateEasyQuestion();
         
-        // Disables the first two buttons
+        // Disables the buttons
         jButton1.setVisible(false);
         jButton2.setVisible(false);
         
@@ -486,6 +486,26 @@ public class KN5 extends JInternalFrame {
         jButton3.setText("Half");
         jButton4.setText("Whole");
 
+    }
+    
+    
+    /*
+    * The following three methods are used in the Assessment class
+    * for tests and quizzes.
+    */
+    public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
+
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    
+    public int getAnswer()
+    {
+        return answer;
     }
     
 

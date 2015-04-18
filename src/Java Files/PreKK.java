@@ -287,8 +287,12 @@ public class PreKK extends JInternalFrame {
         
     }//GEN-LAST:event_practiceButton2ActionPerformed
 
+    // This method is called when the Final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-        // TODO add your handling code here:
+      
+        // Opens the Assessment
+        main.openAssessmentScreen(10, 3);
+        
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void rightarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightarrowButtonActionPerformed
