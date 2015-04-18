@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -9,6 +10,7 @@ import java.util.Random;
 public class QuizSample {
 
     private ArrayList<Integer> sequence;
+    ArrayList <String> answerChoices = new ArrayList<>();
     private String ans1;
     private String ans2;
     private String ans3;
@@ -114,7 +116,8 @@ public class QuizSample {
         ans4 = goodWrongAnswer + "";
         
         //Put into an arraylist and shuffle elements randomy
-        ArrayList <String> answerChoices = new ArrayList<>();
+        //ArrayList <String> answerChoices = new ArrayList<>();
+        
         answerChoices.add(ans1);
         answerChoices.add(ans2);
         answerChoices.add(ans3);
@@ -197,4 +200,14 @@ public class QuizSample {
   {
       return correctAnswer;
   }
+    public ArrayList <String> getChoices()
+    {
+       return answerChoices; 
+    }
+    public String getImage()
+  {
+      return numberList;
+  }
+
 }
+

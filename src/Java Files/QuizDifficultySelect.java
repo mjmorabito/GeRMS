@@ -107,6 +107,7 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
 
     private void easyButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonClickedActionPerformed
     
+        main.openAssessmentScreen(6, 1);
         
         
     }//GEN-LAST:event_easyButtonClickedActionPerformed

@@ -144,6 +144,14 @@ public class Main extends JFrame {
     
     // Determines  if the quizDifficultySelect screen is open
     private boolean isQuizDifficultySelectOpen = false;
+    
+      // Class for the Assessment
+    private Assessment assessment;
+    
+    // Determines  if the Assessment screen is open
+    private boolean isAssessmentScreenOpen = false;
+    
+    
  
     /*
     * Creates a new instance of the Main class
@@ -534,6 +542,14 @@ public class Main extends JFrame {
         
     }
     
+     // This method sets the isAssessmentScreenOpen variable to true/false
+    public void setIsAssessmentScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isAssessmentScreenOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
     public boolean getIsKN1ScreenOpen(){
         
@@ -645,6 +661,14 @@ public class Main extends JFrame {
         
     }
     
+    
+       // This method returns the boolean value of isAssessmentScreenOpen
+    public boolean getIsAssessmentScreenOpen() {
+        
+        // Returns the boolean value
+        return isAssessmentScreenOpen;
+        
+    }
     // This method creates an instance of the Login screen
     public void openLoginScreen() {
         
@@ -985,6 +1009,26 @@ public class Main extends JFrame {
         
         // Brings the KN8 screen to the front
         g2n4.toFront();       
+        
+    }
+    
+       // This method creates an instance of the Assessment1 screen
+    public void openAssessmentScreen(int a, int b) {
+        
+        if(isAssessmentScreenOpen == false)
+        {
+        // Creates a new Assessment
+        assessment = new Assessment(this,a,b);
+        
+        // Sets the variable
+        isAssessmentScreenOpen = true;
+        
+        // Adds the Assessment screen to the desktop pane
+        desktopPane.add(assessment);
+        
+        // Brings the Assessment screen to the front
+        assessment.toFront(); 
+        }
         
     }
     
