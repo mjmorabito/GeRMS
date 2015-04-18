@@ -1,5 +1,6 @@
-
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,6 +17,15 @@ public class KN2 extends javax.swing.JInternalFrame {
     // Stores a reference tot he main class
     Main main;
     kn2Class q = new kn2Class();
+    int page = 1;
+    int question;
+    
+    // ImageIcon for the correct answer
+    private ImageIcon correctImageIcon;
+    // ImageIcon for the incorrect answer
+    private ImageIcon incorrectImageIcon;
+    
+    
     
     /**
      * Creates new form KN2
@@ -26,6 +36,9 @@ public class KN2 extends javax.swing.JInternalFrame {
         initComponents();
         
         initQuestion();
+      
+        correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
+        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
         
         // Sets the reference to the main class
         main = m;
@@ -57,6 +70,7 @@ public class KN2 extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         imagejLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        pageLabel = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -132,12 +146,17 @@ public class KN2 extends javax.swing.JInternalFrame {
             }
         });
 
+        pageLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        pageLabel.setText("1/3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addGap(96, 96, 96)
+                .addComponent(pageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,7 +174,7 @@ public class KN2 extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(imagejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,13 +182,15 @@ public class KN2 extends javax.swing.JInternalFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton5)))
+                        .addComponent(jButton5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pageLabel)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(30, 30, 30))
         );
 
@@ -182,30 +203,65 @@ public class KN2 extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+        if (Integer.parseInt(jButton1.getText()) == question){
+            jButton1.setIcon(correctImageIcon);
+            jButton5.setEnabled(true);
+        }else{
+            jButton1.setIcon(incorrectImageIcon);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if (Integer.parseInt(jButton2.getText()) == question){
+            jButton2.setIcon(correctImageIcon);
+            jButton5.setEnabled(true);
+        }else{
+            jButton2.setIcon(incorrectImageIcon);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if (Integer.parseInt(jButton4.getText()) == question){
+            jButton4.setIcon(correctImageIcon);
+            jButton5.setEnabled(true);
+        }else{
+            jButton4.setIcon(incorrectImageIcon);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if (Integer.parseInt(jButton3.getText()) == question){
+            jButton3.setIcon(correctImageIcon);
+            jButton5.setEnabled(true);
+        }else{
+            jButton3.setIcon(incorrectImageIcon);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
-        initQuestion();
+        if (page == 3){
+            JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            main.setIsKN2ScreenOpen(false);
+
+            // Opens the PreKK module
+            main.openPreKK();
+            
+        }else{
+            page++;
+            pageLabel.setText(page + "/3");
+            initQuestion();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void initQuestion(){
         
-        int question = q.getQuestion();
+        question = q.getQuestion(page);
         if(question == 2){
             imagejLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/kn2-" + question + ".png")));
             imagejLabel.setText("");
@@ -221,7 +277,13 @@ public class KN2 extends javax.swing.JInternalFrame {
     
     private void setButtons()
     {
-
+        jButton5.setEnabled(false);
+        
+        jButton1.setIcon(null);
+        jButton2.setIcon(null);
+        jButton3.setIcon(null);
+        jButton4.setIcon(null);
+        
         //Set the text of the buttons to the answer choices, one of which is correct
         jButton1.setText(q.getAns1());
         jButton2.setText(q.getAns2());
@@ -237,5 +299,6 @@ public class KN2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel pageLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,9 @@ import java.util.Random;
 public class kn2Class {
     
     private ArrayList<String> sequence;
+    private ArrayList<String> easy;
+    private ArrayList<String> medium;
+    private ArrayList<String> hard;
     private ArrayList <String> answerChoices = new ArrayList<>();
     //private ArrayList <Integer> answersOut = new ArrayList<>();
     private int correctAnswer;
@@ -21,13 +24,28 @@ public class kn2Class {
     
     public kn2Class() {
          //initialize the sequence to zeros
+        easy = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            easy.add(""+i);
+        }
+        
+        medium = new ArrayList<>();
+        for (int i = 3; i < 6; i++) {
+            medium.add(""+i);
+        }
+        
+        hard = new ArrayList<>();
+        for (int i = 7; i < 10; i++) {
+            hard.add(""+i);
+        }
+        
         sequence = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             sequence.add(""+i);
         }
     }
     
-    public int getQuestion() {
+    public int getQuestion(int difficulty) {
         
         //sequence.removeAll(sequence);
         answerChoices.removeAll(answerChoices);
@@ -36,11 +54,27 @@ public class kn2Class {
 
         //correctAnswer = randomQuestion.nextInt(10);
         
-        shuffleList(sequence);
+        //shuffleList(sequence);
+        //correctAnswer = Integer.parseInt(sequence.get(0));
         
-        correctAnswer = Integer.parseInt(sequence.get(0));
+        switch (difficulty){
+            case 1:
+                shuffleList(easy);
+                correctAnswer = Integer.parseInt(easy.get(0));
+                removefromsequence(easy);
+                break;
+            case 2:
+                shuffleList(medium);
+                correctAnswer = Integer.parseInt(medium.get(0));
+                removefromsequence(medium);
+                break;
+            case 3:
+                shuffleList(hard);
+                correctAnswer = Integer.parseInt(hard.get(0));
+                removefromsequence(hard);
+                break;
+        }
         
-        removefromsequence();
         
         ans1 = correctAnswer + "";
         answerChoices.add(""+correctAnswer);
@@ -84,11 +118,11 @@ public class kn2Class {
         return false;
     }
     
-    private void removefromsequence(){
-        for (int i=0; i<sequence.size();i++)
+    private void removefromsequence(ArrayList<String> a){
+        for (int i=0; i<a.size();i++)
         {
-            if (correctAnswer == Integer.parseInt(sequence.get(i))){
-                sequence.remove(i);
+            if (correctAnswer == Integer.parseInt(a.get(i))){
+                a.remove(i);
             }
         }
     }
