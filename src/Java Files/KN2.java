@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.sql.*;
+import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -24,6 +26,10 @@ public class KN2 extends javax.swing.JInternalFrame {
     private ImageIcon correctImageIcon;
     // ImageIcon for the incorrect answer
     private ImageIcon incorrectImageIcon;
+    
+    // Variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs";    
     
     
     
@@ -251,12 +257,53 @@ public class KN2 extends javax.swing.JInternalFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (page == 3){
-            JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-            main.setIsKN2ScreenOpen(false);
+            
+            
+            // A try/catch block to get information from the database using SQL
+            try {
 
-            // Opens the PreKK module
-            main.openPreKK();
+                // Database Driver
+                Class.forName(dbClassName);
+
+                // user/pwd to connect to DB
+                Properties p = new Properties();
+                p.put("user","GermsAdmin");
+                p.put("password","g3rm5p0w3ru53r");
+
+                // DB connection
+                Connection conn = DriverManager.getConnection(CONNECTION,p);
+                Statement stmt = conn.createStatement();
+                
+                String user = main.usernameLabel2.getText();
+                
+                String sql = "select * from practices where PaccUser = '" + user + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+
+                // Loops through all the elements in the ResultSet
+                if (rs.next() == false){
+
+
+                }    
+
+                // Closes the connection
+                rs.close();
+                stmt.close();
+                conn.close();
+                
+                JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+                
+                main.setIsKN2ScreenOpen(false);
+
+                // Opens the PreKK module
+                main.openPreKK();
+
+                this.dispose();
+                
+            } catch (ClassNotFoundException e) {
+
+            } catch (SQLException e) {
+
+            }
             
         }else{
             page++;
