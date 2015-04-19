@@ -28,6 +28,9 @@ public class KN1 extends javax.swing.JInternalFrame {
     QuizSample q = new QuizSample();
     String lastButtonSource = "";
     
+    // Stores the user's choices for answers
+    private int[] choices = new int[4];
+    
     private int counterDifficulty = 1;
      // ImageIcon for the neutral answer button
   
@@ -76,12 +79,16 @@ public class KN1 extends javax.swing.JInternalFrame {
         //Set the text of the buttons to the answer choices, one of which is correct
         String answerOne = q.getAns1();
         jButton1.setText(answerOne);
+        //choices[0]= Integer.parseInt(answerOne);
          String answerTwo = q.getAns2();
         jButton2.setText(answerTwo); 
+        //choices[1]= Integer.parseInt(answerOne);
         String answerThree = q.getAns3();
-        jButton3.setText(answerThree); 
+        jButton3.setText(answerThree);
+        //choices[2]= Integer.parseInt(answerOne);
         String answerFour = q.getAns4();
         jButton4.setText(answerFour);
+        //choices[3]= Integer.parseInt(answerOne);
      
         //Clears the icon of the buttons
         jButton1.setIcon(null);
@@ -371,9 +378,6 @@ public class KN1 extends javax.swing.JInternalFrame {
         //jButton4.setEnabled(true);
                         
     }//GEN-LAST:event_rightArrowActionPerformed
-
- 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel counterLabel;

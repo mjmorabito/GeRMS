@@ -99,8 +99,6 @@ public class Assessment extends javax.swing.JInternalFrame {
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
         
-        // Generates an easy question on the screen
-        //generateEasyQuestion();
         
         // Disables the first two buttons
         //jButton1.setVisible(false);
@@ -127,7 +125,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         Random r = new Random();
         for( int i = 0; i < numQuestions; i++)
         {
-            questions[i] =   4; //r.nextInt(8) + 1;
+           
+            questions[i] =   1; //r.nextInt(8) + 1;
         }
         
         //GET RID OF
@@ -153,26 +152,38 @@ public class Assessment extends javax.swing.JInternalFrame {
         if(questions[questionCount] == 1)
         {
             q = new QuizSample();
-            //do lots of stuff
-            if (difficulty == 1)
-            {
-                
-                
-                
-            }
+           
+            //creates a question based on the difficult
+            q.initializeElements(difficulty);
             
-            if (difficulty == 2)
-            {
-                
-                
-                
-            }
-            if (difficulty == 3)
-            {
-                
-                
-                
-            }
+            //Set the text of the buttons to the answer choices, one of which is correct
+            String answerOne = q.getAns1();
+            jButton1.setText(answerOne);
+            
+            
+             String answerTwo = q.getAns2();
+            jButton2.setText(answerTwo); 
+            
+       
+            String answerThree = q.getAns3();
+            jButton3.setText(answerThree); 
+            
+            
+            String answerFour = q.getAns4();
+            jButton4.setText(answerFour);
+          
+            //Sets the jLabel's text to the number sequence from the QuizSample class
+            jLabel1.setText(q.getNumberList());
+            
+            answer =  q.getCorrectAnswer();
+            choices[0] = Integer.parseInt(q.getAns1());
+            choices[1] = Integer.parseInt(q.getAns2());
+            choices[2] = Integer.parseInt(q.getAns3());
+            choices[3] = Integer.parseInt(q.getAns4());
+            
+            
+            System.out.println("XXXThe correct answer is : " +  answer );
+            
         }
         else if(questions[questionCount] == 2)
         {
@@ -558,7 +569,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
         // If the user has not submitted a question
         if (!answerSubmitted) {
-
+            System.out.println("XXX choices 1 is" + choices[1]);
             // If the value assigned to this button is the correct answer
             if (choices[1] == answer) {
 
@@ -653,7 +664,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-
+        System.out.println("XXX choices q is" + choices[2]);
             // If the value assigned to this button is the correct answer
             if (choices[2] == answer) {
 
@@ -683,7 +694,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
         // If the user has not picked an answer to the question
         if (!answerSubmitted) {
-
+        System.out.println("XXX choices q is" + choices[0]);
             // If the value assigned to this button is the correct answer
             if (choices[0] == answer) {
 
@@ -713,7 +724,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-
+            System.out.println("XXX choices q is" + choices[3]);
             // If the value assigned to this button is the correct answer
             if (choices[3] == answer) {
                 // Display the correct answer image
