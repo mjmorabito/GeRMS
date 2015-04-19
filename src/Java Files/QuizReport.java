@@ -1,3 +1,7 @@
+
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +14,86 @@
  */
 public class QuizReport extends javax.swing.JInternalFrame {
 
+    // Main class
+    private Main main;
+    
+    // Results
+    private int[] results;
+    
+    // ImageIcons for the checkmark and red x
+    private ImageIcon incorrectImageIcon;
+    private ImageIcon correctImageIcon;
+    
     /**
      * Creates new form QuizReport
      */
-    public QuizReport() {
+    public QuizReport(Main m, int[] r) {
+        
+        // Initializes the components
         initComponents();
+        
+        // Reference to the main class
+        main = m;
+        
+        // Stores the results
+        results = r;
+        
+        // ImageIcons for the neutral, correct, and incorrect buttons
+        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/Checkmark.png"));
+        correctImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/X.png"));
+        
+        displayResults();
+        
+        // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+        
+    }
+    
+    public void displayResults() {
+        
+        if (results[0] == 0) {
+            jLabel8.setIcon(incorrectImageIcon);
+        } else {
+            jLabel8.setIcon(correctImageIcon);
+        }
+        
+        if (results[1] == 0) {
+            jLabel9.setIcon(incorrectImageIcon);
+        } else {
+            jLabel9.setIcon(correctImageIcon);
+        }
+
+        if (results[2] == 0) {
+            jLabel10.setIcon(incorrectImageIcon);
+        } else {
+            jLabel10.setIcon(correctImageIcon);
+        }
+
+        if (results[3] == 0) {
+            jLabel11.setIcon(incorrectImageIcon);
+        } else {
+            jLabel11.setIcon(correctImageIcon);
+        }
+
+        if (results[4] == 0) {
+            jLabel12.setIcon(incorrectImageIcon);
+        } else {
+            jLabel12.setIcon(correctImageIcon);
+        }
+
+        if (results[5] == 0) {
+            jLabel13.setIcon(incorrectImageIcon);
+        } else {
+            jLabel13.setIcon(correctImageIcon);
+        }
+    
     }
 
     /**
@@ -68,6 +147,11 @@ public class QuizReport extends javax.swing.JInternalFrame {
         jLabel6.setText("5");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/RegisterScreen/goButton.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/printer.png"))); // NOI18N
 
@@ -108,8 +192,8 @@ public class QuizReport extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
@@ -122,15 +206,7 @@ public class QuizReport extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(23, 23, 23)
@@ -138,19 +214,25 @@ public class QuizReport extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel6))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel12)))
-                .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel13)
+                        .addGap(20, 20, 20)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,6 +241,17 @@ public class QuizReport extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    // Called when the go button is pressed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+        // Opens the PreKK screen
+        main.openPreKK();
+        
+        // Disposes this screen
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
