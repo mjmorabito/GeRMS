@@ -64,6 +64,10 @@ public class Assessment extends javax.swing.JInternalFrame {
     private KN7 kn7;
     
     private KN8 kn8;
+    
+    // Stores  correct / incorrect (1 or 0) for each question
+    private int[] results;
+    
     /**
      * Creates new form Assessment
      */
@@ -78,6 +82,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         difficulty = diff;
         
         numQuestions = numQ;
+        
+        results = new int[numQuestions];
          
         questions = new int[numQuestions];
         // Initializes the components
@@ -574,13 +580,19 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (choices[1] == answer) {
 
                 // Display the correct answer image
-                jButton2.setIcon(correctImageIcon);
+                jButton1.setIcon(correctImageIcon);
+                
+                // Correct answer
+                results[questionCount] = 1;
 
             } else {
 
                 // Display the incorrect answer image
-                jButton2.setIcon(incorrectImageIcon);
-
+                jButton1.setIcon(incorrectImageIcon);
+                
+                // Incorect answer
+                results[questionCount] = 0;
+                
             }
 
             // Prevents the user from submitting another answer
@@ -645,10 +657,16 @@ public class Assessment extends javax.swing.JInternalFrame {
             // Closes this screen
             this.dispose();
 
+            // Sets the variable to flase
             main.setIsAssessmentScreenOpen(false);
 
-            // Opens the PreKK module   TODO:  Open the Report instead of Module
-            main.openPreKK();
+            // If the number of questions == 6 (quiz) then open the quiz report screen
+            if (numQuestions == 6) {
+             
+                // Opens the QuizReport module
+                main.openQuizReportScreen(results);
+            
+            }
 
         }
 
@@ -669,13 +687,19 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (choices[2] == answer) {
 
                 // Display the correct answer image
-                jButton3.setIcon(correctImageIcon);
+                jButton1.setIcon(correctImageIcon);
+                
+                // Correct answer
+                results[questionCount] = 1;
 
             } else {
 
                 // Display the incorrect answer image
-                jButton3.setIcon(incorrectImageIcon);
-
+                jButton1.setIcon(incorrectImageIcon);
+                
+                // Incorect answer
+                results[questionCount] = 0;
+                
             }
 
             // Prevents the user from submitting another answer
@@ -700,12 +724,18 @@ public class Assessment extends javax.swing.JInternalFrame {
 
                 // Display the correct answer image
                 jButton1.setIcon(correctImageIcon);
+                
+                // Correct answer
+                results[questionCount] = 1;
 
             } else {
 
                 // Display the incorrect answer image
                 jButton1.setIcon(incorrectImageIcon);
-
+                
+                // Incorect answer
+                results[questionCount] = 0;
+                
             }
 
             // Prevents the user from submitting another answer
@@ -727,13 +757,21 @@ public class Assessment extends javax.swing.JInternalFrame {
             System.out.println("XXX choices q is" + choices[3]);
             // If the value assigned to this button is the correct answer
             if (choices[3] == answer) {
+                
                 // Display the correct answer image
-                jButton4.setIcon(correctImageIcon);
+                jButton1.setIcon(correctImageIcon);
+                
+                // Correct answer
+                results[questionCount] = 1;
 
             } else {
-                // Display the incorrect answer image
-                jButton4.setIcon(incorrectImageIcon);
 
+                // Display the incorrect answer image
+                jButton1.setIcon(incorrectImageIcon);
+                
+                // Incorect answer
+                results[questionCount] = 0;
+                
             }
 
             // Prevents the user from submitting another answer

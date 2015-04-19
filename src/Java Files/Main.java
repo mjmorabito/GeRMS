@@ -162,7 +162,12 @@ public class Main extends JFrame {
     
     // Determines if the g4n12 screen is open / closed
     private boolean isG4N12ScreenOpen = false;
- 
+    
+    // QuizReport class
+    private QuizReport quizReport;
+    
+    // Determines if the QuizReport screen is open / closed
+    private boolean isQuizReportScreenOpen = false; 
     /*
     * Creates a new instance of the Main class
     */
@@ -576,6 +581,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isQuizReportScreenOpen variable to true/false
+    public void setIsQuizReportScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isQuizReportScreenOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
     public boolean getIsKN1ScreenOpen(){
         
@@ -709,6 +722,14 @@ public class Main extends JFrame {
         
         // Returns the variable
         return isGrades3and4ModuleOpen;
+        
+    }
+    
+    // This method gets the boolean value of isQuizReportScreenOpen variable
+    public boolean getIsQuizReportScreenOpen(){
+        
+        // Returns the variable
+        return isQuizReportScreenOpen;
         
     }
     
@@ -1114,6 +1135,28 @@ public class Main extends JFrame {
 
             // Brings the KN8 screen to the front
             g4n12.toFront();  
+            
+        }
+        
+    }
+    
+    // This method creates an instance of the QuizReport screen
+    public void openQuizReportScreen(int[] results) {
+        
+        // If the screen is not already open, then open it
+        if (isQuizReportScreenOpen == false) {
+        
+            // Creates a new KN1
+            quizReport = new QuizReport(this, results);
+
+            // Sets the variable
+            isQuizReportScreenOpen = true;
+
+            // Adds the KN8 screen to the desktop pane
+            desktopPane.add(quizReport);
+
+            // Brings the KN8 screen to the front
+            quizReport.toFront();  
             
         }
         
