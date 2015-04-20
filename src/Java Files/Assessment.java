@@ -31,7 +31,7 @@ public class Assessment extends javax.swing.JInternalFrame {
     private int[] questions ;
     
     // Stores the count of number of questions asked
-    private int questionCount = 0;
+    private int questionCount = -1;
     
     private int currentPage = 1;
     // ImageIcon for the neutral answer button
@@ -580,7 +580,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (choices[1] == answer) {
 
                 // Display the correct answer image
-                jButton1.setIcon(correctImageIcon);
+                jButton2.setIcon(correctImageIcon);
                 
                 // Correct answer
                 results[questionCount] = 1;
@@ -588,7 +588,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             } else {
 
                 // Display the incorrect answer image
-                jButton1.setIcon(incorrectImageIcon);
+                jButton2.setIcon(incorrectImageIcon);
                 
                 // Incorect answer
                 results[questionCount] = 0;
@@ -687,7 +687,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (choices[2] == answer) {
 
                 // Display the correct answer image
-                jButton1.setIcon(correctImageIcon);
+                jButton3.setIcon(correctImageIcon);
                 
                 // Correct answer
                 results[questionCount] = 1;
@@ -695,7 +695,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             } else {
 
                 // Display the incorrect answer image
-                jButton1.setIcon(incorrectImageIcon);
+                jButton3.setIcon(incorrectImageIcon);
                 
                 // Incorect answer
                 results[questionCount] = 0;
@@ -759,7 +759,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             if (choices[3] == answer) {
                 
                 // Display the correct answer image
-                jButton1.setIcon(correctImageIcon);
+                jButton4.setIcon(correctImageIcon);
                 
                 // Correct answer
                 results[questionCount] = 1;
@@ -767,7 +767,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             } else {
 
                 // Display the incorrect answer image
-                jButton1.setIcon(incorrectImageIcon);
+                jButton4.setIcon(incorrectImageIcon);
                 
                 // Incorect answer
                 results[questionCount] = 0;

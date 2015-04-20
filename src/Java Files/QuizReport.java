@@ -39,8 +39,8 @@ public class QuizReport extends javax.swing.JInternalFrame {
         results = r;
         
         // ImageIcons for the neutral, correct, and incorrect buttons
-        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/Checkmark.png"));
-        correctImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/X.png"));
+        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/X.png"));
+        correctImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/Checkmark.png"));
         
         displayResults();
         
