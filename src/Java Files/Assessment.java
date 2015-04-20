@@ -51,7 +51,7 @@ public class Assessment extends javax.swing.JInternalFrame {
     // Makes an object of each KN standard
     private QuizSample q;// For KN1
     
-    private KN2 kn2;
+    private kn2Class kn2; // For KN2
     
     private KN3 kn3;
     
@@ -63,7 +63,7 @@ public class Assessment extends javax.swing.JInternalFrame {
     
     private KN7 kn7;
     
-    private KN8 kn8;
+    private kn8Class kn8; // For KN8
     
     // Stores  correct / incorrect (1 or 0) for each question
     private int[] results;
@@ -132,7 +132,7 @@ public class Assessment extends javax.swing.JInternalFrame {
         for( int i = 0; i < numQuestions; i++)
         {
            
-            questions[i] =   1; //r.nextInt(8) + 1;
+            questions[i] =   8; //r.nextInt(8) + 1;
         }
         
         //GET RID OF
@@ -193,27 +193,30 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
         else if(questions[questionCount] == 2)
         {
-            q = new QuizSample();
-            //do lots of stuff
-            if (difficulty == 1)
-            {
-                
-                
-                
-            }
             
-            if (difficulty == 2)
-            {
-                
-                
-                
-            }
-            if (difficulty == 3)
-            {
-                
-                
-                
-            }
+            kn2 = new kn2Class();
+            int question = kn2.getQuestion(difficulty);
+            
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN2/" + question + ".png")));
+        
+            jButton1.setIcon(null);
+            jButton2.setIcon(null);
+            jButton3.setIcon(null);
+            jButton4.setIcon(null);
+
+            //Set the text of the buttons to the answer choices, one of which is correct
+            jButton1.setText(kn2.getAns1());
+            jButton2.setText(kn2.getAns2());
+            jButton3.setText(kn2.getAns3());
+            jButton4.setText(kn2.getAns4());
+            
+            answer =  question;
+            choices[0] = Integer.parseInt(kn2.getAns1());
+            choices[1] = Integer.parseInt(kn2.getAns2());
+            choices[2] = Integer.parseInt(kn2.getAns3());
+            choices[3] = Integer.parseInt(kn2.getAns4());
+            
+            
         }
          else if(questions[questionCount] == 3)
         {
@@ -420,27 +423,27 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 8)
         {
-            q = new QuizSample();
-            //do lots of stuff
-            if (difficulty == 1)
-            {
-                
-                
-                
-            }
+            kn8 = new kn8Class();
+            int question8 = kn8.getQuestion(difficulty);
             
-            if (difficulty == 2)
-            {
-                
-                
-                
-            }
-            if (difficulty == 3)
-            {
-                
-                
-                
-            }
+            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN8/" + question8 + ".png")));
+        
+            jButton1.setIcon(null);
+            jButton2.setIcon(null);
+            jButton3.setIcon(null);
+            jButton4.setIcon(null);
+
+            //Set the text of the buttons to the answer choices, one of which is correct
+            jButton1.setText(kn8.getAns1());
+            jButton2.setText(kn8.getAns2());
+            jButton3.setText(kn8.getAns3());
+            jButton4.setText(kn8.getAns4());
+            
+            answer =  question8;
+            choices[0] = Integer.parseInt(kn8.getAns1());
+            choices[1] = Integer.parseInt(kn8.getAns2());
+            choices[2] = Integer.parseInt(kn8.getAns3());
+            choices[3] = Integer.parseInt(kn8.getAns4());
         }
     }
     
