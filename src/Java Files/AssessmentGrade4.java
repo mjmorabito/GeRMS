@@ -443,7 +443,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
             this.dispose();
 
             // Sets the variable to flase
-            main.setIsAssessmentScreenOpen(false);
+            main.setIsAssessmentGrade4ScreenOpen(false);
 
             // If the number of questions == 6 (quiz) then open the quiz report screen
             if (numQuestions == 6) {
