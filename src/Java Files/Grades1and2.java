@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 
+import java.awt.Desktop;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -97,6 +103,11 @@ public class Grades1and2 extends JInternalFrame {
 
         watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
         watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton1ActionPerformed(evt);
+            }
+        });
 
         practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
         practiceButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -173,13 +184,10 @@ public class Grades1and2 extends JInternalFrame {
                             .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(standardLabelImage1))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(rightarrowButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(leftarrowButton)))
+                            .addComponent(rightarrowButton)
+                            .addComponent(leftarrowButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -288,6 +296,27 @@ public class Grades1and2 extends JInternalFrame {
         main.setIsGrades1and2ModuleOpen(false);
         
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void watchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton1ActionPerformed
+           String videoName = "2N4";
+       
+            try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("/Videos/" + videoName + " Final.mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_watchButton1ActionPerformed
 
     private void changePage() {
         

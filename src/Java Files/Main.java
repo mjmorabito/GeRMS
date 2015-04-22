@@ -145,11 +145,23 @@ public class Main extends JFrame {
     // Determines  if the quizDifficultySelect screen is open
     private boolean isQuizDifficultySelectOpen = false;
     
+    // Class for the QuizDifficultySelectGrade4
+    private QuizDifficultySelectGrade4 quizDifficultySelectGrade4;
+    
+    // Determines  if the quizDifficultySelectGrade4 screen is open
+    private boolean isQuizDifficultySelectGrade4Open = false;
+    
       // Class for the Assessment
     private Assessment assessment;
-    
+  
     // Determines  if the Assessment screen is open
     private boolean isAssessmentScreenOpen = false;
+    
+      // Class for the Assessment
+    private AssessmentGrade4 assessmentGrade4;
+    
+    // Determines  if the Assessment screen is open
+    private boolean isAssessmentGrade4ScreenOpen = false;
     
     // Grades3and4 class
     private Grades3and4 grades3and4;
@@ -565,6 +577,24 @@ public class Main extends JFrame {
         
     }
     
+    
+    
+    
+      // This method sets the isAssessmentScreenOpen variable to true/false
+    public void setIsQuizDifficultySelectGrade4(boolean isOpen) {
+        
+        // Sets the variable
+        isQuizDifficultySelectGrade4Open = isOpen;
+        
+    }
+    
+      // This method sets the isAssessmentScreenOpen variable to true/false
+    public void setIsAssessmentGrade4ScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isAssessmentGrade4ScreenOpen = isOpen;
+        
+    }
     // This method sets the isGrades3and4Module variable to true/false
     public void setIsGrades3and4ModuleOpen(boolean isOpen){
         
@@ -690,6 +720,14 @@ public class Main extends JFrame {
         
         // Returns the boolean value
         return isRegisterScreenOpen;
+        
+    }
+    
+     // This method returns the boolean value of isRegisterScreenOpen
+    public boolean getIsAssessmentGrade4ScreenOpen() {
+        
+        // Returns the boolean value
+        return isAssessmentGrade4ScreenOpen;
         
     }
     
@@ -1081,6 +1119,33 @@ public class Main extends JFrame {
         
     }
     
+     
+    // This method creates an instance of the Quiz Difficulty select screen
+    public void openQuizDifficultySelectGrade4() {
+        
+        if (isQuizDifficultySelectGrade4Open == false) {
+        
+            // Creates a new KN1
+            quizDifficultySelectGrade4 = new QuizDifficultySelectGrade4(this);
+            
+            //FIX THIS
+
+            // Sets the variable
+            isQuizDifficultySelectGrade4Open = true;
+
+            // Adds the KN8 screen to the desktop pane
+            desktopPane.add(quizDifficultySelectGrade4);
+
+            // Brings the KN8 screen to the front
+            quizDifficultySelectGrade4.toFront(); 
+            
+        } else {
+            
+            
+        }
+        
+    }
+    
     // This method creates an instance of the G2N4 screen
     public void openG2N4Screen() {
         
@@ -1117,6 +1182,29 @@ public class Main extends JFrame {
         }
         
     }
+    
+    
+       // This method creates an instance of the Assessment1 screen
+    public void openAssessmentScreenGrade4(int a, int b) {
+        
+        if(isAssessmentGrade4ScreenOpen == false)
+        {
+        // Creates a new Assessment
+        assessmentGrade4 = new AssessmentGrade4(this,a,b);
+        
+        // Sets the variable
+        isAssessmentGrade4ScreenOpen = true;
+        
+        // Adds the Assessment screen to the desktop pane
+        desktopPane.add(assessmentGrade4);
+        
+        // Brings the Assessment screen to the front
+        assessmentGrade4.toFront(); 
+        }
+        
+    }
+    
+    
     
     // This method creates an instance of the G4N12 screen
     public void openG4N12Screen() {

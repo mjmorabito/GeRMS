@@ -80,15 +80,10 @@
                           <Component id="watchButton1" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                           <Component id="standardLabelImage1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="rightarrowButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="leftarrowButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="rightarrowButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="leftarrowButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
@@ -130,6 +125,9 @@
           <Insets value="[2, 2, 2, 2]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="watchButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="practiceButton1">
       <Properties>

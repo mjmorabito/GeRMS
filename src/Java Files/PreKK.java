@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 
+import java.awt.Desktop;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -382,11 +388,98 @@ public class PreKK extends JInternalFrame {
     }//GEN-LAST:event_practiceButton1ActionPerformed
 
     private void watchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton1ActionPerformed
-        // TODO add your handling code here:
+       
+       String videoName = "";
+       
+        // If the current page is 1
+        if (page == 1) {
+            //Play the KN1 video tutorial
+            videoName = "KN1";
+            
+        } else if (page == 2) {
+          
+            //Play the KN3 video tutorial
+           videoName = "KN3";
+            
+        } else if (page == 3) {
+          
+            //Play the KN5 video tutorial
+            videoName = "KN5";
+            
+        
+        } else if (page == 4) {
+            videoName = "KN7";
+            //Play the KN7 video tutorial
+           
+        }
+        
+            try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("/Videos/" + videoName + " Final.mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+        
     }//GEN-LAST:event_watchButton1ActionPerformed
 
     private void watchButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton2ActionPerformed
-        // TODO add your handling code here:
+        String videoName = "";
+       
+        // If the current page is 1
+        if (page == 1) {
+            //Play the KN2 video tutorial
+            videoName = "KN2";
+            
+        } else if (page == 2) {
+          
+            //Play the KN4 video tutorial
+           videoName = "KN4";
+            
+        } else if (page == 3) {
+          
+            //Play the KN6 video tutorial
+            videoName = "KN6";
+            
+        
+        } else if (page == 4) {
+            videoName = "KN8";
+            //Play the KN8 video tutorial
+           
+        }
+        
+        
+        
+        
+            try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("/Videos/" + videoName + " Final.mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+        
+        
     }//GEN-LAST:event_watchButton2ActionPerformed
 
     private void changePage() {

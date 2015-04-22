@@ -1,5 +1,11 @@
 
+import java.awt.Desktop;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -86,6 +92,11 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
 
         watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
         watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton1ActionPerformed(evt);
+            }
+        });
 
         practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
         practiceButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -203,13 +214,13 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
         // TODO add your handling code here:
         //For testing purposes, this method will launch the PreKKCountingQuiz
-        // Closes the PreKK screen
+        // Closes the Grade 3 and 4 screen
         this.dispose();
-        main.setIsPreKKOpen(false);
+        main.setIsGrades3and4ModuleOpen(false);
 
-        // Sets PreKKCounting quiz to true
-        main.setIsPreKKCountingQuizOpen(true);
-        main.openPreKKCountingQuiz();
+        
+        // Opens Difficulty Select
+        main.openQuizDifficultySelectGrade4();
 
     }//GEN-LAST:event_quizButtonActionPerformed
 
@@ -248,6 +259,27 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         // Sets the pageLabel text
         pageLabel.setText(page+"/1");
     }//GEN-LAST:event_rightarrowButtonActionPerformed
+
+    private void watchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchButton1ActionPerformed
+        String videoName = "4N12";
+       
+            try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("/Videos/" + videoName + " Final.mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_watchButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
