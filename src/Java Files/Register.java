@@ -397,18 +397,31 @@ public class Register extends JInternalFrame {
                     // If the passwords match
                     if(password1.equals(password2)){
                         
+                        // Encryptor class
+                        EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+                        
+                        // Encrypt the password
+                        try {
+                            
+                         password1 = encryptor.encrypt(password1);
+                       
+                        } catch(Exception e) {
+                            
+                        }
+                        
                         // Get the other input from the text fields
                         String username = usernameTextField.getText();
                         String firstname = firstNameTextField.getText();
                         String lastname = lastNameTextField.getText();
                         String securityanswer = securityAnswerTextField.getText();
+                        String key = encryptor.getKey();
                         
                         // Gets the ID of the selected combo box item
                         int secID = securityQuestionsComboBox.getSelectedIndex() + 1;
 
                         // Inserts the data into the database
                         sql = "INSERT INTO accounts VALUES('" + username + "','" + password1 + "','" + firstname
-                        + "','" + lastname + "','" + secID + "','" + securityanswer + "');";
+                        + "','" + lastname + "','" + secID + "','" + securityanswer + "', '" + key + "');";
                         stmt.executeUpdate(sql);
 
                         // Displays a message 

@@ -19,7 +19,10 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.sql.*;
+import java.util.Base64;
 import java.util.Properties;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 
 /*
@@ -272,7 +275,27 @@ public class ForgotPassword extends JInternalFrame {
                 securityquestion = rs.getString("s.secQuestion");
                 securityanswer = rs.getString("a.secAnswer");
                 password = rs.getString("a.accpassword");
+                String key = rs.getString("secretKey");
+                
+                // Converts the key from the db to a byte array so it can be converted to a SecretyKey for decryption
+                byte[] decodedKey = Base64.getDecoder().decode(key);
             
+                // Convert the pasword key from byte[] to SecretKey so it can be decrypted
+		SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+                
+                // Encryptor class
+                EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+                
+                // Decrypt the password
+                try {
+                    
+                    // Decrypts the pass from the db
+                    password = encryptor.decrypt(password, secretKey);
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
                 // Sets the text of the security question textfield
                 securityquestionTextField.setText(securityquestion);
                 

@@ -11,9 +11,12 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JDesktopPane;
 import java.sql.*;
+import java.util.Base64;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -268,7 +271,27 @@ public class Login extends JInternalFrame {
                 String fname = rs.getString("accfirstname");
                 String lname = rs.getString("acclastname");
                 String pwd = rs.getString("accpassword");
-
+                String key = rs.getString("secretkey");
+                
+                // Converts the password key from string to a btye array
+                byte[] decodedKey = Base64.getDecoder().decode(key);
+                
+                // Convert the pasword key from byte[] to SecretKey
+		SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+                
+                // Encryptor class
+                EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+                
+                // Decrypt the password
+                try {
+                    
+                    // Decrypts the pass from the db
+                    pwd = encryptor.decrypt(pwd, secretKey);
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+               
                 //check if password matches with whatever the user entered.
                 // if yes, show all info on screen
                 if(pwd.equals(password)) {
