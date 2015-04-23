@@ -1,5 +1,16 @@
 
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -52,6 +63,7 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         easyButtonClicked = new javax.swing.JButton();
         mediumButtonClicked = new javax.swing.JButton();
         hardButtonClicked = new javax.swing.JButton();
+        helpAudioButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -88,6 +100,13 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
             }
         });
 
+        helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
+        helpAudioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpAudioButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,11 +131,17 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(starLabel3)
                         .addGap(162, 162, 162))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(helpAudioButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(helpAudioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(starLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(starLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -154,10 +179,39 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_hardButtonClickedActionPerformed
 
+    private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
+         /*
+        * This is the code to play the audio tutorial .wav file.
+        */
+
+        // Creates a File object that is linked the QuizDifficultySelect.wav filepath
+        File yourFile = new File("src/Sounds/QuizDifficultySelect.wav");
+
+        AudioInputStream stream;
+        AudioFormat format;
+        DataLine.Info info;
+        Clip clip;
+
+        // A try/catch block to play the .wav file
+        try {
+            stream = AudioSystem.getAudioInputStream(yourFile);
+            format = stream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(stream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_helpAudioButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton easyButtonClicked;
     private javax.swing.JButton hardButtonClicked;
+    private javax.swing.JButton helpAudioButton1;
     private javax.swing.JButton mediumButtonClicked;
     private javax.swing.JLabel starLabel1;
     private javax.swing.JLabel starLabel2;

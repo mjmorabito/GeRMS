@@ -148,7 +148,7 @@ public class GradeSelect extends JInternalFrame {
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
 
         // Code to play the audio GeRMSHelp.wav
-        File yourFile = new File("src/Sounds/GeRMSHelp.wav");
+        File yourFile = new File("src/Sounds/MainMenu.wav");
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;
