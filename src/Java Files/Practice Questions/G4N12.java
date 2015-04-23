@@ -16,7 +16,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
 
     // Stores a reference to the main class
     private Main main;
-    
+
     // ImageIcon for the question
     private ImageIcon questionIcon = new ImageIcon();
 
@@ -31,11 +31,10 @@ public class G4N12 extends javax.swing.JInternalFrame {
 
     // Stores the user's choices for answers
     private int[] choices = new int[4];
-    
+
     // Stores an array of operations (addition = 1, subtraction = 2, multiplication = 3)
     private int[] operationsArray = new int[10];
-    
-    
+
     // Stores the count of number of questions asked
     private int questionCount = 1;
 
@@ -72,12 +71,11 @@ public class G4N12 extends javax.swing.JInternalFrame {
         neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
-        
-        for (int i = 0; i < 10 ; i ++)
-        {
-            operationsArray[i]= i%3 + 1;
+
+        for (int i = 0; i < 10; i++) {
+            operationsArray[i] = i % 3 + 1;
         }
-        
+
         generateEasyQuestion();
 
     }
@@ -117,34 +115,33 @@ public class G4N12 extends javax.swing.JInternalFrame {
             num1 = ((int) (Math.random() * (10)) + 1);
             num2 = ((int) (Math.random() * (10)) + 1);
         }
-        
-            //Swaps num1 and num2 so that there are no negative numbers for subtraction
-            if(num2 > num1)
-            {
-               temp = num2;
-               num2 = num1;
-               num1 = temp;
-               
-            }
+
+        //Swaps num1 and num2 so that there are no negative numbers for subtraction
+        if (num2 > num1) {
+            temp = num2;
+            num2 = num1;
+            num1 = temp;
+
+        }
         String operand = "";
         String s = "";
         if (questionNum == 1) {
             operand = "+";
             answer = num1 + num2;
-          
-            s = "<html> " + num1 + "<br>+" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>+" + num2 + "</html>";
         }
         if (questionNum == 2) {
             operand = "-";
             answer = num1 - num2;
-           
-             s = "<html> " + num1 + "<br>-" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>-" + num2 + "</html>";
         }
         if (questionNum == 3) {
             operand = "x";
             answer = num1 * num2;
-            
-             s = "<html> " + num1 + "<br>x" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>x" + num2 + "</html>";
         }
         questionString = s;
         // Sets the icon for the question using HTML
@@ -154,7 +151,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
         fillChoices();
 
     }
-    
+
     // This method is called when the form is created, it generates an medium question
     public void generateMediumQuestion() {
 
@@ -169,15 +166,14 @@ public class G4N12 extends javax.swing.JInternalFrame {
         if (questionNum == 1 || questionNum == 2) {
             //Generates two three digit numbers for addition or subtract
             num1 = ((int) (Math.random() * (10)) + 1) * 1000 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
-            num2 = ((int) (Math.random() * (10)) + 1) * 1000+ ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
-            
+            num2 = ((int) (Math.random() * (10)) + 1) * 1000 + ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
+
             //Swaps num1 and num2 so that there are no negative numbers for subtraction
-            if(num2 > num1)
-            {
-               temp = num2;
-               num2 = num1;
-               num1 = temp;
-               
+            if (num2 > num1) {
+                temp = num2;
+                num2 = num1;
+                num1 = temp;
+
             }
         } else if (questionNum == 3) {
             //Generates two one digit numbers for multiplication
@@ -189,22 +185,22 @@ public class G4N12 extends javax.swing.JInternalFrame {
         if (questionNum == 1) {
             operand = "+";
             answer = num1 + num2;
-          
-            s = "<html> " + num1 + "<br>+" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>+" + num2 + "</html>";
         }
         if (questionNum == 2) {
             operand = "-";
             answer = num1 - num2;
-           
-             s = "<html> " + num1 + "<br>-" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>-" + num2 + "</html>";
         }
         if (questionNum == 3) {
             operand = "x";
             answer = num1 * num2;
-            
-             s = "<html> " + num1 + "<br>x" + num2 +"</html>";
+
+            s = "<html> " + num1 + "<br>x" + num2 + "</html>";
         }
-         
+
         questionString = s;
         // Sets the icon for the question using HTML
         jLabel1.setText(s);
@@ -212,7 +208,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
     }
-    
+
     // This method is called when the form is created, it generates an medium question
     public void generateHardQuestion() {
 
@@ -224,115 +220,113 @@ public class G4N12 extends javax.swing.JInternalFrame {
         int difficulyLevel = 3;
         System.out.println("the number is : " + questionNum);
 
-        //if (questionNum == 1 || questionNum == 2) {
+        if (questionNum == 1 || questionNum == 2) {
             //Generates two three digit numbers for addition or subtract
-          //  num1 = ((int) (Math.random() * (10)) + 1) * 10000 +((int) (Math.random() * (10)) + 1) * 1000 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
-            //num2 = ((int) (Math.random() * (10)) + 1) * 10000 +((int) (Math.random() * (10)) + 1) * 1000+ ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
-        //} else if (questionNum == 3) {
-        
+            num1 = ((int) (Math.random() * (10)) + 1) * 10000 + ((int) (Math.random() * (10)) + 1) * 1000 + ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
+            num2 = ((int) (Math.random() * (10)) + 1) * 10000 + ((int) (Math.random() * (10)) + 1) * 1000 + ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
+        } else if (questionNum == 3) {
+
             //Generates two one digit numbers for multiplication no matter what questionNum is
             num1 = ((int) (Math.random() * (10)) + 1) * 100 + ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
             num2 = ((int) (Math.random() * (10)) + 1) * 10 + ((int) (Math.random() * (10)) + 1);
-        
-      // String operand = "";
-       /**
-        String s = "";
-        if (questionNum == 1) {
-            operand = "+";
-            answer = num1 + num2;
-          
-            s = "<html> " + num1 + "<br>+" + num2 +"</html>";
-        }
-        if (questionNum == 2) {
-            operand = "-";
-            answer = num1 - num2;
-           
-             s = "<html> " + num1 + "<br>-" + num2 +"</html>";
-        }
-        if (questionNum == 3) {*/
-            
-            String operand = "x";
-            answer = num1 * num2;
-            
-             String s = "<html> " + num1 + "<br>x" + num2 +"</html>";
-       // }
-         
-             questionString = s;
-        // Sets the icon for the question using HTML
-        jLabel1.setText(s);
 
-        // Fills the choices with 1 correct answer and 3 incorrect answers
-        fillChoices();
+            String operand = "";
+
+            String s = "";
+            if (questionNum == 1) {
+                operand = "+";
+                answer = num1 + num2;
+
+                s = "<html> " + num1 + "<br>+" + num2 + "</html>";
+            }
+            if (questionNum == 2) {
+                operand = "-";
+                answer = num1 - num2;
+
+                s = "<html> " + num1 + "<br>-" + num2 + "</html>";
+            }
+            if (questionNum == 3) {
+
+                operand = "x";
+                answer = num1 * num2;
+
+                s = "<html> " + num1 + "<br>x" + num2 + "</html>";
+            }
+
+            questionString = s;
+            // Sets the icon for the question using HTML
+            jLabel1.setText(s);
+
+            // Fills the choices with 1 correct answer and 3 incorrect answers
+            fillChoices();
+        }
     }
 
     public void fillChoices() {
-       
-        
+
         /*
-        * An int array with four elements is used to store the possible answers
-        */
-        
+         * An int array with four elements is used to store the possible answers
+         */
         // Resets the array to -1
         for (int i = 0; i < choices.length; i++) {
-            choices[i] = -1;   
-        }  
-        
+            choices[i] = -1;
+        }
+
         // Randomly picks an index from 0-3 to put the correct answer in the array
-        int indexOfAnswer = (int)(Math.random()*( (3-0) + 1)) + 0;
-        
+        int indexOfAnswer = (int) (Math.random() * ((3 - 0) + 1)) + 0;
+
         // Puts the correct answer in the selected index
         choices[indexOfAnswer] = answer;
-        
+
         // This integer is used to store the value of the randomly chosen incorrect answer
         int choice = 0;
-            
+
         // Loops through the 4 possible choices
         for (int i = 0; i < choices.length; i++) {
 
             // If one of the 4 possible choices have not been assigned a value yet
             if (choices[i] == -1) {
-                
+
                 // Code to assign a random value between 0-10 to this choice
-                
                 // Determines if the value has already been assigned
                 boolean choiceExists = true;
-                
+
                 // Loops until a value that has not already been assigned is chosen
                 while (choiceExists) {
-                
+
                     // Randomly picks a number between answer +/-2
-                    choice = (int)(Math.random()*(4)) + answer - 2;
-                    
+                    choice = (int) (Math.random() * (4)) + answer - 2;
+
                     // Sets the variable to does not exist
                     choiceExists = false;
-                    
+
                     // Loops through the selected values
                     for (int c = 0; c < choices.length; c++) {
-                        
+
                         // If a match is found in the array
                         if (choices[c] == choice) {
-                      
+
                             // Then that means the chosen value is a duplicate
                             choiceExists = true;
-                            
+
                         }
-                        
+
                     }
-                    
+
                 }
-                
+
                 // Stores the value of the choice in this array
                 choices[i] = choice;
 
             }
 
         }
-        
+
         // Sets the text of the four JButtons with the choices for answers
-        jButton1.setText(""+choices[0]);
-        jButton2.setText(""+choices[1]);
-        jButton3.setText(""+choices[2]);
-        jButton4.setText(""+choices[3]);
+        jButton1.setText("" + choices[0]);
+        jButton2.setText("" + choices[1]);
+        jButton3.setText("" + choices[2]);
+        jButton4.setText("" + choices[3]);
 
     }
 
@@ -463,7 +457,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         // If the user has not submitted a question     
         if (!answerSubmitted) {
 
@@ -479,84 +473,84 @@ public class G4N12 extends javax.swing.JInternalFrame {
                 jButton2.setIcon(incorrectImageIcon);
 
             }
-            
+
             // Prevents the user from submitting another answer
             answerSubmitted = true;
-            
+
         } else {
-            
+
             // Display a message
             JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
-            
+
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-    // Allows the user to submit an answer
+
+        // Allows the user to submit an answer
         answerSubmitted = false;
-        
+
         // Increments the questionCount
         questionCount++;
-        
+
         // String for the title of this form
         String title = "";
-        
+
         // If the current question number is the second question
         if (questionCount == 2) {
-            
+
             // Resets the ImageIcons of the JButtons on the screen to neutral
             jButton1.setIcon(neutralImageIcon);
             jButton2.setIcon(neutralImageIcon);
             jButton3.setIcon(neutralImageIcon);
             jButton4.setIcon(neutralImageIcon);
-            
+
             // Generate a medium question
             generateMediumQuestion();
-            
+
             // Title of the form
             title = "Math with Drawings: Medium Practice Question";
-            
+
         } else if (questionCount == 3) {
-            
+
             // Resets the ImageIcons of the JButtons on the screen to neutral
             jButton1.setIcon(neutralImageIcon);
             jButton2.setIcon(neutralImageIcon);
             jButton3.setIcon(neutralImageIcon);
             jButton4.setIcon(neutralImageIcon);
-            
+
             // Generate a hard question
             generateHardQuestion();
-            
+
             // Title of the form
             title = "Math with Drawings: Hard Practice Question";
-            
+
         } else {
-            
+
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
-            
+
             // Closes this screen
             this.dispose();
-            
+
             main.setIsG4N12ScreenOpen(false);
-            
+
             // Opens the PreKK module
             main.openGrades3and4Module();
-            
+
         }
-        
+
         // Sets the question questionCount on the screen
-        jLabel2.setText(questionCount+"/3");
-        
+        jLabel2.setText(questionCount + "/3");
+
         // Sets the title of the form
         this.setTitle(title);
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            
+
         // If the user has not submitted a question     
         if (!answerSubmitted) {
 
@@ -572,21 +566,21 @@ public class G4N12 extends javax.swing.JInternalFrame {
                 jButton3.setIcon(incorrectImageIcon);
 
             }
-            
+
             // Prevents the user from submitting another answer
             answerSubmitted = true;
-            
+
         } else {
-            
+
             // Display a message
             JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
-            
+
         }
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+
         // If the user has not submitted a question     
         if (!answerSubmitted) {
 
@@ -602,21 +596,21 @@ public class G4N12 extends javax.swing.JInternalFrame {
                 jButton4.setIcon(incorrectImageIcon);
 
             }
-            
+
             // Prevents the user from submitting another answer
             answerSubmitted = true;
-            
+
         } else {
-            
+
             // Display a message
             JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
-            
+
         }
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+
         // If the user has not submitted a question     
         if (!answerSubmitted) {
 
@@ -632,40 +626,36 @@ public class G4N12 extends javax.swing.JInternalFrame {
                 jButton1.setIcon(incorrectImageIcon);
 
             }
-            
+
             // Prevents the user from submitting another answer
             answerSubmitted = true;
-            
+
         } else {
-            
+
             // Display a message
             JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
-            
+
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
-  
-      /*
-    * The following three methods are used in the AssessmentGrade4 class
-    * for tests and quizzes.
-    */
-    public ImageIcon getImage()
-    {
-       return questionIcon; 
-    }
-    
-    public String getQuestionString()
-    {
-       return questionString; 
+
+    /*
+     * The following three methods are used in the AssessmentGrade4 class
+     * for tests and quizzes.
+     */
+    public ImageIcon getImage() {
+        return questionIcon;
     }
 
-    public int[] getChoices()
-    {
+    public String getQuestionString() {
+        return questionString;
+    }
+
+    public int[] getChoices() {
         return choices;
     }
-    
-    public int getAnswer()
-    {
+
+    public int getAnswer() {
         return answer;
     }
 

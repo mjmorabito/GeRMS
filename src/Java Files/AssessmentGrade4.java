@@ -334,7 +334,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not picked an answer to the question
         if (!answerSubmitted) {
-            System.out.println("XXX choices q is" + choices[0]);
+            //System.out.println("XXX choices q is" + choices[0]);
             // If the value assigned to this button is the correct answer
             if (choices[0] == answer) {
 
@@ -369,7 +369,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted a question
         if (!answerSubmitted) {
-            System.out.println("XXX choices 1 is" + choices[1]);
+           // System.out.println("XXX choices 1 is" + choices[1]);
             // If the value assigned to this button is the correct answer
             if (choices[1] == answer) {
 
@@ -466,7 +466,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            System.out.println("XXX choices q is" + choices[3]);
+           // System.out.println("XXX choices q is" + choices[3]);
             // If the value assigned to this button is the correct answer
             if (choices[3] == answer) {
 
@@ -501,7 +501,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            System.out.println("XXX choices q is" + choices[2]);
+            //System.out.println("XXX choices q is" + choices[2]);
             // If the value assigned to this button is the correct answer
             if (choices[2] == answer) {
 
