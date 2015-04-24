@@ -334,13 +334,11 @@ public class KN2 extends javax.swing.JInternalFrame {
     private void initQuestion(){
         
         question = q.getQuestion(page);
-        //if(question == 2){
+
         imagejLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN2/" + question + ".png")));
+        
         imagejLabel.setText("");
-        //}else{
-        //    imagejLabel.setText(""+question);
-        //    imagejLabel.setIcon(null);
-        //}
+
         setButtons();
         
         //

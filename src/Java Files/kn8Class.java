@@ -22,7 +22,7 @@ public class kn8Class {
     public kn8Class() {
          //initialize the sequence to zeros
         easy = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 3; i++) {
             easy.add(""+i);
         }
         
