@@ -79,7 +79,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
     private int[] results;
     
     // Stores the standards asked on the assessments in order
-    private int[] kns;
+    private String[] kns;
     
     /**
      * Creates new form AssessmentGrade4
@@ -99,7 +99,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
          
         questions = new int[numQuestions];
         
-        kns = new int[numQuestions];
+        kns = new String[numQuestions];
         
         // Initializes the components
         initComponents();
@@ -145,7 +145,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         for( int i = 0; i < numQuestions; i++)
         {
            
-            kns[i] =   4;
+            kns[i] =   "4N"+12;
         }
        
     }
