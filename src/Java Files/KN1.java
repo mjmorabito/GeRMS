@@ -8,6 +8,7 @@
  * Date: 04/08/15
  * Purpose: The client requested a math tutoring software for elementary school children.
  */
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -65,6 +66,9 @@ public class KN1 extends javax.swing.JInternalFrame {
          // Stores the reference to the main class
         main = m;
         
+        //centers the standard
+        centerOnScreen();
+        
         // ImageIcons for the neutral, correct, and incorrect buttons
         
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
@@ -72,6 +76,21 @@ public class KN1 extends javax.swing.JInternalFrame {
 
     }
 
+    // This method centers this form in the middle of the screen
+    public void centerOnScreen() {
+        
+         // Gets the dimension of the main desktop pane
+        Dimension desktopSize = main.getDesktopPaneDimension();
+                
+        // Gets the size of this JInternalFrame
+        Dimension jInternalFrameSize = this.getSize();
+        
+        // Centers this JInternalFrame in the DesktopPane
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+        
+    }
+    
     
 
     /**
