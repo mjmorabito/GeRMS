@@ -159,9 +159,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         Random r = new Random();
         for( int i = 0; i < numQuestions; i++)
         {
-           
-            questions[i] =   8; //r.nextInt(8) + 1;
-            kns[i] = "KN8"; //r.nextInt(8) + 1;
+            questions[i] = r.nextInt(8) + 1;
+            kns[i] = "KN" + questions[i];
         }
         
         //GET RID OF
@@ -176,6 +175,7 @@ public class Assessment extends javax.swing.JInternalFrame {
         
         jButton1.setVisible(true);
         jButton2.setVisible(true);
+        jLabel1.setText("");
         
         System.out.println("Question count: " + questionCount);
         
@@ -227,11 +227,6 @@ public class Assessment extends javax.swing.JInternalFrame {
             int question = kn2.getQuestion(difficulty);
             
             jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN2/" + question + ".png")));
-        
-            jButton1.setIcon(null);
-            jButton2.setIcon(null);
-            jButton3.setIcon(null);
-            jButton4.setIcon(null);
 
             //Set the text of the buttons to the answer choices, one of which is correct
             jButton1.setText(kn2.getAns1());
@@ -270,7 +265,8 @@ public class Assessment extends javax.swing.JInternalFrame {
                 questionIcon = kn3.getImage();
                 choices = kn3.getChoices();
                 AnsArray = kn3.getAnswerArray();
-                jLabel1.setIcon(questionIcon);                      
+                jLabel1.setIcon(questionIcon);
+                jLabel1.setText("");
                 
             }
             
@@ -287,7 +283,8 @@ public class Assessment extends javax.swing.JInternalFrame {
                 questionIcon = kn3.getImage();
                 choices = kn3.getChoices();
                 AnsArray = kn3.getAnswerArray();
-                jLabel1.setIcon(questionIcon);   
+                jLabel1.setIcon(questionIcon); 
+                jLabel1.setText("");
                 
                 
             }
@@ -305,6 +302,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 choices = kn3.getChoices();
                 AnsArray = kn3.getAnswerArray();
                 jLabel1.setIcon(questionIcon);  
+                jLabel1.setText("");
                 
             }
         }
@@ -430,7 +428,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 answer = kn6.answerToInt(correctAnswer);
                 questionIcon = kn6.getImage();
                 choices = kn6.getChoices();
-                AnsArray = kn3.getAnswerArray();
+                AnsArray = kn6.getAnswerArray();
                 jLabel1.setIcon(questionIcon);              
                 
                 
