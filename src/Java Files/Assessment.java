@@ -241,6 +241,8 @@ public class Assessment extends javax.swing.JInternalFrame {
             choices[3] = Integer.parseInt(kn2.getAns4());
             
             
+            jLabel1.setText("");
+            
         }
               else if(questions[questionCount] == 3)
         {
@@ -430,7 +432,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 choices = kn6.getChoices();
                 AnsArray = kn6.getAnswerArray();
                 jLabel1.setIcon(questionIcon);              
-                
+                jLabel1.setText("");  
                 
                 
             }
@@ -448,7 +450,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 questionIcon = kn6.getImage();
                 AnsArray = kn6.getAnswerArray();
                 jLabel1.setIcon(questionIcon);   
-                
+                jLabel1.setText("");
                 
             }
             if (difficulty == 3)
@@ -464,7 +466,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 questionIcon = kn6.getImage();
                 AnsArray = kn6.getAnswerArray();
                 jLabel1.setIcon(questionIcon);  
-                
+                jLabel1.setText("");
             }
         }
          else if(questions[questionCount] == 7)
@@ -541,6 +543,8 @@ public class Assessment extends javax.swing.JInternalFrame {
             choices[1] = Integer.parseInt(kn8.getAns2());
             choices[2] = Integer.parseInt(kn8.getAns3());
             choices[3] = Integer.parseInt(kn8.getAns4());
+            
+            jLabel1.setText("");
         }
     }
     
