@@ -306,7 +306,7 @@ public class Main extends JFrame {
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1516, Short.MAX_VALUE)
+            .addGap(0, 1525, Short.MAX_VALUE)
         );
 
         usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -346,23 +346,23 @@ public class Main extends JFrame {
             }
         });
 
-        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
-        starLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+        starLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png"))); // NOI18N
 
         jMenu1.setText("File");
 
@@ -420,7 +420,7 @@ public class Main extends JFrame {
                                 .addComponent(starLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(starLabel9)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 904, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1102, Short.MAX_VALUE)
                         .addComponent(loginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutButton)
@@ -1848,6 +1848,8 @@ public class Main extends JFrame {
             // Clears the username
             setUsernameLabel("");
             
+            checkStars();
+            
         // If the user is not logged in then print a message
         } else {
             
@@ -1984,8 +1986,13 @@ public class Main extends JFrame {
         stars[7] = starLabel8;
         stars[8] = starLabel9;
         
+        // Set the icons to empty stars
+        for (int i = 0; i < stars.length; i++) {
+            stars[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/EmptyStar.png")));
+        }
+        
         // Stores the quizzes the user has completed (0 not completed, 1 completed)
-        int quizzesCompleted[] = new int[9];
+        int quizzesCompleted[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         
         // Stores the number of stars the user has earned
         int numberOfStars = 0;
@@ -2096,7 +2103,7 @@ public class Main extends JFrame {
         // Displays the stars
         for (int i = 0; i < numberOfStars; i++) {
             
-            stars[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+            stars[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/FullStar.png")));
             
         }
         
