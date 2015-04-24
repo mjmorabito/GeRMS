@@ -1,3 +1,4 @@
+    
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.Dimension;
@@ -31,7 +32,8 @@ public class KN6 extends JInternalFrame{
     private final String question = "The name of this coin(s) is? ";
     Random rand = new Random();
     
-    
+    // Stores the user's choices for integer answers(Assessment class)
+    private int[] choices = new int[4];
     
     //Reference to main class
     private Main main;
@@ -547,13 +549,16 @@ public class KN6 extends JInternalFrame{
     
     public void fillChoices() {
         
-        /*
-        * A String array with four elements is used to store the possible answers
+         /*
+        * For Assessment, int array with four elements is used to compare 
+        the possible answers to correct one
         */
         
-           
+        choices[0] = 0;
+        choices[1] = 1;
+        choices[2] = 2;
+        choices[3] = 3;
       
-        
         // Sets the text of the four JButtons with the choices for answers
         jButton1.setText("Penny");
         jButton2.setText("Nickel");
@@ -564,13 +569,16 @@ public class KN6 extends JInternalFrame{
     
      public void fillChoicesH() {
         
-        /*
-        * A String array with four elements is used to store the possible answers
+         /*
+        * For Assessment, int array with four elements is used to compare
+         the possible answers to correct one
         */
         
-           
+        choices[0] = 1;
+        choices[1] = 2;
+        choices[2] = 3;
+        choices[3] = 4;
       
-        
         // Sets the text of the four JButtons with the choices for answers
         
         
@@ -590,20 +598,57 @@ public class KN6 extends JInternalFrame{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     
-    /*private void removefromsequence()
-    {
-        
-        for (int i = 0; i< Sequence.size();i++) 
-        {
-            if (correctAnswer == Integer.parseInt(Sequence.get(i)))
-            {
-                Sequence.remove(i);
-            }
-            
-        }
-        
-    }
+       
+/*
+   * The following five methods are used in the Assessment class
+    * for tests and quizzes.
     */
+    public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
+    
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    public ArrayList<String> getAnswerArray()
+    {
+        return AnsArray;
+    }
+    
+    public int getAnswer()
+    {
+        return answer;
+    }
+     //converts string answers to ints
+     public int answerToInt(String ans)
+    {
+       if ("Penny".equals(ans)) 
+       {
+           return 0;
+       }
+        if ( "Nickel".equals(ans))
+        {
+            return 1;
+        }
+               if ("Dime".equals(ans))
+               {
+                   return 2;
+               }
+                if("Quarter".equals(ans))
+                {
+                    return 3;
+                }
+                    if("Half Dollar".equals(ans))
+                    {
+                        return 4;
+                    }
+                    else {
+                        System.out.println("Invalid entry");
+                        return -1;
+                    }
+    }
     //Iterates through the array to shuffle all contents
     public static void shuffleList(ArrayList<String> a, int start, int end)
     {
@@ -638,31 +683,16 @@ public class KN6 extends JInternalFrame{
         return indicator;
     }
     
-    public String getAns1()
-  {
-      return ans1;
-  }
-  public String getAns2()
-  {
-      return ans2;
-  }
-
-  public String getAns3()
-  {
-      return ans3;
-  }
-
-  public String getAns4()
-  {
-      return ans4;
-  }
-    
-
+ 
+/* auto-generated GUI Code that can't be erased
+    ****************************************
+    ****************************************
+ */
 
 /*
    
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jButton4 = new javax.swing.JButton();
@@ -672,7 +702,6 @@ public class KN6 extends JInternalFrame{
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        helpAudioButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -735,25 +764,16 @@ public class KN6 extends JInternalFrame{
             }
         });
 
-        helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
-        helpAudioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpAudioButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(helpAudioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(88, 88, 88)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -770,15 +790,9 @@ public class KN6 extends JInternalFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(helpAudioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -798,141 +812,33 @@ public class KN6 extends JInternalFrame{
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-        // If the user has not submitted an answer
-        if (!answerSubmitted) {
+        
+    }                                        
 
-            // If the value assigned to this button is the correct answer
-            if (answer == 1) {
-                // Display the correct answer image
-                jButton4.setIcon(correctImageIcon);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-            } else {
-                // Display the incorrect answer image
-                jButton4.setIcon(incorrectImageIcon);
+    }                                        
 
-            }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-            // Prevents the user from submitting another answer
-            answerSubmitted = true;
+             
+    }                                        
 
-        } else {
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-            // Display a message
-            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+        
+    }                                        
 
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        // If the user has not submitted an answer
-        if (!answerSubmitted) {
-
-            // If the value assigned to this button is the correct answer
-            if (answer == 0) {
-
-                // Display the correct answer image
-                jButton3.setIcon(correctImageIcon);
-
-            } else {
-
-                // Display the incorrect answer image
-                jButton3.setIcon(incorrectImageIcon);
-
-            }
-
-            // Prevents the user from submitting another answer
-            answerSubmitted = true;
-
-        } else {
-
-            // Display a message
-            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
-        // Allows the user to submit an answer
-        answerSubmitted = false;
-
-        // Increments the questionCount
-        questionCount++;
-
-        // String for the title of this form
-        String title = "";
-
-        // If the current question number is the second question
-        if (questionCount == 2) {
-
-            // Resets the ImageIcons of the JButtons on the screen to neutral
-            jButton1.setIcon(neutralImageIcon);
-            jButton2.setIcon(neutralImageIcon);
-            jButton3.setIcon(neutralImageIcon);
-            jButton4.setIcon(neutralImageIcon);
-
-            // Generate a medium question
-            generateMediumQuestion();
-
-            // Title of the form
-            title = "Half and Whole: Medium Practice Question";
-
-        } else if (questionCount == 3) {
-
-            // Resets the ImageIcons of the JButtons on the screen to neutral
-            jButton1.setIcon(neutralImageIcon);
-            jButton2.setIcon(neutralImageIcon);
-            jButton3.setIcon(neutralImageIcon);
-            jButton4.setIcon(neutralImageIcon);
-
-            // Generate a hard question
-            generateHardQuestion();
-
-            // Title of the form
-            title = "Half and Whole: Hard Practice Question";
-
-        } else {
-
-            // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Half and Whole.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
-
-            // Closes this screen
-            this.dispose();
-
-            main.setIsKN7ScreenOpen(false);
-
-            // Opens the PreKK module
-            main.openPreKK();
-
-        }
-
-        // Sets the question questionCount on the screen
-        jLabel2.setText(questionCount+"/3");
-
-        // Sets the title of the form
-        this.setTitle(title);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_helpAudioButton1ActionPerformed
+    }                                        
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton helpAudioButton1;
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -940,7 +846,7 @@ public class KN6 extends JInternalFrame{
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
 */
 
