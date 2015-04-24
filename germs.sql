@@ -1,3 +1,7 @@
+DROP DATABASE germs;
+
+DROP USER 'GermsAdmin'@'localhost';
+
 
 CREATE DATABASE germs;
 
@@ -23,6 +27,7 @@ CREATE TABLE accounts(
    acclastname varchar(255) NOT NULL,
    secID int, 
    secAnswer varchar(255) NOT NULL,
+   secretKey varchar(255) NOT NULL,
 
    FOREIGN KEY (secID)
    REFERENCES securityquestion(secID));
