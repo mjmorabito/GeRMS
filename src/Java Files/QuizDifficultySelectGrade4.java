@@ -164,6 +164,9 @@ public class QuizDifficultySelectGrade4 extends javax.swing.JInternalFrame {
 
         // Easy difficulty quiz
         main.openAssessmentScreenGrade4(6, 1);
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade4Screen();
 
     }//GEN-LAST:event_easyButtonClickedActionPerformed
 
@@ -171,14 +174,18 @@ public class QuizDifficultySelectGrade4 extends javax.swing.JInternalFrame {
 
         // Medium difficulty quiz
         main.openAssessmentScreenGrade4(6, 2);
-
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade4Screen();
     }//GEN-LAST:event_mediumButtonClickedActionPerformed
 
     private void hardButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonClickedActionPerformed
 
         // Hard difficulty quiz
         main.openAssessmentScreenGrade4(6, 3);
-
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade4Screen();
     }//GEN-LAST:event_hardButtonClickedActionPerformed
 
     private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed

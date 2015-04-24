@@ -165,18 +165,27 @@ public class QuizDifficultySelectGrade2 extends javax.swing.JInternalFrame {
 
         // Easy difficulty quiz
         main.openAssessmentScreenGrade2(6, 1);
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade2Screen();
     }//GEN-LAST:event_easyButtonClickedActionPerformed
 
     private void mediumButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonClickedActionPerformed
 
         // Medium difficulty quiz
         main.openAssessmentScreenGrade2(6, 2);
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade2Screen();
     }//GEN-LAST:event_mediumButtonClickedActionPerformed
 
     private void hardButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonClickedActionPerformed
 
         // Hard difficulty quiz
         main.openAssessmentScreenGrade2(6, 3);
+        
+        // Disposes this screen
+        main.closeQuizDifficultySelectGrade2Screen();
     }//GEN-LAST:event_hardButtonClickedActionPerformed
 
     private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
