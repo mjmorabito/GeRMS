@@ -36,7 +36,17 @@ public class QuizSample {
         q.initializeElements();
     }
     * */
+    
+    
+    
     public void initializeElements(int difficulty) {
+        
+        if (answerChoices.size() > 0) {
+            for (int i = 3; i >= 0; i--) {
+                answerChoices.remove(i);
+            }
+        }
+
         //First make every element zero
         ans1="";
         ans2="";
@@ -67,6 +77,7 @@ public class QuizSample {
         int questionNumber = randomGenerator.nextInt(5) + 1;
         //make the correct answer be where the sequence started plus the random number
         correctAnswer = questionNumber + start; 
+        System.out.println("Correct answer is : " + correctAnswer);
         //set the correct answer to -1 as a flag
         sequence.set(questionNumber, -1); 
         question = questionNumber + "";
@@ -117,35 +128,67 @@ public class QuizSample {
         
         //Put into an arraylist and shuffle elements randomy
         //ArrayList <String> answerChoices = new ArrayList<>();
-        
+        System.out.println("The answers are " + " " + ans1 + " " +  ans2 + " " + ans3 + " " + ans4);
         answerChoices.add(ans1);
         answerChoices.add(ans2);
         answerChoices.add(ans3);
         answerChoices.add(ans4);
+        System.out.println("Size is " + answerChoices.size());
+        
+        System.out.println("The answers are " + " " + answerChoices.get(0) + " " +  answerChoices.get(1) + " " + answerChoices.get(2) + " " + answerChoices.get(3));
         
         //Randomize the buttons
-        shuffleList(answerChoices);
+        answerChoices = shuffleList(answerChoices);
         ans1 = answerChoices.get(0);
         ans2 = answerChoices.get(1);
         ans3 = answerChoices.get(2);
         ans4 = answerChoices.get(3);
+        System.out.println("The answers AFTER  are " + " " + ans1 + " " +  ans2 + " " + ans3 + " " + ans4);
         
     }
-    public static void shuffleList(ArrayList<String> a) {
-    int n = a.size();
-    Random random = new Random();
-    random.nextInt();
-    for (int i = 0; i < n; i++) {
-      int change = i + random.nextInt(n - i);
-      swap(a, i, change);
-    }
-  }
-
-  private static void swap(ArrayList<String> a, int i, int change) {
-    String helper = a.get(i);
-    a.set(i, a.get(change));
-    a.set(change, helper);
-  }
+    
+    //Shuffles and returns an arraylist of strings so that the answer choices are rearranged
+    public ArrayList<String>  shuffleList(ArrayList<String> a) {
+   
+      //Creates random numbers 
+       Random random = new Random();
+       int randomNum = random.nextInt(4);
+       
+       //Create a new arraylist to store the new random numbers
+       ArrayList <String> b = new ArrayList<>();
+       
+       
+       //Adds a random index of array A to array B
+       b.add(a.get(randomNum));
+       
+       int randomNum2 = random.nextInt(4);
+       while(randomNum == randomNum2)
+       {
+           randomNum2 = random.nextInt(4);
+       }
+       b.add(a.get(randomNum2));
+       
+       int randomNum3 = random.nextInt(4);
+       while(randomNum == randomNum3 || randomNum2 == randomNum3)
+       {
+          randomNum3 = random.nextInt(4); 
+       }
+       b.add(a.get(randomNum3));
+       
+       int randomNum4 = random.nextInt(4);
+       while(randomNum == randomNum4 || randomNum2 == randomNum4 ||randomNum4 == randomNum3)
+       {
+          randomNum4 = random.nextInt(4); 
+       }
+       b.add(a.get(randomNum4));
+      
+       //Store the new array, B,  in the array A that will be returned
+       a = b;
+       return a;
+       
+       }
+         
+   
   public void setElementsBackToZero()
   {
       ans1="";
@@ -180,7 +223,7 @@ public class QuizSample {
   {
       return ans2;
   }
-
+   
   public String getAns3()
   {
       return ans3;
