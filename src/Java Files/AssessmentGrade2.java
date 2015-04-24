@@ -580,6 +580,9 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 // Opens the QuizReport module
                 main.openQuizReportScreen(results, 1);
 
+                // Displays the stars at the top of the screen
+                main.checkStars();
+                
             } else if (numQuestions == 10) {
                 
                 // Saves the final

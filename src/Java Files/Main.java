@@ -8,6 +8,11 @@
  */
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
 import javax.swing.*;
 
 /*
@@ -23,6 +28,12 @@ import javax.swing.*;
 *
 */
 public class Main extends JFrame {
+
+    // Driver for the MySQL database
+    private static final String dbClassName = "com.mysql.jdbc.Driver";
+    
+    // Connection to the database
+    private static final String CONNECTION = "jdbc:mysql://localhost/germs";
     
     // Login class
     private Login login;
@@ -186,6 +197,10 @@ public class Main extends JFrame {
     
     // Determines if the QuizReport screen is open / closed
     private boolean isQuizReportScreenOpen = false; 
+    
+    // Stars array
+    private JLabel[] stars = new JLabel[9];
+    
     /*
     * Creates a new instance of the Main class
     */
@@ -221,7 +236,7 @@ public class Main extends JFrame {
         }
         
         // Opens the login screen
-        openLoginScreen();        
+        openLoginScreen(); 
         
     }
 
@@ -258,6 +273,15 @@ public class Main extends JFrame {
         homeButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
+        starLabel1 = new javax.swing.JLabel();
+        starLabel2 = new javax.swing.JLabel();
+        starLabel3 = new javax.swing.JLabel();
+        starLabel4 = new javax.swing.JLabel();
+        starLabel5 = new javax.swing.JLabel();
+        starLabel6 = new javax.swing.JLabel();
+        starLabel7 = new javax.swing.JLabel();
+        starLabel8 = new javax.swing.JLabel();
+        starLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         manageAccountsMenuItem = new javax.swing.JMenuItem();
@@ -268,10 +292,10 @@ public class Main extends JFrame {
         setExtendedState(4);
         setFocusCycleRoot(false);
 
-        usernameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         usernameLabel.setText("Username:");
 
-        starsLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        starsLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         starsLabel.setText("Stars:");
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -282,10 +306,10 @@ public class Main extends JFrame {
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1525, Short.MAX_VALUE)
+            .addGap(0, 1516, Short.MAX_VALUE)
         );
 
-        usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        usernameLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
 
         helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/helpButton.png"))); // NOI18N
         helpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +346,24 @@ public class Main extends JFrame {
             }
         });
 
+        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
+        starLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
+
         jMenu1.setText("File");
 
         manageAccountsMenuItem.setText("Manage Accounts");
@@ -353,12 +395,32 @@ public class Main extends JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(desktopPane)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(starsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1237, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(usernameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(starsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(starLabel9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 904, Short.MAX_VALUE)
                         .addComponent(loginButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutButton)
@@ -380,7 +442,17 @@ public class Main extends JFrame {
                             .addComponent(usernameLabel)
                             .addComponent(usernameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(starsLabel))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(starLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(starLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(helpButton)
                     .addComponent(printerButton)
                     .addComponent(homeButton)
@@ -1899,6 +1971,138 @@ public class Main extends JFrame {
         
     }//GEN-LAST:event_helpButtonActionPerformed
 
+    public void checkStars() {
+        
+        // Stores the JLabels used to display the stars
+        stars[0] = starLabel1;
+        stars[1] = starLabel2;
+        stars[2] = starLabel3;
+        stars[3] = starLabel4;
+        stars[4] = starLabel5;
+        stars[5] = starLabel6;
+        stars[6] = starLabel7;
+        stars[7] = starLabel8;
+        stars[8] = starLabel9;
+        
+        // Stores the quizzes the user has completed (0 not completed, 1 completed)
+        int quizzesCompleted[] = new int[9];
+        
+        // Stores the number of stars the user has earned
+        int numberOfStars = 0;
+        
+        // Selects the quizzes completed from the DB
+        try {
+            
+            // MySQL Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // get firstname and query the users table to get result
+            Statement stmt = conn.createStatement();
+            String sql;
+            String user = getUsername();
+            
+            // Get all quizzes from the user
+            // Qgrade=1 is for PreK-K. change =2 for grade 1,2 and =3 for 3-4
+            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=1 and Qcorrectanswers>=4;";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            // Sets the 4th, 5th, and 6th stars
+            while (rs.next() == true){
+                int difficulty = rs.getInt("Qdifficulty");
+                switch (difficulty){
+                    case 1:
+                        quizzesCompleted[0] = 1;
+                        break;
+                    case 2:
+                        quizzesCompleted[0] = 1;
+                        quizzesCompleted[1] = 1;
+                        break;
+                    case 3:
+                        quizzesCompleted[0] = 1;
+                        quizzesCompleted[1] = 1;
+                        quizzesCompleted[2] = 1;
+                        break;
+                }
+            }
+            
+            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=2 and Qcorrectanswers>=4;";
+            rs = stmt.executeQuery(sql);
+            
+            // Sets the 4th, 5th, and 6th stars
+            while (rs.next() == true){
+                int difficulty = rs.getInt("Qdifficulty");
+                switch (difficulty){
+                    case 1:
+                        quizzesCompleted[3] = 1;
+                        break;
+                    case 2:
+                        quizzesCompleted[3] = 1;
+                        quizzesCompleted[4] = 1;
+                        break;
+                    case 3:
+                        quizzesCompleted[3] = 1;
+                        quizzesCompleted[4] = 1;
+                        quizzesCompleted[5] = 1;
+                        break;
+                }
+            }
+            
+            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=3 and Qcorrectanswers>=4;";
+            rs = stmt.executeQuery(sql);
+            
+            // Sets the 4th, 5th, and 6th stars
+            while (rs.next() == true){
+                int difficulty = rs.getInt("Qdifficulty");
+                switch (difficulty){
+                    case 1:
+                        quizzesCompleted[6] = 1;
+                        break;
+                    case 2:
+                        quizzesCompleted[6] = 1;
+                        quizzesCompleted[7] = 1;
+                        break;
+                    case 3:
+                        quizzesCompleted[6] = 1;
+                        quizzesCompleted[7] = 1;
+                        quizzesCompleted[8] = 1;
+                        break;
+                }
+            }
+            
+            // close all connection to DB
+            rs.close();
+            stmt.close();
+            conn.close();
+        }
+        catch(Exception e) {
+        
+        }
+        
+        // counts the number of stars the user has
+        for (int i = 0; i < quizzesCompleted.length; i++) {
+            
+            numberOfStars += quizzesCompleted[i];
+            
+        }
+        
+        // Displays the stars
+        for (int i = 0; i < numberOfStars; i++) {
+            
+            stars[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+            
+        }
+        
+        
+    }
+    
     public String getUsername(){
         
         return usernameLabel2.getText();
@@ -1951,6 +2155,15 @@ public class Main extends JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuItem manageAccountsMenuItem;
     private javax.swing.JButton printerButton;
+    private javax.swing.JLabel starLabel1;
+    private javax.swing.JLabel starLabel2;
+    private javax.swing.JLabel starLabel3;
+    private javax.swing.JLabel starLabel4;
+    private javax.swing.JLabel starLabel5;
+    private javax.swing.JLabel starLabel6;
+    private javax.swing.JLabel starLabel7;
+    private javax.swing.JLabel starLabel8;
+    private javax.swing.JLabel starLabel9;
     private javax.swing.JLabel starsLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel2;

@@ -819,6 +819,9 @@ public class Assessment extends javax.swing.JInternalFrame {
                 
                 // Opens the QuizReport module
                 main.openQuizReportScreen(results, 0);
+                
+                // Displays the stars at the top of the screen
+                main.checkStars();
             
             } else if (numQuestions == 10) {
                 

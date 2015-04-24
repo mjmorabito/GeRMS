@@ -305,6 +305,9 @@ public class Login extends JInternalFrame {
                     
                     // Displays the username of the person that logged in
                     main.setUsernameLabel(user);
+                    
+                    // Displays the stars the user has earned
+                    main.checkStars();
 
                     // If the person that logged in was an administrator
                     if (user.equals("admin")) {

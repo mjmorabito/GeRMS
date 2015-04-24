@@ -514,6 +514,9 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 // Opens the QuizReport module
                 main.openQuizReportScreen(results, 2);
 
+                // Displays the stars at the top of the screen
+                main.checkStars();
+                
             } else if (numQuestions == 10) {
                 
                 // Save the final
