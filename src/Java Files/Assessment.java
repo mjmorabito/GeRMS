@@ -3,6 +3,7 @@
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 
 /**
@@ -37,6 +39,11 @@ public class Assessment extends javax.swing.JInternalFrame {
     
     // Stores the user's choices for answers
     private int[] choices = new int[4];
+    
+    //Stores user's choices and answer for kn3 and kn6 answers
+    private ArrayList<String> AnsArray = new ArrayList<String>(4);
+    
+    private String correctAnswer;
     
     // Stores the user's choices for answers
     private int[] questions ;
@@ -229,27 +236,64 @@ public class Assessment extends javax.swing.JInternalFrame {
             
             
         }
-         else if(questions[questionCount] == 3)
+              else if(questions[questionCount] == 3)
         {
-            q = new QuizSample();
+            //q = new QuizSample();
+             // TODO: ?? Sets the text of the four JButtons with the choices for answers
+            // can't store value in global variable "answer", String array not int array. 
+            
+        
+            kn3 = new KN3(main);
             //do lots of stuff
             if (difficulty == 1)
             {
                 
+                 //get question and set JButtons
+                correctAnswer = kn3.getEQuestion();
+                jButton1.setText("First");
+                jButton2.setText("Second");
+                jButton3.setText("Third");
+                jButton4.setText("Fourth");            
                 
+                answer = kn3.answerToInt(correctAnswer);
+                questionIcon = kn3.getImage();
+                choices = kn3.getChoices();
+                AnsArray = kn3.getAnswerArray();
+                jLabel1.setIcon(questionIcon);                      
                 
             }
             
             if (difficulty == 2)
             {
-                
+                //get question and set JButtons
+                correctAnswer = kn3.getMQuestion();
+                jButton1.setText("First");
+                jButton2.setText("Second");
+                jButton3.setText("Third");
+                jButton4.setText("Fourth");
+        
+                answer = kn3.answerToInt(correctAnswer);
+                questionIcon = kn3.getImage();
+                choices = kn3.getChoices();
+                AnsArray = kn3.getAnswerArray();
+                jLabel1.setIcon(questionIcon);   
                 
                 
             }
             if (difficulty == 3)
             {
+                //get question and set JButtons
+                correctAnswer = kn3.getHQuestion();
+                jButton1.setText("Second");
+                jButton2.setText("Third");
+                jButton3.setText("Fourth");
+                jButton4.setText("Fifth");
                 
-                
+                answer = kn3.answerToInt(correctAnswer);
+                questionIcon = kn3.getImage();
+                choices = kn3.getChoices();
+                AnsArray = kn3.getAnswerArray();
+                jLabel1.setIcon(questionIcon);  
                 
             }
         }
@@ -356,10 +400,27 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 6)
         {
-            q = new QuizSample();
+            //q = new QuizSample();
+             // TODO: ?? Sets the text of the four JButtons with the choices for answers
+            // can't store value in global variable "answer", String array not int array. 
+            
+        
+            kn6 = new KN6(main);
             //do lots of stuff
             if (difficulty == 1)
             {
+                
+                jButton1.setText("Penny");
+                jButton2.setText("Nickel");
+                jButton3.setText("Dime");
+                jButton4.setText("Quarter");
+                
+                correctAnswer = kn6.getEQuestion();
+                answer = kn6.answerToInt(correctAnswer);
+                questionIcon = kn6.getImage();
+                choices = kn6.getChoices();
+                AnsArray = kn3.getAnswerArray();
+                jLabel1.setIcon(questionIcon);              
                 
                 
                 
@@ -367,14 +428,33 @@ public class Assessment extends javax.swing.JInternalFrame {
             
             if (difficulty == 2)
             {
+                jButton1.setText("Penny");
+                jButton2.setText("Nickel");
+                jButton3.setText("Dime");
+                jButton4.setText("Quarter");
                 
+                 correctAnswer = kn6.getMQuestion();
+                 choices = kn6.getChoices();
+                answer = kn6.answerToInt(correctAnswer);
+                questionIcon = kn6.getImage();
+                AnsArray = kn6.getAnswerArray();
+                jLabel1.setIcon(questionIcon);   
                 
                 
             }
             if (difficulty == 3)
             {
-                
-                
+                jButton1.setText("Nickel");
+                jButton2.setText("Dime");
+                jButton3.setText("Quarter");
+                jButton4.setText("Half Dollar");
+               correctAnswer = kn6.getHQuestion();
+               
+                choices = kn6.getChoices();
+                answer = kn6.answerToInt(correctAnswer);
+                questionIcon = kn6.getImage();
+                AnsArray = kn6.getAnswerArray();
+                jLabel1.setIcon(questionIcon);  
                 
             }
         }
