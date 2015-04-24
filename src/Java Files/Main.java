@@ -1311,6 +1311,22 @@ public class Main extends JFrame {
             
         }
         
+        // If Grades1and2 Screen is open
+        if (isGrades1and2ModuleOpen) {
+            
+            // Close
+            closeGrades1and2Screen();
+            
+        }
+        
+        // If Grades3and4 Screen is open
+        if (isGrades3and4ModuleOpen) {
+            
+            // Close
+            closeGrades3and4Screen();
+            
+        }
+        
         // If manage accounts screen is open
         if (isManageAccountsScreenOpen) {
             
@@ -1390,6 +1406,70 @@ public class Main extends JFrame {
             closeKN8Screen();
             
         }
+        
+        // If G2N4 screen is open
+        if (isG2N4ScreenOpen) {
+            
+            // Close
+            closeG2N4Screen();
+            
+        }
+        
+         // If G4N12 screen is open
+        if (isG4N12ScreenOpen) {
+            
+            // Close
+            closeG4N12Screen();
+            
+        }
+        
+         // If QuizDifficultySelect screen is open
+        if (isQuizDifficultySelectOpen) {
+            
+            // Close
+            closeQuizDifficultySelectScreen();
+            
+        }
+        
+        // If QuizDifficultySelectGrade2 screen is open
+        if (isQuizDifficultySelectGrade2Open) {
+            
+            // Close
+            closeQuizDifficultySelectGrade2Screen();
+            
+        }
+        
+         // If QuizDifficultySelectGrade4 screen is open
+        if (isQuizDifficultySelectGrade4Open) {
+            
+            // Close
+            closeQuizDifficultySelectGrade4Screen();
+            
+        }
+        
+         // If Assessment screen is open
+        if (isAssessmentScreenOpen) {
+            
+            // Close
+            closeAssessment();
+            
+        }
+        
+         // If Assessment Grade 2 screen is open
+        if (isAssessmentGrade2ScreenOpen) {
+            
+            // Close
+            closeAssessmentGrade2();
+            
+        }
+        
+         // If Assessment Grade 4 screen is open
+        if (isAssessmentGrade4ScreenOpen) {
+            
+            // Close
+            closeAssessmentGrade4();
+            
+        }
                        
     }  
     
@@ -1412,6 +1492,28 @@ public class Main extends JFrame {
    
         // Set the variable to false
         isPreKKOpen = false;      
+        
+    }
+    
+    // This method disposes of the Grades1and2 Module
+    public void closeGrades1and2Screen() {
+        
+        // Disposes of the Grades1and2 Module
+        grades1and2.dispose();
+   
+        // Set the variable to false
+        isGrades1and2ModuleOpen = false;      
+        
+    }
+    
+    // This method disposes of the Grades3and4 Module
+    public void closeGrades3and4Screen() {
+        
+        // Disposes of the Grades3and4 Module
+        grades3and4.dispose();
+   
+        // Set the variable to false
+        isGrades3and4ModuleOpen = false;      
         
     }
     
@@ -1524,7 +1626,97 @@ public class Main extends JFrame {
         isKN8ScreenOpen = false;      
         
     }
-           
+    
+    // This method disposes of the G2N4
+    public void closeG2N4Screen() {
+        
+        // Disposes of the KN8 screen
+        g2n4.dispose();
+   
+        // Set the variable to false
+        isG2N4ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the G4N12
+    public void closeG4N12Screen() {
+        
+        // Disposes of the KN8 screen
+        g4n12.dispose();
+   
+        // Set the variable to false
+        isG4N12ScreenOpen = false;      
+        
+    }
+            
+    // This method disposes of the QuizDifficultySelectScreen
+    public void closeQuizDifficultySelectScreen() {
+        
+        // Disposes of the QuizDifficultySelectScreen screen
+        quizDifficultySelect.dispose();
+   
+        // Set the variable to false
+        isQuizDifficultySelectOpen = false;      
+        
+    }
+    
+    // This method disposes of the QuizDifficultySelectGrade2Screen
+    public void closeQuizDifficultySelectGrade2Screen() {
+
+        // Disposes of the QuizDifficultySelectGrade2Screen
+        quizDifficultySelectGrade2.dispose();
+
+        // Set the variable to false
+        isQuizDifficultySelectGrade2Open = false;
+
+    }
+    
+    // This method disposes of the QuizDifficultySelectGrade4Screen
+    public void closeQuizDifficultySelectGrade4Screen() {
+        
+        // Disposes of the QuizDifficultySelectGrade4Screen
+        quizDifficultySelectGrade4.dispose();
+   
+        // Set the variable to false
+        isQuizDifficultySelectGrade4Open = false;      
+        
+    }
+    
+    // This method disposes of the Assessment
+    public void closeAssessment() {
+        
+        // Disposes of the Assessment
+        assessment.dispose();
+   
+        // Set the variable to false
+        isAssessmentScreenOpen = false;      
+        
+    }
+    
+     
+    // This method disposes of the AssessmentGrade2
+    public void closeAssessmentGrade2() {
+        
+        // Disposes of the Assessment Grade 2
+        assessmentGrade2.dispose();
+   
+        // Set the variable to false
+        isAssessmentGrade2ScreenOpen = false;      
+        
+    }
+    
+    
+    // This method disposes of the Assessment Grade 4
+    public void closeAssessmentGrade4() {
+        
+        // Disposes of the Assessment Grade 4
+        assessmentGrade4.dispose();
+   
+        // Set the variable to false
+        isAssessmentGrade4ScreenOpen = false;      
+        
+    }
+    
     // The action listener for the exit menu item
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
     
