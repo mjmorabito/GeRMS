@@ -152,7 +152,32 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
     
     public void generateQuestion()
     {
+        //String for title of this asssessment based on level and number 
+            String title = "";
+        if(difficulty == 1)
+        {
+            title = title + "Easy ";
+        }
+        else if(difficulty == 2)
+        {
+            title = title + "Medium ";
+        }
+        else if(difficulty == 3)
+        {
+            title = title + "Hard ";
+        }
         
+        if(numQuestions == 6)
+        {
+            title = title + "Quiz";
+        }
+        else if (numQuestions == 10)
+        {
+            title = title + "Test";      
+        }
+        
+        //Sets the title based on question number and difficulty level
+        this.setTitle(title);
         jButton1.setVisible(true);
         jButton2.setVisible(true);
         
@@ -217,7 +242,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 
             }
             
-        
+        this.setTitle(title);
         
     }
     

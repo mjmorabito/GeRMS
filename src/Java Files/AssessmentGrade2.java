@@ -152,6 +152,32 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
     
     public void generateQuestion()
     {
+        //String for title of this asssessment based on level and number 
+            String title = "";
+        if(difficulty == 1)
+        {
+            title = title + "Easy ";
+        }
+        else if(difficulty == 2)
+        {
+            title = title + "Medium ";
+        }
+        else if(difficulty == 3)
+        {
+            title = title + "Hard ";
+        }
+        
+        if(numQuestions == 6)
+        {
+            title = title + "Quiz";
+        }
+        else if (numQuestions == 10)
+        {
+            title = title + "Test";      
+        }
+        
+        //Sets the title based on question number and difficulty level
+        this.setTitle(title);
         
         jButton1.setVisible(true);
         jButton2.setVisible(true);
@@ -168,22 +194,16 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 
                 q.generateEasyQuestion();
                 
-                //questionIcon = q.getImage();
+              
                 choices = q.getChoices();
                 System.out.println("Qstring is" + q.getLabelText());
                 jLabel1.setText(q.getLabelText());
                 
-                //TO DO USE LABELTEXT NOT QUESTIONSTRING
-                //System.out.println("Qstring is" + q.getQuestionString());
-                //jLabel1.setText(q.getQuestionString());
-                
-                
-                //System.out.println(q.getQuestionString());
                 jButton1.setText("<");
                 jButton2.setText("=");
                 jButton3.setText(">");
                 jButton4.setVisible(false);
-                //jButton4.setText("" +choices[3]);
+               
                  System.out.println("THe answer is " + q.getAnswer());
                 answer = q.getAnswer();
                 
@@ -257,7 +277,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Grade 2 Assessment");
         setVisible(true);
 
         helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
@@ -519,8 +538,8 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
         answerSubmitted = false;
 
         System.out.println("Current page: " + currentPage + "  Question Num is:" + numQuestions);
-        // String for the title of this form
-        String title = "";
+        
+        
 
         if (currentPage<numQuestions)
         {
@@ -537,15 +556,9 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
             // Generate a  question
             generateQuestion();
 
-            // Title of the form
-            if(numQuestions==6)
-            {
-                title = "Quiz";
-            }else
-            {
-                title = "Final";
-
-            }
+            
+        //Sets the title appropriately
+        this.setTitle(title);
 
         } else {
 

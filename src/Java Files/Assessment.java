@@ -163,16 +163,35 @@ public class Assessment extends javax.swing.JInternalFrame {
             kns[i] = "KN" + questions[i];
         }
         
-        //GET RID OF
-        for( int i = 0; i < numQuestions; i++)
-        {
-            System.out.println(questions[i]); 
-        }
     }
     
     public void generateQuestion()
     {
+        String title = "";
+        if(difficulty == 1)
+        {
+            title = title + "Easy ";
+        }
+        else if(difficulty == 2)
+        {
+            title = title + "Medium ";
+        }
+        else if(difficulty == 3)
+        {
+            title = title + "Hard ";
+        }
         
+        if(numQuestions == 6)
+        {
+            title = title + "Quiz";
+        }
+        else if (numQuestions == 10)
+        {
+            title = title + "Test";      
+        }
+             
+        //Sets the title appropriately
+        this.setTitle(title);
         jLabel1.setIcon(null);
         jButton1.setVisible(true);
         jButton2.setVisible(true);
@@ -187,6 +206,9 @@ public class Assessment extends javax.swing.JInternalFrame {
         
         if(questions[questionCount] == 1)
         {
+            //Sets the title
+            this.setTitle(title);
+            
             q = new QuizSample();
            
             //creates a question based on the difficult
@@ -223,6 +245,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
         else if(questions[questionCount] == 2)
         {
+            //Sets the title
+            this.setTitle(title);
             
             kn2 = new kn2Class();
             int question = kn2.getQuestion(difficulty);
@@ -247,10 +271,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
               else if(questions[questionCount] == 3)
         {
-            //q = new QuizSample();
-             // TODO: ?? Sets the text of the four JButtons with the choices for answers
-            // can't store value in global variable "answer", String array not int array. 
-            
+           //Sets the title
+            this.setTitle(title);
         
             kn3 = new KN3(main);
             //do lots of stuff
@@ -311,6 +333,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 4)
         {
+            //Sets the title
+            this.setTitle(title);
         
             kn4 = new KN4(main);
             //do lots of stuff
@@ -365,6 +389,8 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 5)
         {
+            //Sets the title
+            this.setTitle(title);
             
             // Sets the text of the four JButtons with the choices for answers            
             jButton1.setText("Half");
@@ -413,10 +439,9 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 6)
         {
-            //q = new QuizSample();
-             // TODO: ?? Sets the text of the four JButtons with the choices for answers
-            // can't store value in global variable "answer", String array not int array. 
-            
+             
+            //Sets the title
+            this.setTitle(title);
         
             kn6 = new KN6(main);
             //do lots of stuff
@@ -473,7 +498,10 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 7)
         {
-           kn7 = new KN7(main);
+           //Sets the title
+            this.setTitle(title);
+            
+            kn7 = new KN7(main);
            
             //do lots of stuff
             if (difficulty == 1)
@@ -527,6 +555,9 @@ public class Assessment extends javax.swing.JInternalFrame {
         }
          else if(questions[questionCount] == 8)
         {
+            //Sets the title
+            this.setTitle(title);
+            
             kn8 = new kn8Class();
             int question8 = kn8.getQuestion(difficulty);
             
@@ -717,7 +748,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
         // If the user has not submitted a question
         if (!answerSubmitted) {
-            System.out.println("XXX choices 1 is" + choices[1]);
+            
             // If the value assigned to this button is the correct answer
             if (choices[1] == answer) {
 
@@ -754,9 +785,7 @@ public class Assessment extends javax.swing.JInternalFrame {
         // Allows the user to submit an answer
         answerSubmitted = false;
 
-        // String for the title of this form
-        String title = "";
-
+      
         if (currentPage<numQuestions)
         {
             // Increments the current page
@@ -770,16 +799,7 @@ public class Assessment extends javax.swing.JInternalFrame {
 
             // Generate a  question
             generateQuestion();
-              
-            // Title of the form
-            if(numQuestions==6)
-            {
-                title = "Quiz";
-            }else
-            {
-                title = "Final";
-                
-            }
+            
   
         } else {
 
