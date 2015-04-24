@@ -2,6 +2,8 @@
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.sql.*;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
@@ -25,6 +27,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class QuizDifficultySelect extends javax.swing.JInternalFrame {
 
     Main main;
+    // Variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs";   
     
     /**
      * Creates new form QuizDifficultySelect
@@ -46,6 +51,8 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         // Centers this JInternalFrame in the DesktopPane
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
             (desktopSize.height- jInternalFrameSize.height)/2);
+        
+        checkstarts();
     }
 
     /**
@@ -207,6 +214,54 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
 
+    private void checkstarts(){
+        
+        try{
+            // MySQL Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // get firstname and query the users table to get result
+            Statement stmt = conn.createStatement();
+            String sql;
+            String user = main.getUsername();
+            
+            // Get all quizzes from the user
+            // Qgrade=1 is for PreK-K. change =2 for grade 1,2 and =3 for 3-4
+            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=1 and qcorrectanswers>=4;";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next() == true){
+                int difficulty = rs.getInt("Qdifficulty");
+                switch (difficulty){
+                    case 1:
+                        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        break;
+                    case 2:
+                        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        starLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        break;
+                    case 3:
+                        starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        starLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        starLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/FullStar.png")));
+                        break;
+                }
+            }
+            // close all connection to DB
+            rs.close();
+            stmt.close();
+            conn.close();
+        }
+        catch(Exception e){}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton easyButtonClicked;
