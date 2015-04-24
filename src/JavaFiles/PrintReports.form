@@ -82,7 +82,7 @@
               <Table columnCount="5" rowCount="4">
                 <Column editable="false" title="Quiz/Final" type="java.lang.String"/>
                 <Column editable="false" title="Grade" type="java.lang.String"/>
-                <Column editable="true" title="Difficulty" type="java.lang.String"/>
+                <Column editable="false" title="Difficulty" type="java.lang.String"/>
                 <Column editable="false" title="Score" type="java.lang.Integer"/>
                 <Column editable="false" title="Date" type="java.lang.String"/>
               </Table>
