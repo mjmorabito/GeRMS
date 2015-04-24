@@ -27,7 +27,7 @@ CREATE TABLE accounts(
    FOREIGN KEY (secID)
    REFERENCES securityquestion(secID));
 
-INSERT INTO accounts VALUES ("admin","admin", "Administrator", "GeRMS", 1,"black");
+INSERT INTO accounts VALUES ("admin","EjpBfslmhWLRaFsODHZ/gg==", "Administrator", "GeRMS", 1,"black","IKT1l/pEVogErpGSIgMWQg==");
 
 
 CREATE TABLE standards(
