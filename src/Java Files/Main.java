@@ -1151,11 +1151,9 @@ public class Main extends JFrame {
         
             // Creates a new KN1
             quizDifficultySelectGrade2 = new QuizDifficultySelectGrade2(this);
-            
-            //FIX THIS
 
             // Sets the variable
-            isQuizDifficultySelectGrade4Open = true;
+            isQuizDifficultySelectGrade2Open = true;
 
             // Adds the KN8 screen to the desktop pane
             desktopPane.add(quizDifficultySelectGrade2);

@@ -230,7 +230,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        helpAudioButton = new javax.swing.JButton();
         helpAudioButton1 = new javax.swing.JButton();
 
         setClosable(true);
@@ -292,13 +291,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 28)); // NOI18N
 
-        helpAudioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
-        helpAudioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpAudioButtonActionPerformed(evt);
-            }
-        });
-
         helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
         helpAudioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,10 +306,11 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(69, 69, 69)
+                                .addComponent(jButton3))
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -331,11 +324,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                         .addGap(36, 36, 36)
                         .addComponent(helpAudioButton1)
                         .addGap(101, 101, 101))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(383, 383, 383)
-                    .addComponent(helpAudioButton)
-                    .addContainerGap(384, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,11 +352,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(55, 55, 55))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(237, 237, 237)
-                    .addComponent(helpAudioButton)
-                    .addContainerGap(237, Short.MAX_VALUE)))
         );
 
         pack();
@@ -576,11 +559,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
-
-      
-    }//GEN-LAST:event_helpAudioButtonActionPerformed
-
     private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
           /*
         * This is the code to play the audio tutorial .wav file.
@@ -612,7 +590,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton helpAudioButton;
     private javax.swing.JButton helpAudioButton1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

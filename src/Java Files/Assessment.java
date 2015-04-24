@@ -173,6 +173,7 @@ public class Assessment extends javax.swing.JInternalFrame {
     public void generateQuestion()
     {
         
+        jLabel1.setIcon(null);
         jButton1.setVisible(true);
         jButton2.setVisible(true);
         jLabel1.setText("");
@@ -365,13 +366,12 @@ public class Assessment extends javax.swing.JInternalFrame {
          else if(questions[questionCount] == 5)
         {
             
-            jButton1.setVisible(false);
-            jButton2.setVisible(false);
+            // Sets the text of the four JButtons with the choices for answers            
+            jButton1.setText("Half");
+            jButton2.setText("Whole");
+            jButton3.setText("One Quarter");
+            jButton4.setText("One Third");
             
-            // Sets the text of the four JButtons with the choices for answers
-            jButton3.setText("Half");
-            jButton4.setText("Whole");
-        
             kn5 = new KN5(main);
             //do lots of stuff
             if (difficulty == 1)

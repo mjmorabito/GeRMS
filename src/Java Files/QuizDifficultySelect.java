@@ -52,7 +52,7 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
             (desktopSize.height- jInternalFrameSize.height)/2);
         
-        checkstarts();
+        checkStars();
     }
 
     /**
@@ -248,7 +248,7 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameClosed
 
-    private void checkstarts(){
+    private void checkStars(){
         
         try{
             // MySQL Driver
