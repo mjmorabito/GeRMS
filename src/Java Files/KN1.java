@@ -1,13 +1,10 @@
-//TODO
-//Make a counter fraction 1/3, 2/3, 3/3
-//Make a counter member variable and have it be global so that the constructor will create a more difficult level question for each practice portion
-
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  * Date: 04/08/15
  * Purpose: The client requested a math tutoring software for elementary school children.
  */
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,44 +34,45 @@ import javax.swing.JOptionPane;
  */
 public class KN1 extends javax.swing.JInternalFrame {
 
+    //Creates an instance of the Main class
     private Main main;
+
+    //Creates a new Quiz Sample (which holds the logic for KN1)
     QuizSample q = new QuizSample();
-    String lastButtonSource = "";
-    
+
     // Stores the user's choices for answers
     private int[] choices = new int[4];
-    
+
+    // Initializes the counterDifficulty to 1, Ranges from 1 - 3
     private int counterDifficulty = 1;
-     // ImageIcon for the neutral answer button
-  
+
     // ImageIcon for the correct answer
     private ImageIcon correctImageIcon;
-    
+
     // ImageIcon for the incorrect answer
     private ImageIcon incorrectImageIcon;
-    
+
     // Stores the count of number of questions asked
     private int questionCount = 1;
 
     /**
-     * Creates new form PreKKCountingQuiz
+     * Creates new form of KN1, the Counting Quiz
      */
     public KN1(Main m) {
-        
+
         // Initializes the components
         initComponents();
-        
+
         // Sets the buttons for the easy question
         setButtons();
-        
-         // Stores the reference to the main class
+
+        // Stores the reference to the main class
         main = m;
-        
+
         //centers the standard
         centerOnScreen();
-        
-        // ImageIcons for the neutral, correct, and incorrect buttons
-        
+
+        // ImageIcons for the correct, and incorrect buttons
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
 
@@ -82,76 +80,68 @@ public class KN1 extends javax.swing.JInternalFrame {
 
     // This method centers this form in the middle of the screen
     public void centerOnScreen() {
-        
-         // Gets the dimension of the main desktop pane
+
+        // Gets the dimension of the main desktop pane
         Dimension desktopSize = main.getDesktopPaneDimension();
-                
+
         // Gets the size of this JInternalFrame
         Dimension jInternalFrameSize = this.getSize();
-        
+
         // Centers this JInternalFrame in the DesktopPane
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-            (desktopSize.height- jInternalFrameSize.height)/2);
-        
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
     }
-    
-    
 
     /**
      * This method sets all of the buttons by using the Quiz Sample class object
      * to initialize all of the buttons and the sequence that the user will see.
      */
     private void setButtons() {
-        if(counterDifficulty < 4)
+
+        //Only set this questions 1-3
+        if (counterDifficulty < 4) {
+
+            //Creates the elements of the Quiz Sample class: 4 answer choices and a sequence of numbers
+            q.initializeElements(counterDifficulty);
+
+            //Set the text of the buttons to the answer choices, one of which is correct
+            String answerOne = q.getAns1();
+            jButton1.setText(answerOne);
+
+            String answerTwo = q.getAns2();
+            jButton2.setText(answerTwo);
+
+            String answerThree = q.getAns3();
+            jButton3.setText(answerThree);
+
+            String answerFour = q.getAns4();
+            jButton4.setText(answerFour);
+
+            //Clears the icon from the buttons
+            jButton1.setIcon(null);
+            jButton2.setIcon(null);
+            jButton3.setIcon(null);
+            jButton4.setIcon(null);
+
+            //Sets the jLabel's text to the number sequence from the QuizSample class
+            jLabel1.setText(q.getNumberList());
+
+            //Increments the counter difficulty
+            counterDifficulty++;
+            
+        } else //exit the program
         {
-            System.out.println("Set Buttons was performed");
-        
-        //Creates the elements of the Quiz Sample class: 4 answer choices and a sequence of numbers
-        
-        q.initializeElements(counterDifficulty);
-      
-        //Set the text of the buttons to the answer choices, one of which is correct
-        String answerOne = q.getAns1();
-        jButton1.setText(answerOne);
-        //choices[0]= Integer.parseInt(answerOne);
-         String answerTwo = q.getAns2();
-        jButton2.setText(answerTwo); 
-        //choices[1]= Integer.parseInt(answerOne);
-        String answerThree = q.getAns3();
-        jButton3.setText(answerThree);
-        //choices[2]= Integer.parseInt(answerOne);
-        String answerFour = q.getAns4();
-        jButton4.setText(answerFour);
-        //choices[3]= Integer.parseInt(answerOne);
-     
-        //Clears the icon of the buttons
-        jButton1.setIcon(null);
-        jButton2.setIcon(null);
-        jButton3.setIcon(null);
-        jButton4.setIcon(null);
-        
-        
-        //Sets the jLabel's text to the number sequence from the QuizSample class
-        jLabel1.setText(q.getNumberList());
-        //Disables the advance button until the user puts in an answer
-        //rightArrow.setEnabled(false);
-       
-        //increments the counter difficulty
-        counterDifficulty++;
-        System.out.println("Set Buttons Ended");
-        }
-        else
-            //exit the program
-        {
-             // Closes this screen
+            // Closes this screen
             this.dispose();
-            
+
+            // States that the Screen is now closed
             main.setIsKN1ScreenOpen(false);
-            
+
             // Opens the PreKK module
             main.openPreKK();
-        }    
-                     
+        }
+
     }
 
 
@@ -309,114 +299,99 @@ public class KN1 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         //Determines the contents of the button that was pressed
-                        String answer = ((JButton) evt.getSource()).getText();
-                        
-                        //Determines the correct answer based on the quiz
-                        String correct = q.getCorrectAnswer() + "";
-                        
-                        //Determines if the answer was correct
-                        if (answer.equals(correct)) {
-                            
-                            //Adds correct to the answer choice that was chosen
-                            
-                            ((JButton)evt.getSource()).setIcon(correctImageIcon);
+        //Determines the contents of the button that was pressed
+        String answer = ((JButton) evt.getSource()).getText();
 
-                        } else {
-                            
-                           //Adds the incrrect sign to the answer choice chosen
-                            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
-                          
+        //Determines the correct answer based on the quiz
+        String correct = q.getCorrectAnswer() + "";
 
-                        }
-                      
-                        //rightArrow.setEnabled(true);
+        //Determines if the answer was correct
+        if (answer.equals(correct)) {
 
-          
+            //Adds correct to the answer choice that was chosen
+            ((JButton) evt.getSource()).setIcon(correctImageIcon);
+
+        } else {
+
+            //Adds the incrrect sign to the answer choice chosen
+            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Determines the contents of the button that was pressed
         String answer = ((JButton) evt.getSource()).getText();
-                        
-                        //Determines the correct answer based on the quiz
-                        String correct = q.getCorrectAnswer() + "";
-                        
-                        //Determines if the answer was correct
-                        if (answer.equals(correct)) {
-                            
-                            //Adds correct to the answer choice that was chosen
-                            //((JButton) e.getSource()).setText("CORRECT: " + answer);
-                            ((JButton)evt.getSource()).setIcon(correctImageIcon);
 
-                        } else {
-                            
-                            //TODO CHANGE COLORS
-                            //((JButton) e.getSource()).setText("FALSE: " + answer);
-                            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
-                          
+        //Determines the correct answer based on the quiz
+        String correct = q.getCorrectAnswer() + "";
 
-                        }
-                      
-                       // rightArrow.setEnabled(true);
+        //Determines if the answer was correct
+        if (answer.equals(correct)) {
+
+            //Adds correct image to the answer choice that was chosen
+           ((JButton) evt.getSource()).setIcon(correctImageIcon);
+
+        } else {
+
+           //Adds the incorrect image to the answer choice that was chosen                
+            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
+
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         //Determines the contents of the button that was pressed
         String answer = ((JButton) evt.getSource()).getText();
-                        
-                        //Determines the correct answer based on the quiz
-                        String correct = q.getCorrectAnswer() + "";
-                        
-                        //Determines if the answer was correct
-                        if (answer.equals(correct)) {
-                            
-                            //Adds correct to the answer choice that was chosen
-                            //((JButton) e.getSource()).setText("CORRECT: " + answer);
-                            ((JButton)evt.getSource()).setIcon(correctImageIcon);
 
-                        } else {
-                            
-                            //TODO CHANGE COLORS
-                            //((JButton) e.getSource()).setText("FALSE: " + answer);
-                            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
-                          
+        //Determines the correct answer based on the quiz
+        String correct = q.getCorrectAnswer() + "";
 
-                        }
-                      
-                        //rightArrow.setEnabled(true);
+        //Determines if the answer was correct
+        if (answer.equals(correct)) {
+    
+            //Adds correct image to the answer choice that was chosen
+            ((JButton) evt.getSource()).setIcon(correctImageIcon);
+
+        } else {
+            
+            //Adds the incorrect image to the answer choice that was chosen
+            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
+
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //Determines the contents of the button that was pressed
         String answer = ((JButton) evt.getSource()).getText();
-                        
-                        //Determines the correct answer based on the quiz
-                        String correct = q.getCorrectAnswer() + "";
-                        
-                        //Determines if the answer was correct
-                        if (answer.equals(correct)) {
-                            
-                            //Adds correct to the answer choice that was chosen
-                            //((JButton) e.getSource()).setText("CORRECT: " + answer);
-                            ((JButton)evt.getSource()).setIcon(correctImageIcon);
 
-                        } else {
-                            //set the button to show the incorrect answer
-                            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
-                          
-                        }
-                      
-                        //rightArrow.setEnabled(true);
+        //Determines the correct answer based on the quiz
+        String correct = q.getCorrectAnswer() + "";
+
+        //Determines if the answer was correct
+        if (answer.equals(correct)) {
+            
+            //Adds correct to the answer choice that was chosen
+            ((JButton) evt.getSource()).setIcon(correctImageIcon);
+
+        } else {
+            //set the button to show the incorrect answer
+            ((JButton) evt.getSource()).setIcon(incorrectImageIcon);
+
+        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        // TODO add your handling code here:
+        
         main.setIsKN1ScreenOpen(false);
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-    
+
         // Increments the questionCount
         questionCount++;
 
@@ -425,14 +400,17 @@ public class KN1 extends javax.swing.JInternalFrame {
         System.out.println("Right arrow was pressed");
 
         if (questionCount == 2) {
+            
             //Sets the counter label to 2/3
             counterLabel.setText(counterDifficulty + "/3");
+            
             if (counterDifficulty == 2) {
                 title = "Counting: Medium Practice Question";
                 setButtons();
                 this.setTitle(title);
             }
         } else if (questionCount == 3) {
+            
             //Sets the counter label to 3/3
             if (counterDifficulty == 3) {
                 title = "Counting: Hard Practice Question";
@@ -447,22 +425,21 @@ public class KN1 extends javax.swing.JInternalFrame {
             // Closes this screen
             this.dispose();
 
+            // Tells main that the screen is now closed
             main.setIsKN1ScreenOpen(false);
 
             // Opens the PreKK module
             main.openPreKK();
 
         }
-       
 
-   
-                        
+
     }//GEN-LAST:event_rightArrowActionPerformed
 
     private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
-         /*
-        * This is the code to play the audio tutorial .wav file.
-        */
+        /*
+         * This is the code to play the audio tutorial .wav file.
+         */
 
         // Creates a File object that is linked the GeRMSLogin.wav filepath
         File yourFile = new File("src/Sounds/KN1.wav");
