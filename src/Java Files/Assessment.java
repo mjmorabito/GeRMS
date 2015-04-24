@@ -800,6 +800,12 @@ public class Assessment extends javax.swing.JInternalFrame {
                 // Opens the QuizReport module
                 main.openQuizReportScreen(results, 0);
             
+            } else if (numQuestions == 10) {
+                
+                saveFinal();
+                
+                // Open the final report module
+                
             }
 
         }
@@ -858,6 +864,53 @@ public class Assessment extends javax.swing.JInternalFrame {
         catch (Exception e){ e.printStackTrace();}
         
         
+    }
+    
+    public void saveFinal() {
+        try{
+            // MySQL Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // get firstname and query the users table to get result
+            Statement stmt = conn.createStatement();
+            String sql;
+            String user = main.getUsername();
+                  
+            String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+                       
+            int correct = 0;
+            
+            for(int i=0; i < results.length; i++){
+                correct += results[i];
+            }
+            
+            // Inserts the data into the database
+            sql = "INSERT INTO finals VALUES('" + user + "',1,"+correct+","
+                    +results[0]+","+results[1]+","+results[2]+","
+                    +results[3]+","+results[4]+","+results[5]+","
+                    +results[6]+","+results[7]+","+results[8]+","
+                    +results[9]+","
+                    +"'"+timeStamp+ "')";
+            
+            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(sql);
+            
+            stmt.executeUpdate(sql);
+
+            
+            // close all connection to DB
+            stmt.close();
+            conn.close();
+        }
+        catch (Exception e){ e.printStackTrace();}
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -2,6 +2,12 @@
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,9 +35,12 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 // Stores a reference to the main class
     private Main main;
     
+    // Variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
+    
     // ImageIcon for the question
     private ImageIcon questionIcon = new ImageIcon();
-    
    
     //Determines the question difficulty from 1 - 3
     private int difficulty;
@@ -69,6 +78,9 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
     // Stores  correct / incorrect (1 or 0) for each question
     private int[] results;
     
+    // Stores the standards asked on the assessments in order
+    private int[] kns;
+    
     /**
      * Creates new form AssessmentGrade4
      */
@@ -86,6 +98,9 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         results = new int[numQuestions];
          
         questions = new int[numQuestions];
+        
+        kns = new int[numQuestions];
+        
         // Initializes the components
         initComponents();
         
@@ -127,19 +142,12 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
     //choose randomly mod 3 // TODO
     public void determineQuestionsAndOrder()
     {
-        /**
-        Random r = new Random();
         for( int i = 0; i < numQuestions; i++)
         {
            
-            questions[i] =   8; //r.nextInt(8) + 1;
+            kns[i] =   4;
         }
-        
-        //GET RID OF
-        for( int i = 0; i < numQuestions; i++)
-        {
-            System.out.println(questions[i]); 
-        }*/
+       
     }
     
     public void generateQuestion()
@@ -475,9 +483,17 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
             // If the number of questions == 6 (quiz) then open the quiz report screen
             if (numQuestions == 6) {
 
+                // Save the quiz
+                savequiz();
+                
                 // Opens the QuizReport module
                 main.openQuizReportScreen(results, 2);
 
+            } else if (numQuestions == 10) {
+                
+                // Save the final
+                saveFinal();
+                
             }
 
         }
@@ -587,7 +603,100 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
 
-  
+    private void savequiz(){
+        
+        try{
+            // MySQL Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // get firstname and query the users table to get result
+            Statement stmt = conn.createStatement();
+            String sql;
+            String user = main.getUsername();
+                  
+            String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+                       
+            int correct = 0;
+            
+            for(int i=0; i < results.length; i++){
+                correct += results[i];
+            }
+            
+            // Inserts the data into the database
+            sql = "INSERT INTO quizzes VALUES('" + user + "',3,"+difficulty+","+correct+","
+                    +"'"+kns[0]+"',"+results[0]+",'"+kns[1]+"',"+results[1]+",'"+kns[2]+"',"+results[2]+","
+                    +"'"+kns[3]+"',"+results[3]+",'"+kns[4]+"',"+results[4]+",'"+kns[5]+"',"+results[5]+","
+                    +"'"+timeStamp+ "')";
+            
+            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(sql);
+            
+            stmt.executeUpdate(sql);
+
+            
+            // close all connection to DB
+            stmt.close();
+            conn.close();
+        }
+        catch (Exception e){ e.printStackTrace();}
+        
+        
+    }
+    
+    public void saveFinal() {
+        try{
+            // MySQL Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // get firstname and query the users table to get result
+            Statement stmt = conn.createStatement();
+            String sql;
+            String user = main.getUsername();
+                  
+            String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+                       
+            int correct = 0;
+            
+            for(int i=0; i < results.length; i++){
+                correct += results[i];
+            }
+            
+            // Inserts the data into the database
+            sql = "INSERT INTO finals VALUES('" + user + "',3,"+correct+","
+                    +results[0]+","+results[1]+","+results[2]+","
+                    +results[3]+","+results[4]+","+results[5]+","
+                    +results[6]+","+results[7]+","+results[8]+","
+                    +results[9]+","
+                    +"'"+timeStamp+ "')";
+            
+            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(sql);
+            
+            stmt.executeUpdate(sql);
+
+            
+            // close all connection to DB
+            stmt.close();
+            conn.close();
+        }
+        catch (Exception e){ e.printStackTrace();}
+    }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton helpAudioButton1;
