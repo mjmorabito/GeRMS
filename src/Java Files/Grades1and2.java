@@ -236,8 +236,15 @@ public class Grades1and2 extends JInternalFrame {
          
     }//GEN-LAST:event_quizButtonActionPerformed
 
+    // Called when the final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-        // TODO add your handling code here:
+       
+        // Opens an assessment at the hard difficulty
+        main.openAssessmentScreenGrade2(10, 3);
+        
+        // Disposes this screen
+        this.dispose();
+        
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed

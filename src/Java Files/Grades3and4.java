@@ -209,8 +209,15 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Called when the final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-        // TODO add your handling code here:
+    
+        // Opens an assessment at the hard difficulty
+        main.openAssessmentScreenGrade4(10, 3);
+        
+        // Disposes this screen
+        this.dispose();
+        
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
