@@ -72,13 +72,6 @@ public class Main extends JFrame {
     //Determines if the PreKKCountingQuiz is open / close
     private boolean isPreKKOpen = false;
     
-    //TODO DELETE THIS SOON
-    //PreKKCountingQuiz class
-    private PreKKCountingQuiz preKKCountingQuiz;
-    
-    //Determines if the PreKKCountingQuiz is open / close
-    private boolean isPreKKCountingQuizOpen = false; 
-    
     //KN1 class
     private KN1 kn1;
     
@@ -476,14 +469,6 @@ public class Main extends JFrame {
         isHelpScreenOpen = isOpen;
         
     }  
-    
-     // This method sets the isHelpScreenOpen variable to true/false
-    public void setIsPreKKCountingQuizOpen(boolean isOpen) {
-        
-        // Sets the variable
-        isPreKKCountingQuizOpen = isOpen;
-        
-    } 
     
     // This method sets the isHelpScreenOpen variable to true/false
     public void setIsPreKKOpen(boolean isOpen) {
@@ -969,23 +954,6 @@ public class Main extends JFrame {
         
     }
     
-    // Opens the preKKCountingQuiz
-    public void openPreKKCountingQuiz() {
-        
-        // Creates a new preKKCountingQuiz
-        preKKCountingQuiz = new PreKKCountingQuiz(this);
-        
-        // Sets the variable
-        isPreKKCountingQuizOpen = true;
-        
-        // Adds the preKKCounting quiz screen to the desktop pane
-        desktopPane.add(preKKCountingQuiz);
-        
-        // Brings the preKKCounting quiz screen to the front
-        preKKCountingQuiz.toFront();
-        
-    }
-    
     // This method creates an instance of the KN1 screen
     public void openKN1Screen() {
         
@@ -1335,6 +1303,94 @@ public class Main extends JFrame {
             
         }
         
+        // If PreKK Screen is open
+        if (isPreKKOpen) {
+            
+            // Close
+            closePreKKScreen();
+            
+        }
+        
+        // If manage accounts screen is open
+        if (isManageAccountsScreenOpen) {
+            
+            // Close
+            closeManageAccountsScreen();
+            
+        }
+        
+        // If help screen is open
+        if (isHelpScreenOpen) {
+            
+            // Close
+            closeHelpScreen();
+            
+        }
+        
+        // If KN1 screen is open
+        if (isKN1ScreenOpen) {
+            
+            // Close
+            closeKN1Screen();
+            
+        }
+        
+        // If KN2 screen is open
+        if (isKN2ScreenOpen) {
+            
+            // Close
+            closeKN2Screen();
+            
+        }
+         
+        // If KN3 screen is open
+        if (isKN3ScreenOpen) {
+            
+            // Close
+            closeKN3Screen();
+            
+        }
+        
+        // If KN4 screen is open
+        if (isKN4ScreenOpen) {
+            
+            // Close
+            closeKN4Screen();
+            
+        }
+        
+        // If KN5 screen is open
+        if (isKN5ScreenOpen) {
+            
+            // Close
+            closeKN5Screen();
+            
+        }
+        
+        // If KN6 screen is open
+        if (isKN6ScreenOpen) {
+            
+            // Close
+            closeKN6Screen();
+            
+        }
+        
+        // If KN7 screen is open
+        if (isKN7ScreenOpen) {
+            
+            // Close
+            closeKN7Screen();
+            
+        }
+        
+        // If KN8 screen is open
+        if (isKN8ScreenOpen) {
+            
+            // Close
+            closeKN8Screen();
+            
+        }
+                       
     }  
     
     // This method disposes of the GradeSelect screen
@@ -1346,7 +1402,128 @@ public class Main extends JFrame {
         // Set the variable to false
         isGradeSelectScreenOpen = false;
         
-    }    
+    }   
+    
+    // This method disposes of the PreKKScreen
+    public void closePreKKScreen() {
+        
+        // Disposes of the PreKKScreen screen
+        preKK.dispose();
+   
+        // Set the variable to false
+        isPreKKOpen = false;      
+        
+    }
+    
+    // This method disposes of the ManageAccounts
+    public void closeManageAccountsScreen() {
+        
+        // Disposes of the ManageAccounts screen
+        manageAccounts.dispose();
+   
+        // Set the variable to false
+        isManageAccountsScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the HelpScreen
+    public void closeHelpScreen() {
+        
+        // Disposes of the HelpScreen screen
+        help.dispose();
+   
+        // Set the variable to false
+        isHelpScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN1
+    public void closeKN1Screen() {
+        
+        // Disposes of the KN1 screen
+        kn1.dispose();
+   
+        // Set the variable to false
+        isKN1ScreenOpen = false;      
+        
+    }
+  
+    // This method disposes of the KN2
+    public void closeKN2Screen() {
+        
+        // Disposes of the KN1 screen
+        kn2.dispose();
+   
+        // Set the variable to false
+        isKN2ScreenOpen = false;      
+        
+    }
+
+    // This method disposes of the KN3
+    public void closeKN3Screen() {
+        
+        // Disposes of the KN1 screen
+        kn3.dispose();
+   
+        // Set the variable to false
+        isKN3ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN4
+    public void closeKN4Screen() {
+        
+        // Disposes of the KN4 screen
+        kn4.dispose();
+   
+        // Set the variable to false
+        isKN4ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN5
+    public void closeKN5Screen() {
+        
+        // Disposes of the KN1 screen
+        kn5.dispose();
+   
+        // Set the variable to false
+        isKN5ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN6
+    public void closeKN6Screen() {
+        
+        // Disposes of the KN6 screen
+        kn6.dispose();
+   
+        // Set the variable to false
+        isKN6ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN7
+    public void closeKN7Screen() {
+        
+        // Disposes of the KN7 screen
+        kn7.dispose();
+   
+        // Set the variable to false
+        isKN7ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the KN8
+    public void closeKN8Screen() {
+        
+        // Disposes of the KN8 screen
+        kn8.dispose();
+   
+        // Set the variable to false
+        isKN8ScreenOpen = false;      
+        
+    }
            
     // The action listener for the exit menu item
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
