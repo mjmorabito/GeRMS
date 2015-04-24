@@ -294,6 +294,7 @@ public class KN4 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Comparing: Easy Practice Question");
         setVisible(true);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -558,7 +559,7 @@ public class KN4 extends javax.swing.JInternalFrame {
             generateMediumQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Medium Practice Question";
+            title = "Comparing: Medium Practice Question";
 
         } else if (questionCount == 3) {
 
@@ -572,12 +573,12 @@ public class KN4 extends javax.swing.JInternalFrame {
             generateHardQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Hard Practice Question";
+            title = "Comparing: Hard Practice Question";
 
         } else {
 
             // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Comparing.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
 
             // Closes this screen
             this.dispose();

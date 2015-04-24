@@ -307,7 +307,7 @@ public class KN6 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Coin Identification");
+        setTitle("Coin Identification: Easy Practice Question");
         setVisible(true);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -580,7 +580,7 @@ public class KN6 extends javax.swing.JInternalFrame {
             getHQuestion();
 
             // Title of the form
-            title = "Ordering: Hard Practice Question";
+            title = "Coin Identification: Hard Practice Question";
 
         } else {
 

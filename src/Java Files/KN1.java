@@ -26,6 +26,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /*
  * This is the KN1 class which extends JInternalFrame.
@@ -51,6 +52,9 @@ public class KN1 extends javax.swing.JInternalFrame {
     
     // ImageIcon for the incorrect answer
     private ImageIcon incorrectImageIcon;
+    
+    // Stores the count of number of questions asked
+    private int questionCount = 1;
 
     /**
      * Creates new form PreKKCountingQuiz
@@ -167,7 +171,7 @@ public class KN1 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("KN1");
+        setTitle("Counting: Easy Practice Question");
         setToolTipText("KN1");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -412,17 +416,46 @@ public class KN1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void rightArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightArrowActionPerformed
-        // TODO add your handling code here:
+    
+        // Increments the questionCount
+        questionCount++;
+
+        // Sets the String for the title of this form
+        String title = "";
         System.out.println("Right arrow was pressed");
-        counterLabel.setText(counterDifficulty+ "/3");
-        setButtons();
+
+        if (questionCount == 2) {
+            //Sets the counter label to 2/3
+            counterLabel.setText(counterDifficulty + "/3");
+            if (counterDifficulty == 2) {
+                title = "Counting: Medium Practice Question";
+                setButtons();
+                this.setTitle(title);
+            }
+        } else if (questionCount == 3) {
+            //Sets the counter label to 3/3
+            if (counterDifficulty == 3) {
+                title = "Counting: Hard Practice Question";
+                setButtons();
+                this.setTitle(title);
+            }
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Counting.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+
+            // Closes this screen
+            this.dispose();
+
+            main.setIsKN1ScreenOpen(false);
+
+            // Opens the PreKK module
+            main.openPreKK();
+
+        }
        
 
-        //rightArrow.setEnabled(false);
-        //jButton1.setEnabled(true);
-        //jButton2.setEnabled(true);
-        //jButton3.setEnabled(true);
-        //jButton4.setEnabled(true);
+   
                         
     }//GEN-LAST:event_rightArrowActionPerformed
 

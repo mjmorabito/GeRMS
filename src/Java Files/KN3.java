@@ -392,7 +392,7 @@ public class KN3 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Sequencing");
+        setTitle("Ordering: Easy Practice Question");
         setVisible(true);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N

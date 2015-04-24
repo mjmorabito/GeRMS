@@ -603,7 +603,7 @@ System.out.println("Choices 2");
             generateMediumQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Medium Practice Question";
+            title = "Comparing Numbers: Medium Practice Question";
 
         } else if (questionCount == 3) {
 
@@ -617,7 +617,7 @@ System.out.println("Choices 2");
             generateHardQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Hard Practice Question";
+            title = "Comparing Numbers: Hard Practice Question";
 
         } else {
 

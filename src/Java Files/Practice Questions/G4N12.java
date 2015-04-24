@@ -533,7 +533,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
             generateMediumQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Medium Practice Question";
+            title = "Math : Medium Practice Question";
 
         } else if (questionCount == 3) {
 
@@ -547,7 +547,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
             generateHardQuestion();
 
             // Title of the form
-            title = "Math with Drawings: Hard Practice Question";
+            title = "Math : Hard Practice Question";
 
         } else {
 
