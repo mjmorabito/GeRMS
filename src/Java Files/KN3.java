@@ -16,7 +16,8 @@ import java.awt.Dimension;
  */
 
 public class KN3 extends javax.swing.JInternalFrame {
-
+ 
+    
     public KN3(Main m){
         //initializing the Problem array with zeroes
       /*Sequence = new ArrayList<>();
@@ -386,6 +387,13 @@ public class KN3 extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Sequencing");
+        setVisible(true);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel2.setText("1/3");
