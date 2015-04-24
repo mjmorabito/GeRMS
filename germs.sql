@@ -1,7 +1,5 @@
 DROP DATABASE germs;
-
 DROP USER 'GermsAdmin'@'localhost';
-
 
 CREATE DATABASE germs;
 
@@ -70,16 +68,28 @@ CREATE TABLE quizzes(
 	QgradeID int,
 	Qdifficulty int NOT NULL,
 	Qcorrectanswers int NOT NULL,
+	S1 varchar(3) NOT NULL,
 	Q1 BOOLEAN NOT NULL,
+	S2 varchar(3) NOT NULL,
 	Q2 BOOLEAN NOT NULL,
+	S3 varchar(3) NOT NULL,
 	Q3 BOOLEAN NOT NULL,
+	S4 varchar(3) NOT NULL,
 	Q4 BOOLEAN NOT NULL,
+	S5 varchar(3) NOT NULL,
 	Q5 BOOLEAN NOT NULL,
+	S6 varchar(3) NOT NULL,
 	Q6 BOOLEAN NOT NULL,
 	Qdate DATETIME NOT NULL,
 
 	FOREIGN KEY (QaccUser) REFERENCES accounts(accUser),
-	FOREIGN KEY (QgradeID) REFERENCES grades(gradeID));
+	FOREIGN KEY (QgradeID) REFERENCES grades(gradeID),
+	FOREIGN KEY (S1) REFERENCES standards(standardID),
+	FOREIGN KEY (S2) REFERENCES standards(standardID),
+	FOREIGN KEY (S3) REFERENCES standards(standardID),
+	FOREIGN KEY (S4) REFERENCES standards(standardID),
+	FOREIGN KEY (S5) REFERENCES standards(standardID),
+	FOREIGN KEY (S6) REFERENCES standards(standardID));
 
 CREATE TABLE finals(
 	FaccUser varchar(255),
