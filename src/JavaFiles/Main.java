@@ -201,6 +201,12 @@ public class Main extends JFrame {
     // Stars array
     private JLabel[] stars = new JLabel[9];
     
+    // Print Reports screen
+    private PrintReports printReports;
+    
+    // Determines if the PrintReports screen is open
+    private boolean isPrintReportsScreenOpen = false;
+    
     /*
     * Creates a new instance of the Main class
     */
@@ -705,6 +711,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isPrintReportsScreenOpen variable to true/false
+    public void setisPrintReportsScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isPrintReportsScreenOpen = isOpen;
+        
+    }
+    
     // This method returns the value of the isKN1ScreenOpen variable
     public boolean getIsKN1ScreenOpen(){
         
@@ -857,6 +871,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method gets the boolean value of isPrintReportsScreenOpen variable
+    public boolean getIsPrintReportsScreenOpen(){
+        
+        // Returns the variable
+        return isPrintReportsScreenOpen;
+        
+    }
+    
     // This method creates an instance of the Login screen
     public void openLoginScreen() {
         
@@ -944,8 +966,21 @@ public class Main extends JFrame {
     // Opens the print report screen
     public void openPrintReportScreen() {
         
-        // Creates a new Print Report screen class
-        JOptionPane.showMessageDialog(null, "This button will open the print reports screen.", "Print Reports", JOptionPane.INFORMATION_MESSAGE);
+        if (!isPrintReportsScreenOpen) {
+        
+            // Creates a new PrintReports class
+            printReports = new PrintReports(this);
+
+            // Sets the variable to true
+            isPrintReportsScreenOpen = true;
+
+            // Adds the screen to the desktop pane
+            desktopPane.add(printReports);
+
+            // Brings the screen to the front
+            printReports.toFront();
+            
+        }
         
     }
     
@@ -1540,6 +1575,14 @@ public class Main extends JFrame {
             closeAssessmentGrade4();
             
         }
+        
+         // If PrintReports Screen is open
+        if (isPrintReportsScreenOpen) {
+            
+            // Close
+            closePrintReportsScreen();
+            
+        }
                        
     }  
     
@@ -1784,6 +1827,17 @@ public class Main extends JFrame {
    
         // Set the variable to false
         isAssessmentGrade4ScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the PrintReports Screen
+    public void closePrintReportsScreen() {
+        
+        // Disposes of the Assessment Grade 4
+        printReports.dispose();
+   
+        // Set the variable to false
+        isPrintReportsScreenOpen = false;      
         
     }
     
