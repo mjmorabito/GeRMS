@@ -225,15 +225,14 @@ public class Grades1and2 extends JInternalFrame {
 
     // This method is triggered when the OK button is clicked
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
-        // TODO add your handling code here:
-        //For testing purposes, this method will launch the PreKKCountingQuiz   
-        // Closes the PreKK screen
+         // Closes the Grade 3 and 4 screen
         this.dispose();
-        main.setIsPreKKOpen(false);
+        main.setIsGrades1and2ModuleOpen(false);
 
-        // Sets PreKKCounting quiz to true
-        main.setIsPreKKCountingQuizOpen(true);
-        main.openPreKKCountingQuiz();
+        
+        // Opens Difficulty Select
+        //main.openQuizDifficultySelectGrade4();
+        main.openQuizDifficultySelectGrade2();
          
     }//GEN-LAST:event_quizButtonActionPerformed
 

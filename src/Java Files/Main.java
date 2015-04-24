@@ -157,6 +157,19 @@ public class Main extends JFrame {
     // Determines  if the Assessment screen is open
     private boolean isAssessmentScreenOpen = false;
     
+     // Class for the Assessment
+    private AssessmentGrade2 assessmentGrade2;
+    
+    // Determines  if the Assessment screen is open
+    private boolean isAssessmentGrade2ScreenOpen = false;
+    
+     // Class for the QuizDifficultySelectGrade2
+    private QuizDifficultySelectGrade2 quizDifficultySelectGrade2;
+    
+    // Determines  if the quizDifficultySelectGrade2 screen is open
+    private boolean isQuizDifficultySelectGrade2Open = false;
+    
+    
       // Class for the Assessment
     private AssessmentGrade4 assessmentGrade4;
     
@@ -171,7 +184,7 @@ public class Main extends JFrame {
     
     // G4N12 class
     private G4N12 g4n12;
-    
+   
     // Determines if the g4n12 screen is open / closed
     private boolean isG4N12ScreenOpen = false;
     
@@ -611,6 +624,22 @@ public class Main extends JFrame {
         
     }
     
+   
+        // This method sets the isAssessmentScreenOpen variable to true/false
+    public void setIsAssessmentGrade2ScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isAssessmentGrade2ScreenOpen = isOpen;
+        
+    }
+    // This method sets the isGrades1and2Module variable to true/false
+    public void setIsGrade1and2ModuleOpen(boolean isOpen){
+        
+        //Set the variable
+        isGrades1and2ModuleOpen = isOpen;
+        
+    }
+   
     // This method sets the isQuizReportScreenOpen variable to true/false
     public void setIsQuizReportScreenOpen(boolean isOpen){
         
@@ -1146,6 +1175,33 @@ public class Main extends JFrame {
         
     }
     
+    
+    // This method creates an instance of the Quiz Difficulty select screen
+    public void openQuizDifficultySelectGrade2() {
+        
+        if (isQuizDifficultySelectGrade2Open == false) {
+        
+            // Creates a new KN1
+            quizDifficultySelectGrade2 = new QuizDifficultySelectGrade2(this);
+            
+            //FIX THIS
+
+            // Sets the variable
+            isQuizDifficultySelectGrade4Open = true;
+
+            // Adds the KN8 screen to the desktop pane
+            desktopPane.add(quizDifficultySelectGrade2);
+
+            // Brings the KN8 screen to the front
+            quizDifficultySelectGrade2.toFront(); 
+            
+        } else {
+            
+            
+        }
+        
+    }
+    
     // This method creates an instance of the G2N4 screen
     public void openG2N4Screen() {
         
@@ -1183,6 +1239,24 @@ public class Main extends JFrame {
         
     }
     
+       // This method creates an instance of the Assessment1 screen
+    public void openAssessmentScreenGrade2(int a, int b) {
+        
+        if(isAssessmentGrade2ScreenOpen == false)
+        {
+        // Creates a new Assessment
+        assessmentGrade2 = new AssessmentGrade2(this,a,b);
+        
+        // Sets the variable
+        isAssessmentGrade2ScreenOpen = true;
+        
+        // Adds the Assessment screen to the desktop pane
+        desktopPane.add(assessmentGrade2);
+        
+        // Brings the Assessment screen to the front
+        assessmentGrade2.toFront(); 
+        }
+    }
     
        // This method creates an instance of the Assessment1 screen
     public void openAssessmentScreenGrade4(int a, int b) {
