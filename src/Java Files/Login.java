@@ -55,6 +55,8 @@ public class Login extends JInternalFrame {
         // Sets the reference to the Main class
         main = m;
         
+        System.out.println("Change");
+        
         // Gets the dimension of the main desktop pane
         Dimension desktopSize = main.getDesktopPaneDimension();
                 
