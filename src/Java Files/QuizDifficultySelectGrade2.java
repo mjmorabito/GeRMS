@@ -237,7 +237,7 @@ public class QuizDifficultySelectGrade2 extends javax.swing.JInternalFrame {
             
             // Get all quizzes from the user
             // Qgrade=1 is for PreK-K. change =2 for grade 1,2 and =3 for 3-4
-            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=2 and qcorrectanswers>=4;";
+            sql = "select * from quizzes where QaccUser = '" + user + "' AND QgradeID=2 and Qcorrectanswers>=4;";
             ResultSet rs = stmt.executeQuery(sql);
             
             while (rs.next() == true){

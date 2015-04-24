@@ -34,7 +34,7 @@ INSERT INTO accounts VALUES ("admin","EjpBfslmhWLRaFsODHZ/gg==", "Administrator"
 
 
 CREATE TABLE standards(
-	standardID varchar(3) PRIMARY KEY,
+	standardID varchar(4) PRIMARY KEY,
 	description varchar(255) NOT NULL);
 
 INSERT INTO standards VALUES("KN1","Counting");
@@ -45,6 +45,8 @@ INSERT INTO standards VALUES("KN5","Half and Whole");
 INSERT INTO standards VALUES("KN6","Coins");
 INSERT INTO standards VALUES("KN7","Math with Drawings");
 INSERT INTO standards VALUES("KN8","Estimate");
+INSERT INTO standards values("2N4", "Comparing Numbers");
+INSERT INTO standards values("4N12", "Math with large numbers");
 
 CREATE TABLE practices(
 	PaccUser varchar(255),
