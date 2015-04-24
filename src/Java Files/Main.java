@@ -1830,6 +1830,9 @@ public class Main extends JFrame {
             // If the home main menu screen is not open, then open it
             if (!isGradeSelectScreenOpen) {
                 
+                // Closes all the screens that are open
+                closeAllScreens();
+                
                 // Creates a new GradeSelect screen
                 gradeSelect = new GradeSelect(this);
                 
