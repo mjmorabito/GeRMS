@@ -1269,13 +1269,13 @@ public class Main extends JFrame {
     }
     
     // This method creates an instance of the QuizReport screen
-    public void openQuizReportScreen(int[] results) {
+    public void openQuizReportScreen(int[] results, int grade) {
         
         // If the screen is not already open, then open it
         if (isQuizReportScreenOpen == false) {
         
             // Creates a new KN1
-            quizReport = new QuizReport(this, results);
+            quizReport = new QuizReport(this, results, grade);
 
             // Sets the variable
             isQuizReportScreenOpen = true;

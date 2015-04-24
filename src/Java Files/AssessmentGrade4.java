@@ -476,7 +476,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
             if (numQuestions == 6) {
 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results);
+                main.openQuizReportScreen(results, 2);
 
             }
 

@@ -33,6 +33,9 @@ public class QuizReport extends javax.swing.JInternalFrame {
     // Results
     private int[] results;
     
+    // Grade
+    private int grade;
+    
     // ImageIcons for the checkmark and red x
     private ImageIcon incorrectImageIcon;
     private ImageIcon correctImageIcon;
@@ -43,7 +46,7 @@ public class QuizReport extends javax.swing.JInternalFrame {
     /**
      * Creates new form QuizReport
      */
-    public QuizReport(Main m, int[] r) {
+    public QuizReport(Main m, int[] r, int g) {
         
         // Initializes the components
         initComponents();
@@ -53,6 +56,9 @@ public class QuizReport extends javax.swing.JInternalFrame {
         
         // Stores the results
         results = r;
+        
+        // Stores theg rade
+        grade = g;
         
         // ImageIcons for the neutral, correct, and incorrect buttons
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/X.png"));
@@ -280,9 +286,21 @@ public class QuizReport extends javax.swing.JInternalFrame {
 
     // Called when the go button is pressed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-        // Opens the PreKK screen
-        main.openPreKK();
+
+        // Determines which grade module to go to next
+        // Grade 0 is PREKK
+        // Grade 1 is Grades1and2
+        // Grade 2 is Grades3and4
+        if (grade == 0) {
+            // Opens the PreKK screen
+            main.openPreKK();
+        } else if (grade == 1) {
+            // Opens the Grades1and2 screen
+            main.openGrades1and2Module();
+        } else if (grade == 2) {
+            // Opens the Grades3and4 screen
+            main.openGrades3and4Module();            
+        }
         
         // Disposes this screen
         this.dispose();

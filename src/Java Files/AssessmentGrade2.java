@@ -560,7 +560,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
             if (numQuestions == 6) {
 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results);
+                main.openQuizReportScreen(results, 1);
 
             }
 

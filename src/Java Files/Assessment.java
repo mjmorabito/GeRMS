@@ -754,9 +754,6 @@ public class Assessment extends javax.swing.JInternalFrame {
         // Allows the user to submit an answer
         answerSubmitted = false;
 
-        
-
-        System.out.println("Current page: " + currentPage + "  Question Num is:" + numQuestions);
         // String for the title of this form
         String title = "";
 
@@ -764,7 +761,6 @@ public class Assessment extends javax.swing.JInternalFrame {
         {
             // Increments the current page
             currentPage++;
-            System.out.println("Current page: " + currentPage);
             
             // Resets the ImageIcons of the JButtons on the screen to neutral
             jButton1.setIcon(neutralImageIcon);
@@ -784,13 +780,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 title = "Final";
                 
             }
-
-       
-
-           
-
-           
-
+  
         } else {
 
             // Display a message
@@ -808,7 +798,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 savequiz();
                 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results);
+                main.openQuizReportScreen(results, 0);
             
             }
 
