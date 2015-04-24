@@ -11,6 +11,8 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,11 +26,51 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class G2N4 extends javax.swing.JInternalFrame {
 
+    
     // Stores a reference to the main class
-    Main main;
+    private Main main;
+   
+    
+    // ImageIcon for the question
+    private ImageIcon questionIcon = new ImageIcon();
+    
+     // ImageIcon for the question
+    private String questionString;
+
+    
+    // Random number to decide which question to use
+    private int questionNum;
+    
+    // Stores the correct answer to the question
+    private int answer;
+    
+    // Stores the user's choices for answers
+    private int[] choices = new int[4];
+    
+    // Stores the count of number of questions asked
+    private int questionCount = 1;
+    
+    // ImageIcon for the neutral answer button
+    private ImageIcon neutralImageIcon;
+    
+    // ImageIcon for the correct answer
+    private ImageIcon correctImageIcon;
+    
+    // ImageIcon for the incorrect answer
+    private ImageIcon incorrectImageIcon;
+    
+    // Boolean to restrict the user one submission per question
+    private boolean answerSubmitted = false;
+    
+    // Generates two numbers for comparison puposes
+    int num1;
+    int num2;
+    
+    //String for labeltext
+    String labelText;
     
     /**
-     * Creates new form KN3
+     * Creates new form G2N4
      */
     public G2N4(Main m) {
         
@@ -37,9 +79,21 @@ public class G2N4 extends javax.swing.JInternalFrame {
         
         // Sets the reference to the main class
         main = m;
-        
-        // Centers the form in the middle of the screen
+        // Centers the JInternalFrame on the screen
         centerOnScreen();
+        
+        // ImageIcons for the neutral, correct, and incorrect buttons
+        neutralImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerNeutral.jpg"));
+        correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.jpg"));
+        incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.jpg"));
+        
+        num1 = 0;
+        num2 = 0;
+        jButton4.setVisible(false);
+        labelText = "";
+        answer = 4;
+        //NEW I JUST CHANGED
+        generateEasyQuestion();
         
     }
     
@@ -56,6 +110,221 @@ public class G2N4 extends javax.swing.JInternalFrame {
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
             (desktopSize.height- jInternalFrameSize.height)/2);
         
+    }
+
+    // This method is called when the form is created, it generates an easy question
+    public void generateEasyQuestion() {
+        //System.out.println("generate easy question");
+        // Randomly picks a number form (1-3)
+        questionNum = (int)(Math.random())*3 + 1;
+        System.out.println("QuestionNum which determines the answer,randomly, in G2N4 is " + questionNum);
+        
+        num1 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
+        num2 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
+        //Have them be the same
+        
+        
+        //Gaurantee that num1 is bigger than num2 and NOT equal
+        while(num2 > num1 || num2 ==num1)
+            
+            //JUST CHANGED
+        {
+            num2 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
+        }
+        int difficulyLevel = 1;
+        System.out.println("the number is : " + questionNum);
+        
+        // If the value picked is 1, a fewer than question will be asked
+        if (questionNum == 1) {
+            
+            //Num2 < Num1
+            jLabel1.setText(num2 +  " ? " + num1);
+            labelText = num2 +  " ? " + num1;        
+            
+            System.out.println("LESS THAN");
+            // Sets the answer
+            answer = 1;
+            
+        // If the value picked is 2, a same as question will be asked
+        } else if (questionNum == 2) {
+            
+            jLabel1.setText(num2 +  " ? " + num2);
+             labelText = num2 +  " ? " + num2; 
+            System.out.println("EQUAL TO");
+            // Sets the answer
+            answer = 2;
+            
+        // If the value picked is 3, a one more than question will be asked
+        } else if (questionNum == 3) {
+            
+            
+              //Num1 < Num2
+            jLabel1.setText(num1 +  " ? " + num2);
+             labelText = num1 +  " ? " + num2; 
+            
+            System.out.println("GREATER THAN");
+            // Sets the answer
+            answer = 3;
+            
+        }
+        
+            
+        
+        
+        // Sets the icon for the question
+       // jLabel1.setIcon(questionIcon);
+        
+        // Fills the choices with 1 correct answer and 3 incorrect answers
+        fillChoices();
+        
+    }
+    
+    // This method generates a medium difficulty question
+    public void generateMediumQuestion() {
+    System.out.println("generate medium question");
+        // Randomly picks a number form (1-3)
+        questionNum = (int)(Math.random()*( (3-1) + 1)) + 1;
+        
+        num1 = (int)(Math.random()*(1000))+(int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
+        num2 = (int)(Math.random()*(100)) +(int)(Math.random()*(10))+ 1;
+        
+        
+        //Gaurantee that num1 is bigger than num2
+        while(num2 > num1)
+        {
+            num2 = (int)(Math.random()*(100)) +(int)(Math.random()*(10))+ 1;
+        }
+        int difficulyLevel = 2;
+        System.out.println("the number is : " + questionNum);
+        
+        // If the value picked is 1, a fewer than question will be asked
+        if (questionNum == 1) {
+            
+            //Num2 < Num1
+            jLabel1.setText(num2 +  " ? " + num1);
+            labelText = num2 +  " ? " + num1;      
+            
+            System.out.println("LESS THAN");
+            // Sets the answer
+            answer = 1;
+            
+        // If the value picked is 2, a same as question will be asked
+        } else if (questionNum == 2) {
+            
+            jLabel1.setText(num2 +  " ? " + num2);
+             labelText = num2 +  " ? " + num2; 
+            System.out.println("EQUAL TO");
+            // Sets the answer
+            answer = 2;
+            
+        // If the value picked is 3, a one more than question will be asked
+        } else if (questionNum == 3) {
+            
+            
+              //Num1 < Num2
+            jLabel1.setText(num1 +  " ? " + num2);
+             labelText = num1 +  " ? " + num2; 
+            
+            System.out.println("GREATER THAN");
+            // Sets the answer
+            answer = 3;
+            
+        }
+        
+            
+        
+        
+        // Sets the icon for the question
+       // jLabel1.setIcon(questionIcon);
+        
+        // Fills the choices with 1 correct answer and 3 incorrect answers
+        fillChoices();
+    }
+    
+    // This method generates a hard difficulty question
+    public void generateHardQuestion() {
+    System.out.println("generate hard question");
+        // Randomly picks a number form (1-3)
+        questionNum = (int)(Math.random()*( (3-1) + 1)) + 1;
+        
+        num1 = (int)(Math.random()*(1000))+(int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
+        num2 = num1 - ((int)(Math.random()*(10))+ 1);
+        
+        
+        
+        int difficulyLevel = 3;
+        System.out.println("the number is : " + questionNum);
+        
+        // If the value picked is 1, a fewer than question will be asked
+        if (questionNum == 1) {
+            
+            //Num2 < Num1
+            jLabel1.setText(num2 +  " ? " + num1);
+             labelText = num2 +  " ? " + num1; 
+                    
+            
+            System.out.println("LESS THAN");
+            // Sets the answer
+            answer = 1;
+            
+        // If the value picked is 2, a same as question will be asked
+        } else if (questionNum == 2) {
+            
+            jLabel1.setText(num2 +  " ? " + num2);
+             labelText = num2 +  " ? " + num2; 
+            System.out.println("EQUAL TO");
+            // Sets the answer
+            answer = 2;
+            
+        // If the value picked is 3, a one more than question will be asked
+        } else if (questionNum == 3) {
+            
+            
+              //Num1 < Num2
+            jLabel1.setText(num1 +  " ? " + num2);
+             labelText = num1 +  " ? " + num2; 
+            
+            System.out.println("GREATER THAN");
+            // Sets the answer
+            answer = 3;
+            
+        }
+        
+            
+        
+        
+        // Sets the icon for the question
+       // jLabel1.setIcon(questionIcon);
+        //NEW STUFF MUST CHANGE
+        jLabel1.setText(labelText);
+        
+        // Fills the choices with 1 correct answer and 3 incorrect answers
+        fillChoices();
+    
+    }
+    
+    /*
+    * This method is called after a question is generated.
+    * Four values are assigned to the text of the four JButtons on the screen
+    * which are designated for the answers to the question.
+    * Each value is unique meaning no duplicate values, and one of the values
+    * is the correct answer to the question.
+    */
+    public void fillChoices() {
+        
+  
+        choices[0] = 1;
+        choices[1] = 2;
+        choices[2] = 3;
+        choices[3] = 4;
+        
+        
+        // Sets the text of the four JButtons with the choices for answers
+        jButton1.setText("<");
+        jButton2.setText("=");
+        jButton3.setText(">");
+        jButton4.setText("more than");
+
     }
 
     /**
@@ -225,22 +494,179 @@ public class G2N4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (choices[3] == answer) {
+                // Display the correct answer image
+                jButton4.setIcon(correctImageIcon);
+
+            } else {
+                // Display the incorrect answer image
+                jButton4.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        // If the user has not picked an answer to the question
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (choices[0] == answer) {
+
+                // Display the correct answer image
+                jButton1.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton1.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+System.out.println("Choices 2");
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (choices[2] == answer) {
+
+                // Display the correct answer image
+                jButton3.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton3.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+  // Allows the user to submit an answer
+        answerSubmitted = false;
 
+        // Increments the questionCount
+        questionCount++;
+
+        // String for the title of this form
+        String title = "";
+
+        // If the current question number is the second question
+        if (questionCount == 2) {
+
+            // Resets the ImageIcons of the JButtons on the screen to neutral
+            jButton1.setIcon(neutralImageIcon);
+            jButton2.setIcon(neutralImageIcon);
+            jButton3.setIcon(neutralImageIcon);
+            jButton4.setIcon(neutralImageIcon);
+
+            // Generate a medium question
+            generateMediumQuestion();
+
+            // Title of the form
+            title = "Math with Drawings: Medium Practice Question";
+
+        } else if (questionCount == 3) {
+
+            // Resets the ImageIcons of the JButtons on the screen to neutral
+            jButton1.setIcon(neutralImageIcon);
+            jButton2.setIcon(neutralImageIcon);
+            jButton3.setIcon(neutralImageIcon);
+            jButton4.setIcon(neutralImageIcon);
+
+            // Generate a hard question
+            generateHardQuestion();
+
+            // Title of the form
+            title = "Math with Drawings: Hard Practice Question";
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+
+            // Closes this screen
+            this.dispose();
+
+            main.setIsKN4ScreenOpen(false);
+
+            // Opens the Grade 1 and 2 module
+            main.openGrades1and2Module();
+
+        }
+
+        // Sets the question questionCount on the screen
+        jLabel2.setText(questionCount+"/3");
+
+        // Sets the title of the form
+        this.setTitle(title);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         // If the user has not submitted a question
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (choices[1] == answer) {
+
+                // Display the correct answer image
+                jButton2.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton2.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -271,7 +697,39 @@ public class G2N4 extends javax.swing.JInternalFrame {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
+    
+    /*
+    * The following three methods are used in the Assessment class
+    * for tests and quizzes to link to the KN4
+    */
+    public ImageIcon getImage()
+    {
+       return questionIcon; 
+    }
 
+    public int[] getChoices()
+    {
+        return choices;
+    }
+    
+    public int getAnswer()
+    {
+        return answer;
+    }
+    
+    public String getLabelText()
+    {
+        return labelText;
+    }
+   
+
+    public String getQuestionString() {
+        return questionString;
+    }
+
+   
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton helpAudioButton1;

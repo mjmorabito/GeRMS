@@ -79,6 +79,23 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         setTitle("Quiz Difficulty Select");
         setToolTipText("Quiz Difficulty Select");
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         starLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/QuizDifficultySelect/EmptyStar.png"))); // NOI18N
 
@@ -169,6 +186,9 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         // Easy difficulty quiz
         main.openAssessmentScreen(6, 1);
         
+        // Disposes this screen
+        this.dispose();
+        
         
     }//GEN-LAST:event_easyButtonClickedActionPerformed
 
@@ -177,12 +197,18 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
         // Medium difficulty quiz
         main.openAssessmentScreen(6, 2);
         
+        // Disposes this screen
+        this.dispose();
+        
     }//GEN-LAST:event_mediumButtonClickedActionPerformed
 
     private void hardButtonClickedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonClickedActionPerformed
         
         // Hard difficulty quiz
         main.openAssessmentScreen(6, 3);
+        
+        // Disposes this screen
+        this.dispose();
         
     }//GEN-LAST:event_hardButtonClickedActionPerformed
 
@@ -213,6 +239,14 @@ public class QuizDifficultySelect extends javax.swing.JInternalFrame {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
+
+    // Called when the form is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+
+        // Sets the variable to false
+        main.setisQuizDifficultySelectOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
     private void checkstarts(){
         

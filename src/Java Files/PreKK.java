@@ -87,6 +87,23 @@ public class PreKK extends JInternalFrame {
         setTitle("PreK-K");
         setToolTipText("PreK-K");
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         quizButton.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         quizButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Quiz.png"))); // NOI18N
@@ -531,6 +548,13 @@ public class PreKK extends JInternalFrame {
         }
 
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
+
+    // This is called when the screen is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+  
+        main.setIsPreKKOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
     private void changePage() {
         

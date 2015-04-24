@@ -530,10 +530,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             
             jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN8/" + question8 + ".png")));
         
-            jButton1.setIcon(null);
-            jButton2.setIcon(null);
-            jButton3.setIcon(null);
-            jButton4.setIcon(null);
+          
 
             //Set the text of the buttons to the answer choices, one of which is correct
             jButton1.setText(kn8.getAns1());
@@ -573,6 +570,23 @@ public class Assessment extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(230, 126, 34));
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
@@ -982,6 +996,14 @@ public class Assessment extends javax.swing.JInternalFrame {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_helpAudioButtonActionPerformed
+
+    // Called when the form is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+ 
+        // Sets the variable to false
+        main.setIsAssessmentScreenOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
