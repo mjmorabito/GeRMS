@@ -242,8 +242,8 @@ public class Grades1and2 extends JInternalFrame {
         // Opens an assessment at the hard difficulty
         main.openAssessmentScreenGrade2(10, 3);
         
-        // Disposes this screen
-        this.dispose();
+        // Closes this screen
+        main.closeGrades1and2Screen();
         
     }//GEN-LAST:event_finalButtonActionPerformed
 

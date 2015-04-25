@@ -215,8 +215,8 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         // Opens an assessment at the hard difficulty
         main.openAssessmentScreenGrade4(10, 3);
         
-        // Disposes this screen
-        this.dispose();
+        // Closes this screen
+        main.closeGrades3and4Screen();
         
     }//GEN-LAST:event_finalButtonActionPerformed
 

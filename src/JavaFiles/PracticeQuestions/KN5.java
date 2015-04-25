@@ -76,10 +76,6 @@ public class KN5 extends JInternalFrame {
         // Generates an easy question on the screen
         generateEasyQuestion();
         
-        // Disables the buttons
-        jButton1.setVisible(false);
-        jButton2.setVisible(false);
-        
     }
 
     /**
@@ -129,6 +125,7 @@ public class KN5 extends JInternalFrame {
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -139,6 +136,7 @@ public class KN5 extends JInternalFrame {
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -159,6 +157,7 @@ public class KN5 extends JInternalFrame {
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -169,6 +168,7 @@ public class KN5 extends JInternalFrame {
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/AnswerNeutral.jpg"))); // NOI18N
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -259,7 +259,31 @@ public class KN5 extends JInternalFrame {
     
     // This method is called when the top left answer button is clicked
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
 
+            // If the value assigned to this button is the correct answer
+            if (answer == 0) {
+
+                // Display the correct answer image
+                jButton1.setIcon(correctImageIcon);
+
+            } else {
+
+                // Display the incorrect answer image
+                jButton1.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // This method is called when the lower left answer button is clicked
@@ -269,13 +293,11 @@ public class KN5 extends JInternalFrame {
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
-            if (answer == 0) {
-
+            if (answer == 2) {
                 // Display the correct answer image
                 jButton3.setIcon(correctImageIcon);
 
             } else {
-
                 // Display the incorrect answer image
                 jButton3.setIcon(incorrectImageIcon);
 
@@ -360,6 +382,30 @@ public class KN5 extends JInternalFrame {
     // This method is called hwen the top right answer button is clicked
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        // If the user has not submitted an answer
+        if (!answerSubmitted) {
+
+            // If the value assigned to this button is the correct answer
+            if (answer == 1) {
+                // Display the correct answer image
+                jButton2.setIcon(correctImageIcon);
+
+            } else {
+                // Display the incorrect answer image
+                jButton2.setIcon(incorrectImageIcon);
+
+            }
+
+            // Prevents the user from submitting another answer
+            answerSubmitted = true;
+
+        } else {
+
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Click the blue arrow to continue", "Next", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // This method is called when the lower right answer button is clicked
@@ -369,7 +415,7 @@ public class KN5 extends JInternalFrame {
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
-            if (answer == 1) {
+            if (answer == 3) {
                 // Display the correct answer image
                 jButton4.setIcon(correctImageIcon);
 
@@ -491,8 +537,8 @@ public class KN5 extends JInternalFrame {
     // This method generates a hard difficulty question
     public void generateHardQuestion() {
  
-        // Generates a value between (1-3)
-        questionNum = (int)(Math.random()*( (5-1) + 1)) + 1;
+        // Generates a value between (1-6)
+        questionNum = (int)(Math.random()*( (6-1) + 1)) + 1;
         
         // Images to be used for the questions
         String[] imagePaths = { 
@@ -530,17 +576,24 @@ public class KN5 extends JInternalFrame {
         * An int array with four elements is used to store the possible answers
         */
         
-           
         // Half choice
-        choices[2] = 0;
+        choices[0] = 0;
         
         // Whole choice
-        choices[3] = 1;
+        choices[1] = 1;
+           
+        // One Quarter choice
+        choices[2] = 2;
+        
+        // One Third choice
+        choices[3] = 3;
         
         // Sets the text of the four JButtons with the choices for answers
-        jButton3.setText("Half");
-        jButton4.setText("Whole");
-
+        jButton1.setText("Half");
+        jButton2.setText("Whole");
+        jButton3.setText("One Quarter");
+        jButton4.setText("One Third");
+        
     }
     
     

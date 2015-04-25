@@ -1428,7 +1428,7 @@ public class Main extends JFrame {
             finalReport = new FinalReport(this, results, standards);
 
             // Sets the variable
-            isQuizReportScreenOpen = true;
+            isFinalReportScreenOpen = true;
 
             // Adds the screen to the desktop pane
             desktopPane.add(finalReport);
