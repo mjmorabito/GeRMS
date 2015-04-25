@@ -172,8 +172,7 @@ public class Main extends JFrame {
     
     // Determines  if the quizDifficultySelectGrade2 screen is open
     private boolean isQuizDifficultySelectGrade2Open = false;
-    
-    
+  
       // Class for the Assessment
     private AssessmentGrade4 assessmentGrade4;
     
@@ -197,6 +196,12 @@ public class Main extends JFrame {
     
     // Determines if the QuizReport screen is open / closed
     private boolean isQuizReportScreenOpen = false; 
+    
+    // FinalReport class
+    private FinalReport finalReport;
+    
+    // Determines if the Final screen is open / closed
+    private boolean isFinalReportScreenOpen = false; 
     
     // Stars array
     private JLabel[] stars = new JLabel[9];
@@ -711,6 +716,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isFinalReportScreenOpen variable to true/false
+    public void setIsFinalReportScreenOpen(boolean isOpen){
+        
+        //Set the variable
+        isFinalReportScreenOpen = isOpen;
+        
+    }
+    
     // This method sets the isPrintReportsScreenOpen variable to true/false
     public void setisPrintReportsScreenOpen(boolean isOpen){
         
@@ -868,6 +881,14 @@ public class Main extends JFrame {
         
         // Returns the variable
         return isQuizReportScreenOpen;
+        
+    }
+    
+    // This method gets the boolean value of isFinalReportScreenOpen variable
+    public boolean getIsFinalReportScreenOpen(){
+        
+        // Returns the variable
+        return isFinalReportScreenOpen;
         
     }
     
@@ -1381,7 +1402,7 @@ public class Main extends JFrame {
         // If the screen is not already open, then open it
         if (isQuizReportScreenOpen == false) {
         
-            // Creates a new KN1
+            // Creates a new QuizReport
             quizReport = new QuizReport(this, results, grade);
 
             // Sets the variable
@@ -1392,6 +1413,28 @@ public class Main extends JFrame {
 
             // Brings the KN8 screen to the front
             quizReport.toFront();  
+            
+        }
+        
+    }
+    
+    // This method creates an instance of the FinalReport screen
+    public void openFinalReportScreen(int[] results, String[] standards) {
+        
+        // If the screen is not already open, then open it
+        if (isFinalReportScreenOpen == false) {
+        
+            // Creates a new FinalReport
+            finalReport = new FinalReport(this, results, standards);
+
+            // Sets the variable
+            isQuizReportScreenOpen = true;
+
+            // Adds the screen to the desktop pane
+            desktopPane.add(finalReport);
+
+            // Brings the KN8 screen to the front
+            finalReport.toFront();  
             
         }
         
@@ -1581,6 +1624,22 @@ public class Main extends JFrame {
             
             // Close
             closePrintReportsScreen();
+            
+        }
+        
+         // If QuizReport Screen is open
+        if (isQuizReportScreenOpen) {
+            
+            // Close
+            closeQuizReportScreen();
+            
+        }
+        
+         // If FinalReport Screen is open
+        if (isFinalReportScreenOpen) {
+            
+            // Close
+            closeFinalReportScreen();
             
         }
                        
@@ -1838,6 +1897,28 @@ public class Main extends JFrame {
    
         // Set the variable to false
         isPrintReportsScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the QuizReport Screen
+    public void closeQuizReportScreen() {
+        
+        // Disposes of the Assessment Grade 4
+        quizReport.dispose();
+   
+        // Set the variable to false
+        isQuizReportScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the FinalReport Screen
+    public void closeFinalReportScreen() {
+        
+        // Disposes of the Assessment Grade 4
+        finalReport.dispose();
+   
+        // Set the variable to false
+        isFinalReportScreenOpen = false;      
         
     }
     

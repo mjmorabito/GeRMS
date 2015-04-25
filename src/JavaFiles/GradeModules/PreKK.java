@@ -337,6 +337,9 @@ public class PreKK extends JInternalFrame {
         // Opens the Assessment
         main.openAssessmentScreen(10, 3);
         
+        // Disposes this screen
+        this.dispose();
+        
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void rightarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightarrowButtonActionPerformed

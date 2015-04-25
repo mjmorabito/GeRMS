@@ -588,6 +588,9 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 // Saves the final
                 saveFinal();
                 
+                // Open the final report module
+                main.openFinalReportScreen(results, kns);
+                
             }
 
         }

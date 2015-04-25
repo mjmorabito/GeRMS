@@ -57,10 +57,10 @@ public class QuizReport extends javax.swing.JInternalFrame {
         // Stores the results
         results = r;
         
-        // Stores theg rade
+        // Stores the grade
         grade = g;
         
-        // ImageIcons for the neutral, correct, and incorrect buttons
+        // ImageIcons for the correct, and incorrect buttons
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/X.png"));
         correctImageIcon = new ImageIcon(getClass().getResource("Images/QuizReport/Checkmark.png"));
         

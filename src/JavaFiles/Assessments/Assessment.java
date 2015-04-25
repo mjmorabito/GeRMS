@@ -815,6 +815,7 @@ public class Assessment extends javax.swing.JInternalFrame {
             // If the number of questions == 6 (quiz) then open the quiz report screen
             if (numQuestions == 6) {
              
+                // Saves the quiz
                 savequiz();
                 
                 // Opens the QuizReport module
@@ -825,9 +826,11 @@ public class Assessment extends javax.swing.JInternalFrame {
             
             } else if (numQuestions == 10) {
                 
+                // Saves the final
                 saveFinal();
                 
                 // Open the final report module
+                main.openFinalReportScreen(results, kns);
                 
             }
 

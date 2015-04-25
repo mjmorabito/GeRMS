@@ -522,6 +522,9 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 // Save the final
                 saveFinal();
                 
+                // Open the final report module
+                main.openFinalReportScreen(results, kns);
+                
             }
 
         }
