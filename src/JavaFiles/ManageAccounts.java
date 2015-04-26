@@ -8,8 +8,11 @@
  */
 import java.awt.Dimension;
 import java.sql.*;
+import java.util.Base64;
 import java.util.Properties;
 import java.util.Vector;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -224,11 +227,29 @@ public class ManageAccounts extends JInternalFrame {
         // Loops through all the results in the ResultSet
         while (rs.next() == true){
             
+            String password = rs.getString("accPassword");
+            String key = rs.getString("secretKey");
+                
+            // Converts the key from the db to a byte array so it can be converted to a SecretyKey for decryption
+            byte[] decodedKey = Base64.getDecoder().decode(key);
+            // Convert the pasword key from byte[] to SecretKey so it can be decrypted
+            SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+            // Encryptor class
+            EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+            // Decrypt the password
+            try {
+                // Decrypts the pass from the db
+                password = encryptor.decrypt(password, secretKey);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
             // Sets the data in the table for the current row count
             usersTable.setValueAt(rs.getString("accfirstname"), count, 0);
             usersTable.setValueAt(rs.getString("acclastname"), count, 1);
             usersTable.setValueAt(rs.getString("accUser"), count, 2);
-            usersTable.setValueAt(rs.getString("accpassword"), count, 3);
+            usersTable.setValueAt(password, count, 3);
             
             // Increases the row count
             count++;
