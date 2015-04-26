@@ -1397,13 +1397,13 @@ public class Main extends JFrame {
     }
     
     // This method creates an instance of the QuizReport screen
-    public void openQuizReportScreen(int[] results, int grade) {
+    public void openQuizReportScreen(int[] results, int grade, int difficulty, String[] kns) {
         
         // If the screen is not already open, then open it
         if (isQuizReportScreenOpen == false) {
         
             // Creates a new QuizReport
-            quizReport = new QuizReport(this, results, grade);
+            quizReport = new QuizReport(this, results, grade, difficulty, kns);
 
             // Sets the variable
             isQuizReportScreenOpen = true;
@@ -1419,13 +1419,13 @@ public class Main extends JFrame {
     }
     
     // This method creates an instance of the FinalReport screen
-    public void openFinalReportScreen(int[] results, String[] standards) {
+    public void openFinalReportScreen(int[] results, String[] standards, int grade) {
         
         // If the screen is not already open, then open it
         if (isFinalReportScreenOpen == false) {
         
             // Creates a new FinalReport
-            finalReport = new FinalReport(this, results, standards);
+            finalReport = new FinalReport(this, results, standards, grade);
 
             // Sets the variable
             isFinalReportScreenOpen = true;

@@ -512,7 +512,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 savequiz();
                 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results, 2);
+                main.openQuizReportScreen(results, 2, difficulty, kns);
 
                 // Displays the stars at the top of the screen
                 main.checkStars();
@@ -523,7 +523,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 saveFinal();
                 
                 // Open the final report module
-                main.openFinalReportScreen(results, kns);
+                main.openFinalReportScreen(results, kns, 2);
                 
             }
 

@@ -101,7 +101,7 @@ public class Assessment extends javax.swing.JInternalFrame {
   
     //COMMENTS
     
-    public Assessment(Main m, int numQ,int diff) {
+    public Assessment(Main m, int numQ, int diff) {
         
          // Sets the reference to the main class
         main = m;
@@ -819,7 +819,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 savequiz();
                 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results, 0);
+                main.openQuizReportScreen(results, 0, difficulty, kns);
                 
                 // Displays the stars at the top of the screen
                 main.checkStars();
@@ -830,7 +830,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                 saveFinal();
                 
                 // Open the final report module
-                main.openFinalReportScreen(results, kns);
+                main.openFinalReportScreen(results, kns, 0);
                 
             }
 

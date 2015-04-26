@@ -1,7 +1,14 @@
 
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.print.PrinterException;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -25,6 +32,12 @@ public class FinalReport extends javax.swing.JInternalFrame {
     // Standards
     private String[] standards;
     
+    // Stores the grade
+    private int grade;
+    
+    // Stores the difficulty (3 is hard for final)
+    private int difficulty = 3;
+    
     // ImageIcons for the checkmark and red x
     private ImageIcon incorrectImageIcon;
     private ImageIcon correctImageIcon;
@@ -35,7 +48,7 @@ public class FinalReport extends javax.swing.JInternalFrame {
     /**
      * Creates new form FinalReport
      */
-    public FinalReport(Main m, int[] results, String[] standards) {
+    public FinalReport(Main m, int[] results, String[] standards, int grade) {
         
         // Initializes the components
         initComponents();
@@ -51,6 +64,9 @@ public class FinalReport extends javax.swing.JInternalFrame {
         
         // Stores the standards asked from the previous assessment
         this.standards = standards;
+        
+        // Stores the grade
+        this.grade = grade;
         
         for (int i = 0; i < standards.length; i++) {
             switch (standards[i]) {
@@ -161,20 +177,20 @@ public class FinalReport extends javax.swing.JInternalFrame {
         setTitle("Final Report");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosed(evt);
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -266,8 +282,10 @@ public class FinalReport extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // Called when the printer button is pressed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Method that is called when the form is closed

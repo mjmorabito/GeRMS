@@ -86,7 +86,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
     /**
      * Creates new form AssessmentGrade4
      */
-    public AssessmentGrade2(Main m, int numQ,int diff) {
+    public AssessmentGrade2(Main m, int numQ, int diff) {
          // Sets the reference to the main class
         main = m;
         
@@ -578,7 +578,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 savequiz();
                 
                 // Opens the QuizReport module
-                main.openQuizReportScreen(results, 1);
+                main.openQuizReportScreen(results, 1, difficulty, kns);
 
                 // Displays the stars at the top of the screen
                 main.checkStars();
@@ -589,7 +589,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 saveFinal();
                 
                 // Open the final report module
-                main.openFinalReportScreen(results, kns);
+                main.openFinalReportScreen(results, kns, 1);
                 
             }
 
