@@ -259,12 +259,14 @@ public class PreKK extends JInternalFrame {
         boolean missingStandard = false;
         String user = main.getUsername();
         dbClass db = new dbClass();
-        int[] standards = new int[8];
+        int[] standards = new int[7];
+        String[] standardstext = new String[] {"Counting, ","Matching, ","Position, ","Comparing, ","Half and Whole, ","Coins, ","Math with Drawings, ","Estimate, "};
+        
         standards = db.allpracticescompletedPREKK(user);
         
         for(int i = 0;i<standards.length; i++){
             if (standards[i] == 0){
-                message = message.concat("KN"+ (i+1) + ", ");
+                message = message.concat(standardstext[i]);
                 missingStandard = true;
             }
         }
