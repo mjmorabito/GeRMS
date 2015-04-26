@@ -116,9 +116,10 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="A"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -136,9 +137,10 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="B"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -156,9 +158,10 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="D"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[191, 121]"/>
         </Property>
@@ -182,9 +185,10 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="C"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

@@ -129,7 +129,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
       </Properties>
       <Events>
@@ -148,7 +148,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
       </Properties>
       <Events>
@@ -175,7 +175,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
       </Properties>
       <Events>
@@ -204,7 +204,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.jpg"/>
+          <Image iconType="3" name="/Images/PracticeScreens/AnswerNeutral.png"/>
         </Property>
       </Properties>
       <Events>
