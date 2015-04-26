@@ -257,10 +257,11 @@ public class KN8 extends javax.swing.JInternalFrame {
         //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton4.getText()) == question){
             jButton4.setIcon(correctImageIcon);
-            jButton5.setEnabled(true);
+            
         }else{
             jButton4.setIcon(incorrectImageIcon);
         }
+        jButton5.setEnabled(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -268,10 +269,11 @@ public class KN8 extends javax.swing.JInternalFrame {
         //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton1.getText()) == question){
             jButton1.setIcon(correctImageIcon);
-            jButton5.setEnabled(true);
+            
         }else{
             jButton1.setIcon(incorrectImageIcon);
         }
+        jButton5.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -279,10 +281,11 @@ public class KN8 extends javax.swing.JInternalFrame {
         //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton3.getText()) == question){
             jButton3.setIcon(correctImageIcon);
-            jButton5.setEnabled(true);
+            
         }else{
             jButton3.setIcon(incorrectImageIcon);
         }
+        jButton5.setEnabled(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -290,10 +293,11 @@ public class KN8 extends javax.swing.JInternalFrame {
         //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton2.getText()) == question){
             jButton2.setIcon(correctImageIcon);
-            jButton5.setEnabled(true);
+            
         }else{
             jButton2.setIcon(incorrectImageIcon);
         }
+        jButton5.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
