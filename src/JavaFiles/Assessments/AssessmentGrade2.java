@@ -1,4 +1,9 @@
-
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -20,16 +25,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author markmorabito
+ * The Assessment class allows for a quiz, or a test, on easy, medium, or hard
+ * difficulty to be administered for Grades 1 - 2
  */
+
 public class AssessmentGrade2 extends javax.swing.JInternalFrame {
 // Stores a reference to the main class
     private Main main;

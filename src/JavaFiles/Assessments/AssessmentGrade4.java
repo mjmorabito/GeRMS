@@ -1,4 +1,9 @@
-
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -21,15 +26,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author markmorabito
+ * The Assessment class allows for a quiz, or a test, on easy, medium, or hard
+ * difficulty to be administered for grades 3 - 4
  */
 public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 // Stores a reference to the main class
@@ -181,17 +181,13 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         jButton1.setVisible(true);
         jButton2.setVisible(true);
         
-        System.out.println("Question count: " + questionCount);
         
         if (questionCount < numQuestions-1) {
             questionCount++;
         }
-        System.out.println("After Question count: " +  questionCount);
-        
         
             q = new G4N12(main);
-           
-            //do lots of stuff
+     
             if (difficulty == 1)
             {
                 
@@ -200,7 +196,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                 //questionIcon = q.getImage();
                 choices = q.getChoices();
                 jLabel1.setText(q.getQuestionString());
-                System.out.println(q.getQuestionString());
+                
                 jButton1.setText("" +choices[0]);
                 jButton2.setText("" +choices[1]);
                 jButton3.setText("" +choices[2]);
@@ -394,7 +390,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not picked an answer to the question
         if (!answerSubmitted) {
-            //System.out.println("XXX choices q is" + choices[0]);
+            
             // If the value assigned to this button is the correct answer
             if (choices[0] == answer) {
 
@@ -429,7 +425,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted a question
         if (!answerSubmitted) {
-           // System.out.println("XXX choices 1 is" + choices[1]);
+          
             // If the value assigned to this button is the correct answer
             if (choices[1] == answer) {
 
@@ -473,7 +469,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         {
             // Increments the current page
             currentPage++;
-            System.out.println("Current page: " + currentPage);
+            
 
             // Resets the ImageIcons of the JButtons on the screen to neutral
             jButton1.setIcon(neutralImageIcon);
@@ -548,7 +544,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-           // System.out.println("XXX choices q is" + choices[3]);
+           
             // If the value assigned to this button is the correct answer
             if (choices[3] == answer) {
 
@@ -583,7 +579,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            //System.out.println("XXX choices q is" + choices[2]);
+           
             // If the value assigned to this button is the correct answer
             if (choices[2] == answer) {
 
