@@ -358,11 +358,24 @@ public class PreKK extends JInternalFrame {
     // This method is called when the Final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
       
-        // Opens the Assessment
-        main.openAssessmentScreen(10, 3);
         
-        // Closes this scren
-        main.closePreKKScreen();
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        boolean completed = db.completedhardquiz(user, 1);
+        
+        if(!completed){
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Please complete a hard quiz before taking a final test!", "Complete hard!", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else{
+            // Opens the Assessment
+            main.openAssessmentScreen(10, 3);
+        
+            // Closes this scren
+            main.closePreKKScreen();    
+        }
+            
+        
         
     }//GEN-LAST:event_finalButtonActionPerformed
 

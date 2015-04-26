@@ -14,6 +14,37 @@ public class dbClass {
         
     }
     
+    public boolean completedhardquiz(String user, int grade){
+        
+        boolean completed = false;
+        // A try/catch block to get information from the database using SQL
+        try {
+                // Database Driver
+                Class.forName(dbClassName);
+
+                // user/pwd to connect to DB
+                Properties p = new Properties();
+                p.put("user","GermsAdmin");
+                p.put("password","g3rm5p0w3ru53r");
+
+                // DB connection
+                Connection conn = DriverManager.getConnection(CONNECTION,p);
+                Statement stmt = conn.createStatement();
+                
+                String sql = "SELECT * FROM quizzes WHERE QaccUser = '" + user + "'"
+                        + "AND QgradeID="+grade+" AND Qdifficulty=3 AND Qcorrectanswers>=4";
+                ResultSet rs = stmt.executeQuery(sql);
+                
+                if (rs.next()){
+                    completed = true;
+                }      
+        }
+        catch (Exception e){}
+        
+        
+        return completed;
+    }
+    
     public int[] allpracticescompletedPREKK(String user){
         int[] completedpractices = new int[8];
         
