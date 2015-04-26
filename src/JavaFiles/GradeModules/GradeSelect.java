@@ -3,8 +3,6 @@
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  * Date: 04/02/15
  * Purpose: The client requested a math tutoring software for elementary school children.
- * For this phase of the project the client assigned us to script a prototype portion of the user interface.
- * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
 import static java.awt.SystemColor.info;
 import java.io.File;
@@ -181,10 +179,6 @@ public class GradeSelect extends JInternalFrame {
     // This method is triggered when the PreK-K grades button is clicked
     private void gradePreKandKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradePreKandKButtonActionPerformed
     
-        // Display a message
-        //JOptionPane.showMessageDialog(null, "This button will open the grades PreK-K module.");
-          // TODO add your handling code here:
-        //For testing purposes, this method will launch the PreKKCountingQuiz   
         // Closes the grade select screen
         this.dispose();
         main.setIsGradeSelectScreenOpen(false);

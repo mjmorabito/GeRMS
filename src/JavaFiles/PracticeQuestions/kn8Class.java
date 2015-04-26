@@ -2,8 +2,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 /**
- *
- * @author searomg
+ * This Class is for the KN8 class and contains the logic for the standard.
+ * 
  */
 public class kn8Class {
     
@@ -20,7 +20,7 @@ public class kn8Class {
     private String ans4;
     
     public kn8Class() {
-         //initialize the sequence to zeros
+         //initialize the sequence to zeros for the easy, medium, hard, and sequence
         easy = new ArrayList<>();
         for (int i = 1; i < 3; i++) {
             easy.add(""+i);
@@ -42,13 +42,15 @@ public class kn8Class {
         }
     }
     
+    //This gets a question based on difficulty
     public int getQuestion(int difficulty) {
         
+        //Remove all answer choices previously held in the arraylist
         answerChoices.removeAll(answerChoices);
         
         Random randomQuestion = new Random();
 
-        
+        //Switch on the difficulty and shuffle the answer choices
         switch (difficulty){
             case 1:
                 shuffleList(easy);
@@ -67,13 +69,13 @@ public class kn8Class {
                 break;
         }
         
-        
+        //Store the question answers
         ans1 = correctAnswer + "";
         answerChoices.add(""+correctAnswer);
         
         
         int goodWrongAnswer = randomQuestion.nextInt(10);
-        //System.out.println("The correct answer is " + goodWrongAnswer);
+        
         while (goodWrongAnswer == Integer.parseInt(ans1) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
             goodWrongAnswer = randomQuestion.nextInt(10);
         }
@@ -119,6 +121,7 @@ public class kn8Class {
         }
     }
     
+    //Shuffles the array list of strings
     public static void shuffleList(ArrayList<String> a) {
         int n = a.size();
         Random random = new Random();
@@ -128,6 +131,8 @@ public class kn8Class {
           swap(a, i, change);
         }
     }
+    
+    //Swaps two members of the array list
     private static void swap(ArrayList<String> a, int i, int change) {
         String helper = a.get(i);
         a.set(i, a.get(change));
@@ -146,7 +151,7 @@ public class kn8Class {
       return indicator;
   }
 
-  
+  //Accessor methods
   public String getAns1()
   {
       return ans1;
