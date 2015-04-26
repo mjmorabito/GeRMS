@@ -354,8 +354,25 @@ public class HelpScreen extends javax.swing.JInternalFrame {
     
     // This is the action listener for the print report screen tutorial button    
     private void printreportTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printreportTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+             
+        
+        String videoName = "PrintReport";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_printreportTutorialButtonActionPerformed
 
     // This is the action listener for the quiz report screen tutorial button        
@@ -384,8 +401,25 @@ public class HelpScreen extends javax.swing.JInternalFrame {
 
     // This is the action listener for the final report screen tutorial button        
     private void finalReportTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalReportTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+       
+        
+        String videoName = "FinalReport";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_finalReportTutorialButtonActionPerformed
 
     // This method is called when the audio button is clicked
