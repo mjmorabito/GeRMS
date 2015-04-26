@@ -662,7 +662,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
             }
             
             // Inserts the data into the database
-            sql = "INSERT INTO quizzes VALUES('" + user + "',3,"+difficulty+","+correct+","
+            sql = "INSERT INTO quizzes VALUES(null,'" + user + "',3,"+difficulty+","+correct+","
                     +"'"+kns[0]+"',"+results[0]+",'"+kns[1]+"',"+results[1]+",'"+kns[2]+"',"+results[2]+","
                     +"'"+kns[3]+"',"+results[3]+",'"+kns[4]+"',"+results[4]+",'"+kns[5]+"',"+results[5]+","
                     +"'"+timeStamp+ "')";
@@ -709,11 +709,14 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
             }
             
             // Inserts the data into the database
-            sql = "INSERT INTO finals VALUES('" + user + "',3,"+correct+","
-                    +results[0]+","+results[1]+","+results[2]+","
-                    +results[3]+","+results[4]+","+results[5]+","
-                    +results[6]+","+results[7]+","+results[8]+","
-                    +results[9]+","
+            sql = "INSERT INTO finals VALUES(null,'" + user + "',3,"+correct+","
+                    +"'"+kns[0]+"',"+results[0]+","+"'"+kns[1]+"',"
+                    +results[1]+","+"'"+kns[2]+"',"+results[2]+","
+                    +"'"+kns[3]+"',"+results[3]+","+"'"+kns[4]+"',"
+                    +results[4]+","+"'"+kns[5]+"',"+results[5]+","
+                    +"'"+kns[6]+"',"+results[6]+","+"'"+kns[7]+"',"
+                    +results[7]+","+"'"+kns[8]+"',"+results[8]+","
+                    +"'"+kns[9]+"',"+results[9]+","
                     +"'"+timeStamp+ "')";
             
             //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);

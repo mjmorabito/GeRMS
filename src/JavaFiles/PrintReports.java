@@ -1,8 +1,14 @@
 
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.print.PrinterException;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +23,28 @@ import javax.swing.table.DefaultTableModel;
 public class PrintReports extends javax.swing.JInternalFrame {
 
     // Main class
-    Main main;
+    private Main main;
+    
+    // Primary Keys (PIDs and FIDs) from quizzes and finals table
+    private ArrayList<Integer> primaryKeys = new ArrayList<Integer>();
+    
+    // Grade ID (PreK-K, Grades 1 and 2, Grades 3 and 4)
+    private int gradeID;
+    
+    // Difficulty (1, 2, or 3)
+    private int difficultyID;
+    
+    // Standards from the assessment
+    private String[] standards;
+    
+    // Results from the assessment
+    private int[] results;
+    
+    // Assessment Type (final / quiz)
+    private String assessmentType;
+    
+    // Date from the assessment
+    private String date;
     
     /**
      * Creates new form PrintReports
@@ -87,6 +114,7 @@ public class PrintReports extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 
                 // Gets the data from the current result set
+                primaryKeys.add(rs.getInt("QID"));
                 int grade = rs.getInt("QgradeID");
                 int difficulty = rs.getInt("Qdifficulty");
                 int correctAnswers = rs.getInt("QCorrectanswers");
@@ -152,6 +180,7 @@ public class PrintReports extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 
                 // Gets the data from the current result set
+                primaryKeys.add(rs.getInt("FID"));
                 int grade = rs.getInt("FgradeID");
                 int correctAnswers = rs.getInt("Qcorrectanswers");
                 SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
@@ -227,20 +256,20 @@ public class PrintReports extends javax.swing.JInternalFrame {
         setToolTipText("");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosing(evt);
             }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -276,6 +305,11 @@ public class PrintReports extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainScreen/printer.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,6 +348,351 @@ public class PrintReports extends javax.swing.JInternalFrame {
         main.setisPrintReportsScreenOpen(false);
         
     }//GEN-LAST:event_formInternalFrameClosing
+
+    // Called when the printer button is pressed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        // Gets the currently selected row (-1 if none selected)
+        int selectedRow = jTable1.getSelectedRow();
+        
+        // If a row is selected 
+        if (selectedRow > -1) {
+            
+            // Selects the currently selected assessment from the database
+            try {
+                
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/germs", "GermsAdmin", "g3rm5p0w3ru53r");
+            
+            Statement stmt = con.createStatement();
+            
+            assessmentType = jTable1.getValueAt(selectedRow, 0).toString();
+            
+            // Makes a SQL Statement depending on what type of assessment is selected in the JTable
+            String sql = "";
+            if (assessmentType.equals("Quiz")) {
+                sql = "SELECT * FROM quizzes where QID = '" + primaryKeys.get(selectedRow) + "' AND QaccUser='" + main.getUsername() + "'";
+            } else if (assessmentType.equals("Final")) {
+                sql = "SELECT * FROM finals where FID = '" + primaryKeys.get(selectedRow) + "' AND FaccUser='" + main.getUsername() + "'";
+            }
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            // Gets the assessment from the ResultSet
+            if (rs.next()) {
+                
+                // If the selected assessment is a quiz
+                if (assessmentType.equals("Quiz")) {
+                    
+                    // Gets the grade ID from the ResultSet
+                    gradeID = rs.getInt("QgradeID");
+                    
+                    // Gest the difficulty from the ResultSet
+                    difficultyID = rs.getInt("Qdifficulty");
+                    
+                    // Standards array
+                    standards = new String[6];
+                    
+                   for (int i = 0; i < 6; i++) {
+                        standards[i] = rs.getString("S"+(i+1));
+                    }
+                    
+                    // Results array
+                    results = new int[6];
+                    
+                    // Gets the results from the ResultSet
+                    for (int i = 0; i < 6; i++) {
+                        results[i] = rs.getInt("Q"+(i+1));
+                    }
+                    
+                    // Gets the date in MM-dd-yyyy format
+                    Date d = rs.getDate("Qdate");
+                    date = new SimpleDateFormat("MM-dd-yyyy").format(d);
+                    
+                // Else if the selected assessment is a final
+                } else if (assessmentType.equals("Final")) {
+                    
+                    // Gets the gradeID from the resultset
+                    gradeID = rs.getInt("FgradeID");
+                    
+                    // Difficulty is automatically 3 (Hard)
+                    difficultyID = 3;
+                    
+                   // Standards array
+                    standards = new String[10];
+                    
+                    // Gets the standards from the ResultSet
+                   for (int i = 0; i < 10; i++) {
+                        standards[i] = rs.getString("S"+(i+1));
+                    }
+                   
+                   // Results array
+                   results = new int[10];
+                   
+                    // Gets the results from the ResultSet
+                    for (int i = 0; i < 10; i++) {
+                        results[i] = rs.getInt("Q"+(i+1));
+                    }
+                    
+                    // Gets the date in MM-dd-yyyy format
+                    Date d = rs.getDate("Fdate");
+                    date = new SimpleDateFormat("MM-dd-yyyy").format(d);
+                    
+                }
+                
+            }
+                
+            } catch (ClassNotFoundException e) {
+                
+            } catch (SQLException e) {
+                
+            }
+            
+            /*
+            * Now that the data from the currently selected assessment 
+            * has been stored in variables, we are ready to display
+            * a print preview, and send a print job.
+            */
+            
+            // Text area that is used to write the report to
+            JTextArea textArea = new JTextArea();
+
+            // Sets the font
+            textArea.setFont(new Font("monospaced", Font.PLAIN, 12));
+            
+        // Used to store either PreK-K, Grades 1 and 2, or Grades 3 and 4
+        String grade = "";
+        
+        // Stores the grade in the above String
+        switch (gradeID) {
+            case 1:
+                grade = "PreK-K";
+            break;
+            
+            case 2:
+                grade = "Grades 1 and 2";
+            break;
+                
+            case 3:
+                grade = "Grades 3 and 4";
+            break;
+                
+            default:
+                grade = "";
+            break;
+                
+        }
+        
+        // Used to store either Easy, Medium, or Hard
+        String difficulty = "";
+
+        // Stores the difficulty in the above String
+        switch (difficultyID) {
+            
+            case 1:
+              difficulty = "Easy";  
+            break;
+                
+            case 2:
+                difficulty = "Medium";
+            break;
+                
+            case 3:
+                difficulty = "Hard";
+            break;
+            
+            default:
+                difficulty = "";
+            break;
+                
+        }
+        
+        // Used to store either Incorrect/Correct for all questions
+        String[] results = new String[this.results.length];
+        
+        // Used to store the score on the assessment
+        double score = 0;
+        
+        // Gets the score and stores incorrect/correct in the above String array
+        for (int i = 0; i < this.results.length; i++) {
+            
+            // Adds one or zero to the score
+            score += this.results[i];
+            
+            switch (this.results[i]) {
+                
+                case 0:
+                    results[i] = "Incorrect";
+                break;
+                    
+                case 1:
+                    results[i] = "Correct";
+                break;
+                
+                default:
+                    results[i] = "";
+                break;
+                    
+            }
+        }
+        
+        // Calculates the score
+        if (assessmentType.equals("Quiz")) {
+        
+            // Stores the score as a double from 0-100
+            score = (score * 100) / 6;
+            
+        } else if (assessmentType.equals("Final")) {
+            
+            // Stores the score as a double from 0-100
+            score = (score * 10);
+            
+        }
+        
+        // Formats the score
+        DecimalFormat df = new DecimalFormat("###");
+        String scoreFormatted = df.format(score);
+        
+        // Used to store the standards asked on the assessment as a String
+        String[] standards = new String[this.standards.length];
+        
+        // Stores the standards asked as a String array
+        for (int i = 0; i < this.standards.length; i++) {
+            
+            switch (this.standards[i]) {
+                
+                case "KN1":
+                    standards[i] = "Counting";
+                break;
+                
+                case "KN2":
+                    standards[i] = "Matching";
+                break;
+                    
+                case "KN3":
+                    standards[i] = "Position of an Object";
+                break;
+                
+                case "KN4":
+                    standards[i] = "Comparing Groups of Objects";
+                break;
+                    
+                case "KN5":
+                    standards[i] = "Half and Whole";
+                break;
+                
+                case "KN6":
+                    standards[i] = "Identify Coins";
+                break;
+                    
+                case "KN7":
+                    standards[i] = "Math with Drawings";
+                break;
+                
+                case "KN8":
+                    standards[i] = "Estimate";
+                break;
+                    
+                case "2N4":
+                    standards[i] = "Comparing Numbers";
+                break;
+                
+                case "4N12":
+                    standards[i] = "Math with Large Numbers";
+                break;
+                    
+                default:
+                    standards[i] = "";
+                break;
+                
+            }
+            
+        }
+        
+        // Text that goes above the data from the assessment
+        String headings = ""
+                + "Username: " + main.getUsername() + "\n"
+                + "Date: " + date + "\n"
+                + "Grade: " + grade + "\n"
+                + "Assessment Type: " + assessmentType + "\n"
+                + "Difficulty: " + difficulty + "\n"
+                + "Score: " + scoreFormatted + "\n\n";
+            
+        // Determine which row has the longest standard name (for spacing purposes)
+        int standardLength = 0;
+        for (int i = 0; i < standards.length; i++) {
+            if (standards[i].length() > standardLength) {
+                // Stores the largest length
+                standardLength = standards[i].length();
+            }
+        }
+        
+        // Used to store the spaces as a String that go after the second column text
+        String[] spacesForSecondColumn = new String[standards.length];
+        
+        // Instantiates the spacesForSecondColumn array
+        for (int i = 0; i < spacesForSecondColumn.length; i++) {
+            spacesForSecondColumn[i] = "";
+        }
+        
+        // Determines the number of spaces needed after the second column for each row
+        // Then stores the spaces in an array
+        for (int i = 0; i < standards.length; i++) {
+            int spacesNeededForSecondColumn = standardLength - standards[i].length();
+            for (int j = 0; j < spacesNeededForSecondColumn; j++) {
+                spacesForSecondColumn[i] += " ";
+            }
+            spacesForSecondColumn[i] += "             ";
+        }
+        
+        // Number of spaces after the Type column
+        int numberOfSpacesAfterSecondColumn = (standardLength-4) + 8;
+        
+        // Column headings for the data table
+        String columnHeadings = String.format("Question #         Type%"+numberOfSpacesAfterSecondColumn+"s"+"Correct/Incorrect" + "\n", "");
+        
+        // Loops through each element in the results array
+        // adding one row of data to the string each time
+        String data = "";
+        for (int i = 0; i < standards.length; i++) {
+            numberOfSpacesAfterSecondColumn = (standardLength-standards[i].length()) + 8;
+            if (i < 9) {
+                data += String.format((i+1) + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
+            } else {
+                data += String.format((i+1) + "                 " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");                
+            }
+        }
+        
+        // Sets the textArea with the print preview text
+        textArea.setText(headings + columnHeadings + data);
+        
+        // Makes the textArea not editable
+        textArea.setEditable(false);
+        
+        // Displays a print preview
+        JOptionPane.showMessageDialog(null, textArea, "Print Assessment Preview", JOptionPane.PLAIN_MESSAGE);
+
+        // Attempts to send a print job
+        try {
+            boolean complete = textArea.print(null, null, true, null, null, true);
+            if (complete) {
+                /* show a success message  */
+
+            } else {
+                /*show a message indicating that printing was cancelled */
+
+            }
+        } catch (PrinterException pe) {
+            /* Printing failed, report to the user */
+
+        }
+        
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select an assessment to print.", "Print Assessment", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

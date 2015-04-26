@@ -359,7 +359,8 @@ public class FinalReport extends javax.swing.JInternalFrame {
                 + "Username: " + main.getUsername() + "\n"
                 + "Date: " + date + "\n"
                 + "Grade: " + grade + "\n"
-                + "Final: " + difficulty + "\n"
+                + "Assessment Type: Final" + "\n"
+                + "Difficulty: " + difficulty + "\n"
                 + "Score: " + score + "\n\n";
         
         // Determine which row has the longest standard name (for spacing purposes)
@@ -400,7 +401,11 @@ public class FinalReport extends javax.swing.JInternalFrame {
         String data = "";
         for (int i = 0; i < standards.length; i++) {
             numberOfSpacesAfterSecondColumn = (standardLength-standards[i].length()) + 8;
-            data += String.format((i+1) + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
+            if (i < 9) {
+                data += String.format((i+1) + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
+            } else {
+                data += String.format((i+1) + "                 " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");                
+            }
         }
         
         // Sets the textArea with the print preview text
