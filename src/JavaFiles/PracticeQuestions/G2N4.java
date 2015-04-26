@@ -620,6 +620,10 @@ System.out.println("Choices 2");
             title = "Comparing Numbers: Hard Practice Question";
 
         } else {
+            
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "2N4");
 
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);

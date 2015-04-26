@@ -45,6 +45,80 @@ public class dbClass {
         return completed;
     }
     
+    public int[] allpracticescompleted34(String user){
+        int[] completedpractices = new int[] {0};
+        
+        // A try/catch block to get information from the database using SQL
+        try {
+                // Database Driver
+                Class.forName(dbClassName);
+
+                // user/pwd to connect to DB
+                Properties p = new Properties();
+                p.put("user","GermsAdmin");
+                p.put("password","g3rm5p0w3ru53r");
+
+                // DB connection
+                Connection conn = DriverManager.getConnection(CONNECTION,p);
+                Statement stmt = conn.createStatement();
+                
+                String sql = "SELECT * FROM practices WHERE PaccUser = '" + user + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+                
+                // Loops through all the elements in the ResultSet
+                while(rs.next()){
+                    String id = rs.getString("PstandardID");
+                    
+                    //if standard is already completed, tag array location as 1
+                    switch(id){
+                        case "4N12":
+                            completedpractices[0] = 1;
+                            break;                          
+                    }
+                }
+        }
+        catch(Exception e){}
+        
+        return completedpractices;
+    }
+    
+    public int[] allpracticescompleted12(String user){
+        int[] completedpractices = new int[] {0};
+        
+        // A try/catch block to get information from the database using SQL
+        try {
+                // Database Driver
+                Class.forName(dbClassName);
+
+                // user/pwd to connect to DB
+                Properties p = new Properties();
+                p.put("user","GermsAdmin");
+                p.put("password","g3rm5p0w3ru53r");
+
+                // DB connection
+                Connection conn = DriverManager.getConnection(CONNECTION,p);
+                Statement stmt = conn.createStatement();
+                
+                String sql = "SELECT * FROM practices WHERE PaccUser = '" + user + "'";
+                ResultSet rs = stmt.executeQuery(sql);
+                
+                // Loops through all the elements in the ResultSet
+                while(rs.next()){
+                    String id = rs.getString("PstandardID");
+                    
+                    //if standard is already completed, tag array location as 1
+                    switch(id){
+                        case "2N4":
+                            completedpractices[0] = 1;
+                            break;                          
+                    }
+                }
+        }
+        catch(Exception e){}
+        
+        return completedpractices;
+    }
+    
     public int[] allpracticescompletedPREKK(String user){
         int[] completedpractices = new int[8];
         

@@ -550,6 +550,10 @@ public class G4N12 extends javax.swing.JInternalFrame {
             title = "Math : Hard Practice Question";
 
         } else {
+            
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "4N12");
 
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);

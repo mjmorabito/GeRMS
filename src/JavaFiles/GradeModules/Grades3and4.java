@@ -211,12 +211,21 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
 
     // Called when the final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-    
-        // Opens an assessment at the hard difficulty
-        main.openAssessmentScreenGrade4(10, 3);
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        boolean completed = db.completedhardquiz(user, 3);
         
-        // Closes this screen
-        main.closeGrades3and4Screen();
+        if(!completed){
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Please complete a hard quiz before taking a final test!", "Complete hard!", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else{
+            // Opens an assessment at the hard difficulty
+            main.openAssessmentScreenGrade4(10, 3);
+
+            // Closes this screen
+            main.closeGrades3and4Screen();
+        }
         
     }//GEN-LAST:event_finalButtonActionPerformed
 
@@ -243,13 +252,34 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //For testing purposes, this method will launch the PreKKCountingQuiz
         // Closes the Grade 3 and 4 screen
-        this.dispose();
-        main.setIsGrades3and4ModuleOpen(false);
-
         
-        // Opens Difficulty Select
-        main.openQuizDifficultySelectGrade4();
+        String message = "Please complete practice ";
+        boolean missingStandard = false;
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        int[] standards = new int[0];
+        String[] standardstext = new String[] {"Math with large numbers "};
+        
+        standards = db.allpracticescompleted34(user);
+        
+        for(int i = 0;i<standards.length; i++){
+            if (standards[i] == 0){
+                message = message.concat(standardstext[i]);
+                missingStandard = true;
+            }
+        }
+        message = message.concat("before taking a quiz!");
+        
+        if (missingStandard){
+            JOptionPane.showMessageDialog(null, message, "Complete Standard", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            this.dispose();
+            main.setIsGrades3and4ModuleOpen(false);
 
+
+            // Opens Difficulty Select
+            main.openQuizDifficultySelectGrade4();
+        }
     }//GEN-LAST:event_quizButtonActionPerformed
 
     private void leftarrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftarrowButtonActionPerformed

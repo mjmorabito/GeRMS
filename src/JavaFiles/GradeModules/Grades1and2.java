@@ -225,25 +225,56 @@ public class Grades1and2 extends JInternalFrame {
 
     // This method is triggered when the OK button is clicked
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
-         // Closes the Grade 3 and 4 screen
-        this.dispose();
-        main.setIsGrades1and2ModuleOpen(false);
-
+         
+        String message = "Please complete practice ";
+        boolean missingStandard = false;
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        int[] standards = new int[0];
+        String[] standardstext = new String[] {"Comparing numbers "};
         
-        // Opens Difficulty Select
-        //main.openQuizDifficultySelectGrade4();
-        main.openQuizDifficultySelectGrade2();
+        standards = db.allpracticescompleted12(user);
+        
+        for(int i = 0;i<standards.length; i++){
+            if (standards[i] == 0){
+                message = message.concat(standardstext[i]);
+                missingStandard = true;
+            }
+        }
+        message = message.concat("before taking a quiz!");
+        
+        if (missingStandard){
+            JOptionPane.showMessageDialog(null, message, "Complete Standard", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            // Closes the Grade 3 and 4 screen
+            this.dispose();
+            main.setIsGrades1and2ModuleOpen(false);
+
+
+            // Opens Difficulty Select
+            //main.openQuizDifficultySelectGrade4();
+            main.openQuizDifficultySelectGrade2();
+        }
          
     }//GEN-LAST:event_quizButtonActionPerformed
 
     // Called when the final button is clicked
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-       
-        // Opens an assessment at the hard difficulty
-        main.openAssessmentScreenGrade2(10, 3);
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        boolean completed = db.completedhardquiz(user, 2);
         
-        // Closes this screen
-        main.closeGrades1and2Screen();
+        if(!completed){
+            // Display a message
+            JOptionPane.showMessageDialog(null, "Please complete a hard quiz before taking a final test!", "Complete hard!", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else{
+            // Opens an assessment at the hard difficulty
+            main.openAssessmentScreenGrade2(10, 3);
+
+            // Closes this screen
+            main.closeGrades1and2Screen();
+        }
         
     }//GEN-LAST:event_finalButtonActionPerformed
 

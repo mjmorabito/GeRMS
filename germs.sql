@@ -50,7 +50,7 @@ INSERT INTO standards values("4N12", "Math with large numbers");
 
 CREATE TABLE practices(
 	PaccUser varchar(255),
-	PstandardID varchar(3),
+	PstandardID varchar(4),
 
 	FOREIGN KEY (PaccUser) REFERENCES accounts(accUser),
 	FOREIGN KEY (PstandardID) REFERENCES standards(standardID));
