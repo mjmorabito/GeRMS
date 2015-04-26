@@ -108,7 +108,7 @@ public class KN4 extends javax.swing.JInternalFrame {
             
             // Sets the image icon
             questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/FewerThan1.png"));
-            System.out.println("Fewer");
+          
             // Sets the answer
             answer = 1;
             
@@ -117,7 +117,7 @@ public class KN4 extends javax.swing.JInternalFrame {
             
             // Sets the image icon
             questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/SameAs1.png"));
-            System.out.println("Same");
+            
             // Sets the answer
             answer = 2;
             
@@ -126,7 +126,7 @@ public class KN4 extends javax.swing.JInternalFrame {
             
             // Sets the image icon
             questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/OneMoreThan1.png"));
-            System.out.println("MoreThan1");
+          
             // Sets the answer
             answer = 3;
             
@@ -136,7 +136,7 @@ public class KN4 extends javax.swing.JInternalFrame {
             
             // Sets the image icon
             questionIcon = new ImageIcon(getClass().getResource("/Images/KN4/MoreThan1.png"));
-            System.out.println("OneMoreThan1");
+            
             // Sets the answer
             answer = 4;
             

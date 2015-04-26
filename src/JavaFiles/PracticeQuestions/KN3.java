@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.awt.Dimension;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -19,14 +15,7 @@ public class KN3 extends javax.swing.JInternalFrame {
  
     
     public KN3(Main m){
-        //initializing the Problem array with zeroes
-      /*Sequence = new ArrayList<>();
-       for( int i=0; i<13;i++){
-            
-            Sequence.add(""+i);
-        }    
-       
-       */
+        
        // Initializes the components
         initComponents();
         
@@ -42,7 +31,7 @@ public class KN3 extends javax.swing.JInternalFrame {
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.png"));
         
     
-    // Generates an easy question on the screen
+        // Generates an easy question on the screen
         getEQuestion();
         
         
@@ -65,13 +54,7 @@ public class KN3 extends javax.swing.JInternalFrame {
     
    
     Random rand = new Random();
-    /*private final int medPtr = 3;
-    private final int hardPtr = 7;
-    private final int easyList = 3;
-    private final int medList = 4;
-    private final int hardList = 5;
-  */
-    
+   
      //array to hold values of pictures for the problems, 0-12 (ascends on difficulty)
     private ArrayList<String> Sequence;
     
@@ -98,23 +81,17 @@ public class KN3 extends javax.swing.JInternalFrame {
     
     //Image Icon for correct answer
     private ImageIcon correctImageIcon;
+    
     //Image Icon for incorrect answer
     private ImageIcon incorrectImageIcon;
+    
     //Image Icon for neutral answer
     private ImageIcon neutralImageIcon;
-    //TODO   Generate array with image paths
     
-    //Boolean to restrit the user to one submission per question
+    //Boolean to restrict the user to one submission per question
     private boolean answerSubmitted = false;
     
-           
-   
-
-    
-                                          
-
-                                           
-                                       
+                                    
 // This method centers this form in the middle of the screen
     public void centerOnScreen() {
         
@@ -138,11 +115,8 @@ public class KN3 extends javax.swing.JInternalFrame {
         
     }                                        
 
-    // This method is called when the blue right arrow is clicked
-    
-     //get Easy Question
-    
-    
+    // This method is called to get an Easy Question
+  
     public String getEQuestion(){
         
         ArrayList<String> images = new ArrayList<>();
@@ -152,29 +126,23 @@ public class KN3 extends javax.swing.JInternalFrame {
         images.add("/Images/PracticeScreens/KN3/kn3third.png");
         
         
-    questionNum = rand.nextInt(3);
-        
-        //Answers to the questions
-       //String[] correctAnswers = {"first", "second", "third"};
-        
+        //Gets a random number from 0-2
+        questionNum = rand.nextInt(3);
+      
         // Sets the icon to the randomly chosen question
        
-       AnsArray.removeAll(AnsArray);
+        AnsArray.removeAll(AnsArray);
         
         AnsArray.add("First");
         AnsArray.add("Second");
         AnsArray.add("Third");
         AnsArray.add("Fourth");
         
-        
-        
-       // shuffleList(images, 0, 2);
         correctAnswer = AnsArray.get(questionNum);
         
         System.out.println("Easy correct answer is now: "+ correctAnswer);
         
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
-        //removefromsequence();
         
         // Sets the icon for the question
         jLabel1.setIcon(questionIcon);
@@ -182,10 +150,7 @@ public class KN3 extends javax.swing.JInternalFrame {
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
         
-     
-        
         return correctAnswer;
-        
         
     }
     
@@ -196,34 +161,32 @@ public class KN3 extends javax.swing.JInternalFrame {
         //gets 4th option for med and hard
         jButton4.setVisible(true);
         
+        //Creates and arraylist for storying the image names
         ArrayList<String> images = new ArrayList<>();
         
+        //Clear the arrays prior contents
         AnsArray.removeAll(AnsArray);
+        
+        //Add four elements
         AnsArray.add("First");
         AnsArray.add("Second");
         AnsArray.add("Third");
         AnsArray.add("Fourth");
         
-        
-        
+        //Set the images to medium level answer choices
         images.add("/Images/PracticeScreens/KN3/kn3Mfirst.png");
         images.add("/Images/PracticeScreens/KN3/kn3Msecond.png");
         images.add("/Images/PracticeScreens/KN3/kn3Mthird.png");
         images.add("/Images/PracticeScreens/KN3/kn3Mfourth.png");
 
+        //Determines the question number randomly from 0-3
         questionNum = rand.nextInt(4);
+        
+        //Gets the question icon based on the randomly generated number
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
-
-//shuffleList(Sequence, 3, 6);
-        
-        
-       
-        
+ 
+        //The correct answer is stored
         correctAnswer = AnsArray.get(questionNum);
-        
-        System.out.println("Medium correct answer is now: "+ correctAnswer);
-        
-        //removefromsequence();
         
         // Sets the icon for the question
         jLabel1.setIcon(questionIcon);
@@ -237,31 +200,33 @@ public class KN3 extends javax.swing.JInternalFrame {
     //Get Hard Question
      public String getHQuestion(){
        
+         //Creates an images arraylist of string names
          ArrayList<String> images = new ArrayList<>();
+         
+         //Clears the contents of the array
          AnsArray.removeAll(AnsArray);
         
-        
+        //Adds second through fifth in the answer array for the hard level question
         AnsArray.add("Second");
         AnsArray.add("Third");
         AnsArray.add("Fourth");
         AnsArray.add("Fifth");
-        //shuffleList(Sequence, 7, 11);
         
-        
-        
-        
+        //Add the images of the hard difficutly to the images array
         images.add("/Images/PracticeScreens/KN3/kn3Hsecond.png");
         images.add("/Images/PracticeScreens/KN3/kn3Hthird.png");
         images.add("/Images/PracticeScreens/KN3/kn3Hfourth.png");
         images.add("/Images/PracticeScreens/KN3/kn3Hfifth.png");
         
+        //Randomly determine the question number from 0-3
         questionNum = rand.nextInt(4);
+        
+        //Gets the correct answer based on the random number
         correctAnswer = AnsArray.get(questionNum);
        
-        System.out.println("Hard correct answer is now: "+ correctAnswer);
-        
-        System.out.println("correct answer right now is: "+ correctAnswer);
+        //Generates the question icon based on the question number
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
+        
         // Sets the icon for the question
         jLabel1.setIcon(questionIcon);
         
@@ -284,7 +249,6 @@ public class KN3 extends javax.swing.JInternalFrame {
       
         
         // Sets the text of the four JButtons with the choices for answers
-        
         jButton1.setText("First");
         jButton2.setText("Second");
         jButton3.setText("Third");
@@ -294,9 +258,8 @@ public class KN3 extends javax.swing.JInternalFrame {
     
      public void fillChoicesH() {
         
-         /*
-        * For Assessment, int array with four elements is used to compare the possible answers to correct one
-        */
+        //For Assessment, int array with four elements is used to compare the possible answers to correct one
+        
         
         choices[0] = 1;
         choices[1] = 2;
@@ -305,67 +268,65 @@ public class KN3 extends javax.swing.JInternalFrame {
       
         
         // Sets the text of the four JButtons with the choices for answers
-        
-        
+       
         jButton1.setText("Second");
         jButton2.setText("Third");
         jButton3.setText("Fourth");
         jButton4.setText("Fifth");
     }
     
-/*
+   /*
     * The following five methods are used in the Assessment class
     * for tests and quizzes.
     */
+     
+     //Returns the image
     public ImageIcon getImage()
     {
        return questionIcon; 
     }
     
+    
+    //Returns the answer choices
     public int[] getChoices()
     {
         return choices;
     }
 
+    //returns the answer arraylist
     public ArrayList<String> getAnswerArray()
     {
         return AnsArray;
     }
     
+    //returns the correct answer
     public int getAnswer()
     {
         return answer;
     }
     
     //converts string answers to ints
-     public int answerToInt(String ans)
-    {
-       if ("First".equals(ans)) 
-       {
-           return 0;
-       }
-        if ( "Second".equals(ans))
-        {
+    public int answerToInt(String ans) {
+        if ("First".equals(ans)) {
+            return 0;
+        }
+        if ("Second".equals(ans)) {
             return 1;
         }
-               if ("Third".equals(ans))
-               {
-                   return 2;
-               }
-                if("Fourth".equals(ans))
-                {
-                    return 3;
-                }
-                    if("Fifth".equals(ans))
-                    {
-                        return 4;
-                    }
-                    else {
-                        System.out.println("Invalid entry");
-                        return -1;
-                    }
+        if ("Third".equals(ans)) {
+            return 2;
+        }
+        if ("Fourth".equals(ans)) {
+            return 3;
+        }
+        if ("Fifth".equals(ans)) {
+            return 4;
+        } else {
+            System.out.println("Invalid entry");
+            return -1;
+        }
     }
-    
+
    
 
 

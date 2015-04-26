@@ -15,11 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
@@ -27,15 +23,20 @@ import javax.swing.JOptionPane;
  */
 public class KN2 extends javax.swing.JInternalFrame {
 
-    // Stores a reference tot he main class
+    // Stores a reference to the main class
     Main main;
+    
+    //Creates a new KN2 Class object
     kn2Class q = new kn2Class();
+    
+    //Initializes the page number to 1
     int page = 1;
     int question;
     
     // ImageIcon for the correct answer
     private ImageIcon correctImageIcon;
-    // ImageIcon for the incorrect answer
+    
+// ImageIcon for the incorrect answer
     private ImageIcon incorrectImageIcon;
     
     // Variables needed to make connection with DB
@@ -52,8 +53,11 @@ public class KN2 extends javax.swing.JInternalFrame {
         // Initializes the components
         initComponents();
         
+        // Initializes the question
         initQuestion();
       
+        
+        // Sets the images for correct or incorrect
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.png"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.png"));
         
@@ -249,7 +253,10 @@ public class KN2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        //Determines if the answer is correct, by comparing the buttons text to the question
+        //Sets the image accordingly
+        
         if (Integer.parseInt(jButton1.getText()) == question){
             jButton1.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -260,7 +267,10 @@ public class KN2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        //Determines if the answer is correct, by comparing the buttons text to the questions
+         //Sets the image accordingly
+        
         if (Integer.parseInt(jButton2.getText()) == question){
             jButton2.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -270,7 +280,10 @@ public class KN2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+         
+        //Determines if the answer is correct, by comparing the buttons text to the questions
+         //Sets the image accordingly
+        
         if (Integer.parseInt(jButton4.getText()) == question){
             jButton4.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -280,7 +293,10 @@ public class KN2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+         
+        //Determines if the answer is correct, by comparing the buttons text to the questions
+         //Sets the image accordingly
+        
         if (Integer.parseInt(jButton3.getText()) == question){
             jButton3.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -290,17 +306,25 @@ public class KN2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        
+        //Once the users has completed 3 questions, the information is stored in the database
         if (page == 3){
             String user = main.getUsername();
             dbClass db = new dbClass();
             db.completepractice(user, "KN2");
             JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+            
+            //Sets the KN2 screen variable to false, for closing
             main.setIsKN2ScreenOpen(false);
+            
             // Opens the PreKK module
             main.openPreKK();
+            
+            //Disposes and closes the KN2 window 
             this.dispose();
         }else{
+            
+            //Otherwise, incremement the page count and display the page number
             page++;
             pageLabel.setText(page + "/3");
             initQuestion();
@@ -337,22 +361,26 @@ public class KN2 extends javax.swing.JInternalFrame {
 
     private void initQuestion(){
         
+        //Gets a question based on the page number
         question = q.getQuestion(page);
-
+        
+        //Sets the image on the JLabel accordingly, by question number
         imagejLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN2/" + question + ".png")));
         
+        //Sets the label to nothing
         imagejLabel.setText("");
 
+        //Sets the buttons for answering
         setButtons();
-        
-        //
         
     }
     
     private void setButtons()
     {
+        //Disables the arrow to page right
         jButton5.setEnabled(false);
         
+        //Sets the icons to null
         jButton1.setIcon(null);
         jButton2.setIcon(null);
         jButton3.setIcon(null);
