@@ -576,6 +576,9 @@ public class QuizReport extends javax.swing.JInternalFrame {
         // Sets the textArea with the print preview text
         textArea.setText(headings + columnHeadings + data);
         
+        // Makes the textArea not editable
+        textArea.setEditable(false);
+        
         // Displays a print preview
         JOptionPane.showMessageDialog(null, textArea, "Print Assessment Preview", JOptionPane.PLAIN_MESSAGE);
 
