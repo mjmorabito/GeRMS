@@ -14,13 +14,15 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 public class KN6 extends javax.swing.JInternalFrame {
- //array to hold values of pictures for the problems, 0-12 (ascends on difficulty)
+    
+    //Array to hold values of pictures for the problems, 0-12 (ascends on difficulty)
     private ArrayList<String> Sequence;
     
-    //array to hold possible answer
+    //Array to hold possible answer
     private ArrayList<String> AnsArray = new ArrayList<String>();
     
-     private String correctAnswer;
+    //Creates variables to store answer possibilities and the correct answer
+    private String correctAnswer;
     private String ans1;
     private String ans2;
     private String ans3;
@@ -28,7 +30,8 @@ public class KN6 extends javax.swing.JInternalFrame {
     private String ans5;
     private String ans6;
     
-    private final String question = "The name of this coin(s) is? ";
+    //Creates the question string
+    private final String question = "The name of this coin is ? ";
     Random rand = new Random();
     
     // Stores the user's choices for integer answers(Assessment class)
@@ -53,16 +56,13 @@ public class KN6 extends javax.swing.JInternalFrame {
     private ImageIcon incorrectImageIcon;
     //Image Icon for neutral answer
     private ImageIcon neutralImageIcon;
-    //TODO   Generate array with image paths
     
-    //Boolean to restrit the user to one submission per question
+    //Boolean to restrict the user to one submission per question
     private boolean answerSubmitted = false;
-    
-               
-    
+             
      public KN6(Main m){
           
-         initComponents();
+        initComponents();
         
         // Sets the reference to the main class
         main = m;
@@ -76,216 +76,197 @@ public class KN6 extends javax.swing.JInternalFrame {
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.png"));
         
     
-    // Generates an easy question on the screen
+     // Generates an easy question on the screen
         getEQuestion();
         
         
          
     }
     
-       //get Easy Question  Penny Nickel or Dime
+       //get Easy Question: Penny, Nickel, or Dime
     public String getEQuestion(){
-       ArrayList<String> images = new ArrayList<>();
-        
+   
+        //Stores a string of image names for and easy question
+        ArrayList<String> images = new ArrayList<>();
+
         images.add("/Images/PracticeScreens/KN6/penny.png");
         images.add("/Images/PracticeScreens/KN6/nickel.png");
         images.add("/Images/PracticeScreens/KN6/dime.png");
-        
-        
-    questionNum = rand.nextInt(3);
-        
-        
-       
-        
+
+        //Creates a random number from 0-2    
+        questionNum = rand.nextInt(3);
+
         // Sets the icon to the randomly chosen question
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
-       //AnsArray.removeAll(AnsArray);
-        
+  
+        //Adds the coints to the answer array
         AnsArray.add("Penny");
         AnsArray.add("Nickel");
         AnsArray.add("Dime");
         AnsArray.add("Quarter");
+        
+        //Stores the correct answer from the answer array
         correctAnswer = AnsArray.get(questionNum);
+        
         //sets the icon for the question
         jLabel1.setIcon(questionIcon);
-        
+
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
-      
-        
+
         return correctAnswer;
     }
-    
-    //Get Medium Question  All Coins
-    public String getMQuestion(){
-        ArrayList<String> images = new ArrayList<>();
+
+    //Get Medium Question: All Coins may be asked, aside from a half dollar
+    public String getMQuestion() {
         
+        //Stores the image names in an array
+        ArrayList<String> images = new ArrayList<>();
+
         images.add("/Images/PracticeScreens/KN6/penny.png");
         images.add("/Images/PracticeScreens/KN6/nickel.png");
         images.add("/Images/PracticeScreens/KN6/dime.png");
         images.add("/Images/PracticeScreens/KN6/quarter.png");
-        
-        
-    questionNum = rand.nextInt(4);
-        
-        
-        
-        
+
+        //generates a random number from 0-3
+        questionNum = rand.nextInt(4);
+
         // Sets the icon to the randomly chosen question
-       questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
-       
-       // resets the Answer awway with valid choices
-       AnsArray.removeAll(AnsArray);
-        
+        questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
+
+        // Resets the Answer awway with valid choices
+        AnsArray.removeAll(AnsArray);
+
         AnsArray.add("Penny");
         AnsArray.add("Nickel");
         AnsArray.add("Dime");
         AnsArray.add("Quarter");
-        
+
+        //Stores the correct answer
         correctAnswer = AnsArray.get(questionNum);
 
         //sets the icon for the question
         jLabel1.setIcon(questionIcon);
-        
+
         // Fills the choices with 1 correct answer and 3 incorrect answers
         fillChoices();
-      
-        
+
         return correctAnswer;
     }
-    
-    //Get Hard Question
-     public String getHQuestion(){
-         ArrayList<String> images = new ArrayList<>();
+
+    //Get Hard Question: All coins including  a half dollar
+    public String getHQuestion() {
         
-        
+        //Add the image names to the arraylist
+        ArrayList<String> images = new ArrayList<>();
+
         images.add("/Images/PracticeScreens/KN6/nickel.png");
         images.add("/Images/PracticeScreens/KN6/dime.png");
         images.add("/Images/PracticeScreens/KN6/quarter.png");
         images.add("/Images/PracticeScreens/KN6/halfdollar.png");
         
-        
-    questionNum = rand.nextInt(4);
-        
-        
-        
+        //Generate a random number from 0-3
+        questionNum = rand.nextInt(4);
+
         // Sets the icon to the randomly chosen question
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
         
-       AnsArray.removeAll(AnsArray);
-        
-       // AnsArray.add("A Penny");
+        //Clears the answer array
+        AnsArray.removeAll(AnsArray);
+
+        //Adds the coins to the answer array
         AnsArray.add("Nickel");
         AnsArray.add("Dime");
         AnsArray.add("Quarter");
         AnsArray.add("Half Dollar");
-        
-        System.out.println("question num on hard is: " + questionNum);
-        
-       //stores correct answer for the question
+
+        //stores correct answer for the question
         correctAnswer = AnsArray.get(questionNum);
         
+        //Sets the labl to the question icon
         jLabel1.setIcon(questionIcon);
-        
-         System.out.println("correct answer hard is :" + correctAnswer);
-       
+
+        //Fill the answer choices with the hard coin options
         fillChoicesH();
-        
+
         return correctAnswer;
     }
-    
+
     public void fillChoices() {
-        
-         /*
-        * For Assessment, int array with four elements is used to compare 
-        the possible answers to correct one
-        */
-        
-        choices[0] = 0;
-        choices[1] = 1;
-        choices[2] = 2;
-        choices[3] = 3;
-      
-        // Sets the text of the four JButtons with the choices for answers
-        jButton1.setText("Penny");
-        jButton2.setText("Nickel");
-        jButton3.setText("Dime");
-        jButton4.setText("Quarter");
+
+    //For Assessment, int array with four elements is used to compare the possible answers to correct one
+    choices[0] = 0;
+    choices[1] = 1;
+    choices[2] = 2;
+    choices[3] = 3;
+
+    // Sets the text of the four JButtons with the choices for answers
+    jButton1.setText("Penny");
+    jButton2.setText("Nickel");
+    jButton3.setText("Dime");
+    jButton4.setText("Quarter");
 
     }
-    
-     public void fillChoicesH() {
-        
-         /*
-        * For Assessment, int array with four elements is used to compare
-         the possible answers to correct one
-        */
-        
-        choices[0] = 1;
-        choices[1] = 2;
-        choices[2] = 3;
-        choices[3] = 4;
-      
-        // Sets the text of the four JButtons with the choices for answers
-        
-        
-        jButton1.setText("Nickel");
-        jButton2.setText("Dime");
-        jButton3.setText("Quarter");
-        jButton4.setText("Half Dollar");
+
+    public void fillChoicesH() {
+
+    //For Assessment, int array with four elements is used to compare the possible answers to correct one
+    choices[0] = 1;
+    choices[1] = 2;
+    choices[2] = 3;
+    choices[3] = 4;
+
+    // Sets the text of the four JButtons with the choices for answers
+    jButton1.setText("Nickel");
+    jButton2.setText("Dime");
+    jButton3.setText("Quarter");
+    jButton4.setText("Half Dollar");
     }
+
     
-     /*
-   * The following five methods are used in the Assessment class
-    * for tests and quizzes.
-    */
-    public ImageIcon getImage()
-    {
-       return questionIcon; 
+    /*
+     * The following five methods are used in the Assessment class
+     * for tests and quizzes as accessor methods.
+     */
+    public ImageIcon getImage() {
+        return questionIcon;
     }
-    
-    public int[] getChoices()
-    {
+
+    public int[] getChoices() {
         return choices;
     }
-    public ArrayList<String> getAnswerArray()
-    {
+
+    public ArrayList<String> getAnswerArray() {
         return AnsArray;
     }
-    
-    public int getAnswer()
-    {
+
+    public int getAnswer() {
         return answer;
     }
-     //converts string answers to ints
-     public int answerToInt(String ans)
-    {
-       if ("Penny".equals(ans)) 
-       {
-           return 0;
-       }
-        if ( "Nickel".equals(ans))
-        {
+
+    //converts string answers to ints
+
+    public int answerToInt(String ans) {
+        if ("Penny".equals(ans)) {
+            return 0;
+        }
+        if ("Nickel".equals(ans)) {
             return 1;
         }
-               if ("Dime".equals(ans))
-               {
-                   return 2;
-               }
-                if("Quarter".equals(ans))
-                {
-                    return 3;
-                }
-                    if("Half Dollar".equals(ans))
-                    {
-                        return 4;
-                    }
-                    else {
-                        System.out.println("Invalid entry");
-                        return -1;
-                    }
+        if ("Dime".equals(ans)) {
+            return 2;
+        }
+        if ("Quarter".equals(ans)) {
+            return 3;
+        }
+        if ("Half Dollar".equals(ans)) {
+            return 4;
+        } else {
+            System.out.println("Invalid entry");
+            return -1;
+        }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -423,13 +404,12 @@ public class KN6 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       // If the user has not submitted an answer
+        // If the user has not submitted an answer
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
             if (correctAnswer.equals(jButton3.getText())) {
-                
-                
+
                 // Display the correct answer image
                 jButton3.setIcon(correctImageIcon);
 
@@ -453,13 +433,12 @@ public class KN6 extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-       // If the user has not submitted an answer
+        // If the user has not submitted an answer
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
             if (correctAnswer.equals(jButton1.getText())) {
-                
-                
+
                 System.out.println(" Action performed: " + jButton1.getText());
 
                 // Display the correct answer image
@@ -485,12 +464,12 @@ public class KN6 extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-       // If the user has not submitted an answer
+        // If the user has not submitted an answer
         if (!answerSubmitted) {
-               System.out.println("Jbutton2 :"+ jButton2.getText());
+            System.out.println("Jbutton2 :" + jButton2.getText());
             // If the value assigned to this button is the correct answer
-               
-               System.out.println("Correct answer: " + correctAnswer);
+
+            System.out.println("Correct answer: " + correctAnswer);
             if (correctAnswer.equals(jButton2.getText())) {
 
                 // Display the correct answer image
@@ -516,7 +495,7 @@ public class KN6 extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-         // If the user has not submitted an answer
+        // If the user has not submitted an answer
         if (!answerSubmitted) {
 
             // If the value assigned to this button is the correct answer
@@ -583,7 +562,7 @@ public class KN6 extends javax.swing.JInternalFrame {
             title = "Coin Identification: Hard Practice Question";
 
         } else {
-            
+
             //add this standard as completed in db
             String user = main.getUsername();
             dbClass db = new dbClass();
@@ -603,38 +582,37 @@ public class KN6 extends javax.swing.JInternalFrame {
         }
 
         // Sets the question questionCount on the screen
-        jLabel2.setText(questionCount+"/3");
+        jLabel2.setText(questionCount + "/3");
 
         // Sets the title of the form
         this.setTitle(title);
-                                           
+
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     // This method centers this form in the middle of the screen
     public void centerOnScreen() {
-        
-         // Gets the dimension of the main desktop pane
+
+        // Gets the dimension of the main desktop pane
         Dimension desktopSize = main.getDesktopPaneDimension();
-                
+
         // Gets the size of this JInternalFrame
         Dimension jInternalFrameSize = this.getSize();
-        
+
         // Centers this JInternalFrame in the DesktopPane
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-            (desktopSize.height- jInternalFrameSize.height)/2);
-        
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
     }
-    
+
     // This method is called when the form is closed
-    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {                                         
-    
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+
         // Sets the variable to false (which means that this form is closed)
         main.setIsKN6ScreenOpen(false);
-        
-    }                                        
 
-    
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -28,12 +28,18 @@ public class KN8 extends javax.swing.JInternalFrame {
     // Stores a reference to the main class
     Main main;
 
+    // Creates a new KN8 Class object
     kn8Class q = new kn8Class();
+    
+    // Initializes the page to 1
     int page = 1;
+    
+    // Creates a question, which will start at one
     int question;
     
     // ImageIcon for the correct answer
     private ImageIcon correctImageIcon;
+    
     // ImageIcon for the incorrect answer
     private ImageIcon incorrectImageIcon;
     
@@ -45,8 +51,10 @@ public class KN8 extends javax.swing.JInternalFrame {
         // Initializes the components
         initComponents();
         
+        // Initializes the question
         initQuestion();
       
+        //Sets the correct and incorrect images
         correctImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerCorrect.png"));
         incorrectImageIcon = new ImageIcon(getClass().getResource("Images/PracticeScreens/AnswerIncorrect.png"));
         
@@ -67,22 +75,24 @@ public class KN8 extends javax.swing.JInternalFrame {
     
     private void initQuestion(){
         
+        //Creates a question based on the given page number
         question = q.getQuestion(page);
-        //if(question == 2){
-        imagejLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN8/" + question + ".png")));
-        imagejLabel.setText("");
-        //}else{
-        //    imagejLabel.setText(""+question);
-        //    imagejLabel.setIcon(null);
-        //}
-        setButtons();
         
-        //
+        //Set the icon to the correct image
+        imagejLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PracticeScreens/KN8/" + question + ".png")));
+        
+        //Clear the labels text 
+        imagejLabel.setText("");
+        
+        //Sets the buttons
+        setButtons();
         
     }
     
+    // Sets the buttons with one correct answer and three incorrect answers based on the difficulty
     private void setButtons()
     {
+        // Make the right arrow disabled until the correct answer is chosen
         jButton5.setEnabled(false);
         
         jButton1.setIcon(null);
@@ -90,7 +100,7 @@ public class KN8 extends javax.swing.JInternalFrame {
         jButton3.setIcon(null);
         jButton4.setIcon(null);
         
-        //Set the text of the buttons to the answer choices, one of which is correct
+        // Set the text of the buttons to the answer choices, one of which is correct
         jButton1.setText(q.getAns1());
         jButton2.setText(q.getAns2());
         jButton3.setText(q.getAns3());
@@ -243,7 +253,8 @@ public class KN8 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
+        //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton4.getText()) == question){
             jButton4.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -253,7 +264,8 @@ public class KN8 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton1.getText()) == question){
             jButton1.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -263,7 +275,8 @@ public class KN8 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton3.getText()) == question){
             jButton3.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -273,7 +286,8 @@ public class KN8 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        //Compares the text of the button to the answer to determine if it's true or false
         if (Integer.parseInt(jButton2.getText()) == question){
             jButton2.setIcon(correctImageIcon);
             jButton5.setEnabled(true);
@@ -282,14 +296,19 @@ public class KN8 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    // This button is the right arrow
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
+       
+        
+        //If practice is completed then store the information in the database
         if (page == 3){
             String user = main.getUsername();
             dbClass db = new dbClass();
             db.completepractice(user, "KN8");
             JOptionPane.showMessageDialog(null, "Practice completed", "Completed!", JOptionPane.INFORMATION_MESSAGE);
+            
+            //Close the KN8 screen
             main.setIsKN8ScreenOpen(false);
             this.dispose();
 
@@ -297,14 +316,18 @@ public class KN8 extends javax.swing.JInternalFrame {
             main.openPreKK();
             
         }else{
+            
+            //Otherwise, increment the page number and display the counter, out of three
             page++;
             pageLabel.setText(page + "/3");
+            
+            //Creates a new question
             initQuestion();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void helpAudioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButton1ActionPerformed
-         /*
+        /*
         * This is the code to play the audio tutorial .wav file.
         */
 

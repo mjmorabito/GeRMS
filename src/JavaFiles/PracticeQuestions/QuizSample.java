@@ -1,3 +1,8 @@
+/**
+ * This class is used for the KN1 standard.  We initialize a sequence of numbers with the missing number
+ * as a question mark for the user.
+ */
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,7 +26,8 @@ public class QuizSample {
     private int correctAnswer;
 
     public QuizSample() {
-         //initialize the sequence to zeros
+        
+        //Initializes the sequence to zeros
         numberList = "";
         sequence = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
@@ -29,62 +35,55 @@ public class QuizSample {
         }
 
     }
-/**
-    public static void main(String[]args)
-    {
-        QuizSample q = new QuizSample();
-        q.initializeElements();
-    }
-    * */
-    
-    
-    
+ 
+    //Initializes the elements for a given difficulty question
     public void initializeElements(int difficulty) {
         
+        //Clear all of the answer choies from the previous time this standard was used
         if (answerChoices.size() > 0) {
             for (int i = 3; i >= 0; i--) {
                 answerChoices.remove(i);
             }
         }
 
-        //First make every element zero
-        ans1="";
-        ans2="";
-        ans3="";
-        ans4="";
-        question="";
-        numberList="";
-        start=0;
-        correctAnswer=0;
+        //First make every element, including answers zero
+        ans1 = "";
+        ans2 = "";
+        ans3 = "";
+        ans4 = "";
+        question = "";
+        numberList = "";
+        start = 0;
+        correctAnswer = 0;
         
         
-       
+        //Creates a random number
         Random randomGenerator = new Random();
-        //create a random integer betwen 1 and 26
+        
         //scales the random number by the difficulty level
-        System.out.println("WE are in the Quiz Sample Q: " + difficulty);
         start = difficulty*(randomGenerator.nextInt(10) + 1) + (difficulty - 1) * 10; //System.out.println("Starting number is " + start);
-        System.out.println("XXXXStart is " + start);
-        System.out.println("Quiz Sample part 1");
-        //generates a list of 6 numbers that will be visible to choose from
-        //adds them to the sequence of visible numbers 
+        
+        //Generates a list of 6 numbers that will be visible to choose from
+        //Adds them to the sequence of visible numbers 
         for (int i = 0; i < 7; i++) {
-            //populate the first seven elements of the random number sequence
+            
+            //Populate thes first seven elements of the random number sequence
             sequence.set(i, start + i); 
         }
-        System.out.println("Quiz Sample part 2");
-        //pick a random entry to be the questionmark in the sequence
+        
+        
+        //Pick a random entry to be the questionmark in the sequence
         int questionNumber = randomGenerator.nextInt(5) + 1;
-        //make the correct answer be where the sequence started plus the random number
+        //Make the correct answer be where the sequence started plus the random number
         correctAnswer = questionNumber + start; 
-        System.out.println("Correct answer is : " + correctAnswer);
-        //set the correct answer to -1 as a flag
+        
+        //Set the correct answer to -1 as a flag
         sequence.set(questionNumber, -1); 
         question = questionNumber + "";
-        System.out.println("Quiz Sample part 3");
-        //print out the elements with appropriate commas and the ? on the correct answer
+        
+        //Print out the elements with appropriate commas and the ? on the correct answer
         for (int i = 1; i < 6; i++) {
-            //System.out.println("The ith elt of sequence is " + sequence.get(i)) ; 
+            
             if (sequence.get(i) == -1 && i != 5) {
                 numberList = numberList + " ? , ";
             } else if (sequence.get(i) == -1) {
@@ -95,15 +94,12 @@ public class QuizSample {
                 numberList = numberList + sequence.get(i);
             }
         }
-       System.out.println("Quiz Sample part 4");
+      
         //store the correct answer in answer1 as a String
         ans1 = correctAnswer + "";
-       
-        System.out.println("Quiz Sample part 5");
-        //store random numbers in the three other answer choices
-        //make sure that they are unique
-        
-        
+ 
+        //Stores random numbers in the three other answer choices
+        //Makes sure that they are unique
         int goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 10;
         //System.out.println("The correct answer is " + goodWrongAnswer);
         while (goodWrongAnswer == Integer.parseInt(ans1) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
@@ -126,16 +122,12 @@ public class QuizSample {
 
         ans4 = goodWrongAnswer + "";
         
-        //Put into an arraylist and shuffle elements randomy
-        //ArrayList <String> answerChoices = new ArrayList<>();
-        System.out.println("The answers are " + " " + ans1 + " " +  ans2 + " " + ans3 + " " + ans4);
+        //Puts all answer choices into an arraylist and shuffle elements randomy
+       
         answerChoices.add(ans1);
         answerChoices.add(ans2);
         answerChoices.add(ans3);
         answerChoices.add(ans4);
-        System.out.println("Size is " + answerChoices.size());
-        
-        System.out.println("The answers are " + " " + answerChoices.get(0) + " " +  answerChoices.get(1) + " " + answerChoices.get(2) + " " + answerChoices.get(3));
         
         //Randomize the buttons
         answerChoices = shuffleList(answerChoices);
@@ -143,8 +135,7 @@ public class QuizSample {
         ans2 = answerChoices.get(1);
         ans3 = answerChoices.get(2);
         ans4 = answerChoices.get(3);
-        System.out.println("The answers AFTER  are " + " " + ans1 + " " +  ans2 + " " + ans3 + " " + ans4);
-        
+      
     }
     
     //Shuffles and returns an arraylist of strings so that the answer choices are rearranged
@@ -158,7 +149,7 @@ public class QuizSample {
        ArrayList <String> b = new ArrayList<>();
        
        
-       //Adds a random index of array A to array B
+       //Adds a random index of array A to array B, such that it is unique
        b.add(a.get(randomNum));
        
        int randomNum2 = random.nextInt(4);
@@ -191,15 +182,15 @@ public class QuizSample {
    
   public void setElementsBackToZero()
   {
-      ans1="";
-        ans2="";
-        ans3="";
-        ans4="";
-        question="";
-        numberList="";
-        start=0;
-        correctAnswer=0;
-        numberList = "";
+      ans1 = "";
+      ans2 = "";
+      ans3 = "";
+      ans4 = "";
+      question = "";
+      numberList = "";
+      start = 0;
+      correctAnswer = 0;
+      numberList = "";
   }
   
   //Used to determine if the number is already in the sequence 
@@ -214,7 +205,7 @@ public class QuizSample {
       return indicator;
   }
 
-  
+  //Accessor methods to return each answer choice
   public String getAns1()
   {
       return ans1;
@@ -234,6 +225,8 @@ public class QuizSample {
       return ans4;
   }
   
+  
+  //The following accessor methods are used for testing, in the Assessments section
   public String getNumberList()
   {
       return numberList;
