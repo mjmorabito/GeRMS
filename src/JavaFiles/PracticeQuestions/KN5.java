@@ -357,6 +357,11 @@ public class KN5 extends JInternalFrame {
             title = "Half and Whole: Hard Practice Question";
 
         } else {
+            
+            //add this standard as completed in db
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN5");
 
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Half and Whole.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);

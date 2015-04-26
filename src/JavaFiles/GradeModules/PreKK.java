@@ -35,6 +35,10 @@ public class PreKK extends JInternalFrame {
     // ImageIcons for the images of the standards
     private ImageIcon standardIcon1 = new ImageIcon();
     private ImageIcon standardIcon2 = new ImageIcon();
+    
+    // variables needed to make connection with DB
+    private static final String dbClassName = "com.mysql.jdbc.Driver";
+    private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
  
     /**
      * Creates new form PreKK
@@ -250,15 +254,33 @@ public class PreKK extends JInternalFrame {
 
     // This method is triggered when the OK button is clicked
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
-        // TODO add your handling code here:
-        //For testing purposes, this method will launch the PreKKCountingQuiz   
-        // Closes the PreKK screen
-        this.dispose();
-        main.setIsPreKKOpen(false);
+        
+        String message = "Please complete practices ";
+        boolean missingStandard = false;
+        String user = main.getUsername();
+        dbClass db = new dbClass();
+        int[] standards = new int[8];
+        standards = db.allpracticescompletedPREKK(user);
+        
+        for(int i = 0;i<standards.length; i++){
+            if (standards[i] == 0){
+                message = message.concat("KN"+ (i+1) + ", ");
+                missingStandard = true;
+            }
+        }
+        message = message.concat("before taking a quiz!");
+        
+        if (missingStandard){
+            JOptionPane.showMessageDialog(null, message, "Complete Standard", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            //For testing purposes, this method will launch the PreKKCountingQuiz   
+            // Closes the PreKK screen
+            this.dispose();
+            main.setIsPreKKOpen(false);
 
-        // Opens Difficulty Select
-        main.openQuizDifficultySelect();
-         
+            // Opens Difficulty Select
+            main.openQuizDifficultySelect();
+        }
     }//GEN-LAST:event_quizButtonActionPerformed
 
     private void practiceButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton2ActionPerformed

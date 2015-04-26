@@ -637,6 +637,11 @@ public class KN7 extends JInternalFrame {
             
         } else {
             
+            //add this standard as completed in db
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN7");
+            
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
             
