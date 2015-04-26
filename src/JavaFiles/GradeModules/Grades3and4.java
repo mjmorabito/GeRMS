@@ -16,15 +16,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Samir
+ * This is the Grades 1 and 2 class which stores all of the information including videos, practice, and assessment
+ * 
  */
 public class Grades3and4 extends javax.swing.JInternalFrame {
 
@@ -247,8 +241,7 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void practiceButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButton1ActionPerformed
-        // TODO add your handling code here:
-
+  
         // Closes the PreK-K module
         this.dispose();
 
@@ -266,10 +259,9 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_practiceButton1ActionPerformed
 
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
-        // TODO add your handling code here:
-        //For testing purposes, this method will launch the PreKKCountingQuiz
-        // Closes the Grade 3 and 4 screen
         
+        
+        //Searches the database to verify that the user has completed practice first
         String message = "Please complete practice ";
         boolean missingStandard = false;
         String user = main.getUsername();
@@ -279,6 +271,7 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         
         standards = db.allpracticescompleted34(user);
         
+        //Finds all standards that have yet to be completed and displays them
         for(int i = 0;i<standards.length; i++){
             if (standards[i] == 0){
                 message = message.concat(standardstext[i]);
@@ -290,6 +283,7 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         if (missingStandard){
             JOptionPane.showMessageDialog(null, message, "Complete Standard", JOptionPane.INFORMATION_MESSAGE);
         }else{
+            //Otherwise, closes the Grade3 and 4 screen and allows the user to select a quiz
             this.dispose();
             main.setIsGrades3and4ModuleOpen(false);
 

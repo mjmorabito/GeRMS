@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
- * @author searomg
+ * This Class is for the KN2 class and contains the logic for the standard.
  */
 public class kn2Class {
     

@@ -6,9 +6,11 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+import java.awt.Desktop;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
@@ -209,20 +211,72 @@ public class HelpScreen extends javax.swing.JInternalFrame {
 
     // This is the action listener for the login screen tutorial button
     private void loginTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+        String videoName = "Login";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
     }//GEN-LAST:event_loginTutorialButtonActionPerformed
 
     // This is the action listener for the register screen tutorial button    
     private void registerTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+       
+        String videoName = "Register";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
     }//GEN-LAST:event_registerTutorialButtonActionPerformed
 
     // This is the action listener for the forgot password screen tutorial button
     private void forgotpasswordTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotpasswordTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+        
+        String videoName = "ForgotPassword";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
     }//GEN-LAST:event_forgotpasswordTutorialButtonActionPerformed
 
     // This is the action listener for the manage screen tutorial button
@@ -233,20 +287,69 @@ public class HelpScreen extends javax.swing.JInternalFrame {
 
     // This is the action listener for the grade select screen tutorial button    
     private void gradeselectTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeselectTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+      
+        String videoName = "Main Menu";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }   
     }//GEN-LAST:event_gradeselectTutorialButtonActionPerformed
 
     // This is the action listener for the quiz difficulty tutorial button    
     private void quizdifficultyTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizdifficultyTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+            String videoName = "QuizDifficultySelect";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }   
     }//GEN-LAST:event_quizdifficultyTutorialButtonActionPerformed
 
     // This is the action listener for the PreK-K module screen tutorial button    
     private void prekandkTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prekandkTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+       
+        
+        String videoName = "PreKK";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
     }//GEN-LAST:event_prekandkTutorialButtonActionPerformed
     
     // This is the action listener for the print report screen tutorial button    
@@ -257,8 +360,26 @@ public class HelpScreen extends javax.swing.JInternalFrame {
 
     // This is the action listener for the quiz report screen tutorial button        
     private void quizreportTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizreportTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+        
+       
+        String videoName = "QuizReport";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+        
     }//GEN-LAST:event_quizreportTutorialButtonActionPerformed
 
     // This is the action listener for the final report screen tutorial button        

@@ -1,9 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
  */
-
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.File;
@@ -19,10 +19,9 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
 /**
- *
- * @author Samir
+ * This is the Grades 1 and 2 class which stores all of the information including videos, practice, and assessment
+ * 
  */
 public class Grades1and2 extends JInternalFrame {
     
@@ -226,6 +225,7 @@ public class Grades1and2 extends JInternalFrame {
     // This method is triggered when the OK button is clicked
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
          
+        //Verifies that the user has completed the practice before being allowed to complete a quiz
         String message = "Please complete practice ";
         boolean missingStandard = false;
         String user = main.getUsername();
@@ -246,13 +246,12 @@ public class Grades1and2 extends JInternalFrame {
         if (missingStandard){
             JOptionPane.showMessageDialog(null, message, "Complete Standard", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            // Closes the Grade 3 and 4 screen
+            // Closes the Grade 1 and 2 screen
             this.dispose();
             main.setIsGrades1and2ModuleOpen(false);
 
 
             // Opens Difficulty Select
-            //main.openQuizDifficultySelectGrade4();
             main.openQuizDifficultySelectGrade2();
         }
          

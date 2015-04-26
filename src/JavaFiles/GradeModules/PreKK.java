@@ -21,9 +21,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 /**
- *
- * @author Samir
+ * This is the PreKK class which stores all of the PreK-K information including videos, practice, and assessment
+ * 
  */
+
 public class PreKK extends JInternalFrame {
     
     // The main class
