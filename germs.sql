@@ -66,6 +66,7 @@ INSERT INTO grades VALUES(null, "Grade 3 - 4");
 
 
 CREATE TABLE quizzes(
+	QID int NOT NULL AUTO_INCREMENT,
 	QaccUser varchar(255),
 	QgradeID int,
 	Qdifficulty int NOT NULL,
@@ -84,6 +85,7 @@ CREATE TABLE quizzes(
 	Q6 BOOLEAN NOT NULL,
 	Qdate DATETIME NOT NULL,
 
+	PRIMARY KEY (QID),
 	FOREIGN KEY (QaccUser) REFERENCES accounts(accUser),
 	FOREIGN KEY (QgradeID) REFERENCES grades(gradeID),
 	FOREIGN KEY (S1) REFERENCES standards(standardID),
@@ -94,6 +96,7 @@ CREATE TABLE quizzes(
 	FOREIGN KEY (S6) REFERENCES standards(standardID));
 
 CREATE TABLE finals(
+	FID int NOT NULL AUTO_INCREMENT,
 	FaccUser varchar(255),
 	FgradeID int,
 	Qcorrectanswers int NOT NULL,
@@ -119,6 +122,7 @@ CREATE TABLE finals(
 	Q10 BOOLEAN NOT NULL,
 	Fdate DATETIME NOT NULL,
 
+	PRIMARY KEY (FID),
 	FOREIGN KEY (FaccUser) REFERENCES accounts(accUser),
 	FOREIGN KEY (FgradeID) REFERENCES grades(gradeID),
 	FOREIGN KEY (S1) REFERENCES standards(standardID),
