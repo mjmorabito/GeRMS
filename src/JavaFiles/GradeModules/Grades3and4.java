@@ -86,6 +86,23 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         setTitle("Grades 3 and 4");
         setToolTipText("Grades 3 and 4");
         setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         pageLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         pageLabel.setText("1/1");
@@ -365,6 +382,14 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_helpAudioButton1ActionPerformed
+
+    // Called when the internal frame is closed
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+
+        // Sets the variable to false
+        main.setIsGrades3and4ModuleOpen(false);
+        
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

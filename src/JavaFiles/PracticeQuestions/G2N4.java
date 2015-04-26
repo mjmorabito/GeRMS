@@ -626,7 +626,7 @@ System.out.println("Choices 2");
             db.completepractice(user, "2N4");
 
             // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Comparing Numbers.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
 
             // Closes this screen
             this.dispose();

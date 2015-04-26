@@ -556,7 +556,7 @@ public class G4N12 extends javax.swing.JInternalFrame {
             db.completepractice(user, "4N12");
 
             // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Large Numbers.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
 
             // Closes this screen
             this.dispose();

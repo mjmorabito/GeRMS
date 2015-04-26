@@ -496,9 +496,17 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
 
         } else {
 
-            // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Math with Drawings.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+            if (numQuestions == 6) {
 
+                // Display a message
+                JOptionPane.showMessageDialog(null, "You are done with the quiz.\nClick ok to continue.", "Quiz", JOptionPane.INFORMATION_MESSAGE);
+
+            } else if (numQuestions == 10) {
+                
+                // Display a message
+                JOptionPane.showMessageDialog(null, "You are done with the final.\nClick ok to continue.", "Final", JOptionPane.INFORMATION_MESSAGE);
+
+            }
             // Closes this screen
             this.dispose();
 

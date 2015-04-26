@@ -590,7 +590,7 @@ public class KN6 extends javax.swing.JInternalFrame {
             db.completepractice(user, "KN6");
 
             // Display a message
-            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Ordering.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are done with the practice questions for Coin Identification.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
 
             // Closes this screen
             this.dispose();
