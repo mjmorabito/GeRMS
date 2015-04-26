@@ -36,7 +36,7 @@ public class FinalReport extends javax.swing.JInternalFrame {
     private int grade;
     
     // Stores the difficulty (3 is hard for final)
-    private int difficulty = 3;
+    private String difficulty = "Hard";
     
     // ImageIcons for the checkmark and red x
     private ImageIcon incorrectImageIcon;
@@ -68,6 +68,8 @@ public class FinalReport extends javax.swing.JInternalFrame {
         // Stores the grade
         this.grade = grade;
         
+        // Standards that were passed from the Assessment class
+        // Are identified and saved in the global Standards[] String array
         for (int i = 0; i < standards.length; i++) {
             switch (standards[i]) {
                 case "KN1":
@@ -285,7 +287,146 @@ public class FinalReport extends javax.swing.JInternalFrame {
     // Called when the printer button is pressed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        // Text area that is used to write the report to
+        JTextArea textArea = new JTextArea();
         
+        // Sets the font
+        textArea.setFont(new Font("monospaced", Font.PLAIN, 12));
+        
+        // Gets the current date in MM-dd-yyyy format
+        Date d = new Date();
+        String date = new SimpleDateFormat("MM-dd-yyyy").format(d);
+        
+        // Used to store either PreK-K, Grades 1 and 2, or Grades 3 and 4
+        String grade = "";
+        
+        // Stores the grade in the above String
+        switch (this.grade) {
+            case 0:
+                grade = "PreK-K";
+            break;
+            
+            case 1:
+                grade = "Grades 1 and 2";
+            break;
+                
+            case 2:
+                grade = "Grades 3 and 4";
+            break;
+                
+            default:
+                grade = "";
+            break;
+                
+        }
+        
+        // this.difficulty = "Hard"; already instantiated in globab variables field
+        
+       // Used to store either Incorrect/Correct for all questions
+        String[] results = new String[this.results.length];
+        
+        // Used to store the score on the assessment
+        int score = 0;
+        
+        // Gets the score and stores incorrect/correct in the above String array
+        for (int i = 0; i < this.results.length; i++) {
+            
+            // Adds one or zero to the score
+            score += this.results[i];
+            
+            switch (this.results[i]) {
+                
+                case 0:
+                    results[i] = "Incorrect";
+                break;
+                    
+                case 1:
+                    results[i] = "Correct";
+                break;
+                
+                default:
+                    results[i] = "";
+                break;
+                    
+            }
+        }
+        
+        // Stores the score as a double from 0-100
+        score = (score * 10);
+        
+        // Text that goes above the data from the assessment
+        String headings = ""
+                + "Username: " + main.getUsername() + "\n"
+                + "Date: " + date + "\n"
+                + "Grade: " + grade + "\n"
+                + "Final: " + difficulty + "\n"
+                + "Score: " + score + "\n\n";
+        
+        // Determine which row has the longest standard name (for spacing purposes)
+        int standardLength = 0;
+        for (int i = 0; i < standards.length; i++) {
+            if (standards[i].length() > standardLength) {
+                // Stores the largest length
+                standardLength = standards[i].length();
+            }
+        }
+        
+        // Used to store the spaces as a String that go after the second column text
+        String[] spacesForSecondColumn = new String[standards.length];
+        
+        // Instantiates the spacesForSecondColumn array
+        for (int i = 0; i < spacesForSecondColumn.length; i++) {
+            spacesForSecondColumn[i] = "";
+        }
+        
+        // Determines the number of spaces needed after the second column for each row
+        // Then stores the spaces in an array
+        for (int i = 0; i < standards.length; i++) {
+            int spacesNeededForSecondColumn = standardLength - standards[i].length();
+            for (int j = 0; j < spacesNeededForSecondColumn; j++) {
+                spacesForSecondColumn[i] += " ";
+            }
+            spacesForSecondColumn[i] += "             ";
+        }
+        
+        // Number of spaces after the Type column
+        int numberOfSpacesAfterSecondColumn = (standardLength-4) + 8;
+        
+        // Column headings for the data table
+        String columnHeadings = String.format("Question #         Type%"+numberOfSpacesAfterSecondColumn+"s"+"Correct/Incorrect" + "\n", "");
+        
+        // Loops through each element in the results array
+        // adding one row of data to the string each time
+        String data = "";
+        for (int i = 0; i < standards.length; i++) {
+            numberOfSpacesAfterSecondColumn = (standardLength-standards[i].length()) + 8;
+            data += String.format((i+1) + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
+        }
+        
+        // Sets the textArea with the print preview text
+        textArea.setText(headings + columnHeadings + data);
+        
+        // Makes the textArea not editable
+        textArea.setEditable(false);
+        
+        // Displays a print preview
+        JOptionPane.showMessageDialog(null, textArea, "Print Assessment Preview", JOptionPane.PLAIN_MESSAGE);
+
+        // Attempts to send a print job
+        try {
+            boolean complete = textArea.print(null, null, true, null, null, true);
+            if (complete) {
+                /* show a success message  */
+
+            } else {
+                /*show a message indicating that printing was cancelled */
+
+            }
+        } catch (PrinterException pe) {
+            /* Printing failed, report to the user */
+
+        }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Method that is called when the form is closed

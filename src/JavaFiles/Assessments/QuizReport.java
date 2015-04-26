@@ -570,7 +570,7 @@ public class QuizReport extends javax.swing.JInternalFrame {
         String data = "";
         for (int i = 0; i < standards.length; i++) {
             numberOfSpacesAfterSecondColumn = (standardLength-standards[i].length()) + 8;
-            data += String.format(i + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
+            data += String.format((i+1) + "                  " + standards[i] + "%"+numberOfSpacesAfterSecondColumn+"s" + results[i] + "\n", "");
         }
         
         // Sets the textArea with the print preview text
