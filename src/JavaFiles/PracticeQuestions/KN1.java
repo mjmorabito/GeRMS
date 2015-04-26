@@ -414,6 +414,10 @@ public class KN1 extends javax.swing.JInternalFrame {
                 this.setTitle(title);
             }
         } else {
+            
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN1");
 
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Counting.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);

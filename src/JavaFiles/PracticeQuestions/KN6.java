@@ -583,6 +583,11 @@ public class KN6 extends javax.swing.JInternalFrame {
             title = "Coin Identification: Hard Practice Question";
 
         } else {
+            
+            //add this standard as completed in db
+            String user = main.getUsername();
+            dbClass db = new dbClass();
+            db.completepractice(user, "KN6");
 
             // Display a message
             JOptionPane.showMessageDialog(null, "You are done with the practice questions for Ordering.\nClick ok to continue.", "Practice", JOptionPane.INFORMATION_MESSAGE);
