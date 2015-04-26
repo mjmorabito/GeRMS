@@ -71,18 +71,19 @@ public class PreKK extends JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        quizButton = new javax.swing.JButton();
-        watchButton1 = new javax.swing.JButton();
-        practiceButton1 = new javax.swing.JButton();
-        watchButton2 = new javax.swing.JButton();
-        practiceButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         standardLabelImage1 = new javax.swing.JLabel();
+        watchButton1 = new javax.swing.JButton();
         standardLabelImage2 = new javax.swing.JLabel();
-        rightarrowButton = new javax.swing.JButton();
-        leftarrowButton = new javax.swing.JButton();
-        finalButton = new javax.swing.JButton();
         pageLabel = new javax.swing.JLabel();
+        watchButton2 = new javax.swing.JButton();
+        leftarrowButton = new javax.swing.JButton();
+        quizButton = new javax.swing.JButton();
         helpAudioButton1 = new javax.swing.JButton();
+        finalButton = new javax.swing.JButton();
+        rightarrowButton = new javax.swing.JButton();
+        practiceButton2 = new javax.swing.JButton();
+        practiceButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -92,20 +93,50 @@ public class PreKK extends JInternalFrame {
         setToolTipText("PreK-K");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosed(evt);
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
+        standardLabelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Counting.jpg"))); // NOI18N
+
+        watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
+        watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton1ActionPerformed(evt);
+            }
+        });
+
+        standardLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Matching.png"))); // NOI18N
+
+        pageLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        pageLabel.setText("1/4");
+
+        watchButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
+        watchButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        watchButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                watchButton2ActionPerformed(evt);
+            }
+        });
+
+        leftarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/LeftArrow.png"))); // NOI18N
+        leftarrowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftarrowButtonActionPerformed(evt);
             }
         });
 
@@ -117,51 +148,10 @@ public class PreKK extends JInternalFrame {
             }
         });
 
-        watchButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
-        watchButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        watchButton1.addActionListener(new java.awt.event.ActionListener() {
+        helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
+        helpAudioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                watchButton1ActionPerformed(evt);
-            }
-        });
-
-        practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
-        practiceButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                practiceButton1ActionPerformed(evt);
-            }
-        });
-
-        watchButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Watch.png"))); // NOI18N
-        watchButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        watchButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                watchButton2ActionPerformed(evt);
-            }
-        });
-
-        practiceButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
-        practiceButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                practiceButton2ActionPerformed(evt);
-            }
-        });
-
-        standardLabelImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Counting.jpg"))); // NOI18N
-
-        standardLabelImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Matching.png"))); // NOI18N
-
-        rightarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/RightArrow.png"))); // NOI18N
-        rightarrowButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rightarrowButtonActionPerformed(evt);
-            }
-        });
-
-        leftarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/LeftArrow.png"))); // NOI18N
-        leftarrowButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leftarrowButtonActionPerformed(evt);
+                helpAudioButton1ActionPerformed(evt);
             }
         });
 
@@ -173,80 +163,113 @@ public class PreKK extends JInternalFrame {
             }
         });
 
-        pageLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        pageLabel.setText("1/4");
-
-        helpAudioButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AudioButton.png"))); // NOI18N
-        helpAudioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rightarrowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/RightArrow.png"))); // NOI18N
+        rightarrowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpAudioButton1ActionPerformed(evt);
+                rightarrowButtonActionPerformed(evt);
             }
         });
+
+        practiceButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
+        practiceButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                practiceButton2ActionPerformed(evt);
+            }
+        });
+
+        practiceButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/PreKK/Practice.png"))); // NOI18N
+        practiceButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                practiceButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(pageLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(quizButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(leftarrowButton)))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rightarrowButton)
+                            .addComponent(finalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(98, 98, 98))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(standardLabelImage1)
+                            .addComponent(standardLabelImage2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(practiceButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(helpAudioButton1)
+                        .addGap(50, 50, 50))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(practiceButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(standardLabelImage1)
+                            .addComponent(helpAudioButton1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(watchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(standardLabelImage2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(watchButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(practiceButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rightarrowButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(leftarrowButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(pageLabel)
+                        .addGap(33, 33, 33))
+                    .addComponent(quizButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(finalButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(28, 28, 28))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(quizButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(standardLabelImage2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(standardLabelImage1)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pageLabel)
-                        .addGap(60, 60, 60)
-                        .addComponent(leftarrowButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rightarrowButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(practiceButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(practiceButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(helpAudioButton1)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(helpAudioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(practiceButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(watchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(standardLabelImage1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(practiceButton2)
-                        .addComponent(watchButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(standardLabelImage2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pageLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rightarrowButton)
-                            .addComponent(leftarrowButton))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quizButton)
-                            .addComponent(finalButton))))
-                .addGap(25, 25, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -637,6 +660,7 @@ public class PreKK extends JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton finalButton;
     private javax.swing.JButton helpAudioButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton leftarrowButton;
     private javax.swing.JLabel pageLabel;
     private javax.swing.JButton practiceButton1;
