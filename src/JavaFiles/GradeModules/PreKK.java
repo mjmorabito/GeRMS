@@ -1,9 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/30/15
+ * Purpose: In this project, you and your partners will work to write a program to 
+ * create a Math Tutor Software System to help elementary school students.
+ *
+ * This software will help elementary school students to study and practice math skills.
+ *
+ * The math curriculum information in Massachusetts is in following link: 
+ * http://www.doe.mass.edu/frameworks/math/2000/toc.html
+ *
+ * The client requests following features as minimum:
+ *     practice test materials
+ *     tutorials
+ *     printing the record(test results)
+ *     different level tests for each grade
+ *     security(log-in, log-out)
+ *     Reward
+ *
  */
-
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.File;
