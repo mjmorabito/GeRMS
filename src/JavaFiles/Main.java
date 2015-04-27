@@ -63,7 +63,13 @@ public class Main extends JFrame {
     private ManageAccounts manageAccounts;
     
     // Determines if the Manage Screen is open
-    private boolean isManageAccountsScreenOpen = false;    
+    private boolean isManageAccountsScreenOpen = false;  
+    
+    // ChangeAdminPassword class
+    private ChangeAdminPassword changeAdminPassword;
+    
+    // Determines if the ChangeAdminPassword Screen is open
+    private boolean isChangeAdminPasswordScreenOpen = false; 
     
     // GradeSelect class
     private GradeSelect gradeSelect;
@@ -537,6 +543,14 @@ public class Main extends JFrame {
         
     }
     
+    // This method sets the isChangeAdminPasswordOpen variable to true/false
+    public void setIsChangeAdminPasswordScreenOpen(boolean isOpen) {
+        
+        // Sets the variable
+        isChangeAdminPasswordScreenOpen = isOpen;
+        
+    }
+    
     // This method sets the isGradeSelectScreenOpen variable to true/false
     public void setIsGradeSelectScreenOpen(boolean isOpen) {
         
@@ -953,17 +967,44 @@ public class Main extends JFrame {
     // This method creates an instance of the ManageAccounts screen
     public void openManageAccountsScreen() {
         
-        // Creates a new ManageAccounts class
-        manageAccounts = new ManageAccounts(this);
+        if (!isManageAccountsScreenOpen) {
         
-        // Sets the variable to true;
-        isManageAccountsScreenOpen = true;
+            // Creates a new ManageAccounts class
+            manageAccounts = new ManageAccounts(this);
+
+            // Sets the variable to true;
+            isManageAccountsScreenOpen = true;
+
+            // Adds the screen to the desktop pane
+            desktopPane.add(manageAccounts);
+
+            // Brings the screen to the front
+            manageAccounts.toFront();
+            
+        }
         
-        // Adds the screen to the desktop pane
-        desktopPane.add(manageAccounts);
+    }
+    
+    // This method creates an instance of the ManageAccounts screen
+    public void openChangeAdminPasswordScreen() {
         
-        // Brings the screen to the front
-        manageAccounts.toFront();
+        // If the change admin password screen is not open
+        
+        if (!isChangeAdminPasswordScreenOpen) {
+        
+            // Creates a new ManageAccounts class
+            changeAdminPassword = new ChangeAdminPassword(this);
+
+            // Sets the variable to true;
+            isChangeAdminPasswordScreenOpen = true;
+
+            // Adds the screen to the desktop pane
+            desktopPane.add(changeAdminPassword);
+
+            // Brings the screen to the front
+            changeAdminPassword.toFront();
+            
+        }
         
     }
     
@@ -1483,6 +1524,14 @@ public class Main extends JFrame {
             
         }
         
+        // If change admin password screen is open
+        if (isChangeAdminPasswordScreenOpen) {
+            
+            // Close
+            closeChangeAdminPasswordScreen();
+            
+        }
+        
         // If help screen is open
         if (isHelpScreenOpen) {
             
@@ -1697,6 +1746,17 @@ public class Main extends JFrame {
    
         // Set the variable to false
         isManageAccountsScreenOpen = false;      
+        
+    }
+    
+    // This method disposes of the Change Admin Password screen
+    public void closeChangeAdminPasswordScreen() {
+        
+        // Disposes of the ManageAccounts screen
+        changeAdminPassword.dispose();
+   
+        // Set the variable to false
+        isChangeAdminPasswordScreenOpen = false;      
         
     }
     
