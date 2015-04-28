@@ -96,6 +96,7 @@ public class Register extends JInternalFrame {
                 
                 // Adds the security question tot the JComboBox
                 securityQuestionsComboBox.addItem(rs.getString("secQuestion"));
+                String key = rs.getString("secretKey");
                 
             }    
             

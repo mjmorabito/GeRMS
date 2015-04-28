@@ -20,6 +20,15 @@
  *
  */
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Base64;
+import java.util.Properties;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +44,10 @@ public class ChangeAdminPassword extends javax.swing.JInternalFrame {
 
     // Main class
     private Main main;
+    
+    // Variables needed to make connection with DB
+   private static final String dbClassName = "com.mysql.jdbc.Driver";
+   private static final String CONNECTION = "jdbc:mysql://localhost/germs";  
     
     /**
      * Creates new form ChangeAdminPassword
@@ -86,20 +99,20 @@ public class ChangeAdminPassword extends javax.swing.JInternalFrame {
         setToolTipText("");
         setVisible(true);
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosed(evt);
             }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -110,6 +123,11 @@ public class ChangeAdminPassword extends javax.swing.JInternalFrame {
         jLabel3.setText("Re-type New Password:");
 
         jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Close");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +200,124 @@ public class ChangeAdminPassword extends javax.swing.JInternalFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         // A try/catch block to get information from the database using SQL
+        try {
+
+            // Database Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user","GermsAdmin");
+            p.put("password","g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION,p);
+            
+            // A sql statement to get the password
+            Statement stmt = conn.createStatement();
+            String sql;
+            String oldpassword = "";
+            sql = "select * from accounts where accUser = 'admin'";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            // Loops through all the elements in the ResultSet
+            if (rs.next() == true){
+                String oldpasswordencrypted = rs.getString("accPassword");
+                String key = rs.getString("secretKey");
+                
+                // Converts the key from the db to a byte array so it can be converted to a SecretyKey for decryption
+                byte[] decodedKey = Base64.getDecoder().decode(key);
+            
+                // Convert the pasword key from byte[] to SecretKey so it can be decrypted
+		SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+                
+                // Encryptor class
+                EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+                
+                // Decrypt the password
+                try {
+                    
+                    // Decrypts the pass from the db
+                    oldpassword = encryptor.decrypt(oldpasswordencrypted, secretKey);
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+            }
+            
+            
+            // Gets the password from the password field
+            char[] oldpass = jPasswordField1.getPassword();
+
+            // String for the password
+            String password1 = "";
+
+            // Gets the password from the char[] array
+            for (int i = 0; i < oldpass.length; i++) {
+                password1 += oldpass[i];
+            }
+            
+            // If the passwords match
+            if(password1.equals(oldpassword)){
+                
+                // Gets the password from the password field
+                char[] newpass = jPasswordField2.getPassword();
+                // String for the password
+                String newpassword = "";
+                // Gets the password from the char[] array
+                for (int i = 0; i < newpass.length; i++) {
+                    newpassword += newpass[i];
+                }
+                
+                // Gets the password from the password field
+                char[] newpass2 = jPasswordField3.getPassword();
+                // String for the password
+                String newpassword2 = "";
+                // Gets the password from the char[] array
+                for (int i = 0; i < newpass2.length; i++) {
+                    newpassword2 += newpass2[i]; 
+                }
+                
+                if(newpassword.equals(newpassword2)){
+                    // Encryptor class
+                    EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+
+                    // Encrypt the password
+                    try {
+                        newpassword = encryptor.encrypt(newpassword);
+                    } catch(Exception e) {}
+                    
+                    String key = encryptor.getKey();
+
+                    // Inserts the data into the database
+                    sql = "UPDATE accounts SET accpassword = '"+newpassword+"', secretkey = '"+key+"'" +
+                            "WHERE accUser = 'admin'";
+                    stmt.executeUpdate(sql);
+
+                    // Displays a message 
+                    JOptionPane.showMessageDialog(null, "Password Changed", "Admin change password", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Closes the register screen
+                    this.dispose();
+                      
+                }
+                else{
+                    // Display's a message
+                    JOptionPane.showMessageDialog(null, "New passwords do not match", "Admin change password", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else{
+                // Display's a message
+                JOptionPane.showMessageDialog(null, "Wrong password", "Admin change password", JOptionPane.INFORMATION_MESSAGE);
+            }
+ 
+        }
+        catch(Exception e){}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
