@@ -116,11 +116,9 @@ public class KN4 extends javax.swing.JInternalFrame {
     // This method is called when the form is created, it generates an easy question
     public void generateEasyQuestion() {
 
-        System.out.println("generate easy question");
         // Randomly picks a number form (1-4)
         questionNum = (int)(Math.random()*( (4-1) + 1)) + 1;
         int difficulyLevel = 1;
-        System.out.println("the number is : " + questionNum);
         
         // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
@@ -283,8 +281,8 @@ public class KN4 extends javax.swing.JInternalFrame {
         
         
         // Sets the text of the four JButtons with the choices for answers
-        jButton1.setText("fewer");
-        jButton2.setText("the same");
+        jButton1.setText("fewer than");
+        jButton2.setText("the same as");
         jButton3.setText("one more than");
         jButton4.setText("more than");
 
@@ -437,7 +435,7 @@ public class KN4 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.out.println("Choices 2");
+        
         // If the user has not submitted an answer
         if (!answerSubmitted) {
 
