@@ -50,7 +50,7 @@ public class Grades1and2 extends JInternalFrame {
     private ImageIcon standardIcon1 = new ImageIcon();
  
     /**
-     * Creates new form PreKK
+     * Creates new form Grades1and2
      */
     public Grades1and2(Main m) {
         // Initializes the components
@@ -396,7 +396,7 @@ public class Grades1and2 extends JInternalFrame {
         */
 
         // Creates a File object that is linked the GeRMSLogin.wav filepath
-        File yourFile = new File("src/Sounds/PreKKModule.wav");
+        File yourFile = new File("src/Sounds/Grades1and2.wav");
 
         AudioInputStream stream;
         AudioFormat format;

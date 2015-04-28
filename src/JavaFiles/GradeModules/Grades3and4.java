@@ -375,7 +375,7 @@ public class Grades3and4 extends javax.swing.JInternalFrame {
         */
         
         // Creates a File object that is linked the Module filepath
-        File yourFile = new File("src/Sounds/PreKKModule.wav");
+        File yourFile = new File("src/Sounds/Grades3and4.wav");
 
         AudioInputStream stream;
         AudioFormat format;
