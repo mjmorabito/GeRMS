@@ -1,10 +1,23 @@
 /*
  * Team name: GeRMS
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
- * Date: 04/02/15
- * Purpose: The client requested a math tutoring software for elementary school children.
- * For this phase of the project the client assigned us to script a prototype portion of the user interface.
- * (Not everything). We were told to select the most important part of your project and simply develop one modular to
+ * Date: 04/30/15
+ * Purpose: In this project, you and your partners will work to write a program to 
+ * create a Math Tutor Software System to help elementary school students.
+ *
+ * This software will help elementary school students to study and practice math skills.
+ *
+ * The math curriculum information in Massachusetts is in following link: 
+ * http://www.doe.mass.edu/frameworks/math/2000/toc.html
+ *
+ * The client requests following features as minimum:
+ *     practice test materials
+ *     tutorials
+ *     printing the record(test results)
+ *     different level tests for each grade
+ *     security(log-in, log-out)
+ *     Reward
+ *
  */
 
 import java.awt.Desktop;
@@ -221,7 +234,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -244,7 +257,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -267,7 +280,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -282,8 +295,25 @@ public class HelpScreen extends javax.swing.JInternalFrame {
 
     // This is the action listener for the manage screen tutorial button
     private void manageAccountsTutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsTutorialButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A video tutorial will play when this button is clicked.", "Tutorial", JOptionPane.INFORMATION_MESSAGE);        
+
+        String videoName = "ManageAccounts";
+         try {
+                
+                //Creates a file, initialized to null
+                File f = null;
+            try {
+                //Gets the class and resource path of the mp4 video
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               //Opens and plays the video with the corresponding video application
+                Desktop.getDesktop().open(f);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_manageAccountsTutorialButtonActionPerformed
 
     // This is the action listener for the grade select screen tutorial button    
@@ -296,7 +326,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -317,7 +347,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -340,7 +370,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -364,7 +394,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -387,7 +417,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -411,7 +441,7 @@ public class HelpScreen extends javax.swing.JInternalFrame {
                 File f = null;
             try {
                 //Gets the class and resource path of the mp4 video
-                f = new File(getClass().getResource("src/Videos/" + videoName + ".mp4").toURI());
+                f = new File(getClass().getResource("Videos/" + videoName + ".mp4").toURI());
             } catch (URISyntaxException ex) {
                 Logger.getLogger(PreKK.class.getName()).log(Level.SEVERE, null, ex);
             }
