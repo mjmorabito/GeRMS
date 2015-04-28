@@ -1,3 +1,10 @@
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
+
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,15 +18,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author Samir
+ * 
+ * The final report class allows the user to see how well they did on the Final Assessment for their grade
+ * This class displays the standard of each question and whether it was correct or incorrect
+ * Also, this class allows for printing capabilities of the final report.
  */
 public class FinalReport extends javax.swing.JInternalFrame {
 

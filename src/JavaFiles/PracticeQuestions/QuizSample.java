@@ -1,7 +1,11 @@
-/**
- * This class is used for the KN1 standard.  We initialize a sequence of numbers with the missing number
- * as a question mark for the user.
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/08/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
  */
+
+
 
 
 import java.util.ArrayList;
@@ -9,8 +13,8 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author markmorabito
+ * This class is used for the KN1 standard.  We initialize a sequence of numbers with the missing number
+ * as a question mark for the user.
  */
 public class QuizSample {
 

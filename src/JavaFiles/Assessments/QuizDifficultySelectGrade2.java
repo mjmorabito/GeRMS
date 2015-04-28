@@ -1,3 +1,10 @@
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/02/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
+
 
 import java.awt.Dimension;
 import java.io.File;
@@ -17,15 +24,9 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author markmorabito
+ * The QuizDifficultySelectGrade class allows the user to select an easy, medium, or hard quiz
+ * for grades 1 and 2.
  */
 public class QuizDifficultySelectGrade2 extends javax.swing.JInternalFrame {
 

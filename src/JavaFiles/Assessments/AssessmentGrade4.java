@@ -104,10 +104,11 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         // Initializes the components
         initComponents();
         
+        //Sets the progress label
         jLabel2.setText(currentPage+"/"+numQuestions);
         
         determineQuestionsAndOrder();
-        
+       
         generateQuestion();
         
        
@@ -139,13 +140,13 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
     }
   
     
-    //choose randomly mod 3 // TODO
+   //Determines the questions and the order
     public void determineQuestionsAndOrder()
     {
         for( int i = 0; i < numQuestions; i++)
         {
            
-            kns[i] =   "4N"+12;
+            kns[i] = "4N"+12;
         }
        
     }
@@ -461,7 +462,6 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
         // Allows the user to submit an answer
         answerSubmitted = false;
 
-        System.out.println("Current page: " + currentPage + "  Question Num is:" + numQuestions);
         // String for the title of this form
         String title = "";
 
@@ -670,10 +670,8 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                     +"'"+kns[0]+"',"+results[0]+",'"+kns[1]+"',"+results[1]+",'"+kns[2]+"',"+results[2]+","
                     +"'"+kns[3]+"',"+results[3]+",'"+kns[4]+"',"+results[4]+",'"+kns[5]+"',"+results[5]+","
                     +"'"+timeStamp+ "')";
-            
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-            
+
+            //Updates the database
             stmt.executeUpdate(sql);
 
             
@@ -723,9 +721,7 @@ public class AssessmentGrade4 extends javax.swing.JInternalFrame {
                     +"'"+kns[9]+"',"+results[9]+","
                     +"'"+timeStamp+ "')";
             
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-            
+            //Updates the database
             stmt.executeUpdate(sql);
 
             

@@ -3,8 +3,6 @@
  * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
  * Date: 04/02/15
  * Purpose: The client requested a math tutoring software for elementary school children.
- * For this phase of the project the client assigned us to script a prototype portion of the user interface.
- * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -588,7 +586,6 @@ public class Main extends JFrame {
     // This method sets the isKN4ScreenOpen variable to true/false
     public void setIsKN4ScreenOpen(boolean isOpen){
         
-        System.out.println("Screen should be open");
         //Set the variable
         isKN4ScreenOpen = isOpen;
         
@@ -1136,8 +1133,6 @@ public class Main extends JFrame {
     // This method creates an instance of the KN4 screen
     public void openKN4Screen() {
         
-        
-        System.out.println("Open KN4");
         // Creates a new KN4
         kn4 = new KN4(this);
         

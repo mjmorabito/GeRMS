@@ -6,6 +6,7 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
@@ -28,42 +29,42 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /*
-* This is the ManageAccounts JInteralFrame screen.
-* This is the screen that allows the administrator to search for a user
-* using their first and or last name.
-* The usernames for people that match the first and or last name are displayed,
-* along with the password for that username.
-*/
+ * This is the ManageAccounts JInteralFrame screen.
+ * This is the screen that allows the administrator to search for a user
+ * using their first and or last name.
+ * The usernames for people that match the first and or last name are displayed,
+ * along with the password for that username.
+ */
 public class ManageAccounts extends JInternalFrame {
-    
+
     // Variable used to store a reference to the main class
     Main main;
-    
+
     // Variables needed to make connection with DB
     private static final String dbClassName = "com.mysql.jdbc.Driver";
-    private static final String CONNECTION = "jdbc:mysql://localhost/germs"; 
+    private static final String CONNECTION = "jdbc:mysql://localhost/germs";
 
     /**
      * Creates new form NewJInternalFrame
      */
     public ManageAccounts(Main m) {
-        
+
         // Initializes the components on this JInternalFrame
         initComponents();
-        
+
         // Stores the reference to the Main class
         main = m;
-        
+
         // Gets the dimension of the main desktop pane
         Dimension desktopSize = main.getDesktopPaneDimension();
-                
+
         // Gets the size of this JInternalFrame
         Dimension jInternalFrameSize = this.getSize();
-        
+
         // Centers this JInternalFrame in the DesktopPane
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-            (desktopSize.height- jInternalFrameSize.height)/2);           
-        
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
     }
 
     /**
@@ -207,114 +208,112 @@ public class ManageAccounts extends JInternalFrame {
 
     // This is the action performed method for the search button
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        
+
         // A try/catch block to pull information from the MySQL database
         try {
-            
-        // Database Driver
-        Class.forName(dbClassName);
-        
-        // user/pwd to connect to DB
-        Properties p = new Properties();
-        p.put("user","GermsAdmin");
-        p.put("password","g3rm5p0w3ru53r");
-        
-        // DB connection
-        Connection conn = DriverManager.getConnection(CONNECTION,p);  
-        
-        // Get first and last name
-        String fname = firstNameTextField.getText();  
-        String lname = lastNameTextField.getText();  
-        
-        // Get username and password
-        Statement stmt = conn.createStatement();
-        String sql = "SELECT * FROM accounts WHERE accfirstname LIKE "
-                + "'" + fname + "%' AND acclastname LIKE '" + lname + "%'";
-        ResultSet rs = stmt.executeQuery(sql);
-        
-        // Results from the SQL statement will be stored in this table
-        DefaultTableModel model = (DefaultTableModel) usersTable.getModel();
-        
-        // Initializes the table
-        for(int i = 0; i < model.getRowCount(); i++){
-            usersTable.setValueAt(null, i, 0);
-            usersTable.setValueAt(null, i, 1);
-            usersTable.setValueAt(null, i, 2);
-            usersTable.setValueAt(null, i, 3);
-        }
-        
-        // If user exists, all fields associate to that user from table
-       
-        // Row count
-        int count = 0;
-        
-        // Loops through all the results in the ResultSet
-        while (rs.next() == true){
-            
-            String password = rs.getString("accPassword");
-            String key = rs.getString("secretKey");
-                
-            // Converts the key from the db to a byte array so it can be converted to a SecretyKey for decryption
-            byte[] decodedKey = Base64.getDecoder().decode(key);
-            // Convert the pasword key from byte[] to SecretKey so it can be decrypted
-            SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
-            // Encryptor class
-            EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
-            // Decrypt the password
-            try {
-                // Decrypts the pass from the db
-                password = encryptor.decrypt(password, secretKey);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            // Database Driver
+            Class.forName(dbClassName);
+
+            // user/pwd to connect to DB
+            Properties p = new Properties();
+            p.put("user", "GermsAdmin");
+            p.put("password", "g3rm5p0w3ru53r");
+
+            // DB connection
+            Connection conn = DriverManager.getConnection(CONNECTION, p);
+
+            // Get first and last name
+            String fname = firstNameTextField.getText();
+            String lname = lastNameTextField.getText();
+
+            // Get username and password
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM accounts WHERE accfirstname LIKE "
+                    + "'" + fname + "%' AND acclastname LIKE '" + lname + "%'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Results from the SQL statement will be stored in this table
+            DefaultTableModel model = (DefaultTableModel) usersTable.getModel();
+
+            // Initializes the table
+            for (int i = 0; i < model.getRowCount(); i++) {
+                usersTable.setValueAt(null, i, 0);
+                usersTable.setValueAt(null, i, 1);
+                usersTable.setValueAt(null, i, 2);
+                usersTable.setValueAt(null, i, 3);
             }
-            
-            // Sets the data in the table for the current row count
-            usersTable.setValueAt(rs.getString("accfirstname"), count, 0);
-            usersTable.setValueAt(rs.getString("acclastname"), count, 1);
-            usersTable.setValueAt(rs.getString("accUser"), count, 2);
-            usersTable.setValueAt(password, count, 3);
-            
-            // Increases the row count
-            count++;
-            
-        }
+
+        // If user exists, all fields associate to that user from table
+            // Row count
+            int count = 0;
+
+            // Loops through all the results in the ResultSet
+            while (rs.next() == true) {
+
+                String password = rs.getString("accPassword");
+                String key = rs.getString("secretKey");
+
+                // Converts the key from the db to a byte array so it can be converted to a SecretyKey for decryption
+                byte[] decodedKey = Base64.getDecoder().decode(key);
+                // Convert the pasword key from byte[] to SecretKey so it can be decrypted
+                SecretKey secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
+                // Encryptor class
+                EncryptionDecryptionAES encryptor = new EncryptionDecryptionAES();
+                // Decrypt the password
+                try {
+                    // Decrypts the pass from the db
+                    password = encryptor.decrypt(password, secretKey);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                // Sets the data in the table for the current row count
+                usersTable.setValueAt(rs.getString("accfirstname"), count, 0);
+                usersTable.setValueAt(rs.getString("acclastname"), count, 1);
+                usersTable.setValueAt(rs.getString("accUser"), count, 2);
+                usersTable.setValueAt(password, count, 3);
+
+                // Increases the row count
+                count++;
+
+            }
 
         } catch (ClassNotFoundException e) {
-            
+
         } catch (SQLException e) {
-            
+
         }
-        
+
     }//GEN-LAST:event_searchButtonActionPerformed
 
     // This is the method called when the ok button is pressed
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        
+
         // Closes the manage accounts screen
         this.dispose();
-        
+
         // Sets the isManageAccountsScreen variable to not open
         main.setIsManageAccountsScreenOpen(false);
-        
+
     }//GEN-LAST:event_okButtonActionPerformed
 
     // This method is triggered when the manage accounts screen is closed
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-    
+
         // We set this variable to false to allow the screen to be opened again
         main.setIsManageAccountsScreenOpen(false);
-        
+
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void helpAudioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpAudioButtonActionPerformed
 
         /*
-        * This is the code that plays the audio .wav file.
-        * This audio .wav file is the audio tutorial
-        * to help the user understand this screen.
-        */
-
+         * This is the code that plays the audio .wav file.
+         * This audio .wav file is the audio tutorial
+         * to help the user understand this screen.
+         */
         // Creates a filepath to the .wav file
         File yourFile = new File("src/sounds/ManageAccounts 1.wav");
         AudioInputStream stream;

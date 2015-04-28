@@ -1,3 +1,9 @@
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/08/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
 
 import java.awt.Dimension;
 import java.io.File;
@@ -114,10 +120,10 @@ public class G2N4 extends javax.swing.JInternalFrame {
 
     // This method is called when the form is created, it generates an easy question
     public void generateEasyQuestion() {
-        //System.out.println("generate easy question");
+ 
         // Randomly picks a number form (1-3)
         questionNum = (int)(Math.random())*3 + 1;
-        System.out.println("QuestionNum which determines the answer,randomly, in G2N4 is " + questionNum);
+       
         
         num1 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
         num2 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
@@ -132,7 +138,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             num2 = (int)(Math.random()*(100)) + (int)(Math.random()*(10))+ 1;
         }
         int difficulyLevel = 1;
-        System.out.println("the number is : " + questionNum);
+        
         
         // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
@@ -141,7 +147,6 @@ public class G2N4 extends javax.swing.JInternalFrame {
             jLabel1.setText(num2 +  " ? " + num1);
             labelText = num2 +  " ? " + num1;        
             
-            System.out.println("LESS THAN");
             // Sets the answer
             answer = 1;
             
@@ -150,7 +155,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             
             jLabel1.setText(num2 +  " ? " + num2);
              labelText = num2 +  " ? " + num2; 
-            System.out.println("EQUAL TO");
+          
             // Sets the answer
             answer = 2;
             
@@ -162,7 +167,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             jLabel1.setText(num1 +  " ? " + num2);
              labelText = num1 +  " ? " + num2; 
             
-            System.out.println("GREATER THAN");
+            
             // Sets the answer
             answer = 3;
             
@@ -181,7 +186,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
     
     // This method generates a medium difficulty question
     public void generateMediumQuestion() {
-    System.out.println("generate medium question");
+    
         // Randomly picks a number form (1-3)
         questionNum = (int)(Math.random()*( (3-1) + 1)) + 1;
         
@@ -195,7 +200,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             num2 = (int)(Math.random()*(100)) +(int)(Math.random()*(10))+ 1;
         }
         int difficulyLevel = 2;
-        System.out.println("the number is : " + questionNum);
+        
         
         // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
@@ -203,8 +208,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             //Num2 < Num1
             jLabel1.setText(num2 +  " ? " + num1);
             labelText = num2 +  " ? " + num1;      
-            
-            System.out.println("LESS THAN");
+          
             // Sets the answer
             answer = 1;
             
@@ -213,7 +217,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             
             jLabel1.setText(num2 +  " ? " + num2);
              labelText = num2 +  " ? " + num2; 
-            System.out.println("EQUAL TO");
+           
             // Sets the answer
             answer = 2;
             
@@ -225,7 +229,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             jLabel1.setText(num1 +  " ? " + num2);
              labelText = num1 +  " ? " + num2; 
             
-            System.out.println("GREATER THAN");
+            
             // Sets the answer
             answer = 3;
             
@@ -243,7 +247,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
     
     // This method generates a hard difficulty question
     public void generateHardQuestion() {
-    System.out.println("generate hard question");
+    
         // Randomly picks a number form (1-3)
         questionNum = (int)(Math.random()*( (3-1) + 1)) + 1;
         
@@ -253,7 +257,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
         
         
         int difficulyLevel = 3;
-        System.out.println("the number is : " + questionNum);
+        
         
         // If the value picked is 1, a fewer than question will be asked
         if (questionNum == 1) {
@@ -262,8 +266,6 @@ public class G2N4 extends javax.swing.JInternalFrame {
             jLabel1.setText(num2 +  " ? " + num1);
              labelText = num2 +  " ? " + num1; 
                     
-            
-            System.out.println("LESS THAN");
             // Sets the answer
             answer = 1;
             
@@ -272,7 +274,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
             
             jLabel1.setText(num2 +  " ? " + num2);
              labelText = num2 +  " ? " + num2; 
-            System.out.println("EQUAL TO");
+        
             // Sets the answer
             answer = 2;
             
@@ -284,7 +286,6 @@ public class G2N4 extends javax.swing.JInternalFrame {
             jLabel1.setText(num1 +  " ? " + num2);
              labelText = num1 +  " ? " + num2; 
             
-            System.out.println("GREATER THAN");
             // Sets the answer
             answer = 3;
             
@@ -294,8 +295,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
         
         
         // Sets the icon for the question
-       // jLabel1.setIcon(questionIcon);
-        //NEW STUFF MUST CHANGE
+    
         jLabel1.setText(labelText);
         
         // Fills the choices with 1 correct answer and 3 incorrect answers
@@ -551,7 +551,7 @@ public class G2N4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-System.out.println("Choices 2");
+
         // If the user has not submitted an answer
         if (!answerSubmitted) {
 

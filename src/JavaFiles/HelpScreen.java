@@ -6,6 +6,7 @@
  * For this phase of the project the client assigned us to script a prototype portion of the user interface.
  * (Not everything). We were told to select the most important part of your project and simply develop one modular to
  */
+
 import java.awt.Desktop;
 import javax.swing.*;
 import java.io.File;
@@ -22,7 +23,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /*
-* This is the class for the help screen. 
+* This is the class for the help screen, which will hold videos for each portion of our program. 
 * This screen is a JInternalFrame.
 * This screen display's a button for each screen accessible to the user.
 * Each button will open a video tutorial to help the user understand the selected screen.

@@ -1,3 +1,10 @@
+/*
+ * Team name: GeRMS
+ * Team members: Gustavo Moraes, Ryan Ahearn, Mark Morabito, and Samir Leal
+ * Date: 04/08/15
+ * Purpose: The client requested a math tutoring software for elementary school children.
+ */
+
 import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
