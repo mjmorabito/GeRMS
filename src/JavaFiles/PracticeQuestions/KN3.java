@@ -159,9 +159,7 @@ public class KN3 extends javax.swing.JInternalFrame {
         AnsArray.add("Fourth");
         
         correctAnswer = AnsArray.get(questionNum);
-        
-        System.out.println("Easy correct answer is now: "+ correctAnswer);
-        
+                
         questionIcon = new ImageIcon(getClass().getResource(images.get(questionNum)));
         
         // Sets the icon for the question
@@ -342,7 +340,6 @@ public class KN3 extends javax.swing.JInternalFrame {
         if ("Fifth".equals(ans)) {
             return 4;
         } else {
-            System.out.println("Invalid entry");
             return -1;
         }
     }
@@ -525,9 +522,6 @@ public class KN3 extends javax.swing.JInternalFrame {
             // If the value assigned to this button is the correct answer
             if (correctAnswer.equals(jButton1.getText())) {
                 
-                
-                System.out.println(" Action performed: " + jButton1.getText());
-
                 // Display the correct answer image
                 jButton1.setIcon(correctImageIcon);
 

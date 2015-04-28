@@ -120,22 +120,18 @@ public class QuizSample {
         //Stores random numbers in the three other answer choices
         //Makes sure that they are unique
         int goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 10;
-        //System.out.println("The correct answer is " + goodWrongAnswer);
         while (goodWrongAnswer == Integer.parseInt(ans1) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
-            System.out.println("First while in Q");
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 10;
         }
 
         ans2 = goodWrongAnswer + "";
         goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 20;
         while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
-            System.out.println("2nd while in Q");
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) + 20;
         }
         ans3 = goodWrongAnswer + "";
         while (goodWrongAnswer == Integer.parseInt(ans1) || goodWrongAnswer == Integer.parseInt(ans2)
                 || goodWrongAnswer == Integer.parseInt(ans3) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
-            System.out.println("3rd while in Q");
             goodWrongAnswer = randomGenerator.nextInt(correctAnswer) +30;
         }
 

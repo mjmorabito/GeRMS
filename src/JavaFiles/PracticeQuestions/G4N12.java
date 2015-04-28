@@ -129,13 +129,10 @@ public class G4N12 extends javax.swing.JInternalFrame {
     // This method is called when the form is created, it generates an easy question
     public void generateEasyQuestion() {
 
-        System.out.println("generate easy question");
-
         // Randomly picks a number form (1-3)
         // 1 represents addition, 2 subtraction and 3 multiplication
         questionNum = (int) (Math.random() * ((3 - 1) + 1)) + 1;
         int difficulyLevel = 1;
-        System.out.println("the number is : " + questionNum);
         int temp = 0;
         if (questionNum == 1 || questionNum == 2) {
             //Generates two three digit numbers for addition or subtract
@@ -186,13 +183,10 @@ public class G4N12 extends javax.swing.JInternalFrame {
     // This method is called when the form is created, it generates an medium question
     public void generateMediumQuestion() {
 
-        System.out.println("generate medium question");
-
         // Randomly picks a number form (1-3)
         // 1 represents addition, 2 subtraction and 3 multiplication
         questionNum = (int) (Math.random() * ((3 - 1) + 1)) + 1;
         int difficulyLevel = 2;
-        System.out.println("the number is : " + questionNum);
         int temp = 0;
         if (questionNum == 1 || questionNum == 2) {
             //Generates two three digit numbers for addition or subtract
@@ -243,13 +237,10 @@ public class G4N12 extends javax.swing.JInternalFrame {
     // This method is called when the form is created, it generates an medium question
     public void generateHardQuestion() {
 
-        System.out.println("generate medium question");
-
         // Randomly picks a number form (1-3)
         // 1 represents addition, 2 subtraction and 3 multiplication
         //questionNum = (int) (Math.random() * ((3 - 1) + 1)) + 1;
         int difficulyLevel = 3;
-        System.out.println("the number is : " + questionNum);
 
         if (questionNum == 1 || questionNum == 2) {
             //Generates two three digit numbers for addition or subtract

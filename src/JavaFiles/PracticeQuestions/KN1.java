@@ -415,7 +415,6 @@ public class KN1 extends javax.swing.JInternalFrame {
 
         // Sets the String for the title of this form
         String title = "";
-        System.out.println("Right arrow was pressed");
 
         if (questionCount == 2) {
             

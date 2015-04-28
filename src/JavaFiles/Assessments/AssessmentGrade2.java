@@ -212,7 +212,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 
               
                 choices = q.getChoices();
-                System.out.println("Qstring is" + q.getLabelText());
                 jLabel1.setText(q.getLabelText());
                 
                 jButton1.setText("<");
@@ -220,7 +219,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 jButton3.setText(">");
                 jButton4.setVisible(false);
                
-                 System.out.println("THe answer is " + q.getAnswer());
                 answer = q.getAnswer();
                 
                 
@@ -233,7 +231,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 
                 //jLabel1.setText(q.getQuestionString());
                 //JUST COMMENTED OUT
-                 System.out.println("Qstring is" + q.getLabelText());
                 jLabel1.setText(q.getLabelText());
                 choices = q.getChoices();
                 jLabel1.setIcon(questionIcon);
@@ -241,7 +238,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 jButton2.setText("=");
                 jButton3.setText(">");
                 jButton4.setVisible(false);
-                System.out.println("THe answer is " + q.getAnswer());
                 answer = q.getAnswer();
                 
                 
@@ -251,9 +247,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                 
                 q.generateHardQuestion();
                 
-               // jLabel1.setText(q.getQuestionString());
-                //JUST COMMENTED OUT
-                 System.out.println("Qstring is" + q.getLabelText());
                 jLabel1.setText(q.getLabelText());
                 choices = q.getChoices();
                 jLabel1.setIcon(questionIcon);
@@ -447,7 +440,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted a question
         if (!answerSubmitted) {
-            // System.out.println("XXX choices 1 is" + choices[1]);
             // If the value assigned to this button is the correct answer
             if (choices[1] == answer) {
 
@@ -482,7 +474,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
 
         // If the user has not picked an answer to the question
         if (!answerSubmitted) {
-            //System.out.println("XXX choices q is" + choices[0]);
             // If the value assigned to this button is the correct answer
             if (choices[0] == answer) {
 
@@ -517,7 +508,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            //System.out.println("XXX choices q is" + choices[2]);
             // If the value assigned to this button is the correct answer
             if (choices[2] == answer) {
 
@@ -551,17 +541,12 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
         // Allows the user to submit an answer
-        answerSubmitted = false;
-
-        System.out.println("Current page: " + currentPage + "  Question Num is:" + numQuestions);
+        answerSubmitted = false;        
         
-        
-
         if (currentPage<numQuestions)
         {
             // Increments the current page
             currentPage++;
-            System.out.println("Current page: " + currentPage);
 
             // Resets the ImageIcons of the JButtons on the screen to neutral
             jButton1.setIcon(neutralImageIcon);
@@ -630,7 +615,6 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            // System.out.println("XXX choices q is" + choices[3]);
             // If the value assigned to this button is the correct answer
             if (choices[3] == answer) {
 
@@ -693,10 +677,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                     +"'"+kns[0]+"',"+results[0]+",'"+kns[1]+"',"+results[1]+",'"+kns[2]+"',"+results[2]+","
                     +"'"+kns[3]+"',"+results[3]+",'"+kns[4]+"',"+results[4]+",'"+kns[5]+"',"+results[5]+","
                     +"'"+timeStamp+ "')";
-            
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-            
+                        
             stmt.executeUpdate(sql);
 
             
@@ -745,10 +726,7 @@ public class AssessmentGrade2 extends javax.swing.JInternalFrame {
                     +results[7]+","+"'"+kns[8]+"',"+results[8]+","
                     +"'"+kns[9]+"',"+results[9]+","
                     +"'"+timeStamp+ "')";
-            
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-            
+                        
             stmt.executeUpdate(sql);
 
             

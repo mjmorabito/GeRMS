@@ -273,7 +273,6 @@ public class KN6 extends javax.swing.JInternalFrame {
         if ("Half Dollar".equals(ans)) {
             return 4;
         } else {
-            System.out.println("Invalid entry");
             return -1;
         }
     }
@@ -449,9 +448,7 @@ public class KN6 extends javax.swing.JInternalFrame {
 
             // If the value assigned to this button is the correct answer
             if (correctAnswer.equals(jButton1.getText())) {
-
-                System.out.println(" Action performed: " + jButton1.getText());
-
+                
                 // Display the correct answer image
                 jButton1.setIcon(correctImageIcon);
 
@@ -477,10 +474,7 @@ public class KN6 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-            System.out.println("Jbutton2 :" + jButton2.getText());
             // If the value assigned to this button is the correct answer
-
-            System.out.println("Correct answer: " + correctAnswer);
             if (correctAnswer.equals(jButton2.getText())) {
 
                 // Display the correct answer image
