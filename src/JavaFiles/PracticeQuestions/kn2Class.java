@@ -99,7 +99,6 @@ public class kn2Class {
         
         
         int goodWrongAnswer = randomQuestion.nextInt(10);
-        //System.out.println("The correct answer is " + goodWrongAnswer);
         while (goodWrongAnswer == Integer.parseInt(ans1) || isNumberAlreadyInTheSequence(goodWrongAnswer)) {
             goodWrongAnswer = randomQuestion.nextInt(10);
         }

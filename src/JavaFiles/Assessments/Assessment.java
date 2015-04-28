@@ -200,13 +200,10 @@ public class Assessment extends javax.swing.JInternalFrame {
         jButton1.setVisible(true);
         jButton2.setVisible(true);
         jLabel1.setText("");
-
-        System.out.println("Question count: " + questionCount);
-
+        
         if (questionCount < numQuestions - 1) {
             questionCount++;
         }
-        System.out.println("After Question count: " + questionCount);
 
         if (questions[questionCount] == 1) {
             //Sets the title
@@ -839,11 +836,6 @@ public class Assessment extends javax.swing.JInternalFrame {
                     + "'" + kns[3] + "'," + results[3] + ",'" + kns[4] + "'," + results[4] + ",'" + kns[5] + "'," + results[5] + ","
                     + "'" + timeStamp + "')";
 
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-
-            stmt.executeUpdate(sql);
-
             // close all connection to DB
             stmt.close();
             conn.close();
@@ -889,10 +881,7 @@ public class Assessment extends javax.swing.JInternalFrame {
                     + results[7] + "," + "'" + kns[8] + "'," + results[8] + ","
                     + "'" + kns[9] + "'," + results[9] + ","
                     + "'" + timeStamp + "')";
-
-            //JOptionPane.showMessageDialog(null, sql, "Next", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(sql);
-
+            
             stmt.executeUpdate(sql);
 
             // close all connection to DB

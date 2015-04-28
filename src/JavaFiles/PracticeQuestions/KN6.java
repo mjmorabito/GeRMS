@@ -475,7 +475,7 @@ public class KN6 extends javax.swing.JInternalFrame {
 
             // If the value assigned to this button is the correct answer
             if (correctAnswer.equals(jButton1.getText())) {
-
+                
                 // Display the correct answer image
                 jButton1.setIcon(correctImageIcon);
 
@@ -501,9 +501,7 @@ public class KN6 extends javax.swing.JInternalFrame {
 
         // If the user has not submitted an answer
         if (!answerSubmitted) {
-         
             // If the value assigned to this button is the correct answer
-
             if (correctAnswer.equals(jButton2.getText())) {
 
                 // Display the correct answer image

@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS germs;
-GRANT USAGE ON *.* TO 'GermsAdmin'@'localhost';
+GRANT USAGE ON *.* TO 'GermsAdmin'@'localhost' IDENTIFIED BY 'g3rm5p0w3ru53r';
 DROP USER 'GermsAdmin'@'localhost';
 
 CREATE DATABASE germs;
