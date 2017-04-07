@@ -836,6 +836,9 @@ public class Assessment extends javax.swing.JInternalFrame {
                     + "'" + kns[3] + "'," + results[3] + ",'" + kns[4] + "'," + results[4] + ",'" + kns[5] + "'," + results[5] + ","
                     + "'" + timeStamp + "')";
 
+            // Updates the database
+            stmt.executeUpdate(sql);
+            
             // close all connection to DB
             stmt.close();
             conn.close();
